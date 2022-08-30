@@ -1,11 +1,11 @@
-image {
-    width: 70%;
+.center {
+  width: 80%;
 }
 # This-is-Java
 
 ## **1.1 프로그래밍 언어란?**
 
-<img src="/images/Untitled.png">
+![Untitled](/images/Untitled.png){: .center}
 
 - 프로그래밍 언어 : 소스파일(txt)을 작성할 때 사용되는 언어
     - C++, JAVA, VC++ 등
