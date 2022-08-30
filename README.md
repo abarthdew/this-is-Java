@@ -1,5 +1,5 @@
 .center {
-  width: 80%;
+  width: 300px;
 }
 # This-is-Java
 
