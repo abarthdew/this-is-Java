@@ -2,7 +2,7 @@
 
 ## **1.1 프로그래밍 언어란?**
 
-<img src="/images/Untitled.png" width="200" height="400"/>
+<img src="/images/Untitled.png" width="80%"/>
 
 - 프로그래밍 언어 : 소스파일(txt)을 작성할 때 사용되는 언어
     - C++, JAVA, VC++ 등
