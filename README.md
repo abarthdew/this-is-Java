@@ -1,8 +1,11 @@
+image {
+    width: 70%;
+}
 # This-is-Java
 
 ## **1.1 프로그래밍 언어란?**
 
-![Untitled](/images/Untitled.png)
+<img src="/images/Untitled.png">
 
 - 프로그래밍 언어 : 소스파일(txt)을 작성할 때 사용되는 언어
     - C++, JAVA, VC++ 등
