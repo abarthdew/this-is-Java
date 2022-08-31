@@ -1,4 +1,8 @@
+## 목차
 [1.1 프로그래밍 언어란?](##1.1-프로그래밍-언어란?)
+[1.2 자바란?](##1.2-자바란?)
+[1.3 자바 개발 환경 구축](##1.3-자바-개발-환경-구축)
+[1.4 자바 프로그램 개발 순서](##1.4-자바-프로그램-개발-순서?)
 
 ## **1.1 프로그래밍 언어란?**
 
@@ -67,4 +71,80 @@
 - 해당 명령어들을 콘솔에서 사용하려면 환경변수에 경로를 추가해 줘야 함
 
 ## **1.4 자바 프로그램 개발 순서**
-[https://www.youtube.com/watch?v=cHfG_TpCIWY&list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu&index=4](https://www.youtube.com/watch?v=cHfG_TpCIWY&list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu&index=4)
+
+![Untitled](./images/Untitled(10).png)
+
+- “hello”를 출력하는 프로그램을 만들고자 할 때
+    
+    → Hello.java 라는 소스파일을 자바 언어로 작성해서 생성해야 함
+    
+    → 컴파일러를 통해 컴파일: JDK가 제공해주는 javac.exe로 컴파일
+    
+    ```jsx
+    $ javac Hello.java
+    ```
+    
+    Hello.class라는 바이트 코드 파일이 생성이 됨
+    
+    → 클래스 파일을 해석: JVM 구동 명령어 java.exe로 클래스 파일 찾기 및 실행
+    
+    ```jsx
+    $ java(.exe 생략 가능) Hello (.class 확장명 생략 가능)
+    $ java Hello
+    ```
+    
+    → 자바 구동 명령어가 Hello.class를 찾아 완전한 기계어로 번역한 뒤 실행
+    
+
+![Untitled](./images/Untitled(11).png)
+
+- windows와 Mac에 서로의 운영체제에 종속적인 JVM이 설치되어 있다면?
+    
+    ⇒ byte 코드 파일은 어떠한 JVM에서도 공통적으로 해석될 수 있는 파일이기 때문에, 운영체제 종류나 JVM 버전과 관계없이 실행 가능.
+    
+    ⇒ 개발은 windows에서 하고, 실행은 Mac에서 해도 무방.
+    
+    ⇒ 이와 달리, VC++ 등은 windows에서만 개발, 실행이 가능. 즉, 운영체제에 종속됨.
+    
+
+![Untitled](./images/Untitled(12).png)
+
+- 프로그램 작성해 보기[📁hello]
+    
+    ![Untitled](./images/Untitled(13).png)
+    
+    ⇒ Hello.java
+    
+    ```jsx
+    class Hello {
+      public static void main(String ar[]) {
+        System.out.println("Hello!");
+      }
+    }
+    ```
+    
+    → Hello.class
+    
+    ```jsx
+    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>javac Hello.java
+    
+    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>dir
+     C 드라이브의 볼륨에는 이름이 없습니다.
+     볼륨 일련 번호: CEC7-4056
+    
+     C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello 디렉터리
+    
+    2022-08-31  오후 10:17    <DIR>          .
+    2022-08-31  오후 10:17    <DIR>          ..
+    2022-08-31  오후 10:17               410 Hello.class
+    2022-08-31  오후 10:09                98 Hello.java
+                   2개 파일                 508 바이트
+                   2개 디렉터리  181,445,763,072 바이트 남음
+    ```
+    
+    → 실행(JVM이 main()메소드 부터 실행함)
+    
+    ```jsx
+    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>java Hello
+    Hello!
+    ```
