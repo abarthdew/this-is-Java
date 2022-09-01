@@ -109,7 +109,7 @@
 
 ![Untitled](./images/Untitled(12).png)
 
-- 프로그램 작성해 보기[📁hello]
+### 프로그램 작성해 보기 [Folder - 1.4.hello]
     
     ![Untitled](./images/Untitled(13).png)
     
@@ -148,3 +148,77 @@
     C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>java Hello
     Hello!
     ```
+## **1.5 주석과 실행문**
+
+![Untitled](./images/Untitled(14).png)
+
+## **1.6 이클립스 설치**
+
+![Untitled](./images/Untitled(15).png)
+
+![Untitled](./images/Untitled(16).png)
+
+- Java EE: 자바 웹 애플리케이션, 웹 서비스를 사용할 수 있음
+
+![Untitled](./images/Untitled(17).png)
+
+- 기본적으로 이렇게 뷰가 배치된 것을 Perspective 라고 함. 기본값은 Java EE. Web 서비스를 개발할 때 사용.
+
+![Untitled](./images/Untitled(18).png)
+
+![Untitled](./images/Untitled(19).png)
+
+- 본 수업은 웹 서비스 개발이 아니므로 Java Perspective 사용.
+
+![Untitled](./images/Untitled(20).png)
+
+- .metadata: 폰트, 설정 등
+
+![Untitled](./images/Untitled(21).png)
+
+- window - show view : 뷰 조작
+
+### 자바 프로젝트 생성
+
+![Untitled](./images/Untitled(22).png)
+
+![Untitled](./images/Untitled(23).png)
+
+- Use an execution environment JRE: 이 프로젝트를 어떤 자바 버전에서, 어떤 자바 실행 환경에서 실행할 건지 결정. 이 경우, Java 8로 설정.
+- Use a project specific JRE: 프로젝트 별로 자바 버전 설정
+- Use default JRE(currently ~): 현재 이클립스에서 실행하는 JRE
+
+![Untitled](./images/Untitled(24).png)
+
+- 만약 이렇게 설정하면, 이클립스는 1.8에서 실행, 프로젝트는 1.7에서 컴파일되고 실행됨.
+
+![Untitled](./images/Untitled(25).png)
+
+![Untitled](./images/Untitled(26).png)
+
+![Untitled](./images/Untitled(27).png)
+
+- Project layout: 프로젝트 소스 파일, 컴파일된 바이트 파일을 분리해서 저장할지 말지 설정.
+- 분리해서 저장하기를 선택하고 next를 누르면, 소스 코드는 src에, .class 파일은 bin에 저장됨.
+
+![Untitled](./images/Untitled(28).png)
+
+- 프로젝트 내 src에 소스파일을 작성 후 저장하면, 자동으로 컴파일 되어, bin 디렉토리에 .class파일이 생성됨.
+
+### 파일 탐색 확장 - Navigater
+
+![Untitled](./images/Untitled(29).png)
+
+- 윈도우 탐색기처럼 파일 내용을 전부 보여줌
+
+![Untitled](./images/Untitled(3.).png)
+
+- bin 폴더 내 .class 파일을 확인할 수 있음
+
+![Untitled](./images/Untitled(31).png)
+
+![Untitled](./images/Untitled(32).png)
+
+## **1.7 풀인원 설치와 실행**
+
+- 생략
