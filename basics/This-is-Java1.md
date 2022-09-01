@@ -194,8 +194,8 @@
 
 ![Untitled](./images/Untitled(25).png)
 
-<img src="./images/Untitled(26).png" width="50%">
-<img src="./images/Untitled(27).png" width="50%">
+<img src="./images/Untitled(26).png" width="48%">
+<img src="./images/Untitled(27).png" width="48%">
 
 - Project layout: 프로젝트 소스 파일, 컴파일된 바이트 파일을 분리해서 저장할지 말지 설정.
 - 분리해서 저장하기를 선택하고 next를 누르면, 소스 코드는 src에, .class 파일은 bin에 저장됨.
