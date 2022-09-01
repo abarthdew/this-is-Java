@@ -2,7 +2,13 @@
 [1.1 프로그래밍 언어란?](#11-프로그래밍-언어란)   
 [1.2 자바란?](#12-자바란)   
 [1.3 자바 개발 환경 구축](#13-자바-개발-환경-구축)   
-[1.4 자바 프로그램 개발 순서](#14-자바-프로그램-개발-순서)   
+[1.4 자바 프로그램 개발 순서](#14-자바-프로그램-개발-순서)  
+    [프로그램 작성해 보기 [Folder - 1.4.hello]](#프로그램-작성해-보기-folder---14hello)   
+[1.5 주석과 실행문](#15-주석과-실행문)   
+[1.6 이클립스 설치](#16-이클립스-설치)   
+    [자바 프로젝트 생성](#자바-프로젝트-생성)
+    [파일 탐색 확장 - Navigater](#파일-탐색-확장---navigater)
+[1.7 풀인원 설치와 실행](#17-풀인원-설치와-실행)   
 
 ## 1.1 프로그래밍 언어란?
 
@@ -194,8 +200,8 @@
 
 ![Untitled](./images/Untitled(25).png)
 
-<span><img src="./images/Untitled(26).png" width="50%"></span>
-<span><img src="./images/Untitled(27).png" width="50%"></span>
+<span><img src="./images/Untitled(26).png" width="49%"></span>
+<span><img src="./images/Untitled(27).png" width="49%"></span>
 
 - Project layout: 프로젝트 소스 파일, 컴파일된 바이트 파일을 분리해서 저장할지 말지 설정.
 - 분리해서 저장하기를 선택하고 next를 누르면, 소스 코드는 src에, .class 파일은 bin에 저장됨.
@@ -210,7 +216,7 @@
 
 - 윈도우 탐색기처럼 파일 내용을 전부 보여줌
 
-![Untitled](./images/Untitled(3.).png)
+![Untitled](./images/Untitled(30).png)
 
 - bin 폴더 내 .class 파일을 확인할 수 있음
 
