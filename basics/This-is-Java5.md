@@ -25,7 +25,7 @@
 
 ### **메모리 사용 영역 실행 순서**
 
-- 1) JVM 구동 명령
+→ 1) JVM 구동 명령
 
 ```jsx
 java (exe) MemoryExample
