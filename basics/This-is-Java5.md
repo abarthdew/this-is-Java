@@ -27,7 +27,18 @@
 - 참조타입: 객체를 참조하는 타입, 직접 값을 가지지 않고, 참조 객체의 번지를 가지고 있음
 - int age = 25, double price = 100.5 에서 25, 100.5는 기본 타입으로, 직접 값이 스택 영역에 저장됨
 - String name = “신용권”, “독서”는 힙 영역에 값을 저장한 객체가 생성되고, 이 번지가 스택 영역 변수에 저장됨 → 메모리 주소(번지)를 가지고 있다가, 필요할 주소로 때 객체를 이용
-- 
+
+## **5.2 메모리 사용 영역**
+
+![Untitled](./images/5(1).png)
+
+- 프로그램을 실행하면, JVM이 구동됨 → JVM이 구동될 때, OS에서 할당받은 메모리 영역을 3가지로 구분
+- 오른쪽 그림 전체가 Runtime Data Area 메모리 영역(자바가 실행될 때, 운영체제에서 받는 메모리 영역)
+- 메소드 영역: 클래스 코드들이 올라감
+- 힙 영역: 프로그램이 실행될 때, 이 객체를 이용해 데이터를 저장하거나, 메소드를 호출
+- JVM 스택:
+    - 메서드를 호출할 때마다 프레임이 생성, 프레임 안에는 변수들이 위치
+    - 프레임이 제거되는 시점: 프레임이 생성된 메서드 호출이 끝나게 되면 자동적으로 없어짐
 
 ### **메모리 사용 영역 실행 순서**
 
@@ -43,7 +54,7 @@ java (exe) MemoryExample
 
 → Runtime Data Area 영역이 만들어지며 메소드 영역, 힙 영역 자동 생성
 
-![Untitled](./images/5(1).png)
+![Untitled](./images/5(2).png)
 
 ### **3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩**
 
@@ -61,19 +72,19 @@ public static void main(String[] args) {...}
 public static void add(int a, int b) {...}
 ```
 
-![Untitled](./images/5(2).png)
+![Untitled](./images/5(3).png)
 
 ### **4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름**
 
 → main 스레드 생성 동시에 JVM 스택 생성됨
 
-![Untitled](./images/5(3).png)
+![Untitled](./images/5(4).png)
 
 ### **5) main() 메서드 호출**
 
 → JVM 스택에 main 메서드 호출하는 프레임 생성됨
 
-![Untitled](./images/5(4).png)
+![Untitled](./images/5(5).png)
 
 ### **6) main()의 매개변수가 String 배열 값으로 들어옴**
 
@@ -99,7 +110,7 @@ public static void main(String[] args) {
 
 ⇒ 만약, 100번지에 String 배열 객체가 생성되었다면, args에는 100번지라는 주소값이 저장됨
 
-![Untitled](./images/5(5).png)
+![Untitled](./images/5(6).png)
 
 ### **7) int sum = 0; 생성**
 
@@ -119,7 +130,7 @@ public static void main(String[] args) {
 | --- | --- |
 | 100 | args |
 
-![Untitled](./images/5(6).png)
+![Untitled](./images/5(7).png)
 
 ### **8, 9) if 문 검증 후, int v2 = 10; 생성**
 
@@ -143,7 +154,7 @@ public static void main(String[] args) {
 | 0 | sum |
 | 100 | args |
 
-![Untitled](./images/5(7).png)
+![Untitled](./images/5(8).png)
 
 ### **10) add() 메소드 호출**
 
@@ -182,7 +193,7 @@ public static int add(int a, int b) {
 | 0 | sum |
 | 100 | args |
 
-![Untitled](./images/5(8).png)
+![Untitled](./images/5(9).png)
 
 ### **11) 프레임 제거:** 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨
 
@@ -201,7 +212,7 @@ public static int add(int a, int b) {
 } //-------(메소드 끝나는 시점)
 ```
 
-![Untitled](./images/5(9).png)
+![Untitled](./images/5(10).png)
 
 ### **12) main() 프레임의 sum 값 변화**
 
@@ -215,7 +226,7 @@ public static int add(int a, int b) {
 | 30 | sum |
 | 100 | args |
 
-![Untitled](./images/5(10).png)
+![Untitled](./images/5(11).png)
 
 ### **13) main() 프레임의 v2, v3 값 제거**
 
@@ -238,7 +249,7 @@ public static void main(String[] args) {
 }
 ```
 
-![Untitled](./images/5(11).png)
+![Untitled](./images/5(12).png)
 
 ### 14) 프로그램 종료
 
@@ -262,23 +273,23 @@ public static void main(String[] args) {
 
 ⇒ 매개변수인 String[] args도 삭제됨
 
-![Untitled](./images/5(12).png)
+![Untitled](./images/5(13).png)
 
 ⇒ main()이 끝나게 되면 main() 프레임이 사라짐
 
-![Untitled](./images/5(13).png)
+![Untitled](./images/5(14).png)
 
 ### **15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐**
 
-![Untitled](./images/5(14).png)
+![Untitled](./images/5(15).png)
 
 ### 더 알아보기
 
-![전체](./images/5(15).png)
+![전체](./images/5(16).png)
 
 전체
 
-![기본 타입 변수](./images/5(16).png)
+![기본 타입 변수](./images/5(17).png)
 
 기본 타입 변수
 
@@ -290,7 +301,7 @@ public static void main(String[] args) {
 3. 스택에 v4 변수 생성, true 값 저장
 - 기본 타입 변수는 직접 값을 가지고 있음
 
-![참조 타입 변수 - 배열](./images/5(17).png)
+![참조 타입 변수 - 배열](./images/5(18).png)
 
 참조 타입 변수 - 배열
 
@@ -299,7 +310,7 @@ public static void main(String[] args) {
 - 힙 영역에 생성된 배열 객체의 번지를 스택의 scores에 저장
 - 번지 참조 변수: 배열 타입 변수는 직접 값을 가지는 것이 아닌, 배열 객체가 생성된 번지를 가짐
 
-![참조 타입 변수 - 문자열](./images/5(18).png)
+![참조 타입 변수 - 문자열](./images/5(19).png)
 
 참조 타입 변수 - 문자열
 
@@ -313,5 +324,5 @@ public static void main(String[] args) {
     ```java
     String name3 = "name";
     ```
-    
+
 ## **5.3 참조 변수의 ==, != 연산**
