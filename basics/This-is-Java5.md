@@ -85,19 +85,19 @@ public static void main(String[] args) {
 
 → 매개변수 args가 프레임 내부에 생성됨
 
-⇒ 프레임 - main() 내부
+    ⇒ 프레임 - main() 내부
 
-| 100 | args |
-| --- | --- |
+    | 100 | args |
+    | --- | --- |
 
-⇒ 힙(Heap Area)
+    ⇒ 힙(Heap Area)
 
-| String[] 배열 (100번지) |
-| --- |
+    | String[] 배열 (100번지) |
+    | --- |
 
 → String 배열 객체는 heap 내부에 생성됨
 
-⇒ 만약, 100번지에 String 배열 객체가 생성되었다면, args에는 100번지라는 주소값이 저장됨
+    ⇒ 만약, 100번지에 String 배열 객체가 생성되었다면, args에는 100번지라는 주소값이 저장됨
 
 ![Untitled](./images/5(5).png)
 
@@ -113,11 +113,11 @@ public static void main(String[] args) {
 
 → 즉, sum이라는 변수가 생성이 되며 0이라는 값이 저장됨 
 
-⇒ 프레임 - main() 내부
+    ⇒ 프레임 - main() 내부
 
-| 0 | sum |
-| --- | --- |
-| 100 | args |
+    | 0 | sum |
+    | --- | --- |
+    | 100 | args |
 
 ![Untitled](./images/5(6).png)
 
@@ -135,13 +135,13 @@ public static void main(String[] args) {
 
 → sum==0이면, int v2 = 10, int v3 = 20; 가 생성됨
 
-⇒ 프레임 - main() 내부
+    ⇒ 프레임 - main() 내부
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 0 | sum |
-| 100 | args |
+    | 20 | v3 |
+    | --- | --- |
+    | 10 | v2 |
+    | 0 | sum |
+    | 100 | args |
 
 ![Untitled](./images/5(7).png)
 
@@ -168,19 +168,19 @@ public static int add(int a, int b) {
 
 → 메모리에 a, b 변수와 각각 10, 20 값이 저장됨
 
-⇒ 프레임 - add()
+    ⇒ 프레임 - add()
 
-| 20 | b |
-| --- | --- |
-| 10 | a |
+    | 20 | b |
+    | --- | --- |
+    | 10 | a |
 
-⇒ 프레임 - main()
+    ⇒ 프레임 - main()
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 0 | sum |
-| 100 | args |
+    | 20 | v3 |
+    | --- | --- |
+    | 10 | v2 |
+    | 0 | sum |
+    | 100 | args |
 
 ![Untitled](./images/5(8).png)
 
@@ -207,13 +207,13 @@ public static int add(int a, int b) {
 
 → add() 메서드가 리턴한 값 30이 sum에 저장이 되며, main() 프레임의 sum의 값이 30으로 변함
 
-⇒ 프레임 - main()
+    ⇒ 프레임 - main()
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 30 | sum |
-| 100 | args |
+    | 20 | v3 |
+    | --- | --- |
+    | 10 | v2 |
+    | 30 | sum |
+    | 100 | args |
 
 ![Untitled](./images/5(10).png)
 
@@ -221,11 +221,11 @@ public static int add(int a, int b) {
 
 → if 문이 끝나는 시점에서 v2, v3는 메모리에서 제거됨
 
-⇒ 프레임 - main()
+    ⇒ 프레임 - main()
 
-| 30 | sum |
-| --- | --- |
-| 100 | args |
+    | 30 | sum |
+    | --- | --- |
+    | 100 | args |
 
 ```java
 public static void main(String[] args) {
@@ -256,15 +256,15 @@ public static void main(String[] args) {
 } //-----(main 메서드 끝나는 시점)
 ```
 
-⇒ main() 메서드 종료 시점에서
+    ⇒ main() 메서드 종료 시점에서
 
-⇒ int sum = 0; 으로 선언했던 변수 메모리에서 삭제됨
+    ⇒ int sum = 0; 으로 선언했던 변수 메모리에서 삭제됨
 
-⇒ 매개변수인 String[] args도 삭제됨
+    ⇒ 매개변수인 String[] args도 삭제됨
 
 ![Untitled](./images/5(12).png)
 
-⇒ main()이 끝나게 되면 main() 프레임이 사라짐
+    ⇒ main()이 끝나게 되면 main() 프레임이 사라짐
 
 ![Untitled](./images/5(13).png)
 
