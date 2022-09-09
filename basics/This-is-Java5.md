@@ -16,7 +16,7 @@
     [→ 13) main() 프레임의 v2, v3 값 제거](#13-main-프레임의-v2-v3-값-제거)   
     [→ 14) 프로그램 종료](#14-프로그램-종료)   
     [→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐](#15-jvm이-종료되면서-프로그램도-종료-runtime-data-area도-없어짐)   
-[- 더 알아보기](#더-알아보기)   
+    [- 더 알아보기](#더-알아보기)   
 [5.3 참조 변수의 ==, != 연산](#53-참조-변수의---연산)   
 
 ## **5.1 데이터 타입 분류**
@@ -43,7 +43,7 @@ java (exe) MemoryExample
 
 → Runtime Data Area 영역이 만들어지며 메소드 영역, 힙 영역 자동 생성
 
-    ![Untitled](./images/5(1).png)
+> ![Untitled](./images/5(1).png)
 
 ### **3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩**
 
