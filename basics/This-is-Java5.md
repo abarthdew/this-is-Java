@@ -2,21 +2,21 @@
 [5.1 데이터 타입 분류](#51-데이터-타입-분류)   
 [5.2 메모리 사용 영역](#52-메모리-사용-영역)   
     [- 메모리 사용 영역 실행 순서](#메모리-사용-영역-실행-순서)   
-    [= 1) JVM 구동 명령](#→-1-jvm-구동-명령)   
-    [→ 2) JVM 구동](#→-2-jvm-구동)   
-    [→ 3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩](#→-3-memoryexampleclass을-메모리에-로딩-바이트-코드를-로딩)   
-    [→ 4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름](#→-4-main-스레드-생성-main-메서드를-실행시키는-코드-흐름)   
-    [→ 5) main() 메서드 호출](#→-5-main-메서드-호출)   
-    [→ 6) main()의 매개변수가 String 배열 값으로 들어옴](#→-6-main의-매개변수가-string-배열-값으로-들어옴)   
-    [→ 7) int sum = 0; 생성](#→-7-int-sum--0-생성)   
-    [→ 8, 9) if 문 검증 후, int v2 = 10; 생성](#→-8-9-if-문-검증-후-int-v2--10-생성)   
-    [→ 10) add() 메소드 호출](#→-10-add-메소드-호출)   
-    [→ 11) 프레임 제거: 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨](#→-11-프레임-제거-값이-return-되고-모든-실행이-끝나는-시점에서-add-메서드에-의해-생성된-프레임이-제거됨)   
-    [→ 12) main() 프레임의 sum 값 변화](#→-12-main-프레임의-sum-값-변화)   
-    [→ 13) main() 프레임의 v2, v3 값 제거](#→-13-main-프레임의-v2-v3-값-제거)   
-    [→ 14) 프로그램 종료](#→-14-프로그램-종료)   
-    [→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐](#→-15-jvm이-종료되면서-프로그램도-종료-runtime-data-area도-없어짐)   
-    [- 더 알아보기](#더-알아보기)   
+    [→ 1) JVM 구동 명령](#-1-jvm-구동-명령)   
+    [→ 2) JVM 구동](#-2-jvm-구동)   
+    [→ 3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩](#-3-memoryexampleclass을-메모리에-로딩-바이트-코드를-로딩)   
+    [→ 4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름](#-4-main-스레드-생성-main-메서드를-실행시키는-코드-흐름)   
+    [→ 5) main() 메서드 호출](#-5-main-메서드-호출)   
+    [→ 6) main()의 매개변수가 String 배열 값으로 들어옴](#-6-main의-매개변수가-string-배열-값으로-들어옴)   
+    [→ 7) int sum = 0; 생성](#-7-int-sum--0-생성)   
+    [→ 8, 9) if 문 검증 후, int v2 = 10; 생성](#-8-9-if-문-검증-후-int-v2--10-생성)   
+    [→ 10) add() 메소드 호출](#-10-add-메소드-호출)   
+    [→ 11) 프레임 제거: 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨](#-11-프레임-제거-값이-return-되고-모든-실행이-끝나는-시점에서-add-메서드에-의해-생성된-프레임이-제거됨)   
+    [→ 12) main() 프레임의 sum 값 변화](#-12-main-프레임의-sum-값-변화)   
+    [→ 13) main() 프레임의 v2, v3 값 제거](#-13-main-프레임의-v2-v3-값-제거)   
+    [→ 14) 프로그램 종료](#-14-프로그램-종료)   
+    [→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐](#-15-jvm이-종료되면서-프로그램도-종료-runtime-data-area도-없어짐)   
+[- 더 알아보기](#더-알아보기)   
 [5.3 참조 변수의 ==, != 연산](#53-참조-변수의---연산)   
 
 ## **5.1 데이터 타입 분류**
@@ -31,13 +31,13 @@
 
 ### **메모리 사용 영역 실행 순서**
 
-### **→ 1) JVM 구동 명령**
+### **1) JVM 구동 명령**
 
 ```jsx
 java (exe) MemoryExample
 ```
 
-### **→ 2) JVM 구동**
+### **2) JVM 구동**
 
 → OS(운영체제)로부터 메모리를 할당받음(운영체제에서 받은 메모리 영역: Runtime Data Area)
 
@@ -45,7 +45,7 @@ java (exe) MemoryExample
 
     ![Untitled](./images/5(1).png)
 
-### **→ 3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩**
+### **3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩**
 
 → 바이트 코드가 로딩되면, 메소드 영역에 클래스 내용이 올라감
 
@@ -63,19 +63,19 @@ java (exe) MemoryExample
 
     ![Untitled](./images/5(2).png)
 
-### **→ 4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름**
+### **4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름**
 
 → main 스레드 생성 동시에 JVM 스택 생성됨
 
     ![Untitled](./images/5(3).png)
 
-### **→ 5) main() 메서드 호출**
+### **5) main() 메서드 호출**
 
 → JVM 스택에 main 메서드 호출하는 프레임 생성됨
 
     ![Untitled](./images/5(4).png)
 
-### **→ 6) main()의 매개변수가 String 배열 값으로 들어옴**
+### **6) main()의 매개변수가 String 배열 값으로 들어옴**
 
 ```java
 public static void main(String[] args) {
@@ -101,7 +101,7 @@ public static void main(String[] args) {
 
     ![Untitled](./images/5(5).png)
 
-### **→ 7) int sum = 0; 생성**
+### **7) int sum = 0; 생성**
 
 ```java
 public static void main(String[] args) {
@@ -121,7 +121,7 @@ public static void main(String[] args) {
 
     ![Untitled](./images/5(6).png)
 
-### **→ 8, 9) if 문 검증 후, int v2 = 10; 생성**
+### **8, 9) if 문 검증 후, int v2 = 10; 생성**
 
 ```java
 public static void main(String[] args) {
@@ -145,7 +145,7 @@ public static void main(String[] args) {
 
     ![Untitled](./images/5(7).png)
 
-### **→ 10) add() 메소드 호출**
+### **10) add() 메소드 호출**
 
 ```java
 public static void main(String[] args) {
@@ -184,7 +184,7 @@ public static int add(int a, int b) {
 
     ![Untitled](./images/5(8).png)
 
-### **→ 11) 프레임 제거:** 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨
+### **11) 프레임 제거:** 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨
 
 ```java
 public static void main(String[] args) {
@@ -203,7 +203,7 @@ public static int add(int a, int b) {
 
 ![Untitled](./images/5(9).png)
 
-### **→ 12) main() 프레임의 sum 값 변화**
+### **12) main() 프레임의 sum 값 변화**
 
 → add() 메서드가 리턴한 값 30이 sum에 저장이 되며, main() 프레임의 sum의 값이 30으로 변함
 
@@ -217,7 +217,7 @@ public static int add(int a, int b) {
 
     ![Untitled](./images/5(10).png)
 
-### **→ 13) main() 프레임의 v2, v3 값 제거**
+### **13) main() 프레임의 v2, v3 값 제거**
 
 → if 문이 끝나는 시점에서 v2, v3는 메모리에서 제거됨
 
@@ -240,7 +240,7 @@ public static int add(int a, int b) {
 
     ![Untitled](./images/5(11).png)
 
-### → 14) 프로그램 종료
+### 14) 프로그램 종료
 
 → System.out.println(sum)으로 sum 의 값 출력 후 
 
@@ -268,7 +268,7 @@ public static int add(int a, int b) {
 
     ![Untitled](./images/5(13).png)
 
-### **→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐**
+### **15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐**
 
 ![Untitled](./images/5(14).png)
 
