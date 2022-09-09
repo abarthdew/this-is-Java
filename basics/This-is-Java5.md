@@ -43,37 +43,37 @@ java (exe) MemoryExample
 
 → Runtime Data Area 영역이 만들어지며 메소드 영역, 힙 영역 자동 생성
 
-![Untitled](./images/5(1).png)
+    ![Untitled](./images/5(1).png)
 
 ### **→ 3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩**
 
 → 바이트 코드가 로딩되면, 메소드 영역에 클래스 내용이 올라감
 
-⇒ 메소드 코드, 빌드 내용 등
+    ⇒ 메소드 코드, 빌드 내용 등
 
-⇒ 코드 자체가 올라가는 것이 아닌, 분석된 내용이 올라감
+    ⇒ 코드 자체가 올라가는 것이 아닌, 분석된 내용이 올라감
 
-```java
-// 메소드 영역
-Class - MemoryExample.java
-[메소드 코드]
-public static void main(String[] args) {...}
-public static void add(int a, int b) {...}
-```
+    ```java
+    // 메소드 영역
+    Class - MemoryExample.java
+    [메소드 코드]
+    public static void main(String[] args) {...}
+    public static void add(int a, int b) {...}
+    ```
 
-![Untitled](./images/5(2).png)
+    ![Untitled](./images/5(2).png)
 
 ### **→ 4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름**
 
 → main 스레드 생성 동시에 JVM 스택 생성됨
 
-![Untitled](./images/5(3).png)
+    ![Untitled](./images/5(3).png)
 
 ### **→ 5) main() 메서드 호출**
 
 → JVM 스택에 main 메서드 호출하는 프레임 생성됨
 
-![Untitled](./images/5(4).png)
+    ![Untitled](./images/5(4).png)
 
 ### **→ 6) main()의 매개변수가 String 배열 값으로 들어옴**
 
@@ -85,21 +85,21 @@ public static void main(String[] args) {
 
 → 매개변수 args가 프레임 내부에 생성됨
 
-⇒ 프레임 - main() 내부
+    ⇒ 프레임 - main() 내부
 
-| 100 | args |
-| --- | --- |
+    | 100 | args |
+    | --- | --- |
 
-⇒ 힙(Heap Area)
+    ⇒ 힙(Heap Area)
 
-| String[] 배열 (100번지) |
-| --- |
+    | String[] 배열 (100번지) |
+    | --- |
 
 → String 배열 객체는 heap 내부에 생성됨
 
-⇒ 만약, 100번지에 String 배열 객체가 생성되었다면, args에는 100번지라는 주소값이 저장됨
+    ⇒ 만약, 100번지에 String 배열 객체가 생성되었다면, args에는 100번지라는 주소값이 저장됨
 
-![Untitled](./images/5(5).png)
+    ![Untitled](./images/5(5).png)
 
 ### **→ 7) int sum = 0; 생성**
 
@@ -113,13 +113,13 @@ public static void main(String[] args) {
 
 → 즉, sum이라는 변수가 생성이 되며 0이라는 값이 저장됨 
 
-⇒ 프레임 - main() 내부
+    ⇒ 프레임 - main() 내부
 
-| 0 | sum |
-| --- | --- |
-| 100 | args |
+    | 0 | sum |
+    | --- | --- |
+    | 100 | args |
 
-![Untitled](./images/5(6).png)
+    ![Untitled](./images/5(6).png)
 
 ### **→ 8, 9) if 문 검증 후, int v2 = 10; 생성**
 
@@ -135,15 +135,15 @@ public static void main(String[] args) {
 
 → sum==0이면, int v2 = 10, int v3 = 20; 가 생성됨
 
-⇒ 프레임 - main() 내부
+    ⇒ 프레임 - main() 내부
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 0 | sum |
-| 100 | args |
+    | 20 | v3 |
+    | --- | --- |
+    | 10 | v2 |
+    | 0 | sum |
+    | 100 | args |
 
-![Untitled](./images/5(7).png)
+    ![Untitled](./images/5(7).png)
 
 ### **→ 10) add() 메소드 호출**
 
@@ -168,21 +168,21 @@ public static int add(int a, int b) {
 
 → 메모리에 a, b 변수와 각각 10, 20 값이 저장됨
 
-⇒ 프레임 - add()
+    ⇒ 프레임 - add()
 
-| 20 | b |
-| --- | --- |
-| 10 | a |
+    | 20 | b |
+    | --- | --- |
+    | 10 | a |
 
-⇒ 프레임 - main()
+    ⇒ 프레임 - main()
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 0 | sum |
-| 100 | args |
+    | 20 | v3 |
+    | --- | --- |
+    | 10 | v2 |
+    | 0 | sum |
+    | 100 | args |
 
-![Untitled](./images/5(8).png)
+    ![Untitled](./images/5(8).png)
 
 ### **→ 11) 프레임 제거:** 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨
 
@@ -207,66 +207,66 @@ public static int add(int a, int b) {
 
 → add() 메서드가 리턴한 값 30이 sum에 저장이 되며, main() 프레임의 sum의 값이 30으로 변함
 
-⇒ 프레임 - main()
+    ⇒ 프레임 - main()
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 30 | sum |
-| 100 | args |
+    | 20 | v3 |
+    | --- | --- |
+    | 10 | v2 |
+    | 30 | sum |
+    | 100 | args |
 
-![Untitled](./images/5(10).png)
+    ![Untitled](./images/5(10).png)
 
 ### **→ 13) main() 프레임의 v2, v3 값 제거**
 
 → if 문이 끝나는 시점에서 v2, v3는 메모리에서 제거됨
 
-⇒ 프레임 - main()
+    ⇒ 프레임 - main()
 
-| 30 | sum |
-| --- | --- |
-| 100 | args |
+    | 30 | sum |
+    | --- | --- |
+    | 100 | args |
 
-```java
-public static void main(String[] args) {
-	int sum = 0;
-	if (sum==0) {
-		int v2 = 10;
-		int v3 = 20;
-		sum = add(v2, v3);
-	} //----(if 끝나는 시점)
-}
-```
+    ```java
+    public static void main(String[] args) {
+        int sum = 0;
+        if (sum==0) {
+            int v2 = 10;
+            int v3 = 20;
+            sum = add(v2, v3);
+        } //----(if 끝나는 시점)
+    }
+    ```
 
-![Untitled](./images/5(11).png)
+    ![Untitled](./images/5(11).png)
 
 ### → 14) 프로그램 종료
 
 → System.out.println(sum)으로 sum 의 값 출력 후 
 
-```java
-public static void main(String[] args) {
-	int sum = 0;
-	if (sum==0) {
-		int v2 = 10;
-		int v3 = 20;
-		sum = add(v2, v3);
-	}
-	System.out.println(sum);
-} //-----(main 메서드 끝나는 시점)
-```
+    ```java
+    public static void main(String[] args) {
+        int sum = 0;
+        if (sum==0) {
+            int v2 = 10;
+            int v3 = 20;
+            sum = add(v2, v3);
+        }
+        System.out.println(sum);
+    } //-----(main 메서드 끝나는 시점)
+    ```
 
-⇒ main() 메서드 종료 시점에서
+    ⇒ main() 메서드 종료 시점에서
 
-⇒ int sum = 0; 으로 선언했던 변수 메모리에서 삭제됨
+    ⇒ int sum = 0; 으로 선언했던 변수 메모리에서 삭제됨
 
-⇒ 매개변수인 String[] args도 삭제됨
+    ⇒ 매개변수인 String[] args도 삭제됨
 
-![Untitled](./images/5(12).png)
+    ![Untitled](./images/5(12).png)
 
-⇒ main()이 끝나게 되면 main() 프레임이 사라짐
+    ⇒ main()이 끝나게 되면 main() 프레임이 사라짐
 
-![Untitled](./images/5(13).png)
+    ![Untitled](./images/5(13).png)
 
 ### **→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐**
 
