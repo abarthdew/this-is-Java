@@ -61,19 +61,19 @@ java (exe) MemoryExample
     public static void add(int a, int b) {...}
     ```
 
-    ![Untitled](./images/5(2).png)
+> ![Untitled](./images/5(2).png)
 
 ### **4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름**
 
 → main 스레드 생성 동시에 JVM 스택 생성됨
 
-    ![Untitled](./images/5(3).png)
+> ![Untitled](./images/5(3).png)
 
 ### **5) main() 메서드 호출**
 
 → JVM 스택에 main 메서드 호출하는 프레임 생성됨
 
-    ![Untitled](./images/5(4).png)
+> ![Untitled](./images/5(4).png)
 
 ### **6) main()의 매개변수가 String 배열 값으로 들어옴**
 
@@ -99,7 +99,7 @@ public static void main(String[] args) {
 
     ⇒ 만약, 100번지에 String 배열 객체가 생성되었다면, args에는 100번지라는 주소값이 저장됨
 
-    ![Untitled](./images/5(5).png)
+> ![Untitled](./images/5(5).png)
 
 ### **7) int sum = 0; 생성**
 
@@ -119,7 +119,7 @@ public static void main(String[] args) {
     | --- | --- |
     | 100 | args |
 
-    ![Untitled](./images/5(6).png)
+> ![Untitled](./images/5(6).png)
 
 ### **8, 9) if 문 검증 후, int v2 = 10; 생성**
 
@@ -143,7 +143,7 @@ public static void main(String[] args) {
     | 0 | sum |
     | 100 | args |
 
-    ![Untitled](./images/5(7).png)
+> ![Untitled](./images/5(7).png)
 
 ### **10) add() 메소드 호출**
 
@@ -182,7 +182,7 @@ public static int add(int a, int b) {
     | 0 | sum |
     | 100 | args |
 
-    ![Untitled](./images/5(8).png)
+> ![Untitled](./images/5(8).png)
 
 ### **11) 프레임 제거:** 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨
 
@@ -215,7 +215,7 @@ public static int add(int a, int b) {
     | 30 | sum |
     | 100 | args |
 
-    ![Untitled](./images/5(10).png)
+> ![Untitled](./images/5(10).png)
 
 ### **13) main() 프레임의 v2, v3 값 제거**
 
@@ -238,7 +238,7 @@ public static int add(int a, int b) {
     }
     ```
 
-    ![Untitled](./images/5(11).png)
+> ![Untitled](./images/5(11).png)
 
 ### 14) 프로그램 종료
 
@@ -262,11 +262,11 @@ public static int add(int a, int b) {
 
     ⇒ 매개변수인 String[] args도 삭제됨
 
-    ![Untitled](./images/5(12).png)
+> ![Untitled](./images/5(12).png)
 
     ⇒ main()이 끝나게 되면 main() 프레임이 사라짐
 
-    ![Untitled](./images/5(13).png)
+> ![Untitled](./images/5(13).png)
 
 ### **15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐**
 
