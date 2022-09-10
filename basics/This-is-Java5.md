@@ -326,3 +326,283 @@ public static void main(String[] args) {
     ```
 
 ## **5.3 참조 변수의 ==, != 연산**
+
+![Untitled](./images/5(20).png)
+
+- refVar1 == refVar2: 변수에 들어있는 번지가 같은가? 서로 참조하는 객체가 서로 같은 객체인가? ⇒ false
+- ==: 같은 객체를 참조하는가?
+- ≠: 다른 객체를 참조하는가?
+
+## **5.4 null과 NullPointerException**
+
+![Untitled](./images/5(21).png)
+
+- 참조 타입만 null 값을 가질 수 있음
+- null도 값이기 때문에 초기화되면 스택 영역에 생성됨
+
+![Untitled](./images/5(22).png)
+
+- intArray가 null인 상태에서, 즉, 배열이 없는 상태에서 10을 저장할 수 없음
+- 참조 변수 null 값인 상태에서 데이터를 저장하려고 하거나, 객체가 가지고 있는 메서드를 호출하려고 했을 때 발생
+- str이 참조하는 문자열 객체가 없기 때문에(str = null이기 때문에) NullPointException 발생
+
+## **5.5 String 타입**
+
+![Untitled](./images/5(23).png)
+
+- heap 영역의 객체 번지가 stack 영역의 변수에 저장
+- new 연산자를 사용해 객체를 생성하면 무조건 새로운 객체가 생성됨
+
+![Untitled](./images/5(24).png)
+
+- ==는 stack에 저장된 객체의 번지수를 비교하기 때문에, 같은 문자열이라도 `name1 == name3`은 false가 나옴 → equals()로 문자열 동일 여부 비교
+
+## **5.6 배열 타입(1)**
+
+![Untitled](./images/5(25).png)
+
+![Untitled](./images/5(26).png)
+
+- 참조 변수는 직접 값을 저장하는 것이 아니라 힙 영역의 번지를 저장함 ⇒ 힙 영역의 번지가 참조되지 않을 경우에는 null값을 변수에 대입할 수 있음
+
+![Untitled](./images/5(27).png)
+
+![Untitled](./images/5(28).png)
+
+- 배열을 생성하고, 나중에 값을 대입하는 경우
+- 길이: 배열이 저장할 수 있는 값의 수
+- 타입이 int니까 배열의 각 칸에 4바이트씩 할당됨
+
+![Untitled](./images/5(29).png)
+
+- 배열 타입 변수의 칸 수를 정해서 생성하면, 기본값으로 각 초기값이 들어있음
+- 예시) new int[30] 이면 배열 30칸에 각 0씩, boolean[10] 이면 배열 10칸에 각 false가 기본적으로 들어가 있음
+
+## **5.6 배열 타입(2)**
+
+![Untitled](./images/5(30).png)
+
+- 배열의 length는 읽기 전용이며, 배열이 생성될 때 정해지기 때문에 다른 값을 대입할 수 없음
+- length는 배열의 final 필드이며, 따라서 수정할 수 없음
+
+![Untitled](./images/5(31).png)
+
+```java
+$ java [클래스명] 
+```
+
+- 위 명령어 실행 시, JVM이 구동되며 main() 메서드를 찾아 실행함.
+    - JVM은 String[] 배열 객체를 만듬
+    - 초기에는 값이 없으니, String[] args = {};  형태로 (String[] args)에 파라미터로 대입됨
+    - 즉, 초기에는 값이 없는 배열 객체가 대입됨
+
+![Untitled](./images/5(32).png)
+
+```java
+$ java [클래스명] [문자열1] [문자열2] 
+```
+
+- 위 명령어 실행 시, `[문자열1] [문자열2] [..]`형태의 배열이 String[] args 객체에 대입됨(인덱스 번호는 차례로 0, 1, 2…)
+    - 이 문자열 형태의 배열이 main() 메서드 호출 시 전달됨
+    - main() 메서드를 통해 args에 입력된 문자열을 얻을 수 있음
+    
+    ```java
+    public static void main(String[] args) {
+    	args[0]
+    	args[1]
+    	args.length
+    	// ....
+    }
+    ```
+    
+
+### 명령어 args의 length 출력하기
+
+![Untitled](./images/5(33).png)
+
+- window - show view - navigator로 위치 알아내기
+
+![Untitled](./images/5(34).png)
+
+- 커맨드 화면에서 바이트 코드 파일을 실행
+
+![Untitled](./images/5(35).png)
+
+```java
+$ java [패키지이름].[클래스이름]
+// 클래스 내용에 작성된 것처럼 배열의 길이가 출력됨
+```
+
+![Untitled](./images/5(36).png)
+
+![Untitled](./images/5(37).png)
+
+```java
+$ java [패키지이름].[클래스이름] abc def
+// 배열의 길이: 2
+```
+
+### 명령 프롬프터가 아닌 이클립스에서 args 내용 출력하기
+
+![Untitled](./images/5(38).png)
+
+- Main Class: main() 메서드가 있는 클래스
+
+![Untitled](./images/5(39).png)
+
+- arguments 탭에 화면과 같이 작성하고 run
+
+![Untitled](./images/5(40).png)
+
+- abc def를 입력했으므로 배열의 길이: 2
+
+<aside>
+💡 **정리: args는 사용자가 실행할 때 입력한 문자 배열**
+
+</aside>
+
+### 다차원 배열
+
+![Untitled](./images/5(41).png)
+
+- 행, 열 모두 인덱스가 있음(행렬)
+- 자바에서는 행렬 구조로 메모리에 다차원 공간을 만들지 않음 ⇒ 1차원 배열을 이용해 2차원 배열 구현
+
+```java
+int[][] scores = new int[행의 수][열의 수]
+
+int[][] scores = new int[2][3] // 2행 3열
+```
+
+![Untitled](./images/5(42).png)
+
+- new int[2][3]의 2로 먼저 길이 2짜리 1차원 배열 A를 만듦
+    
+    ![Untitled](./images/5(43).png)
+    
+    - 0번째 항목 값으로 길이 3짜리 1차원 배열B를 만듦
+    - 1번째 항목 값으로 길이 3짜리 1차원 배열C를 만듦
+- `scores[0][0] = 3;` 이면, B의 0번째에 3이 저장됨
+- `SCORES[1][2] = 5;` 이면, C의 2번째에 5이 저장됨
+
+![Untitled](./images/5(44).png)
+
+- 1번째 배열만 정하고 나머지는 나중에 대입해도 됨
+
+```java
+int[][] scores = new int[2][];
+scores[0] = new int[2]; // A 배열의 0번째에 길이 2짜리 B 대입
+scores[1] = new int[3]; // A 배열의 1번째에 길이 3짜리 C 대입
+```
+
+- `scores[0][2] = 3;` 로 3을 대입했을 때, scores[0][2]에 해당하는 객체가 없기 때문에 예외 발생
+
+## **5.6 배열 타입(3)**
+
+![Untitled](./images/5(45).png)
+
+![Untitled](./images/5(46).png)
+
+- 기본 타입 배열은 각 항목에 직접 값을 가지고 있음
+    
+    ![Untitled](./images/5(47).png)
+    
+    - 스택 변수 → 힙 배열 객체 [0번째값][1번째값][2번째값][…]
+    
+    ```java
+    int[] scores = new int[3];
+    scores[0] = 10;
+    scores[1] = 20;
+    scores[2] = 30;
+    ```
+    
+    - 스택 변수 scores → 힙 값 {10, 20, 30} : 스택 변수가 힙 값 참조
+- 참조 타입 배열은 각 항목에 객체의 번지를 가짐
+    
+    ![예시 1](./images/5(48).png)
+    
+    예시 1
+    
+    ![예시2](./images/5(49).png)
+    
+    예시2
+    
+    ![예시 2의 String 객체 주소](./images/5(50).png)
+    
+    예시 2의 String 객체 주소
+    
+    - 스택 변수 → 힙 객체 → 힙 String 객체 : 스택 변수가 힙 객체 참조 + 힙 객체가 String 객체 잠조
+
+![Untitled](./images/5(51).png)
+
+- 이미 생성된 배열은 크기 변경 불가 ⇒ 새 배열 생성 후 값 복사
+
+![Untitled](./images/5(52).png)
+
+- System.arrayCopy(이전 배열, 이전 배열의 복사 위치, 새로운 배열, 새로운 배열의 붙여넣기 위치, 배열 복사 개수)
+
+![Untitled](./images/5(53).png)
+
+- 1) 배열의 0인덱스를 2) 변수에 대입 후 3) 실행문 실행
+    
+    → 1) 배열의 1인덱스를 2) 변수에 대입 후 3) 실행문 실행
+    
+    → 1) 배열의 2인덱스를 2) 변수에 대입 후 3) 실행문 실행
+    
+    → (반복 후) 인덱스가 끝나면 → 종료
+    
+
+## **5.7 열거 타입**
+
+![Untitled](./images/5(54).png)
+
+- 한정된 값: 요일, 계절, 로그인 실패/성공 여부 등
+- 한정된 값의 하나하나가 열거 상수로 정의됨
+
+![Untitled](./images/5(55).png)
+
+![Untitled](./images/5(56).png)
+
+- 열거 타입을 선언하고, 열거 타입의 바이트 코드를 메모리 상에 로드하게 되면, 열거 상수는 열거 객체를 참조함
+- 열거 객체: 열거 타입을 객체화시킨 것
+- 열거 객체는 힙 영역에 생성됨
+- 열거 타입 클래스를 로딩해서 메모리로 올림 → 메서드 영역에 바이트 코드가 저장됨 → 열거 상수는 메소드 영역에 저장됨 → 메서드 영역에 자리잡은 열거 상수는 힙 영역의 열거 객체를 참조함
+- 힙 영역의 Week 열거 객체는 열거 상수와 동일한 문자열을 가지고 있음
+- 예시1) 메소드 영역에 저장된 MONDAY 열거 상수 → 힙 영역의 Week 객체 중 MONDAY 문자열이 저장된 열거 객체를 참조함
+- 예시2) 메소드 영역에 저장된 SUNDAY 열거 상수 → 힙 영역의 Week 객체 중SUNDAY 문자열이 저장된 열거 객체를 참조함
+- 총 7개의 열거 상수가 총 7개의 열거 객체를 각각 참조하게 됨
+
+![Untitled](./images/5(57).png)
+
+- 메소드 영역에 만들어진 열거 상수가 힙 영역의 열거 객체의 번지 값을 저장하고, 스택의 변수가 힙 영역의 열거 객체의 번지 값을 저장함
+
+![Untitled](./images/5(58).png)
+
+![Untitled](./images/5(59).png)
+
+- `name()`: 열거 객체의 문자열 리턴
+- `ordinal()`: 열거 객체의 순번 리턴(제일 위에 선언된 열거 객체부터 0번)
+- `compareTo()`: 열거 객체의 순번 차이
+- `valueOf(String name)`: 주어진 문자열의 열거 객체를 리턴
+    - valueOf(MONDAY): MONDAY를 문자열로 가지고 있는 열거 객체의 번지 리턴
+    
+    ```java
+    Week weekDay = Week.valueOf("SATURDAY");
+    ```
+    
+    - SUNDAY 문자열을 가진 열거 객체의 생성 번지를 weekDay에 대입
+    - weekDay가 참조하는 열거 객체는 열거 상수 SUNDAY가 참조하는 열거 객체와 동일
+- `values()`: 모든 열거 객체들을 배열로 리턴
+    - 총 7개의 열거 상수가 정의되어 있다면, 총 7개의 열거 객체가 만들어 지므로, 7개의 열거 객체를 열거 타입 배열로 담아 리턴
+    
+    ![Untitled](./images/5(60).png)
+    
+    ```java
+    Week[] days = Week.values();
+    for(Week day:days) {
+    	System.out.println(day);
+    }
+    ```
+    
+    - Week.values()로 열거 객체 배열 생성 → 배열의 생성 번지 100을 Week[] days 변수에 대입 → days 변수가 index로 각 열거 객체에 접근
+    - 힙 영역의 100번지에 만들어진 객체의 각 index에는 열거 객체가 저장됨
