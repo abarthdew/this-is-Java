@@ -5,6 +5,9 @@
 [6.4 객체 생성과 클래스 변수](#64-객체-생성과-클래스-변수)   
 [6.5 클래스의 구성 멤버](#65-클래스의-구성-멤버)   
 [6.6 필드](#66-필드)   
+[6.7 생성자(1)](#67-생성자1)   
+[6.7 생성자(2)](#67-생성자2)   
+[6.8 메소드(1)](#68-메소드1)   
 
 ## **6.1 객체 지향 프로그래밍**
 
@@ -80,3 +83,68 @@
 - 메서드: void 외 리턴 타입을 반드시 지정해야 함
 
 ## **6.6 필드**
+
+![Untitled](./images/6(12).png)
+
+![Untitled](./images/6(13).png)
+
+![Untitled](./images/6(14).png)
+
+![Untitled](./images/6(15).png)
+
+## **6.7 생성자(1)**
+
+![Untitled](./images/6(16).png)
+
+![Untitled](./images/6(17).png)
+
+![Untitled](./images/6(18).png)
+
+![Untitled](./images/6(19).png)
+
+![Untitled](./images/6(20).png)
+
+## **6.7 생성자(2)**
+
+![Untitled](./images/6(21).png)
+
+![생성자 코드 중복의 예시](./images/6(22).png)
+
+생성자 코드 중복의 예시
+
+![Untitled](./images/6(23).png)
+
+- 중복 코드를 피하는 방법: this() 사용
+- this(): 객체의 다른 생성자를 지칭, 즉 자신의 다른 생성자를 지칭
+
+```java
+Car(String model, String color, int maxSpeed) {
+	this.model = model;
+	this.color = color;
+	this.maxSpeed = maxSpeed;
+}
+// (1) 공통 실행 코드를 작성해 놓고, this()로 이 코드를 호출함
+
+Car(String model) { // (2)
+	this(model, null, 0); // 생성자를 호출만 함(매개변수 외의 값은 기본값)
+// 즉, (2)는내부적으로 (1)에 선언한 생성자를 실행하는 것
+}
+```
+
+- this()는 생성자의 가장 첫 줄에 작성되어야 함
+
+```java
+Car(String model) {
+	this(model, null, 0);
+	System.out.println();
+}
+```
+
+```java
+Car(String model) {
+	System.out.println();
+	this(model, null, 0);
+}
+```
+
+## **6.8 메소드(1)**
