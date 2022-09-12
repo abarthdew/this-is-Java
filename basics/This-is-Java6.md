@@ -134,6 +134,7 @@ Car(String model) { // (2)
 - this()는 생성자의 가장 첫 줄에 작성되어야 함
 
 ```java
+// 올바른 예
 Car(String model) {
 	this(model, null, 0);
 	System.out.println();
@@ -141,6 +142,7 @@ Car(String model) {
 ```
 
 ```java
+// 올바르지 않은 예
 Car(String model) {
 	System.out.println();
 	this(model, null, 0);
