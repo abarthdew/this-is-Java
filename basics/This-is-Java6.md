@@ -8,6 +8,9 @@
 [6.7 생성자(1)](#67-생성자1)   
 [6.7 생성자(2)](#67-생성자2)   
 [6.8 메소드(1)](#68-메소드1)   
+[6.8 메소드(2)](#68-메소드2)   
+[6.8 메소드(3)](#68-메소드3)   
+[6.9 인스턴스 멤버와 this](#69-인스턴스-멤버와-this)   
 
 ## **6.1 객체 지향 프로그래밍**
 
@@ -150,3 +153,33 @@ Car(String model) {
 ```
 
 ## **6.8 메소드(1)**
+
+![Untitled](./images/6(24).png)
+
+![Untitled](./images/6(25).png)
+
+![Untitled](./images/6(26).png)
+
+![Untitled](./images/6(27).png)
+
+## **6.8 메소드(2)**
+
+![Untitled](./images/6(28).png)
+
+![Untitled](./images/6(29).png)
+
+## **6.8 메소드(3)**
+
+![Untitled](./images/6(30).png)
+
+![Untitled](./images/6(31).png)
+
+![Untitled](./images/6(32).png)
+
+- method1()을 double타입으로 받으면 double로 자동 타입 전환됨
+
+![Untitled](./images/6(33).png)
+
+![Untitled](./images/6(34).png)
+
+## **6.9 인스턴스 멤버와 this**
