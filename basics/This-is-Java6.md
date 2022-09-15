@@ -312,6 +312,6 @@ class Test {
 - 싱글톤 객체의 getInstance() 메서드는 static이기 때문에 클래스로 접근 가능
 - private 때문에 외부에서 접근할 수 없기 때문에, `Singleton obj1 = new Singleton();` 과 같은 코드는 오류가 남
 - **애플리케이션 전체에서 싱글톤 객체는 딱 하나만 만들어짐**
-- [싱글톤에 대한 더 자세한 설명](https://roadofdevelopment.tistory.com/19)
+- [싱글톤에 대한 더 자세한 설명](https://roadofdevelopment.tistory.com/19)[2](https://ict-nroo.tistory.com/19)
 
 ## **6.11 final 필드와 상수**
