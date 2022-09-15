@@ -303,10 +303,10 @@ class Test {
 <aside>
 💡 **내용정리!**
 
-- 메서드 영역의 Singleton 필드가 → 힙 영역에 만들어진 객체 new Singleton()을 참조하고,
-> 스택 영역에 만들어진 Singleton obj1 변수가 → 힙 영역의 유일한 객체 new Singleton()을 참조하는 듯
-> 그런데 Singleton 필드는 private이라 외부에서 불러올 수 없으니,
-> static getInstance() 메서드를 만들어서 외부에서 이것만 호출할 수 있도록 하는 듯
+> 메서드 영역의 Singleton 필드가 → 힙 영역에 만들어진 객체 new Singleton()을 참조하고,   
+> 스택 영역에 만들어진 Singleton obj1 변수가 → 힙 영역의 유일한 객체 new Singleton()을 참조하는 듯   
+> 그런데 Singleton 필드는 private이라 외부에서 불러올 수 없으니,   
+> static getInstance() 메서드를 만들어서 외부에서 이것만 호출할 수 있도록 하는 듯   
 </aside>
 
 - 싱글톤 객체의 getInstance() 메서드는 static이기 때문에 클래스로 접근 가능
