@@ -303,7 +303,9 @@ class Test {
 💡 **내용정리!**
 
 - 메서드 영역의 Singleton 필드가 → 힙 영역에 만들어진 객체 new Singleton()을 참조하고,
-- 스택 영역에 만들어진 Singleton obj1 변수가 → 힙 영역의 유일한 객체 new Singleton()을 참조하는 듯
+    
+    스택 영역에 만들어진 Singleton obj1 변수가 → 힙 영역의 유일한 객체 new Singleton()을 참조하는 듯
+    
 </aside>
 
 - 싱글톤 객체의 getInstance() 메서드는 static이기 때문에 클래스로 접근 가능
