@@ -188,6 +188,9 @@ Car(String model) {
 ## **6.9 인스턴스 멤버와 this**
 
 ![Untitled](./images/6(35).png)
+- int gas, setSpeed() 코드가 Car 객체 안에 들어갈까? ⇒ No
+    - Car 객체 안에 gas 필드를 저장하는 공간이 생기고, setSpeed()를 호출할 수 있다는 뜻이지, 메서드 코드가 객체 안에 들어가지는 않음
+    - 메서드 코드는 메서드 영역에 위치함(메서드 호출은 객체를 통해 함)
 
 ![Untitled](./images/6(36).png)
 
@@ -295,6 +298,13 @@ class Test {
 - getInstance() 메서드는 자기 자신 필드가 참조하는 항상 하나의 객체만 리턴함
 
 ![Untitled](./images/6(47).png)
+
+<aside>
+💡 **내용정리!**
+
+- 메서드 영역의 Singleton 필드가 → 힙 영역에 만들어진 객체 new Singleton()을 참조하고,
+- 스택 영역에 만들어진 Singleton obj1 변수가 → 힙 영역의 유일한 객체 new Singleton()을 참조하는 듯
+</aside>
 
 - 싱글톤 객체의 getInstance() 메서드는 static이기 때문에 클래스로 접근 가능
 - private 때문에 외부에서 접근할 수 없기 때문에, `Singleton obj1 = new Singleton();` 과 같은 코드는 오류가 남
