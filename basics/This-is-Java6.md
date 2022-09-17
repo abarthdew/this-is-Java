@@ -489,7 +489,7 @@ class Test {
 
 ![Untitled](./images/6(70).png)
 
-- **Getter**: private 필드를 `**읽기 전용**`으로 접근하기 위함
+- **Getter**: private 필드를 `<b>읽기 전용</b>`으로 접근하기 위함
     
     ⇒ private 필드는 외부에서 변경하거나, 읽지 못하게 하는데, getter로 읽기 전용으로 외부에 보내줄 수 있음
     
