@@ -587,7 +587,7 @@ class Test {
 - @Retention(RetentionPolicy.RUNTIME)의 RetentionPolicy.RUNTIME은 기본 인자(value)
 
 <aside>
-💡 **내용정리!**   
+💡 **내용정리!**
 > - @Annotation에 붙여주는 Annotaion   
 > → @Target: 이 어노테이션을 코드 어디에 적용할 것인가?   
 > → @Retention : 이 어노테이션을 어디까지 사용할 것인가?   
