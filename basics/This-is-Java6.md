@@ -403,7 +403,7 @@ class Test {
     
     ![Untitled](./images/6(57).png)
     
-    ![Temp 폴더 내에서 컴파일 했으므로 여기 sec12.exam01 패키지가 생성되고, 그 안에 class 파일이 생성됨](./images/6().png)
+    ![Temp 폴더 내에서 컴파일 했으므로 여기 sec12.exam01 패키지가 생성되고, 그 안에 class 파일이 생성됨](./images/6(58).png)
     
     Temp 폴더 내에서 컴파일 했으므로 여기 sec12.exam01 패키지가 생성되고, 그 안에 class 파일이 생성됨
     
@@ -413,12 +413,12 @@ class Test {
     $ java sec12.exam01_package_compile.Application
     ```
     
-    ![Untitled](./images/6(58).png)
+    ![Untitled](./images/6(59).png)
     
 
 ## **6.12 패키지(2)**
 
-![Untitled](./images/6(59).png)
+![Untitled](./images/6(60).png)
 
 - 어떤 패키지에 있는 클래스를 사용할 건지 클래스 상단에 import로 명시해 줘야 함
 - 같은 패키지 내 클래스는 클래스 이름 만으로 사용 가능
@@ -442,52 +442,52 @@ class Test {
 - 패키지 내 클래스 하나하나가 아닌, *로 모든 클래스를 한꺼번에 적용하려면 이클립스 설정을 바꾸면 됨
 - 다른 패키지에 이름이 동일한 클래스가 2개 이상 있는 경우 ⇒ 패키지 포함 클래스명 사용
     
-    ![이름이 동일한 2개 이상의 클래스 Tier](./images/6(60).png)
+    ![이름이 동일한 2개 이상의 클래스 Tier](./images/6(61).png)
     
     이름이 동일한 2개 이상의 클래스 Tier
     
-    ![패키지 포함 클래스명 사용, Tier 클래스 포함된 import는 삭제](./images/6(61).png)
+    ![패키지 포함 클래스명 사용, Tier 클래스 포함된 import는 삭제](./images/6(62).png)
     
     패키지 포함 클래스명 사용, Tier 클래스 포함된 import는 삭제
     
 
 ## **6.13 접근 제한자**
 
-![Untitled](./images/6(62).png)
+![Untitled](./images/6(63).png)
 
 - 클래스 구성 멤버: 필드, 생성자, 메서드
 - protected: 상속과 관련
 - default: 접근 제한자를 붙이지 않은 모든 요소에 적용
 
-![Untitled](./images/6(63).png)
+![Untitled](./images/6(64).png)
 
 - default 클래스 A, B는 외부 패키지의 C에 선언될 수 없음
 - public 클래스 A, B는 외부 패키지의 C에 선언될 수 있음
 
-![Untitled](./images/6(64).png)
+![Untitled](./images/6(65).png)
 
 - 접근제한자에 따라 `new 생성자();` 의 생성 가능 유무가 달라짐
 - public: 어디서든 `new 생성자();` 로 생성 가능
 - default: 같은 패키지 내에서만 `new 생성자();` 로 생성 가능
 - private: 생성자 내부 클래스 제외 외부 클래스에서 `new 생성자();` 생성 불가능
 
-![Untitled](./images/6(65).png)
+![Untitled](./images/6(66).png)
 
 - a1는 public이라 외부 클래스 C에서 생성 가능, a2는 private라 생성 불가능
 
-![Untitled](./images/6(66).png)
+![Untitled](./images/6(67).png)
 
 - 같은 클래스 A 내부에서는 field1, 2, 3, method1(), 2(), 3() 모두 사용 가능
 
-![Untitled](./images/6(67).png)
+![Untitled](./images/6(68).png)
 
 - 같은 패키지 내 클래스 A, B: 외부 블래스 B에서 default인 `a.field3` 사용 가능, private인 `a.method3()` 사용 불가
 
-![Untitled](./images/6(68).png)
+![Untitled](./images/6(69).png)
 
 - 다른 패키지 내 클래스 A, C: 외부 클래스 C에서 default인 `a.field3` 사용 불가, private인 `method2(), 3()` 사용 불가
 
-![Untitled](./images/6(69).png)
+![Untitled](./images/6(70).png)
 
 - **Getter**: private 필드를 `**읽기 전용**`으로 접근하기 위함
     
@@ -500,13 +500,13 @@ class Test {
     ⇒ 외부에서 필드 값을 간접적으로 값을 저장할 수 있게 해 줌, 유효성 검사를 해서 엉뚱한 값으로 변경할 수 없도록 함
     
 
-![Untitled](./images/6(70).png)
+![Untitled](./images/6(71).png)
 
 - 자동으로 getter, setter 만들기: source - generate getters and setters
 
 ## **6.15 어노테이션(1)**
 
-![Untitled](./images/6(71).png)
+![Untitled](./images/6(72).png)
 
 - 작성된 코드가 잘못되었는지 체크할 수 있도록 컴파일러에게 정보 제공
 - 컴파일러에게 무언가를 지시
@@ -514,7 +514,7 @@ class Test {
 - 실행 시 특정 기능을 실행하도록 지시
 - java5 부터 사용 가능
 
-![Untitled](./images/6(72).png)
+![Untitled](./images/6(73).png)
 
 - 어노테이션의 엘리먼트 멤버: 어노테이션의 내용
     
@@ -522,12 +522,12 @@ class Test {
     
 - 예1) 해당 클래스가 컨트롤러 역할을 하도록 @Controller 적용, 이때, 참조 이름으로 main이라는 이름을 줌 ⇒ 이 클래스는 main이라는 이름을 가짐
 
-![Untitled](./images/6(73).png)
+![Untitled](./images/6(74).png)
 
 - 예2) `@Annotation(”값”)`과 같이 인자가 단일 값일 경우, 엘리먼트 멤버 내 기본 엘리먼트인 `String value();`에 대입이 됨
 - 예3) 두 개 이상의 인자가 있을 경우, `@Annotation(value=”값”, element=”값2”)`로 작성
 
-![Untitled](./images/6(74).png)
+![Untitled](./images/6(75).png)
 
 - 어노테이션을 적용할 때, 어노테이션 적용 대상을 명시해야 함
     
@@ -561,7 +561,7 @@ class Test {
     ⇒ @Target의 인자인 타입, 필드, 메서드에만 어노테이션 적용 가능
     
 
-![Untitled](./images/6(75).png)
+![Untitled](./images/6(76).png)
 
 - 어노테이션 적용 코드: `@AnnotationName()`
 - @Retention(): 어노테이션을 적용한 코드가 언제까지 유지될 것인지 지정
