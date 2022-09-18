@@ -64,3 +64,27 @@
     - 앞에 super가 붙은 경우: 부모 클래스의 메서드
 
 ## **7.5 final 클래스와 final 메소드**
+
+![Untitled](./images/7(9).png)
+
+- final은 필드, 클래스, 메서드 앞에 모두 붙을 수 있음
+- final 필드: 수정 불가능한 필드
+- final 클래스, 메서드: 부모로 사용할 수 없는 클래스, 자식이 재정의할 수 없는 메서드
+- 예) String 클래스 ⇒ 부모로 사용할 수 없음
+    
+    ```java
+    public final class String {...}
+    ```
+    
+
+## **7.6 protected 접근 제한자**
+
+![Untitled](./images/7(10).png)
+
+- protected 접근 제한자: 다른 패키기에 있는 클래스의 경우 자식 클래스에게 상속만 가능
+- 예1) 같은 패키지의 A, B: A의 protected 필드를 B에서 사용 가능
+- 예2) 다른 패키지의 A, C, D:
+    - A의 protected 필드를 C에서 사용 불가능
+    - A의 protected 필드를 자식 클래스 D에서 사용 가능
+
+## **7.7 타입변환과 다형성(1)**

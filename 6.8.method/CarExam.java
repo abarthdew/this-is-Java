@@ -1,6 +1,6 @@
 public class CarExam {
     public static void main(String[] args) {
-        Car car = new Car();
+        Car3 car = new Car3();
 
         car.setGas(5);
         boolean gasState = car.isLeftGas();

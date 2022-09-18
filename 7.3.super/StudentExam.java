@@ -1,6 +1,6 @@
 public class StudentExam {
     public static void main(String[] args) {
-        Student student = new Student("홍길동", "123-456", 1);
+        Student3 student = new Student3("홍길동", "123-456", 1);
         /*
          부모 객체 생성 완료
         자식 객체 생성 완료

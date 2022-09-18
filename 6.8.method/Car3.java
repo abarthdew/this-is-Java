@@ -1,4 +1,4 @@
-public class Car {
+public class Car3 {
     int gas;
 
     void setGas(int gas) {
