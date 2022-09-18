@@ -595,3 +595,41 @@ class Test {
 </aside>
 
 ## **6.15 어노테이션(2)**
+
+![Untitled](./images/6(77).png)
+
+- 클래스에 적용된 어노테이션 정보를 어떻게 얻는가? ⇒ 메서드 이용
+    
+    ```java
+    @Annotation
+    class xxx {
+    
+    }
+    ```
+    
+- 필드, 생성자, 메서드에 적용된 어노테이션 정보를 어떻게 얻는가? ⇒ getFields(), getConstructors(), getDeclareMethods() 메서드를 사용해 필드, 생성자, 메서드에 대한 정보를 배열로 리턴 받아 사용
+    
+    ```java
+    class xxx {
+    	@Annotation
+    	int field1;
+    	@Annotation
+    	String field2;
+    	// getFields(): field1, 2(필드)의 정보를 배열로 리턴
+    
+    	@Annotation
+    	xxx() {}
+    	@Annotation
+    	xxx(int x) {}
+    	// getConstructors(): 생성자 정보를 배열로 리턴
+    
+    	@Annotation
+    	void method1() {}
+    	@Annotation
+    	int method2() {}
+    	// getDeclareMethods(): 메서드 정보를 배열로 리턴
+    }
+    ```
+    
+
+![Untitled](./images/6(78).png)
