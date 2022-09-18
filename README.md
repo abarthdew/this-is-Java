@@ -6,3 +6,5 @@
 4. [Condition Statement](https://github.com/abarthdew/this-is-Java/blob/main/basics/This-is-Java4.md)   
 5. [Data Type Advance](https://github.com/abarthdew/this-is-Java/blob/main/basics/This-is-Java5.md)   
 6. [Object](https://github.com/abarthdew/this-is-Java/blob/main/basics/This-is-Java6.md)   
+6. [Inheritance](https://github.com/abarthdew/this-is-Java/blob/main/basics/This-is-Java7.md)   
+6. [Interface](https://github.com/abarthdew/this-is-Java/blob/main/basics/This-is-Java8.md)   
