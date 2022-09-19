@@ -1,4 +1,4 @@
-public class CarTire {
+class CarTire {
     Tire frontLeftTire = new Tire("앞왼쪽", 6);
     Tire frontRightTire = new Tire("앞오른쪽", 2);
     Tire backLeftTire = new Tire("뒤왼쪽", 3);
