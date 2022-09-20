@@ -141,3 +141,71 @@
 ![Untitled](./images/7(17).png)
 
 - 필드, 매개변수를 통해서 등 다형성이 발생할 수 있음
+
+## **7.7 타입변환과 다형성(3)**
+
+![Untitled](./images/7(18).png)
+
+![Untitled](./images/7(19).png)
+
+- void drive(Vehicle vehicle) 과 같이 매개 변수는 Vehicle 타입이지만, 이 객체의 자식인 Bus 타입 객체가 매개 변수로 올 수도 있음
+
+![Untitled](./images/7(20).png)
+
+- 부모타입 → 자식타입 변환은 자동이 아니므로, 강제함
+- 부모 객체 A, 자식 객체 B가 있을 경우
+    
+    ![Untitled](./images/7(21).png)
+    
+    ```java
+    A a = new B();
+    B b = (B) a;
+    ```
+    
+    ⇒ 와 같이 원래 new B()가 대입된 A 타입 a를 B 타입으로 되돌리는 건 강제 타입 변환으로 가능함
+    
+- 부모 객체 A, 자식 객체 B, C가 있을 경우
+    
+    ![Untitled](./images/7(22).png)
+    
+    ```java
+    A a = new A();
+    B b = (B) a; // (X)
+    
+    A a = new C();
+    B b = (B) a; // (X)
+    ```
+    
+    ⇒ 엉뚱한 객체가 a에 대입된 상태에서, a를 B로 강제 변환할 수 없음
+    
+
+![강제 타입 변환이 필요한 경우](./images/7(23).png)
+
+강제 타입 변환이 필요한 경우
+
+- Parent 타입으로 선언한 parent는 자식 객체의 field2, method3()을 사용하지 못함
+- 이를 사용하기 위해선, parent를 Child 객체로 강제 타입 변환해야 함
+- 상속 관계에서 자식을 부모 타입에 대입했을 경우, 부모 타입 멤버만 사용할 수 있지만, 자식 객체로 강제 타입 변환을 하면 자식 멤버도 사용할 수 있음
+
+![Untitled](./images/7(24).png)
+
+- 어떤 객체가 대입될지 모르는 상황에서 특정 자식 객체로 강제 타입 변환할 수 없음 ⇒ 문제가 발생할 수 있음
+    
+    ```java
+    Parent parent = new Parent();
+    Child child = (Child) parent; // 강제 타입 변환 에러
+    ```
+    
+- 보통 메서드의 매개 변수로 객체가 들어올 때, 강제 타입 변환 예외가 발생할 수 있음 ⇒ 먼저 자식 타입인지 확인 후 강제 타입해야 함
+- `(좌측 객체) instanceof (우측 객체)`: 좌측 객체가 우측 객체로 만들어졌다면 true, 아니라면 false 리턴
+    
+    ```java
+    public void method(Parent parent) {
+    	if(parnet instanceof Child) { // 매개변수 parent 가 Child 클래스로 만들어진 객체인가?
+    		Child child = (Child) parent; // 검사 후 강제 타입 변환
+    	}
+    }
+    ```
+    
+
+## **7.8 추상 클래스**
