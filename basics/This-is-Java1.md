@@ -231,4 +231,4 @@
 
 ## 참고자료
 
-[강의교안_1장.ppt](./files/강의교안_1장.ppt)
+[강의교안_1장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_1%EC%9E%A5.ppt)

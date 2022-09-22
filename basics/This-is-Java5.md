@@ -616,4 +616,4 @@ scores[1] = new int[3]; // A 배열의 1번째에 길이 3짜리 C 대입
 
 ## 참고자료
 
-[강의교안_5장.ppt](./files/강의교안_5장.ppt)
+[강의교안_5장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_5%EC%9E%A5.ppt)
