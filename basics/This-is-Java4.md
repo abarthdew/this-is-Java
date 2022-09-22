@@ -76,3 +76,7 @@
 ![Untitled](./images/4(15).png)
 
 ![Untitled](./images/4(16).png)
+
+## 참고자료
+
+[강의교안_4장.ppt](./files/강의교안_4장.ppt)

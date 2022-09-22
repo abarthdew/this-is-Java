@@ -633,3 +633,7 @@ class Test {
     
 
 ![Untitled](./images/6(78).png)
+
+## 참고자료
+
+[강의교안_6장.ppt](./files/강의교안_6장.ppt)

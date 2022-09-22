@@ -148,3 +148,7 @@
 ![Untitled](./images/2(25).png)
 
 - 예외) float + 정수 = float이 산출됨
+
+## 참고자료
+
+[강의교안_2장.ppt](./files/강의교안_2장.ppt)
