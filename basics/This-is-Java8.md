@@ -84,6 +84,50 @@
 
 ## **8.3 인터페이스 구현(2)**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(10).png)
+
+- 익명 구현 객체: 이름이 없는 구현 객체
+
+```java
+인터페이스 변수 = new 인터페이스() {
+	// 인터페이스에 선언된 추상 메서드의 실제 메서드 선언
+	// … 
+};
+```
+
+- 코드에서 직접 이름이 없는 클래스를 만들고, 이 클래스로 객체를 생성한 다음 인터페이스 변수에 대입 가능
+- 명시적 구현: 소스 파일을 생성하고, 그 안에 클래스를 선언하는 것
+- 인터페이스는 객체의 사용 방법을 기술한 것이지, 객체 자체를 만들기 위한 설계도가 아니므로, new로 생성할 수 없음
+- 하지만, `new 인터페이스() {…}`는 인터페이스의 생성자 호출이 아니라, `{…}` 안에 **클래스를 선언하겠다**는 뜻
+- 즉, `{…}` 안에 **필드, 생성자, 메서드를 선언하겠다**는 뜻
+- `{…}` 블록 안에서 선언된 것들은 블록 안에서만 사용되며, 블록을 벗어나서, 인터페이스 변수로 접근 불가
+    
+    ⇒ 인터페이스 변수가 접근할 수 있는 범위는 인터페이스에 선언된 추상 메서드, default 메서드 등에 국한되기 때문
+    
+- 결론적으로, `new 인터페이스() {…}` 는 인터페이스의 생성자를 호출하겠다는 뜻이 아니라, `{…}` 에 선언된 클래스의 생성자를 호출하겠다는 뜻
+- 정리: `{…}`에 선언된 클래스가 인터페이스를 구현한다 ⇒ `{…}`에 선언된 클래스의 기본 생성자를 호출한 뒤 객체를 만들어서 인터페이스 변수에 대입한다
+- 익명 구현 객체에 대한 바이트 코드 파일: 이 클래스 선언에 대한 바이트 코드 파일이 생성됨
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(11).png)
+    
+    - window-show view - navigator
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(12).png)
+    
+    - `RemoteControlExample$1.class`: RemoteControlExample에 선언된 익명 클래스에 대한 바이트코드 파일
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(13).png)
+    
+    - `RemoteControlExample$2.class`: 익명 클래스를 하나 더 생성해 rc2 인터페이스 변수에 하나 더 대입하면 버전 2가 만들어짐
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(14).png)
+
+- 인터페이스 A로 객체를 사용할 수도 있고, 인터페이스 B로 객체를 사용할 수도 있음
+- 해당 클래스 블록 안에는 인터페이스 A, B가 가진 모든 추상 메서들 재정의해서 실제 클래스로 가지고 있어야 함
+- 즉, 이 객체는 두 개의 인터페이스로 사용이 가능
+
+## **8.4 인터페이스 사용**
+
 ## 참고자료
 
 [강의교안_8장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_8%EC%9E%A5.ppt)
