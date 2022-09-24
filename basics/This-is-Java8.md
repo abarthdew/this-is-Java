@@ -129,6 +129,113 @@
 
 ## **8.4 인터페이스 사용**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(15).png)
+
+- 인터페이스는 다양한 곳에서 사용 가능
+- 인터페이스에 구현 객체를 대입하는 위치가 다양할 수 있음 ⇒ 어디서 대입됐냐에 따라 인터페이스 사용 위치가 달라질 수 있음
+- 필드, 생성자의 매개변수, 메서드 구현 블록 내 로컬 변수, 메서드의 매개 변수로 사용 가능
+    
+    ⇒ 이 인터페이스를 구현한 어떠한 객체든 대입 가능
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(16).png)
+
+- 인터페이스 변수에 구현 객체 대입 후
+    
+    → 개발 코드에서 추상 메서드를 인터페이스를 통해 호출
+    
+    → 구현 객체의 재정의된 실제 메서드 호출됨
+    
+- 인터페이스는 개발 코드와 구현 객체의 중간에서 접점 역할, 즉 메서드 호출을 연결해 주는 역할을 함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(17).png)
+
+- 자바 8에서 추가됨
+- 인터페이스를 선언할 때, default 키워드를 넣고 메서드 선언 가능
+    
+    ⇒ 추상 메서드와는 달리 실행 블록을 가지고 있음
+    
+- default 메서드는 인터페이스 만으로 사용할 수 없음
+    
+    ⇒ setMute() 메서드를 호출하기 위해 인터페이스 객체로 바로 호출 불가
+    
+    ```java
+    RemoteControl.setMute(true); // X
+    ```
+    
+    ⇒ 구현 객체가 반드시 인터페이스 변수에 대입되어야 사용 가능
+    
+    ```java
+    RemoteControl rc = new Television();
+    rc.setMute(true);
+    ```
+    
+- default 메서드는 구현객체(Television)의 인스턴스 멤버라고도 볼 수 있음
+    
+    ⇒ 구현 객체를 만들 때 인터페이스에 있는 default 메서드가 추가됨
+    
+- 정적 메서드 선언:
+    - 자바 8에서 추가
+    - 일반 클래스의 static 메서드 선언과 동일
+    - 구현 객체 필요 없이, 인터페이스 객체 만으로 바로 사용 가능
+
+## **8.5 타입변환과 다형성**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(18).png)
+
+- 상속을 이용해 다형성을 구현하듯, 인터페이스를 이용해 다형성 구현 가능 ⇒ 오히려 인터페이스를 이용한 다형성 구현이 더 많이 사용됨
+- 인터페이스에도 타입 변환이 있음
+- 클래스 A, B에 동일한 이름의 메서드가 있을 경우, 인터페이스 변수에 대입되는 클래스 타입만 바꾸면 그 이외 코드를 바꿀 필요가 없음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(19).png)
+
+- 인터페이스를 매개 변수로 설정하면, 여러가지 구현 객체를 사용 가능
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(20).png)
+
+- 구현 객체를 인터페이스 변수에 넣어 자동 타입 변환시킴
+- 점선 → : 인터페이스 상속
+- 실선 → : 부모-자식 상속
+
+### 필드 타입으로 인터페이스 사용 시 다형성이 구현되는 방법
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(21).png)
+
+- 코드는 변경하지 않고 그대로 사용하지만, 필드에 대입되는 구현 객체에 따라 결과가 다르게 나옴
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(22).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(23).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(24).png)
+
+- 인터페이스 A, A를 구현한 클래스 B, C
+    
+    ```java
+    A a = new B();
+    B b = (B) a; // 가능: 애초에 a는 B타입 변수로 만들어졌으므로 복원 가능
+    ```
+    
+    ```java
+    A a = new C();
+    B b = (B) a; // 실행오류: C타입 변수 a는 B타입으로 변환 불가
+    C c = (C) a; // 는 가능
+    ```
+    
+- 왜 강제 타입을 하는가?
+    
+    ⇒ `new Bus();` 를 대입한 vehicle은 인터페이스에 선언된 `run()` 메서드만 사용 가능하고, Bus에 선언된 `checkFare()` 메서드는 사용 불가
+    
+    ⇒ `checkFare()` 메서드를 사용하기 위해서는 강제 타입 변환 필요
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(25).png)
+
+- 강제 타입 변환 전, 구현 클래스 타입을 조사 후 코드를 실행해야 오류를 피할 수 있음
+- `instanceOf`: 좌측 변수가 우측 객체로 만들어졌는지 조사함
+
+## **8.6 인터페이스 상속**
+
 ## 참고자료
 
 [강의교안_8장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_8%EC%9E%A5.ppt)
