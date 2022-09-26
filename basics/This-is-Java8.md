@@ -249,6 +249,38 @@
 
 ## **8.7 디폴트 메소드와 인터페이스 확장**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(27).png)
+
+- 인터페이스: 객체 사용 설명서, 메서드의 호출 정보를 제공
+- default 메서드: 실행 코드까지 가지고 있음
+    
+    ⇒ 인터페이스와 default는 개념 자체가 서로 맞지는 않음
+    
+- 그런데 왜 자바 8에서는 인터페이스에 default 메서드를 허용했을까?
+    
+     1. 기존 인터페이스에 추상 메서드를 추가할 수 없음
+    
+    → 인터페이스에 새로운 추상 메서드를 하나 추가하면, 이걸 implements하고 있는 구현 클래스들이 전부 에러남
+    
+    1. default 메서드는 추상 메서드가 아님
+        
+        → 1. 에서 나타난 문제점을 default 메서드로 해결 가능
+        
+        → 인터페이스에는 이미 implemets 받은 클래스들이 에러날 걱정 없이 새 메서드 추가 가능
+        
+        → 구현 클래스는 필요에 따라 default 메서드 재정의 가능
+        
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(28).png)
+
+- MyInterface 인터페이스에 default가 아닌 method2()를 추가하면, 기존에 implements 받은 구현 클래스들이 에러남 → 새 추상 메서드를 구현해야 하니까
+- 그런데 인터페이스의 method2()에 default 키워드를 붙이면, 구현 클래스에서 구현을 해도, 안 해도 무방함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(29).png)
+
+- 부모 인터페이스의 default 메서드를 → 자식 인터페이스에서 default 메서드로 재정의 가능
+- 부모 인터페이스의 default 메서드 → 자식 인터페이스에서 추상 메서드로 재정의
+
 ## 참고자료
 
 [강의교안_8장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_8%EC%9E%A5.ppt)
