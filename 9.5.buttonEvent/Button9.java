@@ -1,4 +1,3 @@
-import Button.OnClickListener;
 
 // 익명 구현 객체를 이용해 UI 이벤트 처리 예제
 
