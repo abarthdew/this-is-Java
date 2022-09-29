@@ -5,6 +5,8 @@
 [10.4 예외 종류에 따른 처리 코드](#104-예외-종류에-따른-처리-코드)   
 [10.5 자동 리소스 닫기](#105-자동-리소스-닫기)   
 [10.6 예외 떠 넘기기](#106-예외-떠-넘기기)   
+[10.7 사용자 정의 예외와 예외 발생](#107-사용자-정의-예외와-예외-발생)   
+[10.8 예외 정보 얻기](#108-예외-정보-얻기)   
 [참고자료](#참고자료)   
 
 ## **10.1 예외와 예외 클래스**
@@ -126,6 +128,63 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/10(15).png)
 
 ## **10.6 예외 떠 넘기기**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/10(16).png)
+
+- throws 키워드: 메서드 선언에 붙어서, 메서드 내부에서 발생된 예외를 메서드를 호출한 곳으로 떠넘기는 역할을 함
+    
+     ⇒ 메서드를 호출한 곳으로 예외 객체들을 넘겨줌
+    
+- method2()에는 예외를 처리하지 않고, method2()를 호출한 method1()에서 처리할 수 있도록 떠넘김
+- JDK에서 제공하는 API를 사용할 때 예외 처리를 해야 하는 경우가 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/10(17).png)
+
+- 자바 문서 java.io - FileInputStream - 하단 생성자 부분을 클릭하면 아래 화면이 뜸
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/10(18).png)
+
+- FileInputStream 생성자를 이용할 경우, 예외가 발생함을 고지하고 있음
+- throws FileNotFoundException라고 적혀 있으니, 개발자에게 예외를 떠넘기겠다는 의미 ⇒ 예외를 떠넘기므로, 개발자가 코드를 짤 때 예외 처리를 해 줘야 함
+
+## **10.7 사용자 정의 예외와 예외 발생**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/10(19).png)
+
+- 자바에 정의되어 있지 않은 예외, 프로그램을 짤 때 발생할 수 있는 예외에 대해 처리를 할 수 있어야 함
+- 예외 클래스 만들기
+    
+    ```java
+    public class ___Exception extends [Exception | RuntimeException] { // ___Exception: 컨벤션
+    // 일반 예외 클래스로 만드려면 Exception 상속, 실행 예외 클래스로 만드려면 RuntimeException 상속
+    	public ___Exception() {} // 기본 생성자 추가
+    	public ___Exception(String message) { super(message); } // 예외가 왜 발생했는지 메세지 정보를 알 수 있도록 생성자 추가
+    	// super로 부모 클래스의 생성자 호출 시 message 값을 제공
+    }
+    ```
+    
+- 예외 발생 시키기: throw 키워드 이용
+    - throws: 예외 떠넘기기
+    - throw: 예외 발생시키기
+    
+    ```java
+    throw new ___Exception(); // 예외를 발생시킴
+    throw new ___Exception("메세지"); // 예외를 발생시킬 예외 객체를 만들 때 예외 발생 이유를 메세지로 넣고 싶을 때
+    ```
+    
+    ```java
+    public void method() throws ___Exception {
+    	throw new ___Exception("메세지");
+    }
+    ```
+    
+    - 예외는 보통 메서드 안에서 발생시킴
+    - 이 경우, 메서드 선언부에 throws 키워드가 붙어있어 메서드 내부에 발생된 예외를 메서드를 호출한 곳으로 떠넘김
+        
+        ⇒ 메서드를 호출한 곳에서 예외 처리해야 함
+        
+
+## **10.8 예외 정보 얻기**
 
 ## 참고자료
 
