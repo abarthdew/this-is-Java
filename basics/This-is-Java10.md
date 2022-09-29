@@ -186,6 +186,17 @@
 
 ## **10.8 예외 정보 얻기**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/10(20).png)
+
+- 예외 발생 시, 예외 처리 코드에서 어떤 이유에서 예외가 발생했는지 알아야 함
+- 무슨 예외가 발생했는지 예외 코드 번호를 넘겨줌 ⇒ 코드가 무엇이냐에 따라 적절한 예외 처리를 해야 함
+- `getMessage()`: 왜 발생했는지 문자 정보
+    - 발생된 예외 객체가 catch에 (Exception e) 형태로 들어옴 ⇒ `e.getMessage()`로 예외 메세지 출력 가능
+    - 출력되는 **예외 메세지**는 해당 예외 객체가 생성될 시 만들어진 (`throw new ___Exception(”**예외 메세지**”)`)의 **예외 메세지**와 같음
+    - 예를 들어, 데이터베이스 오류는 모두 번호화 되어있는데, 그 오류 번호를 예외 객체의 `**“예외 메세지”**`에 넣고 출력할 수 있음
+- `printStackTrace()`: 어떤 코드, 몇 번째 줄, 무엇 때문에 예외가 발생했는지 전부 출력해 줌
+    - 개발자가 코딩할 때 활용함
+
 ## 참고자료
 
 [강의교안_10장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_10%EC%9E%A5.ppt)
