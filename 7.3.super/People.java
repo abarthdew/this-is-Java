@@ -1,5 +1,3 @@
-import org.w3c.dom.NameList;
-
 public class People {
     public String name;
     public String ssn;
