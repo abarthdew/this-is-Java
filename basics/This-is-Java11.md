@@ -17,6 +17,12 @@
 
 ## **11.2 java.lang과 java.util 패키지**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(1).png)
+
+- Wrapper 클래스 예) int 값을 Integer로, 객체화해서 만들 수 있음
+
+## **11.3 Object 클래스(1)**
+
 
 ## 참고자료
 
