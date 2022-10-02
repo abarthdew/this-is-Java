@@ -2,6 +2,10 @@
 [11.1 자바 API 도큐먼트](#111-자바-api-도큐먼트)   
 [11.2 java.lang과 java.util 패키지](#112-javalang과-javautil-패키지)   
 [11.3 Object 클래스(1)](#113-object-클래스1)   
+    [- equals()](#equals)   
+    [- hashCode()](#hashcode)   
+    [- toString()](#tostring)   
+[11.3 Object 클래스(2)](#113-object-클래스2)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -23,6 +27,46 @@
 - Wrapper 클래스 예) int 값을 Integer로, 객체화해서 만들 수 있음
 
 ## **11.3 Object 클래스(1)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(2).png)
+
+- 다음 코드는 extends 없이 아무런 상속을 받지 않았지만, 암시적으로 Object 클래스를 상속받음
+    
+    ```java
+    class xxx {
+    	// ...
+    }
+    ```
+    
+- Object 클래스 내 메서드는 모든 클래스에서 사용 가능
+
+### equals()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(3).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(4).png)
+
+- equals() 메서드 재정의
+
+### hashCode()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(5).png)
+
+- 두 객체 비교 과정: 두 객체의 hashCode 검증(hashCode) → 두 객체의 내부 데이터 검증(equals) → 리턴
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(6).png)
+
+- hashMap의 데이터 저장 구조
+
+### toString()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(7).png)
+
+- `System.out.println(Object)`는 자동으로 toString() 결과를 리턴함(클래스명@해시코드)
+
+## **11.3 Object 클래스(2)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(8).png)
 
 
 ## 참고자료
