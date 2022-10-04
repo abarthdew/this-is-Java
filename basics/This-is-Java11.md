@@ -91,6 +91,36 @@
 
 ## **11.4 Objects 클래스(1)**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(10).png)
+
+- Objects는 java.lang이 아니라, java.util 패키지에 포함되어 있음
+- java.util 패키지에는 다양한 유틸리티 클래스가 포함됨
+- 유틸리티 클래스는 다양한 기능을 제공해 주는 클래스를 뜻함
+- 객체를 생성해서 사용하는 게 아니라, 유틸리티 메서드를 이용해서 기능 사용
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(11).png)
+
+- 연산이 되는 정적 유틸리티 메서드를 제공하는 클래스라고 설명되어 있음
+- 대부분의 메서드들이 static으로 선언 → 객체를 만들지 않고도 메서드를 사용할 수 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(12).png)
+
+### deepEquals()
+
+- 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false
+
+### equals()
+
+- a, b 객체의 번지만 비교
+
+### hash()
+
+- 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
+
+### hashCode()
+
+- 객체 하나에 대한 해쉬 코드를 생성
+
 ## 참고자료
 
 [강의교안_11장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_11%EC%9E%A5.ppt)
