@@ -9,6 +9,8 @@
     [- clone()](#clone)   
     [- finalize()](#finalize)   
 [11.4 Objects 클래스(1)](#114-objects-클래스1)   
+    [- Objects.compare()](#objectscompare)   
+    [- Objects.equals(), Objects.deepEquals()](#objectsequals-objectsdeepequals)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -116,7 +118,7 @@
 
 - compare() 메서드 사용 시, 반드시 Comparator 인터페이스를 구현한 구현 객체를 만들어야 함
 
-### equals(), deepEquals()
+### Objects.equals(), Objects.deepEquals()
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(14).png)
 
