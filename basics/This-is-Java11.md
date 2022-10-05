@@ -105,21 +105,23 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(12).png)
 
-### deepEquals()
+- deepEquals(): 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false
+- equals(): a, b 객체의 번지만 비교
+- hash(): 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
+- hashCode(): 객체 하나에 대한 해쉬 코드를 생성
 
-- 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false
+### Objects.compare()
 
-### equals()
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(13).png)
 
-- a, b 객체의 번지만 비교
+- compare() 메서드 사용 시, 반드시 Comparator 인터페이스를 구현한 구현 객체를 만들어야 함
 
-### hash()
+### equals(), deepEquals()
 
-- 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(14).png)
 
-### hashCode()
-
-- 객체 하나에 대한 해쉬 코드를 생성
+- equals(): 객체 자체에 대한 비교 → 객체가 동일한 번지를 갖고 있느냐, 객체가 논리적으로 동등하냐 비교
+- deeoEquals(): 두 배열을 비교 → 두 배열의 항목이 같으냐, 항목이 하나라도 다르냐를 비교
 
 ## 참고자료
 
