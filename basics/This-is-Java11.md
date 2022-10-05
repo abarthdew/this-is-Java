@@ -11,6 +11,7 @@
 [11.4 Objects 클래스(1)](#114-objects-클래스1)   
     [- Objects.compare()](#objectscompare)   
     [- Objects.equals(), Objects.deepEquals()](#objectsequals-objectsdeepequals)   
+[11.4 Objects 클래스(2)](#114-objects-클래스2)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -123,7 +124,16 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(14).png)
 
 - equals(): 객체 자체에 대한 비교 → 객체가 동일한 번지를 갖고 있느냐, 객체가 논리적으로 동등하냐 비교
-- deeoEquals(): 두 배열을 비교 → 두 배열의 항목이 같으냐, 항목이 하나라도 다르냐를 비교
+    - `a ≠ null, b ≠ null`: Objects.equals()를 재정의하지 않고 쓴다면 ==와 같이 두 객체의 번지를 비교
+    - a, b 둘 중 하나가 null이면 return false
+    - a, b 둘 다 null이면 return true
+- deepEquals(): 두 배열을 비교 → 두 배열의 항목이 같으냐, 항목이 하나라도 다르냐를 비교
+    - `null이 아닌 a가 배열이 아니고, null이 아닌 b가 배열이 아닐 경우`: a.equals(b)로 작용함
+    - `null이 아닌 a가 배열이고, null이 아닌 b가 배열일 경우`: 메서드 내부에서 Arrays.deepEquals()라는 메서드 사용 → a, b 각각의 항목의 값을 비교해 같으면 true, 하나라도 틀리면 false
+    - a, b 둘 중 하나가 null이면 return false
+    - a, b 둘 다 null이면 return true
+
+## **11.4 Objects 클래스(2)**
 
 ## 참고자료
 
