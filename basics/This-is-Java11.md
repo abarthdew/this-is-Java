@@ -111,10 +111,10 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(12).png)
 
-- deepEquals(): 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false
-- equals(): a, b 객체의 번지만 비교
-- hash(): 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
-- hashCode(): 객체 하나에 대한 해쉬 코드를 생성
+- deepEquals(): 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false- 
+- **equals()**: a, b 객체의 번지만 비교
+- **hash()**: 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
+- **hashCode()**: 객체 하나에 대한 해쉬 코드를 생성
 
 ### Objects.compare()
 
@@ -126,11 +126,11 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(14).png)
 
-- equals(): 객체 자체에 대한 비교 → 객체가 동일한 번지를 갖고 있느냐, 객체가 논리적으로 동등하냐 비교
+- **equals()**: 객체 자체에 대한 비교 → 객체가 동일한 번지를 갖고 있느냐, 객체가 논리적으로 동등하냐 비교
     - `a ≠ null, b ≠ null`: Objects.equals()를 재정의하지 않고 쓴다면 ==와 같이 두 객체의 번지를 비교
     - a, b 둘 중 하나가 null이면 return false
     - a, b 둘 다 null이면 return true
-- deepEquals(): 두 배열을 비교 → 두 배열의 항목이 같으냐, 항목이 하나라도 다르냐를 비교
+- **deepEquals()**: 두 배열을 비교 → 두 배열의 항목이 같으냐, 항목이 하나라도 다르냐를 비교
     - `null이 아닌 a가 배열이 아니고, null이 아닌 b가 배열이 아닐 경우`: a.equals(b)로 작용함
     - `null이 아닌 a가 배열이고, null이 아닌 b가 배열일 경우`: 메서드 내부에서 Arrays.deepEquals()라는 메서드 사용 → a, b 각각의 항목의 값을 비교해 같으면 true, 하나라도 틀리면 false
     - a, b 둘 중 하나가 null이면 return false
@@ -142,11 +142,11 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(15).png)
 
-- hash(): 해시 코드를 생성하는 역할을 함
+- **hash()**: 해시 코드를 생성하는 역할을 함
     - Object의 hashCode() 메서드를 재정의할 때, 리턴해야 할 값에 해당 → hash() 메서드를 통해 그 값을 자동으로 생성
     - 여러 개의 필드를 조합해 자동적으로 해시 코드를 만들어낼 수 있음
     - 여러 개의 필드를 조합해 하나의 해시 코드를 만들어낼 때 유용
-- hashCode(): Object가 가지고 메서드이기도 함
+- **hashCode()**: Object가 가지고 메서드이기도 함
     - 매개값으로 제공되는 오브젝트의 해시 코드를 얻어 리턴시켜주는 역할
     - 해시 코드를 생성한다기 보다, 오브젝트가 가지고 있는 해시 코드를 얻어내는 역할
     - 매개값이 null일 시, 해시 코드는 0을 리턴
@@ -156,9 +156,9 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(16).png)
 
 - 매개 값으로 제공되는 객체가 null인지 아닌지 판별 → null 이면 예외 발생
-- isNull(): 매개 값이 null 일 경우 true, not null 일 경우 false
-- nonNull(): 매개 값이 null 일 경우 false, not null 일 경우 true
-- requireNonNull(): null이 아님을 요구함
+- **isNull()**: 매개 값이 null 일 경우 true, not null 일 경우 false
+- **nonNull()**: 매개 값이 null 일 경우 false, not null 일 경우 true
+- **requireNonNull()**: null이 아님을 요구함
     - 매개 값이 not null일 경우 매개 값 리턴, null일 경우 예외 발생
     - message를 매개 값으로 보낼 경우 예외 발생 시 message가 예외 메세지 설정됨
     - Supplier를 매개 값으로 보낼 경우 Supplier에서 만들어 주는 문자열을 예외에 제공
