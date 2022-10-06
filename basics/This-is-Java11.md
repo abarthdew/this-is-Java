@@ -12,6 +12,9 @@
     [- Objects.compare()](#objectscompare)   
     [- Objects.equals(), Objects.deepEquals()](#objectsequals-objectsdeepequals)   
 [11.4 Objects 클래스(2)](#114-objects-클래스2)   
+    [- hash(), hashCode()](#hash-hashcode)    
+    [- isNull(), nonNull(), requireNonNull()](#isnull-nonnull-requirenonnull)    
+[11.5 System 클래스](#115-system-클래스)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -134,6 +137,40 @@
     - a, b 둘 다 null이면 return true
 
 ## **11.4 Objects 클래스(2)**
+
+### hash(), hashCode()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(15).png)
+
+- hash(): 해시 코드를 생성하는 역할을 함
+    - Object의 hashCode() 메서드를 재정의할 때, 리턴해야 할 값에 해당 → hash() 메서드를 통해 그 값을 자동으로 생성
+    - 여러 개의 필드를 조합해 자동적으로 해시 코드를 만들어낼 수 있음
+    - 여러 개의 필드를 조합해 하나의 해시 코드를 만들어낼 때 유용
+- hashCode(): Object가 가지고 메서드이기도 함
+    - 매개값으로 제공되는 오브젝트의 해시 코드를 얻어 리턴시켜주는 역할
+    - 해시 코드를 생성한다기 보다, 오브젝트가 가지고 있는 해시 코드를 얻어내는 역할
+    - 매개값이 null일 시, 해시 코드는 0을 리턴
+
+### isNull(), nonNull(), requireNonNull()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(16).png)
+
+- 매개 값으로 제공되는 객체가 null인지 아닌지 판별 → null 이면 예외 발생
+- isNull(): 매개 값이 null 일 경우 true, not null 일 경우 false
+- nonNull(): 매개 값이 null 일 경우 false, not null 일 경우 true
+- requireNonNull(): null이 아님을 요구함
+    - 매개 값이 not null일 경우 매개 값 리턴, null일 경우 예외 발생
+    - message를 매개 값으로 보낼 경우 예외 발생 시 message가 예외 메세지 설정됨
+    - Supplier를 매개 값으로 보낼 경우 Supplier에서 만들어 주는 문자열을 예외에 제공
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(17).png)
+
+- Object 클래스의 toString()이 객체를 표현하는 대표 문자열을 리턴한다면,
+- Objects 클래스의 toString()은
+    1. 매개로 들어온 객체의 값을 리턴, 매개 값이 null이면 null 리턴(Object 클래스의 toString()과 동일)
+    2. 매개로 들어온 객체가 null 일 경우, 두번째 매개 값이 리턴됨
+
+## **11.5 System 클래스**
 
 ## 참고자료
 
