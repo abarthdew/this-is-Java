@@ -19,7 +19,7 @@
     [- System.gc()](#systemgc)   
     [- System.currentTimeMillis(), System.nanoTime()](#systemcurrenttimemillis-systemnanotime)   
     [- System.getProperty()](#systemgetproperty)   
-    [- System.getenv()](#systemgetenv))   
+    [- System.getenv()](#systemgetenv)   
 [11.6 Class 클래스](#116-class-클래스)   
 [참고자료](#참고자료)   
 
