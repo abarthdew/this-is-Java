@@ -12,9 +12,15 @@
     [- Objects.compare()](#objectscompare)   
     [- Objects.equals(), Objects.deepEquals()](#objectsequals-objectsdeepequals)   
 [11.4 Objects 클래스(2)](#114-objects-클래스2)   
-    [- hash(), hashCode()](#hash-hashcode)    
-    [- isNull(), nonNull(), requireNonNull()](#isnull-nonnull-requirenonnull)    
+    [- Objects.hash(), Objects.hashCode()](#objectshash-objectshashcode)    
+    [- Objects.isNull(), Objects.nonNull(), Objects.requireNonNull()](#objectsisnull-objectsnonnull-objectsrequirenonnull)    
 [11.5 System 클래스](#115-system-클래스)   
+    [- System.exit()](#systemexit)   
+    [- System.gc()](#systemgc)   
+    [- System.currentTimeMillis(), System.nanoTime()](#systemcurrenttimemillis-systemnanotime)   
+    [- System.getProperty()](#systemgetproperty)   
+    [- System.getenv()](#systemgetenv))   
+[11.6 Class 클래스](#116-class-클래스)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -138,7 +144,7 @@
 
 ## **11.4 Objects 클래스(2)**
 
-### hash(), hashCode()
+### Objects.hash(), Objects.hashCode()
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(15).png)
 
@@ -151,7 +157,7 @@
     - 해시 코드를 생성한다기 보다, 오브젝트가 가지고 있는 해시 코드를 얻어내는 역할
     - 매개값이 null일 시, 해시 코드는 0을 리턴
 
-### isNull(), nonNull(), requireNonNull()
+### Objects.isNull(), Objects.nonNull(), Objects.requireNonNull()
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(16).png)
 
@@ -171,6 +177,41 @@
     2. 매개로 들어온 객체가 null 일 경우, 두번째 매개 값이 리턴됨
 
 ## **11.5 System 클래스**
+
+### System.exit()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(18).png)
+
+- System 클래스의 out 필드를 사용해 println() 메서드 호출: 콘솔에 출력
+- System.exit(”값”)에 특정 상태값이 입력되었을 경우에만 종료하고 싶다면 자바의 보안 관리자를 설정
+
+### System.gc()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(19).png)
+
+- gc()가 호출되면 가급적 빨리 쓰레기 객체 수거를 요청한다는 뜻
+- 사용하지 않은 객체를 정리해 메모리를 정리하기 위함
+- JVM은 CPU가 한가할 때 gc를 실행함 → 내가 원할 때 gc()를 호출할 수도 있는 것
+- myCar = null이 되면 Car는 더 이상 사용되지 않는 쓰레기 객체가 됨
+- 또는, 다른 객체가 변수에 참조되어 남겨진 객체는 쓰레기 객체가 됨
+
+### System.currentTimeMillis(), System.nanoTime()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(20).png)
+
+- 보통 프로그램 실행 시간을 측정할 때 사용함
+
+### System.getProperty()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(21).png)
+
+- 키-값 형태기 때문에 key를 매개변수로 결과값을 얻음
+
+### System.getenv()
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(22).png)
+
+## **11.6 Class 클래스**
 
 ## 참고자료
 
