@@ -220,6 +220,8 @@
 - `getDeclared[Filds|Contructor|Methods]()`: 해당 접근 제한자 상관없이, 클래스에만 선언된 필드, 생성자, 메서드만 가져 옴
 - `get[Filds|Contructor|Methods]()`: 부모에 있는 public 필드, 생성자, 메서드 전부 가져 옴
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(24).png)
+
 ## 참고자료
 
 [강의교안_11장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_11%EC%9E%A5.ppt)
