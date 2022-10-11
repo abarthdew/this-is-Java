@@ -215,10 +215,10 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(23).png)
 
-- `Class.forName(String className)` 매개변수에는 패키지명이 포함된 클래스명을 넣어 줌 → 해당 클래스가 있을 경우 위치를 리턴시켜 줌
+- `**Class.forName(String className)**` 매개변수에는 패키지명이 포함된 클래스명을 넣어 줌 → 해당 클래스가 있을 경우 위치를 리턴시켜 줌
 - 리플렉션: 메타 데이터를 얻는 것
-- `getDeclared[Filds|Contructor|Methods]()`: 해당 접근 제한자 상관없이, 클래스에만 선언된 필드, 생성자, 메서드만 가져 옴
-- `get[Filds|Contructor|Methods]()`: 부모에 있는 public 필드, 생성자, 메서드 전부 가져 옴
+- `**getDeclared[Filds|Contructor|Methods]()**`: 해당 접근 제한자 상관없이, 클래스에만 선언된 필드, 생성자, 메서드만 가져 옴
+- `**get[Filds|Contructor|Methods]()**`: 부모에 있는 public 필드, 생성자, 메서드 전부 가져 옴
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(24).png)
 
