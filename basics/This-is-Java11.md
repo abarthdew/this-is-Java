@@ -189,7 +189,7 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(19).png)
 
-- gc()가 호출되면 가급적 빨리 쓰레기 객체 수거를 요청한다는 뜻
+- `gc()`가 호출되면 가급적 빨리 쓰레기 객체 수거를 요청한다는 뜻
 - 사용하지 않은 객체를 정리해 메모리를 정리하기 위함
 - JVM은 CPU가 한가할 때 gc를 실행함 → 내가 원할 때 gc()를 호출할 수도 있는 것
 - myCar = null이 되면 Car는 더 이상 사용되지 않는 쓰레기 객체가 됨
