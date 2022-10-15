@@ -171,9 +171,9 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(17).png)
 
-- Object 클래스의 toString()이 객체를 표현하는 대표 문자열을 리턴한다면,
-- Objects 클래스의 toString()은
-    1. 매개로 들어온 객체의 값을 리턴, 매개 값이 null이면 null 리턴(Object 클래스의 toString()과 동일)
+- Object 클래스의 `toString()`이 객체를 표현하는 대표 문자열을 리턴한다면,
+- Objects 클래스의 `toString()`은
+    1. 매개로 들어온 객체의 값을 리턴, 매개 값이 null이면 null 리턴(Object 클래스의 `toString()`과 동일)
     2. 매개로 들어온 객체가 null 일 경우, 두번째 매개 값이 리턴됨
 
 ## **11.5 System 클래스**
