@@ -149,7 +149,7 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(15).png)
 
 - **hash()**: 해시 코드를 생성하는 역할을 함
-    - Object의 hashCode() 메서드를 재정의할 때, 리턴해야 할 값에 해당 → hash() 메서드를 통해 그 값을 자동으로 생성
+    - Object의 `hashCode()` 메서드를 재정의할 때, 리턴해야 할 값에 해당 → hash() 메서드를 통해 그 값을 자동으로 생성
     - 여러 개의 필드를 조합해 자동적으로 해시 코드를 만들어낼 수 있음
     - 여러 개의 필드를 조합해 하나의 해시 코드를 만들어낼 때 유용
 - **hashCode()**: Object가 가지고 메서드이기도 함
