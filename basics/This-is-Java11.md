@@ -21,6 +21,7 @@
     [- System.getProperty()](#systemgetproperty)   
     [- System.getenv()](#systemgetenv)   
 [11.6 Class 클래스](#116-class-클래스)   
+[11.7 String 클래스(1)](#117-string-클래스1)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -228,6 +229,8 @@
     ⇒ 이 경우, 어떤 클래스가 만들어지는지 알 수 없기 때문에 newInstance()로 만든 객체의 타입은 Object며, 타입 변환(캐스팅)이 가능함
     
     ⇒ 위 예시와 같이, Action 인터페이스 객체를 구현해 선언된 action.execute()의 execute() 메서드는 Action이 아닌 구현 객체(SendAction 또는 ReceiveAction)의 메서드임
+
+## **11.7 String 클래스(1)**
 
 ## 참고자료
 
