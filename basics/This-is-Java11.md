@@ -222,6 +222,13 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(24).png)
 
+- `new ____()`를 만들 때, 클래스 종류를 코딩할 땐 모르고, 실행 도중 클래스 이름이 결정되게 하려면? ⇒ new 연산자 사용 불가
+- `newInstance()`는 실행 도중 클래스 이름이 결정되고, 그 이름을 객체를 생성하는 기능을 제공함
+    
+    ⇒ 이 경우, 어떤 클래스가 만들어지는지 알 수 없기 때문에 newInstance()로 만든 객체의 타입은 Object며, 타입 변환(캐스팅)이 가능함
+    
+    ⇒ 위 예시와 같이, Action 인터페이스 객체를 구현해 선언된 action.execute()의 execute() 메서드는 Action이 아닌 구현 객체(SendAction 또는 ReceiveAction)의 메서드임
+
 ## 참고자료
 
 [강의교안_11장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_11%EC%9E%A5.ppt)
