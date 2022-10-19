@@ -22,6 +22,8 @@
     [- System.getenv()](#systemgetenv)   
 [11.6 Class 클래스](#116-class-클래스)   
 [11.7 String 클래스(1)](#117-string-클래스1)   
+    [- 키보드로 받은 byte 배열을 String으로 변환하기](#키보드로-받은-byte-배열을-string으로-변환하기)   
+[11.7 String 클래스(2)](#117-string-클래스2)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -231,6 +233,68 @@
     ⇒ 위 예시와 같이, Action 인터페이스 객체를 구현해 선언된 action.execute()의 execute() 메서드는 Action이 아닌 구현 객체(SendAction 또는 ReceiveAction)의 메서드임
 
 ## **11.7 String 클래스(1)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(25).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(26).png)
+
+- Defelicated: 업데이트 전 버전이니 사용하지 말 것
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(27).png)
+
+- byte 배열을 이용해 String 객체를 만드는 방법
+    
+    ⇒ 파일의 내용을 읽거나, 네트워크를 통해 받은 데이터는 모두 byte 배열
+    
+    ⇒ 이 byte 배열을 문자열로 변환해서 이용하는 경우가 많기 때문에, new String(byte[] bytes)와 같이 String 생성자에서 byte 배열을 받는 것들을 알아둘 필요가 있음
+    
+    (파일의 내용을 읽거나, 네트워크를 통해 데이터를 받으려면 IO/NIO를 알아야 함)
+    
+### 키보드로 받은 byte 배열을 String으로 변환하기
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(28).png)
+
+1. String str = new String(byte[] bytes): 배열 전체를 String 객체로 생성
+2. String str = new String(byte[] bytes, String charsetName): byte 배열을 특정 문자 종류(UTF-8 등)로 디코딩
+3. String str = new String(byte[] bytes, int offset, int length): byte 배열의 일부분만 문자열로 만들 때
+    
+    ⇒ offset: 시작 위치
+    
+    ⇒ length: 시작 위치로 부터 몇 개의 배열을 문자열을 만들 것인가
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(29).png)
+
+- System.in.read(bytes)와 같이 System.in.read에 빈 객체 byte를 넣어 줌
+    
+    ⇒ (byte)에는 키보드 입력 내용(Hello + [enter])이 저장되고, 입력된 문자에 대한 byte 배열의 수가 readByteNo에 저장됨(7)
+    
+- [enter]키 문자를 뺀 나머지를 String으로 변환
+
+```java
+String str = new String(bytes, 0, readByteNo - 2);
+// readByteNo - 2: enter 키 제외
+```
+
+- Byte[] bytes 배열에 Hello\r\n이라는 문자가 차례로 저장되지는 않음
+    
+    ⇒ 실제 bytes 배열에 저장되는 값은 H, e, l, l, o, \r, \n에 대한 각각의 key code 번호가 저장됨(72, 101, …, 13, 10) 
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(30).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(31).png)
+
+- charAt(n): String 배열에서 n 번째 배열의 문자만 뽑아내고 싶을 때 
+    (ex) 주민번호 추출 등   
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(32).png)
+
+- 문자열을 바이트 배열로 만듬
+    
+    ⇒ 파일에 내용을 적거나, 네트워크로 데이터를 보내야 할 시 사용
+    
+- 잘못된 문자 셋으로 인코딩 될 시 예외가 발생할 수 있음
+
+## **11.7 String 클래스(2)**
 
 ## 참고자료
 
