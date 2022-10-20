@@ -24,6 +24,7 @@
 [11.7 String 클래스(1)](#117-string-클래스1)   
     [- 키보드로 받은 byte 배열을 String으로 변환하기](#키보드로-받은-byte-배열을-string으로-변환하기)   
 [11.7 String 클래스(2)](#117-string-클래스2)   
+[11.8 StringTokenizer 클래스](#118-stringtokenizer-클래스)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -295,6 +296,18 @@ String str = new String(bytes, 0, readByteNo - 2);
 - 잘못된 문자 셋으로 인코딩 될 시 예외가 발생할 수 있음
 
 ## **11.7 String 클래스(2)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(33).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(34).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(35).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(36).png)
+
+- valueOf: 정적 메서드(기본 타입 값을 문자열로 만들어줌)
+
+## **11.8 StringTokenizer 클래스**
 
 ## 참고자료
 
