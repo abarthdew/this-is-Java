@@ -27,7 +27,7 @@
 [11.8 StringTokenizer 클래스](#118-stringtokenizer-클래스)   
 [참고자료](#참고자료)   
 
-## **11.1 자바 API 도큐먼트**
+## **11.1  자바 API 도큐먼트**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11.png)
 
