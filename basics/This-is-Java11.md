@@ -25,9 +25,11 @@
     [- 키보드로 받은 byte 배열을 String으로 변환하기](#키보드로-받은-byte-배열을-string으로-변환하기)   
 [11.7 String 클래스(2)](#117-string-클래스2)   
 [11.8 StringTokenizer 클래스](#118-stringtokenizer-클래스)   
+[11.9 StringBuffer, StringBuilder 클래스](#119-stringbuffer-stringbuilder-클래스)   
+[11.10 정규 표현식과 Pattern 클래스](#1110-정규-표현식과-pattern-클래스)   
 [참고자료](#참고자료)   
 
-## **11.1  자바 API 도큐먼트**
+## **11.1 자바 API 도큐먼트**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11.png)
 
@@ -308,6 +310,67 @@ String str = new String(bytes, 0, readByteNo - 2);
 - valueOf: 정적 메서드(기본 타입 값을 문자열로 만들어줌)
 
 ## **11.8 StringTokenizer 클래스**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(37).png)
+
+- split(): 정규표현식을 통해 구분자 찾음, 좀 더 복잡한 구분자를 정규표현식으로 표현 가능. 더 범용성 있음.
+- tokenizer(): 구분자 제시 후 구분, 구분자는 하나만 가능
+    - `토큰`: 구분자를 기준으로 구분된 문자
+    - `hasMoreTokens()`: 가져올 토큰이 있는가(true/false)
+    - `nextToken()`: 토큰을 가져온다(ex. 홍길동, 이수홍, 박연수)
+    - `countToken()`: nextToken()으로 가져오지 않은 토큰의 수
+        
+        (만약 홍길동을 꺼낸 후 호출한다면, 남아있는 토큰의 수는 2)
+        
+    - `new StringTokenizer()` 생성 후 `nextToken()`으로 모든 토큰을 얻었을 때, 처음으로 돌아가서 `nextToken()`을 다시 사용할 수 없음
+        
+        ⇒ 새로운 객체를 또 생성한 후 nextToken()을 사용해야 함
+        
+        ⇒ 즉, 기존 `new StringTokenizer()`는 재사용이 불가능
+        
+
+## **11.9 StringBuffer, StringBuilder 클래스**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(38).png)
+
+- `StringBuffer`, `StringBuilder` 클래스: String 클래스의 단점을 보완한 클래스
+- String은 내부의 문자열을 수정할 수 없으므로, 연산을 할 때마다 새로운 객체가 생성되어, 메모리에 다수의 객체가 계속해서 생성되는 단점이 있음
+    
+    ```java
+    String data = val1 + val2 + val3; // 일 경우,
+    // val1, val2, val3, val1 + val2, (val1+val2+val3) 총 5개의 객체가 생성됨
+    // data는 마지막 (val1+Val2+Val3) 객체를 참조하게 됨
+    ```
+    
+- `StringBuffer`, `StringBuilder`는 내부에 버퍼를 가지고 있어 이 버퍼에 문자열 데이터를 저장해두고 사용함
+- 버퍼 내부에서 추가, 수정, 삭제 작업 가능
+- 즉, 버퍼 내부에서만 변화되지 String 객체처럼 비슷한 객체가 여러 개 생성되지 않음
+- `StringBuffer`, `StringBuilder`의 공통점: 내부에서 버퍼를 사용하며, 사용 방법은 같음
+- `StringBuffer`, `StringBuilder`의 차이점:
+    - `StringBuffer`: 멀티 스레드 환경에서 안전하게 사용할 수 있는 객체(JavaFX)
+    - `StringBuilder`: 불안정해서 멀티 스레드 환경에서 사용할 수 없음, 단일 스레드 환경에서 사용
+    
+    ```java
+    StringBuilder sb = new StringBuilder(); // 기본적인 공간을 가지는 객체 생성
+    StringBuffer sb = new StringBuffer(); // 기본적인 공간을 가지는 객체 생성
+    
+    StringBuilder sb = new StringBuilder(16); // 16자가 기본적으로 저장될 버퍼사이즈가 만들어지고, 객체가 생성됨
+    StringBuffer sb = new StringBuffer(16); // 16자가 기본적으로 저장될 버퍼사이즈가 만들어지고, 객체가 생성됨
+    
+    StringBuilder sb = new StringBuilder("Java"); // 기본적으로 Java라는 데이터를 가진 객체가 생성됨
+    StringBuffer sb = new StringBuffer("Java"); // 기본적으로 Java라는 데이터를 가진 객체가 생성됨
+    ```
+    
+- 이렇게 데이터 생성 후, 각 클래스가 가진 메서드를 사용해 데이터를 추가, 삭제, 대치할 수 있음
+    - `append()`: 데이터 끝 부분에 데이터 추가
+    - `insert()`: 데이터 중간에 데이터 삽입
+    - `delete(int start, int end)`: 데이터 배열에서 start ~ end 까지의 데이터 삭제
+    - `deleteCharAt()`: 몇 번째 문자 하나만 삭제
+    - `replace()`: 데이터 대치
+    - `StringBuilder reverse()`: 데이터 순서 뒤바꿈
+    - `setCharAt(int index, char ch)`: 주어진 index 문자를 ch로 바꿈
+
+## **11.10 정규 표현식과 Pattern 클래스**
 
 ## 참고자료
 
