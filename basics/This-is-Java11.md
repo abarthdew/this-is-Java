@@ -27,6 +27,7 @@
 [11.8 StringTokenizer 클래스](#118-stringtokenizer-클래스)   
 [11.9 StringBuffer, StringBuilder 클래스](#119-stringbuffer-stringbuilder-클래스)   
 [11.10 정규 표현식과 Pattern 클래스](#1110-정규-표현식과-pattern-클래스)   
+[11.11 Arrays 클래스(1)](#1111-arrays-클래스1)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -371,6 +372,12 @@ String str = new String(bytes, 0, readByteNo - 2);
     - `setCharAt(int index, char ch)`: 주어진 index 문자를 ch로 바꿈
 
 ## **11.10 정규 표현식과 Pattern 클래스**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(39).png)
+
+- 정규 표현식: 사용자가 입력한 데이터가 올바른 형식대로 입력되었는지 검증하는 데 사용
+
+## **11.11 Arrays 클래스(1)**
 
 ## 참고자료
 
