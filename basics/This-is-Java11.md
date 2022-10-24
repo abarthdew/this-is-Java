@@ -433,7 +433,7 @@ String str = new String(bytes, 0, readByteNo - 2);
     
     ⇒ original, clone1이 가리키는 항목(1,2,3,4)가 서로 같으므로 true
 
-[깊은 복수 후 비교]
+[깊은 복사 후 비교]
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(46).png)
 
