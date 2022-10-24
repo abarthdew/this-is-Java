@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         "11.9.StringBuilder",
-        "11.10.pattern"
+        "11.10.pattern",
+        "11.11.Arrays"
     ]
 }

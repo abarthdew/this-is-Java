@@ -28,6 +28,8 @@
 [11.9 StringBuffer, StringBuilder 클래스](#119-stringbuffer-stringbuilder-클래스)   
 [11.10 정규 표현식과 Pattern 클래스](#1110-정규-표현식과-pattern-클래스)   
 [11.11 Arrays 클래스(1)](#1111-arrays-클래스1)   
+[11.11 Arrays 클래스(2)](#1111-arrays-클래스2)   
+[11.12 포장 클래스](#1112-포장-클래스)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -378,6 +380,67 @@ String str = new String(bytes, 0, readByteNo - 2);
 - 정규 표현식: 사용자가 입력한 데이터가 올바른 형식대로 입력되었는지 검증하는 데 사용
 
 ## **11.11 Arrays 클래스(1)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(40).png)
+
+- 배열 조작 기능을 가진 util 클래스
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(41).png)
+
+- `Arrays.copyOf()`, `copyOfRange()`: Arrays의 메서드
+    - `Arrays.copyOf(원본 배열, 복사할 길이)`: 원본 배열을, 복사할 길이만큼 복사(복사할 길이가 원본 배열의 길이보다 클 경우, 빈 배열을 포함한 길이의 배열이 복사됨)
+    - `copyOfRange(원본 배열, 시작 인덱스, 끝 인덱스)`: 원본 배열의 일부분(시작~끝 인덱스) 만큼 복사함
+- `System.arraycopy()`: System의 메서드
+    - 원본 배열의 시작 인덱스를 타겟 배열의 특정 인덱스에 복사하고 싶을 때
+    - 타겟 배열: 원본 배열 또는 그 일부를 복사 붙여넣기 할 배열
+
+## **11.11 Arrays 클래스(2)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(42).png)
+
+- Arrays.equals()는 A1, A2 배열의 a, b, c의 값(번지)을 각각 비교함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(43).png)
+
+- 예를 들어, Arrays.equals()는 `100번지와 300번지를(false)`, `200번지와 400번지(false)`를 비교함
+- Arrays.deepEquals()는 중첩된 배열까지 전부 비교함
+    
+    ⇒ `100번지의 a, b와 300번지의 a, b(true)`, `200번지의 c, d와 400 번지의 c, d(true)` 까지 비교함
+    
+- Arrays.sort(): int[], double[], String[] 배열은 자동 정렬
+    
+    ⇒ Member[] 와 같이 개발자 정의 배열은 Comparable 인터페이스 구현 필요
+    
+- Arrays.binarySearch()를 사용하기 위해선 Arrays.sort()로 먼저 정렬 필요
+
+### 실습
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(44).png)
+
+[얕은 복사 후 비교]
+
+- 배열 번지 비교: orginal(100), clone1(400)의 번지 비교
+- 1차 배열 항목 값 비교: original[0]의 번지(200)와 [1](300)번지 비교
+    
+    ⇒ clone1은 original을 얕은 복사 했으므로 original[0], [1]의 항목을 각각 가리키고 있음
+    
+    ⇒ clone1[0], [1]에는 original[0], [1]의 주소값이 저장됨
+    
+- 중첩 배열 항목 값 비교
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(45).png)
+    
+    ⇒ original, clone1이 가리키는 항목(1,2,3,4)가 서로 같으므로 true
+
+[깊은 복수 후 비교]
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(46).png)
+
+- 배열 번지 비교: false `(100 ≠ 200)`
+- 1차 배열 항목 값 비교: false `(300 ≠ 500 && 400 ≠ 600)`
+- 중첩 배열 항목 값 비교: true `(1 == 1 && 2 == 2 && 3 == 3 && 4 == 4)`
+
+## **11.12 포장 클래스**
 
 ## 참고자료
 
