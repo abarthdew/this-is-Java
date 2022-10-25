@@ -31,6 +31,9 @@
 [11.11 Arrays 클래스(2)](#1111-arrays-클래스2)   
     [- 실습](#실습)   
 [11.12 포장 클래스](#1112-포장-클래스)   
+[11.13 Math, Random 클래스](#1113-math-random-클래스)   
+[11.14 Date,Calendar 클래스](#1114-datecalendar-클래스)   
+[11.15 Format 클래스](#1115-format-클래스)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -442,6 +445,89 @@ String str = new String(bytes, 0, readByteNo - 2);
 - 중첩 배열 항목 값 비교: true `(1 == 1 && 2 == 2 && 3 == 3 && 4 == 4)`
 
 ## **11.12 포장 클래스**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(47).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(48).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(49).png)
+
+- obj는 Wrapper 객체
+- obj.byteValue(): obj는 Byte의 Wrapper 객체며, byteValue()를 통해 Byte Wrapper 객체 안의 byte 값이 리턴됨
+- obj.charValue(): obj는 Character의 Wrapper 객체며, charValue()를 통해 Character Wrapper 객체 안의 char 값이 리턴됨
+- obj.intValue(): obj는 Integer의 Wrapper 객체며, intValue()를 통해 Integer Wrapper 객체 안의 int 값이 리턴됨
+
+```java
+Integer obj = 100; // 자동 박싱
+
+List<Integer> list = new ArrayList<Integer>(); // List 컬렉션에서는 객체만 저장 가능하므로 int가 아닌 Integer
+list.add(200); // 200은 int지만 Integer로 자동 박싱됨
+```
+
+- 자동 박싱: 100이라는 int 값을 포장 클래스에 대입하면, 자동 박싱이 일어남
+
+```java
+Integer obj = new Integer(200);
+int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체 대입 가능)
+```
+
+- 자동 언박싱: 기본 타입에 포장 객체 대입 가능
+- 언박싱 정리
+1. 객체가 기본 타입에 대입이 될 때
+2. 객체가 연산이 될 때
+    
+    ⇒ 이 객체는 반드시 Wrapper 객체가 되어야 언박싱 가능
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(50).png)
+
+- Wrapper 클래스는 기본 값을 랩핑할 용도로만 사용되지 않고, 문자열을 기본 타입으로 변환해서 활용할 경우에도 사용됨
+- Byte.parseByte(”10”): 문자열 “10”을 byte 타입으로 변환하고 싶을 때, Byte Wrapper 클래스의 정적 메서드인 parseByte()를 사용해 변환
+- Integer.parseInt(”1000”): 문자열 “1000”을 int 값으로 변환하고 싶을 때
+- 포장 객체는 객체이므로 ==, ≠가 아닌 equals() 메서드로 내부 값 비교
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(51).png)
+    
+- **예외: boolean, char, byte, short, int는 ==, ≠ 사용 가능**
+    
+    ⇒ 번지 비교가 아닌, 객체 안의 값을 비교함
+    
+    ⇒ 다만, `byte`, `short`, `int`는 **-128 ~ 127 범위**만 ==, ≠ 가능하며, 이 범위를 넘어서는 값은 equals()로 비교 가능
+    
+
+## ****11.13 Math, Random 클래스****
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(52).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(53).png)
+
+- 난수를 얻는 방법
+    1. Math.randon() 사용
+        
+        ⇒ 1 ~ n 사이 정수 중, 시작 수가 start인 임의의 정수
+        
+        ```java
+        int num = (int) (Math.random() * n) + start;
+        ```
+        
+    2. java.util 패키지 내 Random 클래스 사용
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(54).png)
+
+- 종자값이 달라지만 다른 난수를 얻음
+
+## ****11.14 Date,Calendar 클래스****
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(55).png)
+
+- 날짜, 시간을 얻어내는 클래스
+- Date: 날짜를 얻는다기 보다, 현재 시간의 날짜를 표현하는 클래스. 현재 시간의 스냅샷, 현  시점의 바로 그 값을 가지고 있는 객체를 만들 때 사용. **즉, 객체는 생성되는 순간의 시스템의 날짜를 가지고 있게 됨.**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(56).png)
+
+- Calender는 생성자를 이용해 객체를 만들지 않고, getInstance()를 이용해 현재 시스템의 날짜로 만든 달력 객체를 리턴해 줌
+
+## ****11.15 Format 클래스****
 
 ## 참고자료
 
