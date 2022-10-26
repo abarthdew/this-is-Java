@@ -34,6 +34,8 @@
 [11.13 Math, Random 클래스](#1113-math-random-클래스)   
 [11.14 Date,Calendar 클래스](#1114-datecalendar-클래스)   
 [11.15 Format 클래스](#1115-format-클래스)   
+[11.16 java.time 패키지(1)](#1116-javatime-패키지1)   
+[11.16 java.time 패키지(2)](#1116-javatime-패키지2)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -495,7 +497,7 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
     ⇒ 다만, `byte`, `short`, `int`는 **-128 ~ 127 범위**만 ==, ≠ 가능하며, 이 범위를 넘어서는 값은 equals()로 비교 가능
     
 
-## ****11.13 Math, Random 클래스****
+## **11.13 Math, Random 클래스**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(52).png)
 
@@ -516,7 +518,7 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 
 - 종자값이 달라지만 다른 난수를 얻음
 
-## ****11.14 Date,Calendar 클래스****
+## **11.14 Date,Calendar 클래스**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(55).png)
 
@@ -527,7 +529,52 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 
 - Calender는 생성자를 이용해 객체를 만들지 않고, getInstance()를 이용해 현재 시스템의 날짜로 만든 달력 객체를 리턴해 줌
 
-## ****11.15 Format 클래스****
+## **11.15 Format 클래스**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(57).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(58).png)
+
+- {0}, {1}, {2}: 매개변수이며, 이 자리에는 어떠한 데이터가 들어옴
+    
+    ⇒ 0번 인덱스, 1번 인덱스, 2번 인덱스 데이터
+    
+- MessageFormat 클래스의 정적 메서드인 format(message, id, name, tel)을 호출
+    
+    ⇒ message는 String message 변수에 대입된 값 자체며, 그 뒤부터(id, name, tel)이 각각 0, 1, 2번 인덱스 데이터가 되어 result 변수에 리턴됨
+    
+- 매개 변수 값을 배열로 만드는 방법도 있으며, 이때 이 배열을 파라미터로 넘김
+    
+    ```java
+    Object[] arguments = {id, name, tel};
+    MessageFormat.format(text, argument);
+    ```
+
+## **11.16 java.time 패키지(1)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(59).png)
+
+- 날짜와 시간을 조작한다 = 날짜를 연산한다
+- `java.time`: Local 접두사로 봐서, 현재 시스템 날짜 시간 정보를 가지고 있는 객체들을 모은 패키지(국제 표준)
+- `java.time.chrono`: 세계 표준에 맞지 않는 달력 등을 구현할 때, 표준 달력 이외의 시스템을 사용하고 싶을 때 사용(음력 등)
+- `java.time.format`: 문자열을 파싱에서 날짜, 시간 정보를 만들거나, 날짜, 시간 정보를 문자열로 파싱
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(60).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(61).png)
+
+- LocalDateTime: 날짜, 시간 정보를 모두 가지고 있음
+- ZonedDateTime: 날짜, 시간, 존 정보를 모두 가지고 있음(+는 시차, [Asia/Seoul]은 지역을 의미함)
+    
+    ⇒ `getAbailableDs()` 메서드를 통해 어떤 존 아이디를 사용할 수 있는지 알 수 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(62).png)
+
+- Instant는 LocalDateTime 등과 같이 날짜를 얻고 조작하는 데 사용되지 않고, 단순히 날짜 정보만 전달함
+- 현재 시간을 가지고 있는 객체로서만 의미가 있음
+- Local 컴퓨터(시스템)의 날짜 및 시간을 이용하는 게 아닌, 협정 세계시를 기준으로 함
+
+## **11.16 java.time 패키지(2)**
 
 ## 참고자료
 
