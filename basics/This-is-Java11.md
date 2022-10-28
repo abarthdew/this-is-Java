@@ -37,6 +37,8 @@
 [11.16 java.time 패키지(1)](#1116-javatime-패키지1)   
 [11.16 java.time 패키지(2)](#1116-javatime-패키지2)   
 [11.16 java.time 패키지(3)](#1116-javatime-패키지3)   
+[11.16 java.time 패키지(4)](#1116-javatime-패키지4)   
+[11.16 java.time 패키지(5)](#1116-javatime-패키지5)   
 [참고자료](#참고자료)   
 
 ## **11.1 자바 API 도큐먼트**
@@ -582,6 +584,24 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(64).png)
 
 ## **11.16 java.time 패키지(3)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(65).png)
+
+- with() 메서드에 TemporalAdjuster adjuster 매개변수가 오면 상대 변경을 할 수 있음
+    
+    ⇒ 현재 날짜를 기준으로 상대적인 날짜를 리턴
+    
+- TemporalAdjuster 타입 객체는 위 그림의 **메서드(매개변수) 표**에 나와있는 정적 메서드로 얻을 수 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(66).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(67).png)
+
+- java.time 패키지 내 자바 문서 TemporalAdjusters
+
+## **11.16 java.time 패키지(4)**
+
+## **11.16 java.time 패키지(5)**
 
 ## 참고자료
 
