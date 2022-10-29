@@ -601,7 +601,56 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 
 ## **11.16 java.time 패키지(4)**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(68).png)
+
+- isAfter(): 현재 날짜 객체가 매개값으로 들어 온 날짜 객체보다 이후 날짜인가? (true/false)
+- isBefore(): 현재 날짜 객체가 매개값으로 들어 온 날짜 객체보다 이전 날짜인가? (true/false)
+- until()
+    - 날짜 차이: 현재 날짜 객체와 매개값으로 들어 온 날짜 객체의 차이를 Period 객체로 리턴
+    - 시간 차이:
+        - 시간, 분, 연도, 달, 일 차이에 대한 단위를 TemporalUnit 인터페이스 타입으로 줌(이 인터페이스를 구현한 것이 ChronoUnit.YEAR, MONTH, 등)
+        - 현재 날짜 객체와 첫번째 매개값으로 들어 온 Temporal 객체와의 TemporalUnit 단위(연도, 달, 일 등) 차이를 리턴
+- between()
+    - Period:
+        - Period가 년, 달, 일의 양을 나타내는 클래스이기 때문에, between()은 날짜 차이만 리턴
+        - 정적 메서드이기 때문에, 비교할 날짜 메서드(시작, 끝 날짜)를 직접 줘야 함
+    - Duration:
+        - Period가 날짜 정보를 가지고 있는 클래스라면, Duration은 시간 정보를 가지고 있는 클래스
+        - Duration의 between()은 시간 차이를 구함
+    - ChronoUnit:
+        - ChronoUnit이라는 열거 타입 상수로도 날짜, 시간 비교 가능
+        - 매개 변수로 들어 온 시작, 끝 날짜를 가지고 전체 년, 달, 주 등 전체 단위 날짜의 차이를 리턴
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(69).png)
+
+- Period와 ChronoUnit의 between() 메서드 차이: 2014.3과 2015.5를 비교할 때
+    - Period.betwee(): 5-3=2 (단순히 달만 비교)
+    - ChronoUnit.between(): 2015.5-2014.3=12 (전체 날짜 비교)
+
 ## **11.16 java.time 패키지(5)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(70).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(71).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(72).png)
+
+- 표준화된 포맷터 사용(날짜 형식을 저장한 상수 개념)
+```java
+    LocalDate localDate = LocalDate.parse("2024.05.21", ISO_LOCAL_DATE);
+```
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(73).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(74).png)
+
+- 자바 문서의 DateTimeFormatter 하단에서 다양한 날짜 및 시간 포맷 형식을 접할 수 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(75).png)
+
+- parse()와 format() 메서드의 차이점
+    - parse(): 문자열 → 날짜, 시간
+    - format(): 날짜, 시간 → 문자열
 
 ## 참고자료
 
