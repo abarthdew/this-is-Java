@@ -1,6 +1,5 @@
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 public class DateTime3Exam {
@@ -52,7 +51,6 @@ public class DateTime3Exam {
 
         targetDateTime = now.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)); // 현재 기준 지난 월요일
         System.out.println(targetDateTime); // 2022-10-24T23:45:09.405
-
 
     }
 }
