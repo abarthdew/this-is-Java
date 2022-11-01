@@ -1,5 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "12.4.synchronized",
+        "12.3.thread",
         "12.2.threadName",
         "12.2.thread2",
         "12.2.thread",
@@ -10,6 +12,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "12.3.thread"
+        "12.4.synchronized2"
     ]
 }
