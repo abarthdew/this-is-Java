@@ -326,7 +326,6 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
         - 스레드는 한번 생성되고 종료되면 재사용이 불가능
         - 스레드를 다시 사용 하고 싶다면 새로 생성 후 start() 해서 실행 대기 상태로 만들어 주어야 함
 
-
 ## 참고자료
 
 [강의교안_12장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_12%EC%9E%A5.ppt)
