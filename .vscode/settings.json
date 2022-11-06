@@ -1,11 +1,14 @@
 {
     "java.project.sourcePaths": [
+        "12.8.group",
+        "12.7.daemon",
         "12.6.yield",
         "12.6.wait2",
         "12.6.wait",
         "12.6.stop",
         "12.6.sleep",
         "12.6.join",
+        "12.6.interrupt",
         "12.5.thread",
         "12.4.synchronized2",
         "12.4.synchronized",
@@ -20,6 +23,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "12.6.interrupt"
+        "12.8.group2"
     ]
 }

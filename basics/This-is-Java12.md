@@ -577,6 +577,216 @@ public class StatePrintThread extends Thread {
 
 ## **12.7 데몬 스레드**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(37).png)
+
+- `thread.setDaemon(true)`: AutoSaveThread 스레드는 main 스레드의 데몬 스레드가 됨
+- 마지막 }에서 main 스레드가 종료되면 AutoSaveThread는 자동으로 종료됨
+
+## **12.8 스레드 그룹**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(38).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(39).png)
+
+- 스레드 그룹을 계층적으로 만들어 관리할 수 있음
+- 자동 생성되는 스레드 그룹도 있음
+    
+    ⇒ 자바 프로그램을 실행하게 되면, system 그룹과 system의 하위 그룹인 main 그룹이 자동으로 생성됨
+    
+- 스레드는 기본적으로 자신을 생성한 스레드와 같은 그룹에 속하게 됨
+    
+    ⇒ main 그룹에 있는 main 스레드에서 스레드를 생성하게 되면, main 그룹에 자동으로 소속됨
+    
+    ⇒ sub 그룹에 소속된 sub 스레드가 스레드를 생성하게 되면, 자동적으로 sub 그룹에 소속됨
+    
+- main 스레드가 소속된 그룹이 main 그룹이므로, main 스레드가 생성하는 또 다른 스레드는 모두 기본적으로 main 그룹에 속함
+    
+    ⇒ 명시적으로 스레드 그룹에 포함시키지 않으면 기본적으로 main 그룹에 속함
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(40).png)
+
+```java
+ThreadGroup tg = new ThreadGroup(String name); // 현재 스레드가 속한 그룹의 하위 그룹으로 생성됨
+ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그룹 밑의 하위 그룹으로 생성됨
+```
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(41).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(42).png)
+
+### 실습 - 12.7.group2
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(43).png)
+
+- WorkThread가 스레드 그룹에 포함되기 위해서는
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(44).png)
+
+- Thread의 생성자를 호출해 주어야 함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(45).png)
+
+- 스레드 그룹은 생성자 외부에서 받도록 하고, 스레드 이름을 두 번째 매개 값으로 받음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(46).png)
+
+- run() 메서드 재정의: 무한 루프를 돌되, 1초 동안 쉬게 해 줌
+- 나중에 interrupt() 메서드가 호출될 시 예외가 발생하도록 하기 위함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(47).png)
+
+- 이 코드를 실행하는 것은 main 메서드, 즉 main 스레드 이므로, 결국 main 스레드가 포함된 main 그룹에 myGroup이 하위 그룹으로 만들어짐
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(48).png)
+
+- main 그룹 밑에 main 스레드, main 그룹 밑에 myGroup
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(49).png)
+
+- 다음 단계: myGroup 밑에 workThreadA, workThreadB를 포함시킴
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(50).png)
+
+- 처음 JVM 이 실행되면,
+    1. system이라는 스레드 그룹 생성
+    2. system 밑에 main 그룹 생성
+    3. main 그룹 밑에 main 스레드 포함
+    4. main 그룹의 서브 그룹으로 myGroup 포함
+    5. myGroup 밑에 workThreadA, workThreadB 포함
+- 출력 결과
+    
+    ```java
+    // main 스레드 그룹의 list() 메서드 출력 내용
+    java.lang.ThreadGroup[name=main,maxpri=10]
+        Thread[main,5,main]
+        java.lang.ThreadGroup[name=myGroup,maxpri=10]       
+            Thread[workThreadA,5,myGroup]
+            Thread[workThreadB,5,myGroup]
+    ```
+    
+    - java.lang.ThreadGroup[name=main,maxpri=10]
+        - 스레드 그룹의 이름이 main 이며, 이 스레드 그룹에 포함된 스레드가 가질 수 있는 최대 우선순위는 10번
+    - Thread[main,5,main]
+        - 이 스레드 그룹에 포함된 스레드 중 하나의 이름은 main 이고, 우선순위는 5며, 이 스레드가 포함된 스레드 그룹의 이름은 main임
+    - java.lang.ThreadGroup[name=myGroup,maxpri=10]
+        - main 그룹 내 서브 그룹으로 myGroup이 있으며, 이 그룹에 소속된 스레드가 가질 수 있는 최대 우선순위는 10번
+    - Thread[workThreadA,5,myGroup]
+        - myGroup에 포함된 스레드 workThreadA, 우선순위는 5번이며, 이 스레드가 포함된 그룹 이름은 myGroup
+    - Thread[workThreadB,5,myGroup]
+        - myGroup에 포함된 스레드 workThreadB, 우선순위는 5번이며, 이 스레드가 포함된 그룹 이름은 myGroup
+
+## **12.9 스레드풀(1)**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(51).png)
+
+- 브라우저에서 웹 서버에 접근하게 되면, 웹 서버는 하나의 스레드를 만들어 처리함
+- 수천 개의 브라우저가 웹 서버에 접근하게 되면, 스레드도 수천 개 만들어져 동시에 실행됨
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(52).png)
+    
+    ⇒ 스레드 폭증, CPU 과부하, 웹 서버 메모리도 많이 사용됨
+    
+    ⇒ 웹 서버에서 실행하는 서버 애플리케이션 성능이 급격히 저하됨
+    
+- `**스레드 풀**`: 아무리 많은 브라우저가 접근하더라도, 웹 서버 내 스레드 개수를 적절히 조절
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(53).png)
+    
+    - 여러 작업 요청이 들어오면, 이 요청들을 큐 라는 공간에 저장해 놓고, 작업 당 스레드가 처리하도록 함
+    - 즉, 제한된 스레드가 큐에 있는 작업을 하나씩 맡아 처리하는 방식
+    - 작업을 다 처리한 스레드는 큐에서 다음 작업을 가져와 처리하는 것을 반복
+    - 즉, 스레드는 작업을 하나 처리하고 일회용적으로 종료되는 것이 아니라, 계속 큐에 있는 작업을 가져와 처리
+        
+        ⇒ 제한된 갯수를 사용하더라도 충분히 작업들을 처리 가능
+        
+- 애플리케이션이 작업 요청을 하기 위해 큐에 작업 내용 저장해 두면 → 스레드가 작업을 하나씩 가져와 처리 → 그 결과를 애플리케이션에 전달
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(54).png)
+    
+
+### ExecutorService, 즉, 스레드 풀의 동작 원리
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(55).png)
+
+- ExecutorService, 즉, 스레드 풀 안에는 작업을 저장하는 공간인 `작업 큐`가 있음
+- 작업 큐에 있는 작업을 가지고 와서 처리해 주는 `스레드`들이 제한된 갯수만큼 존재함
+- `애플리케이션`은 스레드가 작업을 처리하도록 요청만 함
+    - 스레드에서 실행할 수 있는 건 Runnable 객체
+    - 애플리케이션은 단지 Runnable 이라는 객체를 만들어 작업 큐에 저장하기만 함
+        
+        → 작업 큐에 넣어진 Runnable 객체, 즉, 작업 객체는 자동적으로 스레드 풀에서 처리
+        
+- 스레드는 작업 큐에 있는 작업을 가지고 처리 후 → 처리 결과를 애플리케이션으로 전달함
+- 애플리케이션은 이 결과 값을 받아 또 다른 작업 진행
+- 스레드 풀을 사용함으로써, 아무리 많은 작업 요청이 들어와도, 작업 큐의 작업량만 늘어날 뿐 스레드의 갯수가 늘어나는 것은 아님
+- 스레드는 제한된 갯수만 사용하고, 이를 가지고 작업 큐에 있는 작업들을 하나씩 처리함
+- 갑자기 많은 요청이 들어오면, 작업 큐의 용량만 커질 뿐 스레드의 갯수는 증가되지 않음 → 갑작스러운 애플리케이션의 성능 저하는 발생하지 않음
+- 스레드 풀은 서버 애플리케이션, 즉, 서버 프로그램을 만들 때 많이 사용함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(56).png)
+
+- 스레드 풀은 Executors 클래스의 두 가지 정적 메서드 중 하나로 생성할 수 있음
+- 초기 스레드 수: 스레드 풀을 처음 만들 때 **기본적으로 들어가 있는 스레드 수**
+- 코어 스레드 수: 스레드 풀에 스레드가 증가되어 많은 스레드가 있을 경우, 사용되지 않는 스레드를 풀에서 제거하는데, **제거하지 않고 유지해야 하는 최소한의 스레드 수**
+- 최대 스레드 수: 스레드 풀에서 스레드를 계속 생성할 때, **최대 생성할 수 있는 스레드 수**
+- `newCachedThreadPool()`
+    - 최대 스레드 수: 이론적으로 int 값의 최대 값 만큼 생성 가능()
+        
+        ⇒ 어디까지나 이론적인 얘기고, 실제로는 이 정도 생성되지 않고 메모리 상황에 따라 다름
+        
+    - 놀고 있는 스레드가 있으면 60초 제한 기준으로 풀에서 제거됨
+- `newFixedThreadPool(int nThreads)`:
+    - 한 번 생성된 스레드는 풀에서 제거되지 않고 계속 남아있음
+    - 코어 스레드 개수 = 최대 스레드 개수이기 때문
+    - 놀고 있는 스레드라 하더라도 개수가 줄지 않음
+    
+    ```java
+    ExecutorService executorService = Executors.newFixedThreadPool(
+    	Runtime.getRuntime().availableProcessors(); // 최대 스레드 갯수
+    );
+    ```
+    
+    - `availableProcessors()`: 현재 CPU의 코어 수
+        
+        ⇒ 가장 이상적인 병렬 처리: CPU가 가진 코어 수 만큼 스레드를 만들어 씀
+        
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(57).png)
+
+- `newCachedThreadPool()`와 `newFixedThreadPool(int nThreads)`는 내부적으로 ThreadPoolExecutor를 만들어 리턴함
+    
+     ⇒ 때문에 직접 ThreadPoolExecutor를 만들 수 있음
+    
+- 스레드 풀을 직접 만들 경우 다양한 옵션을 줄 수 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(58).png)
+
+- 멀티 스레드 애플리케이션은 최종 하나의 스레드가 종료되기 전까지, 애플리케이션은 종료되지 않음
+- 즉, 스레드 풀의 스레드가 계속 실행하고 있다면, 애플리케이션은 종료되지 않음
+- 따라서, 애플리케이션을 강제적으로 종료하고 싶다면, 스레드 풀을 종료해 모든 스레드를 종료해야 함
+- 스레드풀 종료 메서드
+    - `shouDownNow()`: 미처리된 작업 때문에 가급적이면 사용하지 않는 편이 좋음
+    - `awaitTermination()`: 시간 제한을 주고 중지
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(59).png)
+
+- Callable 객체를 만들 때 <T> 에는 리턴할 결과 값(애플리케이션이 받아야 할 결과 값)의 타입을 명시해 줌
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(60).png)
+
+- **작업 처리 요청**: 애플리케이션이 작업 큐에 Runnable 또는 Callable 객체를 넣는 행위를 뜻함
+- 애플리케이션은 ExecutorService에 있는 execute(), submit() 메서드를 이용해 Runnable, Callable 객체를 작업 큐에 넣을 수 있음
+- 작업 처리 도중 예외가 발생할 경우
+    - `execute()`
+        - 스레드 자체가 종료됨 → 새로운 스레드를 만들어 갯수 유지
+        - Runnable 객체를 처리하던 t1이라는 스레드에 예외가 발생했다면, t1은 스레드 풀에서 제거되고, t2가 새로 생성됨
+    - `submit()`
+        - 스레드를 제거하지 않고, 현재 작업 중인 작업을 버린 후 다음 작업을 가져와 계속 실행
+        - Runnable1 객체를 처리하던 t1이라는 스레드에 예외가 발생했다면, t1은 현재 진행 중인 작업을 버리고 Runnable2를 처리함
+        - 스레드는 재사용하는 게 좋음 → 스레드를 생성하게 되면 CPU와 메모리를 사용해야 하기 때문에
+
+## **12.9 스레드풀(2)**
 
 ## 참고자료
 
