@@ -1,5 +1,13 @@
 {
     "java.project.sourcePaths": [
+        "12.6.yield",
+        "12.6.wait2",
+        "12.6.wait",
+        "12.6.stop",
+        "12.6.sleep",
+        "12.6.join",
+        "12.5.thread",
+        "12.4.synchronized2",
         "12.4.synchronized",
         "12.3.thread",
         "12.2.threadName",
@@ -12,6 +20,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "12.4.synchronized2"
+        "12.6.interrupt"
     ]
 }

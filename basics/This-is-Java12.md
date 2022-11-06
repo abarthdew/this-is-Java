@@ -11,6 +11,11 @@
 [12.4 동기화 메소드와 동기화 블록](#124-동기화-메소드와-동기화-블록)   
     [- 여러 스레드가 공유하는 객체가 항상 변할 수 있다는 문제점을 해결할 방법](#여러-스레드가-공유하는-객체가-항상-변할-수-있다는-문제점을-해결할-방법)   
 [12.5 스레드 상태](#125-스레드-상태)   
+    [- 실습 - 12.5. thread](#실습---125-thread)   
+    [- 실습 - 12.5. thread (detail)](#실습---125-thread-detail)   
+[12.6 스레드 상태 제어(1)](#126-스레드-상태-제어1)   
+[12.6 스레드 상태 제어(2)](#126-스레드-상태-제어2)   
+[12.7 데몬 스레드](#127-데몬-스레드)   
 [참고자료](#참고자료)   
 
 ## **12.1 멀티 스레드 개념**
@@ -300,14 +305,16 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 ## **12.5 스레드 상태**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/40f6c4b2-d7c1-4583-8290-63742e6758fe/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(16).png)
 
 - 스레드 객체 생성: Thread는 new 연산자로 객체 생성 후 종료 시까지 여러 상태를 가질 수 있음
 - 실행 대기: start() 메서드를 호출하면 스레드는 실행 대기 상태가 됨
 - 실행: 실행 대기 상태에 있는 스레드는 CPU 스케줄로 인해 선택이 되면 실행되게 됨
 - 실행하다 실행 대기 상태가 되고, 또 실행하다 실행 대기 상태가 되는 것을 반복하다가, run() 메서드를 종료하게 되면 종료 상태가 됨
 - 실행 상태에서 실행 대기로 가지 않고, 일시 정지로 가는 경우도 있음
+    
     ⇒ 일시 정지 상태: waiting, time_waiting, blocked
+    
 - 일시 정지 상태에 있는 스레드는 다시 실행 대기 상태로 감 → 여기서 CPU 스케줄로 선택 받아서 실행하게 됨
 - **[표]**: 스레드 상태에 대한 열거 상수들
     - blocked
@@ -323,6 +330,253 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
     - terminated
         - 스레드는 한번 생성되고 종료되면 재사용이 불가능
         - 스레드를 다시 사용 하고 싶다면 새로 생성 후 start() 해서 실행 대기 상태로 만들어 주어야 함
+
+### 실습 - 12.5. thread
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(17).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(18).png)
+
+- java.lang → Thread → class Thread 의 중첩 클래스인 NESTED 클릭
+    
+    ⇒ Thread.State라는 열거 타입이 있는 것을 확인할 수 있음
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(19).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(20).png)
+
+- Enum으로 선언되어 있음을 확인할 수 있음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(21).png)
+
+- 위와 같은 열거 상수가 정의되어 있음을 확인할 수 있음
+
+### 실습 - 12.5. thread (detail)
+
+```java
+public class StatePrintThread extends Thread {
+    // 1. StatePrintThread는 targetThread의 상태를 계속해서 출력하는 스레드
+    
+    private Thread targetThread;
+
+		// 2. 생성 시 targetThread의 객체를 받아 필드에 저장
+    public StatePrintThread (Thread targetThread) { 
+        this.targetThread = targetThread;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            // 3. StatePrintThread 실행 시, targetThread의 상태를 얻어냄
+            Thread.State state = targetThread.getState();
+            // 4. 얻어 낸 targetThread의 상태를 출력
+            System.out.println("타겟 스레드 상태: " + state);
+            // 5. targetThread 상태가 NEW가 되면(처음 만들어졌으면) 이 스레드를 start() 시킴 -> targetThread의 run() 메서드 실행
+            if (state == Thread.State.NEW) { 
+                targetThread.start();
+            }
+            // 6. statePrintThread는 0.5초 주기로 반복문을 돌며 계속 targetThread의 상태를 출력함
+            // 7. 그러다 targetThread가 종료되면, while 문을 빠져나옴
+            if (state == Thread.State.TERMINATED) { 
+                break;
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {} 
+        }
+    }
+}
+```
+
+- **타겟 스레드 상태: NEW**
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(22).png)
+    
+    - new TargetThread 객체를 생성한 상태
+- **타겟 스레드 상태: RUNNABLE**
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(23).png)
+    
+    - targetThread.start()가 호출되면 실행 대기 상태가 됨
+    - 실행 대기 상태에서 CPU 스케줄로 선택되면 실행 상태가 됨
+        
+        ⇒ 실행 대기, 실행 상태 모두 포함 의미
+        
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(24).png)
+    
+    - RUNNABLE 상태는 targetThread가 for문을 실행할 단계의 상태임
+- 타겟 스레드 상태: RUNNABLE
+    - 실행 대기, 실행 상태를 오가며 상태가 변경되고 있음
+- 타겟 스레드 상태: RUNNABLE
+    - 실행 대기, 실행 상태를 오가며 상태가 변경되고 있음
+- **타겟 스레드 상태: TIMED_WAITING**
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(25).png)
+    
+    - 1.5초 동안 일시정지 되었을 때
+- 타겟 스레드 상태: TIMED_WAITING
+- 타겟 스레드 상태: TIMED_WAITING
+- **타겟 스레드 상태: RUNNABLE**
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(26).png)
+    
+    - 1.5초 뒤, 다시 targetThread가 for 문을 반복하며 RUNNABLE 상태가 됨
+    - CPU의 선택을 받아 실행, 대기 상태를 왔다 갔다 하며 실행과 대기를 반복함
+- 타겟 스레드 상태: RUNNABLE
+- **타겟 스레드 상태: TERMINATED**
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(27).png)
+    
+    - run() 종료, targetThread는 TERMINATED 상태가 됨
+- targetThread가 종료되면 statePrintThread도 break로 반복문을 빠져나감 → 종료
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(28).png)
+    
+
+## **12.6 스레드 상태 제어(1)**
+
+- 스레드 상태를 변화시키기 위해서는 메서드를 사용해야 함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(29).png)
+
+- 처음 스레드를 생성하게 되면, **실행 대기** 상태가 됨
+    
+    → CPU 스케줄러에 의해 선택되면, **실행** 상태가 됨
+    
+    → 실행 상태에서 시간 할당량이 다 되면 다시 **실행 대기** 상태가 됨
+    
+- `yield() 호출`: **실행** 중, 시간 할당량이 되기 전에, **실행 대기** 상태로 만듦
+- `sleep() 호출`:
+    - **실행** 중, timed_watiting이 되어, 주어진 시간 동안 **일시 정지** 상태로 만듦
+    - 주어진 시간이 지나면 다시 **실행 대기** 상태가 됨
+- `join() 호출`:
+    - **실행** 중, **일시 정지** 상태로 만듦
+    - join() 메서드를 호출한 스레드가 종료되면 다시 **실행 대기** 상태가 됨
+- `wait() 호출`:
+    - **실행** 중, **일시 정지** 상태가 됨
+    - wait()로 일시 정지된 스레드는 자기 스스로 실행 대기 상태가 될 수 없음
+    - 다른 스레드가 notify() 또는 notifyAll()을 실행해 줘야 일시 정지가 풀려 실행 **대기 상태**가 될 수 있음
+- `interrupt() 호출`:
+    - **일시 정지** 상태에서 호출되면 예외 발생, 예외 발생과 동시에 일시 정지 상태가 풀리며 **실행 대기** 상태로 갈 수 있음
+- `resume(), suspend()`: deplicated. 더 이상 사용하지 않음.
+- `stop()`:
+    - **실행** 중 호출하면 바로 **종료 상태**가 됨, 그러나 사용하지 않음
+    - 갑자기 실행 중 종료되면 프로그램 상태가 불안정해지기 때문에, 가급적 사용하지 않는 것을 권장
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(30).png)
+
+- 주어진 시간 동안 **일시 정지** → 주어진 시간 후 **실행 대기** 상태
+- 일시 정지 도중에 interrupt() 메서드가 호출되면 예외가 발생할 수 있기 때문에, 예외 처리 필수
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(31).png)
+
+- 실행 대기 상태인 스레드1, 스레드2가 있는 경우
+- 스레드1이 실행 중일 때, yield() 메서드 호출 시 스레드1은 즉시 실행 대기 상태가 됨
+    
+    ⇒ 스레드1과 동일하거나 보다 높은 우선순위를 갖는 스레드2가 실행할 수 있도록 함
+    
+- 즉, yield()는 현재 실행 상태인 스레드를 실행 대기 상태로 되돌리는 역할을 함
+- 보통 yield() 메서드는 무의미한 반복을 하지 않고, 다른 스레드에게 실행을 양보할 때 주로 사용됨
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(32).png)
+
+- 무의미한 반복 → work가 false가 될 경우, 다른 스레드에게 실행을 양보하는 코드
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(33).png)
+
+- join() 메서드 테스트를 위해서는 2개의 스레드가 필요
+- `스레드a`에서 `스레드b`를 start() → `스레드b` run()
+    
+    ⇒ `스레드a`에서 `스레드b.join()` 호출 → `**스레드b`가 아닌, `스레드 a`가 일시 정지 상태가 됨**
+    
+- `스레드b`가 run() 메서드를 종료할 때까지 `스레드a`를 **일시 정지** 상태로 만듦
+    
+    ⇒ `스레드b`가 run() 메서드를 종료하면, `스레드 a`는 일시 정지 상태에서 풀려나 **실행 대기** 상태가 됨
+    
+    ⇒ `스레드a`는 이후 순차적으로 코드를 실행해 나감
+    
+- 보통 스레드a가 계산 작업 클래스인 스레드b의 계산 결과를 받아 작업하는 경우에 사용
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(34).png)
+
+- `sleep()`, `yield()`, `join()`이 스레드가 가지는 메서드인 것에 반해, `wait()`, `notify()`, `notifyAll()`은 스레드 메서드가 아님
+    
+    ⇒ Object가 가지는 메서드(모든 객체가 가지고 있는 메서드)
+    
+- 일반 메서드는 `wait()`, `notify()`, `notifyAll()`를 호출할 수 없고, 동기화 메서드 또는 블록만 호출 가능함
+    
+    ⇒ (1), (2) 부분에만 사용 가능(공유 객체를 사용할 때 호출하는 메서드들이기 때문)
+    
+    ```java
+    // 동기화 메서드
+    synchronized void method () {
+    	// ...(1)
+    }
+    
+    void method() {
+    	// 동기화 블럭(메서드 일부분)
+    	synchronized(this) {
+    		// ...(2)
+    	}
+    }
+    ```
+    
+- `wait()`:
+    - 호출한 스레드는 일시 정지 상태가 되며, watiting pool에 스레드가 관리됨
+    - 일시 정지 된 스레드는 자기 스스로 실행 대기 상태로 갈 수 없음
+        
+        ⇒ 실행 상태인 다른 스레드가 notify(), notifyAll()을 호출해 줘야 실행 대기 상태로 갈 수 있음
+        
+- `wait(long timeout, [int nanos])`:
+    - wait()와는 달리 매개 값으로 들어 온 시간이 지나면 자동으로 대기 상태가 됨
+    - 매개 값인 timeout 시간이 지나기 전에, 다른 스레드가 notify(), notifyAll()을 호출해 주면, 그 즉시 실행 대기 상태로 감
+
+## **12.6 스레드 상태 제어(2)**
+
+### wait(), notify()를 이용해 공유 객체를 번갈아 사용하는 예제
+
+- 소비자 스레드가 데이터 소비, 생성자 스레드가 데이터 생성
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(35).png)
+
+- stop() 메서드는 스레드를 즉시 종료시키지만, 불안정한 종료가 되므로 권장하지 않음
+- 스레드의 종료: run() 메서드가 종료됨을 의미
+- 안전한 종료 방법:
+    1. stop 플래그로 run() 메서드의 정상 종료를 유도
+        
+        ⇒ 일시 정지 상태의 스레드를 종료하지는 못함
+        
+    2. interrupt() 메서드 사용
+        
+        ⇒ 일시 정지 상태인 스레드도 종료 가능
+        
+        ⇒ interrupt() 호출 시, 일시 정지 상태인 스레드에서 InterruptedException 발생
+        
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(36).png)
+
+- `Thread.sleep(1);` 와 같이 스레드가 일시 정지된 상태에서 `threadB.interrupt();` 와 같이 interrupt() 메서드 호출 시 → 예외 발생
+    
+    ⇒ while 반복문에서 catch로 내려와 스레드의 run() 메서드가 종료됨
+    
+- 실행 대기, 실행 상태에서는 InterruptExcaption이 발생하지 않음
+    
+    ⇒ 위 그림의 ThreadB에서 `Thread.sleep(1);` 코드가 없다면, `threadB.interrupt();` 와 같이 interrupt() 메서드가 호출되더라도 예외가 발생하지 않음
+    
+- **즉, interrupt() 메서드를 호출해도 일시 정지 코드가 있어야 예외가 발생하고, run() 메서드가 종료함**
+- 일시 정지 상태로 만들지 않고 whild 문을 빠져나오는 방법: `interrupted()`, `isInterrupted()` 사용
+    
+    ```java
+    // interrupt() 메서드가 호출되었으면 true, 아니면 false를 return
+    boolean status = Thread.interrupted(); // Thread의 정적 메서드 사용
+    boolean status = objThread.isInterrupted(); // Thread 객체를 생성한 후 인스턴스 메서드 사용
+    ```
+    
+
+## **12.7 데몬 스레드**
+
 
 ## 참고자료
 
