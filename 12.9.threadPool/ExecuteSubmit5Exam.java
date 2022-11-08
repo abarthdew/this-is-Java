@@ -26,6 +26,16 @@ public class ExecuteSubmit5Exam {
             // 즉, 스레드를 계속해서 재사용함
             // execute() 보다 효율적인 방법
             Thread.sleep(10);
+
+            /*
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2   
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-1   
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2   
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-1   
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2   
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-1   
+            총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2
+             */
         }
 
         executorService.shutdown();
