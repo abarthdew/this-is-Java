@@ -1128,7 +1128,9 @@ executorService.submit(runnable);
     
     
     | ↓ (스레드 실행) | 작업 도중 interrupt() 호출: InterruptedException e |
+    | --- | --- |
     | ↓ (스레드 실행) |  |
+    | --- | --- |
     | ↓ (스레드 실행) | 작업 도중 예외 발생: ExecuteException e |
 
 ### 실습 - 12.9.blocking
