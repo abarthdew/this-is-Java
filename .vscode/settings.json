@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
+        "12.9.threadPool",
         "12.8.group2",
         "12.8.group",
         "12.7.daemon",
@@ -24,6 +25,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "12.9.threadPool"
+        "12.9.blocking"
     ]
 }
