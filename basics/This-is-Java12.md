@@ -22,7 +22,7 @@
     [- ExecutorService, 즉, 스레드 풀의 동작 원리](#executorservice-즉-스레드-풀의-동작-원리)   
 [12.9 스레드풀(2)](#129-스레드풀2)   
     [- 실습 - 12.9.ExecuteSubmit4Exam.java](#실습---129executesubmit4examjava)   
-    [실습 - 12.9.blocking](#실습---129blocking)   
+    [- 실습 - 12.9.blocking](#실습---129blocking)   
 [12.9 스레드풀(2)](#129-스레드풀3)   
 [참고자료](#참고자료)   
 
