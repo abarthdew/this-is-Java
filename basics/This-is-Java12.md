@@ -17,10 +17,13 @@
 [12.6 스레드 상태 제어(2)](#126-스레드-상태-제어2)   
 [12.7 데몬 스레드](#127-데몬-스레드)   
 [12.8 스레드 그룹](#128-스레드-그룹)   
-    [- 실습 - 12.7.group2](#결론)   
+    [- 실습 - 12.7.group2](#실습---127group2)   
 [12.9 스레드풀(1)](#129-스레드풀1)   
     [- ExecutorService, 즉, 스레드 풀의 동작 원리](#executorservice-즉-스레드-풀의-동작-원리)   
 [12.9 스레드풀(2)](#129-스레드풀2)   
+    [- 실습 - 12.9.ExecuteSubmit4Exam.java](#실습---129executesubmit4examjava)   
+    [실습 - 12.9.blocking](#실습---129blocking)   
+[12.9 스레드풀(2)](#129-스레드풀3)   
 [참고자료](#참고자료)   
 
 ## **12.1 멀티 스레드 개념**
@@ -793,7 +796,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 
 ## **12.9 스레드풀(2)**
 
-### 실습 - 12.9. ExecuteSubmit4Exam.java
+### 실습 - 12.9.ExecuteSubmit4Exam.java
 
 - 예외 발생 시켜 보기 - **execute() 의 경우**
 
