@@ -793,6 +793,360 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 
 ## **12.9 스레드풀(2)**
 
+### 실습 - 12.9. ExecuteSubmit4Exam.java
+
+- 예외 발생 시켜 보기 - **execute() 의 경우**
+
+```java
+for (int i=0; i<10; i++) {
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;
+            int poolSize = threadPoolExecutor.getPoolSize();
+            String threadName = Thread.currentThread().getName();
+            System.out.println("총 스레드 개수: " + poolSize + " / 작업 스레드 이름: " + threadName);
+            int value = Integer.parseInt("삼"); // 예외 발생 지점
+        }
+    };
+    executorService.execute(runnable);
+    Thread.sleep(10);
+}
+```
+
+- 출력결과
+
+```java
+총 스레드 개수: 1 / 작업 스레드 이름: pool-1-thread-1
+Exception in thread "pool-1-thread-1" java.lang.NumberFormatException: For input string: "삼"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:580) 
+        at java.lang.Integer.parseInt(Integer.java:615) 
+        at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)        
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-3
+Exception in thread "pool-1-thread-3" java.lang.NumberFormatException: For input string: "삼"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:580) 
+        at java.lang.Integer.parseInt(Integer.java:615) 
+        at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)        
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2
+Exception in thread "pool-1-thread-2" java.lang.NumberFormatException: For input string: "삼"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:580) 
+        at java.lang.Integer.parseInt(Integer.java:615) 
+        at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)        
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-4   
+Exception in thread "pool-1-thread-4" java.lang.NumberFormatException: For input string: "삼"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:580) 
+        at java.lang.Integer.parseInt(Integer.java:615) 
+        at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-5
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)        
+Exception in thread "pool-1-thread-5" java.lang.NumberFormatException: For input string: "삼"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        at java.lang.Integer.parseInt(Integer.java:580) 
+        at java.lang.Integer.parseInt(Integer.java:615) 
+        at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-6
+      at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+      at java.lang.Thread.run(Thread.java:748)        
+Exception in thread "pool-1-thread-6" java.lang.NumberFormatException: For input string: "삼"
+      at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+      at java.lang.Integer.parseInt(Integer.java:580) 
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-7   
+      at java.lang.Integer.parseInt(Integer.java:615) 
+      at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+      at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+      at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+      at java.lang.Thread.run(Thread.java:748)        
+Exception in thread "pool-1-thread-7" java.lang.NumberFormatException: For input string: "삼"
+      at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+      at java.lang.Integer.parseInt(Integer.java:580) 
+      at java.lang.Integer.parseInt(Integer.java:615)
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-8   
+      at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-9   
+      at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+      at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+      at java.lang.Thread.run(Thread.java:748)        
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-10
+Exception in thread "pool-1-thread-9" 
+Exception in thread "pool-1-thread-8" java.lang.NumberFormatException: For input string: "삼"
+      at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+      at java.lang.Integer.parseInt(Integer.java:580)
+      at java.lang.Integer.parseInt(Integer.java:615) 
+      at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+      at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+      at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+      at java.lang.Thread.run(Thread.java:748)        
+java.lang.NumberFormatException: For input string: "삼" 
+      at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+      at java.lang.Integer.parseInt(Integer.java:580) 
+      at java.lang.Integer.parseInt(Integer.java:615) 
+      at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+      at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+      at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+      at java.lang.Thread.run(Thread.java:748)        
+Exception in thread "pool-1-thread-10" java.lang.NumberFormatException: For input string: "삼"
+      at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+      at java.lang.Integer.parseInt(Integer.java:580) 
+      at java.lang.Integer.parseInt(Integer.java:615) 
+      at ExecuteSubmit4Exam$1.run(ExecuteSubmit4Exam.java:19)
+      at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+      at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+      at java.lang.Thread.run(Thread.java:748)
+```
+
+- 분석
+    
+    
+    | thread-1 |
+    | --- |
+    - 작업 큐에 작업이 쌓임 → 스레드 생성 → 작업 처리
+        - 출력: `총 스레드 개수: 1` / 작업 스레드 이름: pool-1-thread-1
+            
+            ⇒ 예외 발생 → thread-1 스레드 종료 → 풀에서 제거됨
+            
+    
+    | thread-3 | thread-2 |
+    | --- | --- |
+    - 작업 큐에 작업이 많이 쌓여있기 때문에, 스레드 풀은 최대 스레드 2개를 생성 → 작업 처리
+        - `총 스레드 개수: 2` / 작업 스레드 이름: pool-1-thread-3
+            
+            ⇒ 예외 발생 → thread-3 종료 → 풀에서 제거됨
+            
+    
+    | thread-2 | thread-4 |
+    | --- | --- |
+    - 스레드 풀은 개수를 유지하기 위해 새로운 스레드를 하나 더 생성, 스레드 풀은 최대 스레드 2개를 유지 → 작업 처리
+        - `총 스레드 개수: 2` / 작업 스레드 이름: pool-1-thread-2
+            
+            ⇒ 예외 발생 → thread-2 종료 → 풀에서 제거됨
+            
+    
+    | thread-4 | thread-5 |
+    | --- | --- |
+    - 이런 식으로 계속해서 스레드가 예외가 발생되면 제거되고, 새로 생성되며 최대 스레드 개수가 유지되며, 스레드 풀이 사용됨
+        - `총 스레드 개수: 2` / 작업 스레드 이름: pool-1-thread-4
+            
+            ⇒ 예외 발생 → thread-4 종료 → 풀에서 제거됨
+            
+        - `총 스레드 개수: 2` / 작업 스레드 이름: pool-1-thread-5
+            
+            ⇒ 예외 발생 → thread-5 종료 → 풀에서 제거됨
+            
+- 예외 발생 시켜 보기 - **submit() 의 경우**
+
+```java
+executorService.submit(runnable);
+```
+
+- 출력결과
+
+```java
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2   
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-1   
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2   
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-1   
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2   
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-1   
+총 스레드 개수: 2 / 작업 스레드 이름: pool-1-thread-2
+```
+
+- 분석
+    - 스레드 풀은 작업 큐에 작업이 쌓이면 자기가 가져올 수 있는 최대 스레드 수인 2개 만큼 스레드를 생성 시킴
+    - 그래서 만들어진 게 `thread-1`, `thread-2`
+    - 작업 큐에 있는 작업들을 thread-1, 2가 각각 가져와 처리
+    - 중간 중간에 예외가 발생해도 스레드는 작업 큐에 있는 작업을 가져와 계속 처리함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(61).png)
+
+- 블로킹 방식: 뭔가를 요청하고 나서 그 결과가 올 때까지 기다리는 방식
+- 결과 값이 없는 작업을 작업 큐에 저장하기 위해 submit() 메서드 사용
+    
+    ```java
+    submit(Runnable task);
+    ```
+    
+    → sumit() 메서드로 작업 객체(Runnable task)를 작업 큐에 넣고 
+    
+    → 스레드가 이들 작업 객체(Runnable task)를 처리함
+    
+- submit()은 Future라는 객체를 리턴함
+- Future 객체:
+    - 작업 결과 X
+    - 작업 결과가 나올 때까지 기다리는 객체 O
+    - 지연 객체, 지연 완료 객체라고 부르기도 함
+        
+        ⇒ sumit() 메서드가 호출되면 그 즉시 Future 객체가 리턴됨
+        
+        ⇒ 즉, 스레드가 Runnable 또는 Callable<V> 의 코드를 실행하지 않은 상태에서 Future 객체가 얻어지는 것
+        
+        ⇒ 때문에, Future는 작업 결과가 아니라, 작업이 스레드에서 처리가 완료된 후의 그 결과 값을 받을 목적으로 만들어진 객체임
+        
+        ⇒ 결과가 나중에 나오기 때문에 지연 객체라고 함
+        
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(62).png)
+
+- get(): 작업이 완료될 때까지 블로킹 되었다가(스레드가 작업을 완료할 때까지 기다렸다가)  처리 결과 V를 리턴
+- Runnable 객체를 담는 submit()은 결과값이 없는 작업을 처리할 때 쓰이는 메서드임
+    
+    ```java
+    submit(Runnable task); // 결과 값이 없는 작업(Runnable task)을 작업 큐에 넣는다(submit)
+    ```
+    
+    - 스레드가 실행이 다 되고, 작업 처리를 완료한다면, 결과가 없기 때문에 future.get()은 결국 null을 리턴함
+    
+    ```java
+    submit(Runnable task, Integer result);
+    ```
+    
+    - 두 번째 매개 값인 Integer result가 결과 값
+    - 즉, future.get()은 int 타입 값을 리턴
+    
+    ```java
+    submit(Callable<String> task);
+    ```
+    
+    - submit()에 Callable 객체를 저장할 때, 그 값을 String으로 지정하면, Callable의 작업 처리 결과가 String으로 나옴
+    - 즉, future.get()은 String 타입 값을 리턴
+- 스레드에서 Runnable, Callable 객체를 처리할 때 예외가 발생 시
+    
+    ⇒ get() 메서드는 처리 결과가 리턴될 때까지 기다리는데, 스레드가 작업 처리를 하는 도중에 예외 발생 시, get() 메서드에서도 예외가 발생함
+    
+    ⇒ 예외 발생 시 결과 값을 얻을 수 없기 때문에, get() 메서드는 예외가 발생하도록 되어 있음
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(63).png)
+
+- Future의 get() 메서드는 블로킹이 되기 때문에, 스레드가 작업을 완료할 때까지 이 get()은 멈춰 있음
+    
+    ⇒ 때문에, get()은 UI를 생성하거나 변경하는 스레드에서 호출하면 안 됨
+    
+    ⇒ UI가 멈춰있는 상태가 되기 때문 → 이벤트 처리를 할 수 없게 됨
+    
+- 그렇다면 get() 메서드를 어떻게 호출해야 하느냐?
+    - 새로운 스레드를 생성해서 호출하거나
+    
+    ```java
+    // 1. 스레드 객체를 생성하고
+    new Thread(new Runnable() { // 2. 매개값으로 Runnable 객체 지정
+    	@Override
+    	public void run() { // 3. run() 재정의
+    		try {
+    			future.get(); // 4. future.get() 메서드를 호출하도록
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+    }).start(); // 5. start()로 새로운 스레드가 run()을 실행하도록 함
+    ```
+    
+    - 스레드풀의 스레드가 호출하도록 해 주거나
+    
+    ```java
+    // 3. submit() 이라는 메서드로 작업 큐에 넣어 줌
+    executorService.submit(new Runnable() { // 2. 작업 객체를 만들어서
+    	@Override
+    	public void run() {
+    		try {
+    			future.get(); // 1. 이것을 처리하는,
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+    });
+    // 4. 스레드가 작업 큐에 들어간 작업을 처리하며, run()이 실행됨
+    ```
+    
+    ⇒ 이런 방법은 UI 생성, 변경, 이벤트 처리하는 스레드에서 future.get()이 실행되지 않기 때문에 문제되지 않음 
+    
+- 다른 메서드: Future의 또 다른 메서드
+    - cancel(boolean mayInterruptIfRunning): 스레드 작업 도중 취소
+        - boolean mayInterruptIfRunning: 필요한 경우 interrupt를 할 것인가(true - 스레드에 interrupt 호출, interruptException 발생됨)
+    - isCancel(): 보통 cancel()로 작업  취소 후 확인용
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(64).png)
+
+- 리턴값이 없는 작업 완료 통보
+    
+    ⇒ 리턴값이 없는 작업을 만들어서 → 작업 큐에 넣음 → 스레드가 작업 큐에서 작업을 가져와 처리 → 처리 후 완료를 통보
+    
+    ```java
+    // 1. 리턴값이 없는 작업 객체 생성
+    Runnable task = new Runnable() {
+    	@Override
+    		public void run() {
+    			// 2. 스레드가 처리할 작업 내용
+    		}
+    }
+    Future future = executorService.submit(task);
+    // 3. 스레드 풀(executorService)의 submit() 메서드에 작업 객체 삽입
+    // 4. submit()은 3. 이후 즉시 Future 객체 리턴
+    ```
+    
+    - future를 가지고 스레드가 작업을 완료했는지, 처리 도중인지 알 수 있음
+    
+    ```java
+    try {
+    	future.get(); // get()을 호출하게 되면 블로킹 발생 -> 작업을 완료할 때까지 (해당 코드를 실행하는)스레드는 여기서 멈춰있음
+    	// Runnable 객체에 리턴값이 없기 때문에 여기서 리턴값을 받을 필요는 없음
+    	// 여기서의 get() 은 '스레드가 작업을 완료할 때까지 기다린다'는 의미
+    } catch(InterruptedException e) {
+    	// 작업 처리 도중 스레드가 interrupt 될 경우 실행할 코드
+    } catch(ExecuteException e) {
+    	// 작업 처리 도중 예외가 발생된 경우 실행할 코드
+    }
+    ```
+    
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(65).png)
+    
+    - 스레드 풀(pool) 안에 Runnable이라는 작업이 있음
+    - 이 작업을 스레드 풀의 스레드가 ↓ 이렇게 실행
+    - 실행 동안, get() 메서드는 블로킹됨
+    - 실행이 완료가 되면, 즉 풀의 스레드가 Runnable 객체의 run() 메서드를 다 실행하게 되면,  비로소 future.get() 결과가 리턴됨
+    - 즉, future.get()이 블로킹에서 빠져나옴
+    - 하지만, 작업 결과가 없기 때문에 future.get()은 null이 리턴됨
+- 발생할 수 있는 예외의 종류
+    
+    
+    | ↓ (스레드 실행) | 작업 도중 interrupt() 호출: InterruptedException e |
+    | --- | --- |
+    | ↓ (스레드 실행) |  |
+    | ↓ (스레드 실행) | 작업 도중 예외 발생: ExecuteException e |
+
+### 실습 - 12.9.blocking
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(66).png)
+
+- main 스레드 실행 방향
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(67).png)
+
+- 스레드 풀의 스레드가 Runnable 작업 객체 내 run()을 계속 실행 → 실행이 끝나면,
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(68).png)
+
+- 비로소 get()은 리턴 됨
+- main 스레드는 get()을 호출한 시점에 블로킹 됨 → pool에서 run()이 완전히 종료되면 future.get(); 부분의 블로킹이 풀림
+- 이 후 코드 순차 실행
+
+## **12.9 스레드풀(3)**
+
 ## 참고자료
 
 [강의교안_12장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_12%EC%9E%A5.ppt)
