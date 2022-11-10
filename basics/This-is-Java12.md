@@ -1150,6 +1150,93 @@ executorService.submit(runnable);
 
 ## **12.9 스레드풀(3)**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(69).png)
+
+- 리턴 값이 있는 작업일 경우, Callable 이라는 객체를 만듦
+- T에는 리턴값 타입을 지정
+- Callable이 가지고 있는 메서드 call()을 재정의
+- 이 call() 메서드 내 내용이 결국 스레드에서 실행할 내용
+- call() 메서드는 리턴 값이 있기 때문에 리턴 타입 T를 지정
+- call() 메서드에서 예외가 발생할 수 있기 때문에 throws Exception 추가
+
+```java
+Future<T> future = executorService.submit(task);
+```
+
+- 만들어진 Callable 작업 객체를 submit() 이라는 메서드를 사용해 작업 큐에 넣음
+- submit() 메서드에 Callable 객체 task를 삽입
+- 그러면 submit()은 그 즉시 Future<T> 객체 리턴
+- Future가 나중에 얻게 될 결과값의 타입은 T
+- 결국, Callable의 T와 Future의 T는 같은 타입
+
+```java
+future.get();
+```
+
+- Future의 get() 메서드를 호출하면, 스레드는 call() 메서드를 다 실행할 때까지 기다림(블로킹)
+- call() 모두 실행 후, get()은 리턴 값 T를 리턴함
+- 즉, call()의 리턴 값을 get()이 T result에 리턴하는 것
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(70).png)
+
+- 작업 처리 결과는 스레드에서 만들어짐
+    
+    ⇒ 결과 값을 스레드가 아닌 외부 객체에 저장하는 경우
+    
+- 스레드 1과 스레드 2에서 각각 처리된 작업의 결과를 취합하고 싶을 때
+    
+    ⇒ 이런 경우 스레드가 처리한 작업의 결과를 → 외부 객체에 저장
+    
+
+```java
+Result result = ...; // 스레드 1, 2가 공통적으로 사용하는 공유 객체
+Runnable task = new Task(result); // 작업 객체를 만들고, result를 매개 변수로 삽입해 작업 내용에서 쓸 수 있도록 함
+
+```
+
+- 작업 객체에 result를 넣어주는 이유: 스레드가 Runnable task 작업을 처리하고 나서 처리 결과를 result에 누적 시키려면, 스레드는 result의 참조를 알고 있어야 하기 때문에
+
+```java
+// submit(task, result)에 지정된 타입이 result이기 때문에 Future<Result>가 됨
+Future<Result> future
+	= executorService.submit(task, result);
+	// submit() 호출하고, 
+	// 첫번째에 작업 객체, 
+	// 두번째에 result를 넣어 줌: 나중에 future.get()으로 얻을 결과 값이 결국 result 타입이라는 것을 지정하는 것
+// submit은 즉시 future 리턴
+result = future.get(); // get() 호출 시, get()은 result 타입 결과 값을 리턴함
+```
+
+- result의 타입이 결국 Future<T>의 T와 같아야 하며, get()이 리턴하는 결과 값의 타입 또한 result와 동일한 타입임
+
+```java
+Runnable task = new Task(result);
+↓
+↓
+↓
+```
+
+```java
+// Runnable task를 만드는 방법
+class Task implemetns Runnable {
+	Result result; // new Task(result); 로 받은 result를 필드에 저장
+	Task(Result result) { this.result = result; } // 필드에 전달된 값을 저장
+	@Override
+	public void run() { // run() 재정의
+		// 작업 코드
+		// 처리 결과를 result 저장
+	}
+}
+```
+
+### 실습 - 12.9.result
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(71).png)
+
+- 세 번째 submit()이 외부 객체에 결과값을 저장하는 메서드
+
+## **12.9 스레드풀(4)**
+
 ## 참고자료
 
 [강의교안_12장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_12%EC%9E%A5.ppt)
