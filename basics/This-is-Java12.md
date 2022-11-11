@@ -23,7 +23,9 @@
 [12.9 스레드풀(2)](#129-스레드풀2)   
     [- 실습 - 12.9.ExecuteSubmit4Exam.java](#실습---129executesubmit4examjava)   
     [- 실습 - 12.9.blocking](#실습---129blocking)   
-[12.9 스레드풀(2)](#129-스레드풀3)   
+[12.9 스레드풀(3)](#129-스레드풀3)   
+    [- 실습 - 12.9.result](#실습---129result)    
+[12.9 스레드풀(4)](#129-스레드풀4)   
 [참고자료](#참고자료)   
 
 ## **12.1 멀티 스레드 개념**
@@ -1236,6 +1238,31 @@ class Task implemetns Runnable {
 - 세 번째 submit()이 외부 객체에 결과값을 저장하는 메서드
 
 ## **12.9 스레드풀(4)**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aafaba74-0ee8-48c4-9a3b-c8e02e633ade/Untitled.png)
+
+- 작업 요청 순서: 작업 큐에 저장된 순서
+- 먼저 요청한 작업: 작업 큐에 먼저 들어온 작업
+- 여러 개의 작업들이 순차적으로 처리될 필요성이 없음 → 작업들이 독립적이라는 뜻
+- 작업 큐에 있는 작업들은 모두 독립적이고, 그 작업들이 순서와는 상관없이 처리 결과가 나온다면 처리 결과가 빨리 나오는 것부터 이용하는 것이 좋음
+- `poll()`:
+    - get() 과 비슷하나 완료된 작업의 Future를 가져옴
+    - 완료된 작업이 없다면 즉시 null 리턴 → 블로킹이 아니라는 뜻
+    - poll()을 실행하는 시점에서, 완료된 작업이 있으면 가져오거나 null 리턴하는 것
+- `poll(long timeout, TimeUnit unit)`: timeout 시간 동안 기다렸다가, 즉 블로킹 되었다가 완료된 작업이 있으면 가져옴
+- `take()`: 완료된 작업이 없으면 계속 대기 상태, 완료된 작업이 생기면 그 때 리턴이 되어 Future 를 얻어 옴
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4de3ab65-deda-4868-84f2-29b3fc118e96/Untitled.png)
+
+```java
+ExecutorService executorService = Executors.newFixedThreadPool(
+	Runtime.getRuntime().acailableProcessors()
+);
+CompletionService<V> completionService = new ExecutorCompletionService<V>(
+	executorService
+);
+```
+
 
 ## 참고자료
 
