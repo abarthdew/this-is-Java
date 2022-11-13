@@ -1255,13 +1255,78 @@ class Task implemetns Runnable {
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4de3ab65-deda-4868-84f2-29b3fc118e96/Untitled.png)
 
 ```java
+// 스레드 풀 객체 ExecutorService 생성
 ExecutorService executorService = Executors.newFixedThreadPool(
 	Runtime.getRuntime().acailableProcessors()
 );
-CompletionService<V> completionService = new ExecutorCompletionService<V>(
-	executorService
+
+CompletionService<V> completionService 
+	// new ExecutorCompletionService<V> 객체 생성
+	= new ExecutorCompletionService<V>( // V: 스레드 풀이 작업을 다 처리하고나서 생성된 결과 타입을 지정
+	executorService // 매개값: 스레드 풀 객체
 );
 ```
+
+- poll()과 take() 메서드를 이용해 처리 완료된 작업의 Future을 얻으려면
+- completionService의 submit() 메서드로 작업 처리 요청을 해야 함
+    
+    ⇒ executorService의 submit()을 이용하면 안 됨
+    
+    ⇒ **작업 큐에 작업을 저장할 때 executorService가 아닌 completionService를 사용해야 poll()과 take() 이용 가능**
+    
+    ```java
+    CompletionService<V> completionService = new ExecutorCompletionService<V>( 
+    	executorService 
+    );
+    ```
+    
+    ```java
+    completionService.submit(Callable<V> task); // completionSerivice.submit()를 이용해 Callable task를 작업 큐에 넣어 줌
+    completionService.submit(Runnable task, V result);// completionSerivice.submit()를 이용해 Runnable을 작업 큐에 넣어 주고, 외부 객체 값도 넣어 줌
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1fa3bc6-7ba7-4ce4-8fa0-37a1c2ec05e1/Untitled.png)
+
+- take()는 완료된 작업이 있을 때까지 블로킹됨
+- 블로킹되기 때문에, 결국은 스레드에서 이 take()를 호출함
+- UI를 생성하거나 변경하는 스레드에서 take()를 호출하면, 작업이 완료될 때까지 블로킹, 즉 멈추기 때문에, UI 작업을 할 수 없음
+- UI 작업 이외에서 take()를 호출하는 것이 바람직함
+
+```java
+// 스레드 풀의 스레드 executorService가 take() 를 사용해 완료된 작업을 처리하는 예제
+
+executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
+	@Override
+	public void run() { // 재정의
+		while(true) {
+			try {
+				Future<Integer> future = completionService.take(); // 스레드 풀의 스레드가 완료한 작업이 있을 때 그 작업의 Future를 리턴(반복)
+				int value = future.get(); // 그 작업의 결과를 얻어 이용(반복)
+				System.out.println("처리 결과:" + value);
+			} catch(Exception e) {
+				break;
+			}
+		}
+	}
+});
+```
+
+### 실습 - 12.9.CompletionService
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db27a7a2-358f-4ca2-9014-0eff0fac4596/Untitled.png)
+
+- 스레드 풀 안의 작업 큐에 c1, c2, c3 작업들이 순서대로 들어 왔다고 가정
+- 이 작업들을 스레드 t1, t2가 하나씩 처리함
+- 그러나, 반드시 c1이 먼저 끝난다는 보장이 없음
+- c2가 t2에 의해 먼저 결과가 나올 수도 있음
+- 스레드의 실행 환경, 생성 시간 때문에 먼저 작업 큐에 들어간 Callable이 먼저 처리가 끝나는 것이 아님
+- c1, c2, c3는 모두 독립성을 가지고 있고, 어떤 작업이 끝나더라도 상관 없는 경우 완료된 작업을 알아내 그 작업을 처리해 주는 것이 효율적임
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fcafc891-ec43-4e7b-a1a2-751958b98694/Untitled.png)
+
+- 블로킹 방식: future 객체를 이용하는 방식
+- 콜백 방식: 자동적으로 메서드가 호출되는 방식
 
 
 ## 참고자료
