@@ -26,6 +26,7 @@
 [12.9 스레드풀(3)](#129-스레드풀3)   
     [- 실습 - 12.9.result](#실습---129result)    
 [12.9 스레드풀(4)](#129-스레드풀4)   
+    [- 실습 - 12.9.CompletionService](#실습---129completionservice)    
 [참고자료](#참고자료)   
 
 ## **12.1 멀티 스레드 개념**
@@ -1239,7 +1240,7 @@ class Task implemetns Runnable {
 
 ## **12.9 스레드풀(4)**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aafaba74-0ee8-48c4-9a3b-c8e02e633ade/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(72).png)
 
 - 작업 요청 순서: 작업 큐에 저장된 순서
 - 먼저 요청한 작업: 작업 큐에 먼저 들어온 작업
@@ -1252,7 +1253,7 @@ class Task implemetns Runnable {
 - `poll(long timeout, TimeUnit unit)`: timeout 시간 동안 기다렸다가, 즉 블로킹 되었다가 완료된 작업이 있으면 가져옴
 - `take()`: 완료된 작업이 없으면 계속 대기 상태, 완료된 작업이 생기면 그 때 리턴이 되어 Future 를 얻어 옴
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4de3ab65-deda-4868-84f2-29b3fc118e96/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(73).png)
 
 ```java
 // 스레드 풀 객체 ExecutorService 생성
@@ -1286,7 +1287,7 @@ CompletionService<V> completionService
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1fa3bc6-7ba7-4ce4-8fa0-37a1c2ec05e1/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(74).png)
 
 - take()는 완료된 작업이 있을 때까지 블로킹됨
 - 블로킹되기 때문에, 결국은 스레드에서 이 take()를 호출함
@@ -1314,7 +1315,7 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
 
 ### 실습 - 12.9.CompletionService
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db27a7a2-358f-4ca2-9014-0eff0fac4596/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(75).png)
 
 - 스레드 풀 안의 작업 큐에 c1, c2, c3 작업들이 순서대로 들어 왔다고 가정
 - 이 작업들을 스레드 t1, t2가 하나씩 처리함
@@ -1323,10 +1324,100 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
 - 스레드의 실행 환경, 생성 시간 때문에 먼저 작업 큐에 들어간 Callable이 먼저 처리가 끝나는 것이 아님
 - c1, c2, c3는 모두 독립성을 가지고 있고, 어떤 작업이 끝나더라도 상관 없는 경우 완료된 작업을 알아내 그 작업을 처리해 주는 것이 효율적임
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fcafc891-ec43-4e7b-a1a2-751958b98694/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(76).png)
 
 - 블로킹 방식: future 객체를 이용하는 방식
+    - `(1)` main 스레드가 스레드 풀에게 작업 처리 요청(submit)
+        
+        → 스레드 풀이 작업을 받아 처리
+        
+        → `(2)` submit()은 즉시 Future 객체 리턴
+        
+        → `(3)` main 스레드는 Future를 이용해 get() 호출
+        
+        → get()은 스레드 풀의 `(4)` 스레드가 작업 처리를 완료할 때까지 블로킹
+        
+        → 작업이 완료되면 결과를 받음
+        
+        → `(5)` 그 다음 코드 실행
+        
 - 콜백 방식: 자동적으로 메서드가 호출되는 방식
+    - `(1)` main 스레드가 스레드 풀에게 작업 처리 요청(submit)
+        
+        → 스레드 풀이 작업을 받아 처리
+        
+        → `(2)` submit()은 즉시 Future 객체 리턴
+        
+        → Future를 이용하지 않고, `(3)` main 스레드는 일단 작업 처리 요청만 하고 자기 할 일을 계속 수행함
+        
+        → 스레드 풀의 스레드가 작업 처리를 완료하면, 자동적으로 콜백 메서드를 실행, `(4)` 이 콜백 메서드의 작업을 수행
+        
+    - main 스레드가 future.get()을 호출해 작업 처리가 끝날 때까지 기다리는 것이 아니라, 자기 할 일을 계속 함
+    - 스레드 풀의 스레드가 작업을 완료하게 되면 자동적으로 콜백 메서드를 실행하게 함
+    - 콜백 메서드 내에서 작업을 처리한 결과를 가지고 이용하도록 함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(77).png)
+
+- 콜백 방식을 이용하려면 먼저 콜백 객체를 생성해야 함
+- `java.nio.channels.CompletionHandler`: 콜백 객체를 만들기 위한 인터페이스
+- 꼭 이 객체를 사용할 필요는 없음(하나의 예시)
+
+```java
+// V: 스레드가 작업을 처리한 이휴의 결과값
+// A: 콜백 메서드에서 사용할 수 있는 첨부 객체
+CompletionHandler<V, A> callback
+					= new CompletionHandler<V, A>(){ // 익명 객체로 구현 객체 생성
+	@Override
+	public void completed(V result, A attachment) {
+		// 처리를 완료했을 때 시행하는 콜백 메서드
+		// V: 스레드가 처리한 결과값
+		// A: CompletionHandler<V, A>에서 지정한 A 객체(첨부객체)
+	}
+	@Override
+	public void failed(Throwable exc, A attachment) {
+		// 스레드가 처리를 실패하거나 예외가 발생했을 때 시행하는 콜백 메서드
+		// Throwable exc: 예외
+		// A attachment: 첨부 객체
+	}
+}
+```
+
+```java
+// 작업객체 생성
+Runnable task = new Runnable() {
+	@Override
+	public void run() {
+		try {
+			// 작업 처리
+			V result = ...;
+			callback.completed(result, null); // 필요한 시점에 콜백 객체의 콜백 메서드 호출
+			// 이 콜백 메서드를 실행함으로써 결과를 애플리케이션에서 이용하도록 할 수 있음
+		} catch(Exception e) {
+			callback.failed(e, null); // 필요한 시점에 콜백 객체의 콜백 메서드 호출
+			// 작업 처리 중 예외 발생 시, 콜백 객체의 failed() 메서드를 호출해 예외 발생 시 애플리케이션이 처리해야 할 코드를 실행
+		}
+	}
+}
+```
+
+- 콜백 메서드를 실행하는 것은 main 스레드가 아니라, 스레드 풀의 스레드임
+
+```java
+CompletionHandler<V, A> callback = new CompletionHandler<V, A>(){
+	@Override
+	public void completed(V result, A attachment) {
+		// ui 생성, 변경 메서드를 이 위치에서 작성할 시 에러 발생
+	}
+	@Override
+	public void failed(Throwable exc, A attachment) {
+		// ui 생성, 변경 메서드를 이 위치에서 작성할 시 에러 발생
+	}
+}
+```
+
+- 콜백 메서드를 실행하는 것은 스레드 풀의 스레드이므로, 콜백 메서드 안에 UI 생성, 변경 메서드를 작성하면 에러가 발생
+    
+    ⇒ 자바 FX, 안드로이드 X의 경우, UI 생성 및 변경 코드는 UI 스레드에서 다뤄야 함
 
 
 ## 참고자료

@@ -4,6 +4,7 @@
         "12.9.result",
         "12.9.blocking2",
         "12.9.blocking",
+        "12.9.CompletionService",
         "12.8.group2",
         "12.8.group",
         "12.7.daemon",
@@ -28,6 +29,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "12.9.CompletionService"
+        "12.9.callback"
     ]
 }
