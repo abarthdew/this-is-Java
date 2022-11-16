@@ -2,6 +2,7 @@
     "java.project.sourcePaths": [
         "12.9.threadPool",
         "12.9.result",
+        "12.9.callback",
         "12.9.blocking2",
         "12.9.blocking",
         "12.9.CompletionService",
@@ -29,6 +30,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "12.9.callback"
+        "13.2.generic"
     ]
 }
