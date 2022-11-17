@@ -63,6 +63,30 @@ String str = box.get(); // String 타입으로 리턴되므로 강제 타입 변
 
 ## **13.3 멀티 타입 파라미터**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(3).png)
+
+## **13.4 제네릭 메소드**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(4).png)
+
+1. 선언
+
+```java
+// <T>와 같은 타입파라미터는 리턴타입과 매개 변수에 사용함 
+public <T> Box<T> boxing(T t) {...}
+// 리턴타입: Box<T> (T가 지정이 된 Box 객체가 리턴)
+// 매개타입: (T t)
+```
+
+1. 호출
+
+```java
+// Box<Integer>: [1. 선언]의 리턴타입
+Box<Integer> box = <Integer>boxing(100); // 매개값 100: [1. 선언]의 매개변수
+Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파일러가 자동으로 유추함
+```
+
+## **13.5 제한된 타입 파라미터**
 
 ## 참고자료
 
