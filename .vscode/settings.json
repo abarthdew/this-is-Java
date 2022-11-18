@@ -1,5 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "13.6.wildcard",
+        "13.5.boundedType",
         "13.4.genericMethod",
         "13.2.generic",
         "12.9.threadPool",
@@ -32,6 +34,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "13.5.boundedType"
+        "13.7.genericExtends"
     ]
 }
