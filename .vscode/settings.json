@@ -1,5 +1,18 @@
 {
     "java.project.sourcePaths": [
+        "14.5.supplier",
+        "14.5.function",
+        "14.5.consumer",
+        "14.5.api",
+        "14.5.andThenCompose",
+        "14.5.andOrNegate",
+        "14.5.Predicate",
+        "14.5.Operator",
+        "14.4.localValFinal",
+        "14.4.lambda",
+        "14.3.lambda2",
+        "14.3.lambda",
+        "13.7.genericExtends",
         "13.6.wildcard",
         "13.5.boundedType",
         "13.4.genericMethod",
@@ -34,6 +47,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "13.7.genericExtends"
+        "14.5.minByMaxBy"
     ]
 }
