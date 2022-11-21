@@ -6,6 +6,7 @@
 [14.4 클래스 멤버와 로컬 변수 사용](#144-클래스-멤버와-로컬-변수-사용)   
 [14.5 표준 API의 함수적 인터페이스](#145-표준-api의-함수적-인터페이스)   
 [14.6 메소드 참조](#146-메소드-참조)   
+    [- 정리 - 메서드 레퍼런스를 사용하는 방법](#정리---메서드-레퍼런스를-사용하는-방법)   
 [참고자료](#참고자료)   
 
 ## **14.1 람다식이란**
@@ -255,6 +256,94 @@ int result = fi.method(2, 5);
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(28).png)
 
 ## **14.6 메소드 참조**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(29).png)
+
+- IntBinaryOperator가 가지고 있는 추상 메서드의 매개 변수의 타입, 매개 변수의 수, 리턴 타입이 Math의 max() 메서드와 동일하므로 아래의 코드는 성립함
+    
+    ```java
+    IntBinaryOperator operator = Math::max;
+    // IntBinaryOperator 타입 변수도, Math.max() 메서드도 2개의 정수를 매개값으로 가지고, int 값을 리턴하기 때문에 성립함
+    ```
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(30).png)
+
+- 정적 메서드 참조
+    
+    ```java
+    (x, y) -> Calculator.staticMethod(x, y);
+    Calculator :: staticMethod;
+    // 두 코드는 같음
+    ```
+    
+- 인스턴스 메서드 참조
+    
+    ```java
+    (x, y) -> obj.instanceMethod(x, y);
+    obj :: instanceMethod;
+    // 두 코드는 같음
+    ```
+    
+
+### 정리 - 메서드 레퍼런스를 사용하는 방법
+
+- Calculator 클래스의 메서드 staticMethod(), instanceMethod()의 매개 변수, 리턴 타입을 따져,
+- IntBinaryOperator와 같은 **함수적 인터페이스의 추상 메서드와 같은지 다른지 생각**해야 함
+- 정적이냐, 인스턴스냐에 따라 작성법도 다름
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(31).png)
+
+- 두 개의 매개변수 a, b를 받아,
+    
+    실행부에서 첫번째 변수 a의 인스턴스 메서드를 호출해,
+    
+    두번째 매개값인 b를 매개값으로 사용
+    
+     ⇒  람다식으로 표현: `클래스(a의 타입)::instanceMethod`
+    
+- `String::compareToIngoreCase;` 와 같이 코드만 봐서는 클래스가 가진 정적 메서드를 참조하는 것 같지만, 사실 해당 클래스의 인스턴스 메서드를 호출한 것
+    - 어떻게 정적 메서드인지, 인스턴스 메서드인지 구분하나?
+        
+        ⇒ **함수적 인터페이스의 추상 메서드의 매개 변수와 리턴 타입을 보고 결정**
+        
+- 함수적 인터페이스 `ToIntBiFunction`: 2개의 매개값을 받아 int로 매핑함
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(32).png)
+
+- 실행부에 객체를 생성하고, 리턴하는 코드만 있을 경우 간단하게 생성자 참조를 이용할 수 있음
+    
+    ⇒ `클래스::new`
+    
+- 생성자의 매개값의 타입, 생성자의 매개값의 수는 이 생성자 참조가 대입되는 **함수적 인터페이스의 추상 메서드가 어떻게 선언되어 있는지**에 따라 결정됨
+- `Function<String, Member>`: String 타입 매개변수를 받아 Member 타입으로 매핑해 리턴하는 함수적 인터페이스
+    - 이 함수적 인터페이스에 대입되는 생성자 참조는 이런 모양
+    
+    ```java
+    Function<String, Member> function = Member::new
+    // function.apply() 메서드는 String 매개값을 가지며, 이를 Member타입으로 리턴함
+    Member member = function.apply("angel");
+    // 결국, 생성자의 매개값으로 angel을 제공해 객체를 생성하도록 함
+    
+    // Member::new 생성자 참조는 아래와 같은 코드를 호출하게 되어있음
+    public Member(String id) { // id = angel
+    	this.id = id;
+    }
+    ```
+    
+- BiFunction<String, String, Member>: 두 개의 String 타입 매개변수를 받아 Member 타입으로 매핑해 리턴하는 함수적 인터페이스
+    
+    ```java
+    // 이 함수적 인터페이스에 대입된 생성자 참조인 Member::new는 두 개의 매개값을 제공받아 다음과 같은 객체를 생성함
+    public Member(String name, String id) {
+    	this.name = name;
+    	this.id = id;
+    }
+    ```
+    
+- 결국, 생성자 참조로 객체를 생성할 때 중요한 건 **어떤 생성자가 호출되느냐**임
+    
+    ⇒ 함수적 인터페이스의 매개 값의 타입, 매개 값의 수에 따라 생성자가 결정이 됨
 
 ## 참고자료
 
