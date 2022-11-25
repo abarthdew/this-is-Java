@@ -128,7 +128,6 @@
     	// ...
     }
     ```
-    
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(11).png)
 
