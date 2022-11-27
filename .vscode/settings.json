@@ -1,5 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "15.5.TreeSet",
+        "15.5.TreeMap",
+        "15.4.Map",
         "15.3.Set",
         "15.2.ArrayList",
         "14.6.methodReferences",
@@ -51,6 +54,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "15.4.Map"
+        "15.5.comparable"
     ]
 }
