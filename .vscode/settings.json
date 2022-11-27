@@ -1,5 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "15.6.Stack",
+        "15.5.comparable",
         "15.5.TreeSet",
         "15.5.TreeMap",
         "15.4.Map",
@@ -54,6 +56,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "15.5.comparable"
+        "15.6.Queue"
     ]
 }

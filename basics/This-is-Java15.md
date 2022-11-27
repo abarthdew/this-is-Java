@@ -1,6 +1,11 @@
 ## 목차
 [15.1 컬렉션 프레임워크 소개](#151-컬렉션-프레임워크-소개)   
 [15.2 List 컬렉션](#152-list-컬렉션)   
+[15.3 Set 컬렉션](#153-set-컬렉션)   
+[15.4 Map 컬렉션](#154-map-컬렉션)   
+[15.5 검색 기능을 강화시킨 컬렉션](#155-검색-기능을-강화시킨-컬렉션)   
+[15.6 LIFO와 FIFO 컬렉션](#156-lifo와-fifo-컬렉션)   
+[15.7 동기화된 컬렉션](#157-동기화된-컬렉션)   
 [참고자료](#참고자료)   
 
 ## **15.1 컬렉션 프레임워크 소개**
@@ -159,6 +164,54 @@
     - ~.class가 있는 디렉토리에 ~.properties 파일이 존재 한다면, 위 방법으로 Properties 객체를 만들 수 있음
 
 ## **15.5 검색 기능을 강화시킨 컬렉션**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(19).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(20).png)
+
+- TreeSet은 Set 인터페이스를 구현한 컬렉션
+- Set 인터페이스 타입 변수에 대입해도 되지만, TreeSet이 가진 검색과 관련된 메서드가 있기 때문에 TreeSet 객체는 TreeSet 변수에 대입하는 것이 좋음
+- 왼쪽과 오른쪽 자식 노드를 참조하기 위한 두 개의 변수로 구성
+    - left: 좌측 자식 노드(자식 객체)에 대한 참조(번지)
+    - value: 실체 객체의 참조(번지)가 저장되는 곳
+    - right: 우측 자식 노드에 대한 참조
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(21).png)
+
+- 중앙 부분에 키, 값으로 되어있는 Map.Entry 객체의 참조를 저장함
+- 좌: 죄측 자식노드 객체의 참조가 저장
+- 우: 우측 자식노드 객체의 참조가 저장
+- 중앙값의 키 값을 가지고 값을 비교함. 이 키를 보고 왼 쪽에 저장할 것인지, 오른쪽에 저장할 것인지를 결정함.
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(22).png)
+
+- 특정 클래스를 TreeSet, TreeMap의 키로 저장할 때는 반드시 그 특정 클래스에 Comparable을 구현해야 함
+
+## **15.6 LIFO와 FIFO 컬렉션**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(23).png)
+
+## **15.7 동기화된 컬렉션**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(24).png)
+
+- ArrayList, HashSet과 같은 비동기화된 컬렉션을 동기화된 컬렉션으로 만드는 방법
+    - ArrayList:  Collections.synchronizedList() 메서드를 호출하고 매개값으로 ArrayList를 넣어 줌
+        
+        ⇒ ArrayList를 랩핑한 동기화 컬렉션이 만들어짐
+        
+        ⇒ 내부에 ArrayList를 가지고 있으며, 랩핑한 컬렉션의 메서드를 호출하면 안쪽에 담긴 ArrayList의 내용을 변경해 주는 원리
+        
+        ⇒ 랩핑한 컬렉션에 대해서는, 한 번에 하나의 스레드만 접근 가능
+        
+    - HashSet: Collections.synchronizedSet() 메서드 호출, 이하 ArrayList와 원리 같음
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/15(25).png)
+
+- HashMap도 마찬가지
+    - Collections.synchronizedMap() 메서드에 HashMap 객체를 매개값으로 주면, HashMap을 랩핑하는 동기화된 Map이 리턴됨
+    - 내부에 HashMap을 가지고 있으며, 동기화된 메서드를 가지고 있음
+    - 스레드1이 동기화된 컬렉션의 메서드를 호출할 때, 다른 스레드는 접근 불가능
 
 ## 참고자료
 
