@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
+        "16.1.stream",
         "15.6.Stack",
         "15.6.Queue",
         "15.5.comparable",
@@ -57,6 +58,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "16.1.stream"
+        "16.2.StreamKind"
     ]
 }
