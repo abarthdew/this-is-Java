@@ -2,7 +2,9 @@
 [16.1 스트림 소개](#161-스트림-소개)   
 [16.2 스트림의 종류](#162-스트림의-종류)   
 [16.3 스트림 파이프라인](#163-스트림-파이프라인)   
-[](#)   
+[16.4 필터링 - distinct(), filter()](#164-필터링---distinct-filter)   
+[16.5 매핑-flatMapXXX(), mapXXX(), asXXXStream(), box](#165-매핑-flatmapxxx-mapxxx-asxxxstream-box)   
+[16.6 정렬 - sorted()](#166-정렬---sorted)   
 [참고자료](#참고자료)   
 
 ## **16.1 스트림 소개**
@@ -159,6 +161,86 @@
 
 ## **16.3 스트림 파이프라인**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(12).png)
+
+- 스트림은 중간 처리와 최종 처리로 구분됨
+- 보통 최종 처리는 리덕션이라는 행위를 함
+- 리덕션(집계): 전체 요소에서 하나의 값을 산출하는 것
+- 스트림을 통해 얻을 수 있는 요소가 리덕션을 하기 적합하지 않은 형태일 때 → 이 경우, 최종 처리를 위해 중간 처리가 필요함
+    
+    ⇒ 중간 처리: 필터링, 매핑, 정렬, 그룹핑
+    
+- 파이프라인: 오리지날 스트림 → (중간 처리) → 중간 스트림 → 최종 처리
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(13).png)
+
+```mermaid
+flowchart LR
+	a[오리지날\n스트림]---b[중간\n스트림1]---A[중간\n스트림2]-- 최종 스트림\n집계 기능 시작 ---B[결과물]
+```
+
+- 최종 스트림의 집계 기능이 시작될 때: 마지막 중간 스트림에서 최종 처리를 하기 위해서 최종 처리 집계 메서드를 호출할 때
+- 표시된 곳에서(1) 스트림 요소들에 대한 최종 처리 메서드를 호출하기 전까지는, 중간 처리 스트림(중간 스트림1, 2) 부분이 동작하지 않음
+- 즉, `최종 처리`인 집계 기능이 시작 되어야, 비로소 `오리지날 스트림`→ `중간처리 스트림1` 이 되고, `중간처리 스트림1` → `중간처리 스트림2` 을 거쳐 최종 처리가 됨
+- 다시 말해, 최종 처리 단계가 시작되지 않으면, 중간 처리 스트림은 동작하지 않음(지연)
+- 예) 미리 전체 학생(오리지날 스트림)에서 남학생만 뽑아내고(중간 스트림1), 점수를 뽑아내서(중간 스트림2) 준비를 하고 있다가 최종처리를 한다(X)
+    
+    ⇒ 최종 처리를 하는 순간 오리지날 스트림→중간 스트림1→중간 스트림2 단계를 거쳐 최종 처리가 됨
+    
+    ⇒ 중간 처리만으로는 동작하지 않고, 반드시 최종 처리 메서드가 호출되어야 단계적으로 실행됨
+    
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(14).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(15).png)
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(16).png)
+
+- 스트림 메서드는 중간 처리 메서드와 최종 처리 메서드로 구분할 수 있음
+- **중간 처리 메서드**: 요소를 필터링, 매핑, 정렬, 루핑해서 중간 스트림을 만들어 냄
+    
+    ⇒ 최종 처리 메서드가 실작해야 중간 처리 메서드도 동작함
+    
+- **최종 처리 메서드**: 합계, 평균, 카운팅, 최소 최대값을 집계, 즉 리덕션하는 메서드
+- 리턴타입을 보면 중간 처리 메서드인지, 최종 처리 메서드인지 구분 가능
+- 소속된 인터페이스: 각 스트림 메서드는 모든 스트림에서 제공하는 것도 있고, 특정 스트림에서만 제공하는 것도 있음
+
+## **16.4 필터링 - distinct(), filter()**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(17).png)
+
+- distinct()
+    - 원래 스트림[BABA] → `distinct()` → 중간 스트림[BA]
+
+## **16.5 매핑-flatMapXXX(), mapXXX(), asXXXStream(), box**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(18).png)
+
+- 매핑: 스트림 요소를 다른 요소로 대체하는 것
+- 예) 객체 → int / 객체 → double
+- 반드시 하나의 요소가 하나의 요소로 대체되는 것은 아님
+    
+    ⇒ 하나의 요소가 여러 개의 요소로 대체될 수도 있음
+    
+- flatMapXXX(): 하나의 요소를 여러 개의 요소로 대체
+- flatMap의 매개변수 Function 타입 객체
+    - T: 원래 스트림에 포함된 요소들의 타입(`A`, `B`)
+    - Stream<R>: 각 T 요소에 대해 대체되는 복수 개의 요소(`A2`, `A1` / `B2`, `B1`)
+- T(double, int, long) 타입을 → 여러 개의 T(double, int, long)으로 만듦
+- 객체를 → 여러 개의 T(double, int, lont)으로 만듦
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(19).png)
+
+- map(): 원래 스트림에 있던 요소를 다른 요소로 대체한 스트림을 구성함
+- flatMap()과는 달리 하나의 요소를 하나의 다른 요소로 대체함
+- map(DoubleUnaryOperator): double 원래 요소를 다시 double로 바꾸어 스트림을 새로 만듦
+- mapToObj(IntFunction<U>): double 요소를 객체로 바꾸어 객체 타입 스트림을 만듦
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(20).png)
+
+- boxed(): int, long, double 타입 요소를 Integer, Long, Double과 같은 객체 타입 요소로 박싱한 다음, 이 객체들로 이루어진 스트림을 만듦
+
+## **16.6 정렬 - sorted()**
 
 ## 참고자료
 

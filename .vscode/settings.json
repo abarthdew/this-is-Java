@@ -1,5 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "16.4.StreamFilter",
+        "16.3.StreamPipeline",
+        "16.2.StreamKind",
         "16.1.stream",
         "15.6.Stack",
         "15.6.Queue",
@@ -58,6 +61,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "16.2.StreamKind"
+        "16.5.StreamMapping"
     ]
 }
