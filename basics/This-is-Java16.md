@@ -5,6 +5,11 @@
 [16.4 필터링 - distinct(), filter()](#164-필터링---distinct-filter)   
 [16.5 매핑-flatMapXXX(), mapXXX(), asXXXStream(), box](#165-매핑-flatmapxxx-mapxxx-asxxxstream-box)   
 [16.6 정렬 - sorted()](#166-정렬---sorted)   
+[16.7 루핑 - peek(), forEach()](#167-루핑---peek-foreach)   
+[16.8 매칭 - allMatch(), anyMatch(), noneMatch()](#168-매칭---allmatch-anymatch-nonematch)   
+[16.9 기본 집계 - sum(), count(), average(), max(), min](#169-기본-집계---sum-count-average-max-min)   
+[16.10 커스텀 집계 - reduce()](#1610-커스텀-집계---reduce)   
+[16.11 수집 - collect()](#1611-수집---collect)   
 [참고자료](#참고자료)   
 
 ## **16.1 스트림 소개**
