@@ -1,5 +1,10 @@
 {
     "java.project.sourcePaths": [
+        "16.9.aggregate",
+        "16.8.match",
+        "16.7.looping",
+        "16.6.sorted",
+        "16.5.StreamMapping",
         "16.4.StreamFilter",
         "16.3.StreamPipeline",
         "16.2.StreamKind",
@@ -61,6 +66,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "16.5.StreamMapping"
+        "16.10.reduce"
     ]
 }

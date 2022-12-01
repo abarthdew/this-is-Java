@@ -242,6 +242,91 @@ flowchart LR
 
 ## **16.6 정렬 - sorted()**
 
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(21).png)
+
+- sorted() 메서드는 각 스트림에 하나씩 있는데, Stream<T>에는 두개 있음
+- Stream<T> 타입 sorted(), sorted(Comparator<T>):
+    - sorted(): 객체가 가진 Comparable 구현 방법에 따라 정렬
+        
+        ⇒ Stream<T>의 객체 요소(T)가 Comparable을 구현하지 않으면 sort() 메서드 호출 시 ClassCastException이 발생
+        
+    - sorted(Comparator<T>): Comparable을 구현했거나, 또는 구현하지 않았더라도 정렬을 할 수 있게 Comparator 객체를 매개값으로 가짐
+        
+        ⇒ Comparator는 함수적 인터페이스
+        
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(22).png)
+
+- 위 예시의 위 코드는 오름차순, 아래 코드는 내림차순 정렬임
+
+## **16.7 루핑 - peek(), forEach()**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(23).png)
+
+- 루핑: 중간 처리, 최종 처리에서 쓸 수 있음
+    - 중간 처리에서의 루핑 메서드: `peek()`
+        
+        ⇒ 중간 처리 메서드이므로 최종 처리 메서드가 호출되어야 실행됨
+        
+    
+    ```jsx
+    // 최종 처리 메서드가 호출되지 않았으므로 실행 안 됨
+    intStream
+     .filter(...)
+     .peek(...)
+    
+    // 최종 처리 메서드가 호출되어야 동작함
+    intStream
+     .filter(...)
+     .peek(...)
+     .sum()
+    ```
+    
+    - 최종 처리에서의 루핑 메서드: `forEach()`
+
+## **16.8 매칭 - allMatch(), anyMatch(), noneMatch()**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(24).png)
+
+## **16.9 기본 집계 - sum(), count(), average(), max(), min**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(25).png)
+
+- 대량의 데이터를 가공해서 축소: 대량의 데이터를 하나의 값으로 만든다는 의미
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(26).png)
+
+- isPresent(): 집계값이 존재하는가?
+- orElse(): 집계값이 존재하지 않을 경우 기본값
+- ifPresent(): 집계값이 존재할 경우, 그 집계값을 소비할 Consumer 매개값을 지정함
+
+## **16.10 커스텀 집계 - reduce()**
+
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(27).png)
+
+- reduce(): 개발자가 프로그램화해서 다양한 집계 결과물을 만들 수 있음
+- 각 스트림에 2개씩 reduce() 메서드가 있음
+    - reduce(BinaryOperator<T>)
+        - BinaryOperator<T>는 두 개의 T타입 매개 값을 받아 연산을 한 이후, 그 결과를 리턴
+    - reduce(T, BinaryOperator<T>)
+        - BinaryOperator<T> 연산 결과가 없다면, 기본 값으로 T 타입 값 설정
+- 연산이 없는 경우 = 요소가 없는 경우이므로,
+    - reduce(BinaryOperator<T>): 예외 발생(NoSuchElementException)
+    - reduce(T, BinaryOperator<T>): 기본 값 리턴
+- 예시
+    
+    ```jsx
+    int sum = studentList.stream()
+    	.map(Student::getScore)
+    	.reduce((a,b)->a+b) // 두 성적을 매개값으로 받아 합산함
+    	// 마지막 하나가 나올 때까지 계속 합산 
+    	// 모든 요소를 더해서 최종적으로 하나의 합을 구함
+    	.get();
+    ```
+    
+
+## **16.11 수집 - collect()**
+
 ## 참고자료
 
 [강의교안_16장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_16%EC%9E%A5.ppt)
