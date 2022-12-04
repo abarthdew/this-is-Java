@@ -534,13 +534,13 @@ Map<Student.City, List<String>> mapByCity
     ```java
     Map<Student.Sex, Double> map // 결과값: Map 객체로 만들어져 리턴됨
      = totalList.stream() // 전체 리스트에서 스트림을 얻어 냄
-    	.collect( // 그루핑 메서드 호출
-    		// Collectors.groupingBy()의 리턴값은 collect() 메서드의 매개값으로 제공됨
-    		Collectors.groupingBy( // groupingBy 메서드 호출
-    			Student::getSex, // 키 값(성별)
-    			Collectors.avragingDouble(Student::getScore) // 그루핑 후의 평균값을 구함(학생의 점수로 매핑됨)
-    		)
-    	);
+      .collect( // 그루핑 메서드 호출
+    	// Collectors.groupingBy()의 리턴값은 collect() 메서드의 매개값으로 제공됨
+    	Collectors.groupingBy( // groupingBy 메서드 호출
+    		Student::getSex, // 키 값(성별)
+    		Collectors.avragingDouble(Student::getScore) // 그루핑 후의 평균값을 구함(학생의 점수로 매핑됨)
+    	)
+      );
     ```
     
 
@@ -551,15 +551,15 @@ Map<Student.City, List<String>> mapByCity
     ```java
     Map<Student.Sex, String> mapByName
      = totalList.stream() // 전체 스트림 얻기
-    	.collect(
-    		Collectors.groupingBy(
-    			Student::getSex, // 키
-    			Collectors.mapping( // 학생 객체 -> 이름으로 매핑
-    				Student::getName, // 매핑 방법
-    				Collectors.joining(",") // 학생 이름을 ,로 연결해 값으로 저장
-    			)
-    		)
-    	);
+      .collect(
+        Collectors.groupingBy(
+          Student::getSex, // 키
+          Collectors.mapping( // 학생 객체 -> 이름으로 매핑
+    	    Student::getName, // 매핑 방법
+    		Collectors.joining(",") // 학생 이름을 ,로 연결해 값으로 저장
+    	  )
+    	)
+      );
     ```
     
 
@@ -643,26 +643,26 @@ Map<Student.City, List<String>> mapByCity
     
     ```java
     MaleStudent maleStudent // 사용자 정의 컨테이너: 남학생만 저장
-    	= totalList.stream() // 스트림 얻기
-    		.filter(s->s.getSex() == Student.Sex.MALE) // 남학생 필터링
-    		.collect( // 남학생을 어디에 수집할 것인가?
-    			MaleStudent::new, // 컨테이너 객체 생성: MaleStudent 객체에 남학생 수집
-    			MaleStudent::accumulate, // 남학생을 MaleStudent 컨테이너 객체에 저장하는 누적기
-    			MaleStudent::combine // 순차 처리 스트림(싱글 스레드)에서는 사용되지 않음
-    		);
+      = totalList.stream() // 스트림 얻기
+        .filter(s->s.getSex() == Student.Sex.MALE) // 남학생 필터링
+        .collect( // 남학생을 어디에 수집할 것인가?
+          MaleStudent::new, // 컨테이너 객체 생성: MaleStudent 객체에 남학생 수집
+          MaleStudent::accumulate, // 남학생을 MaleStudent 컨테이너 객체에 저장하는 누적기
+          MaleStudent::combine // 순차 처리 스트림(싱글 스레드)에서는 사용되지 않음
+        );
     ```
     
 - 병렬 스트림으로 수정
     
     ```java
     MaleStudent maleStudent
-    	= totalList.parallelStream() // 1.
-    		.filter(s->s.getSex() == Student.Sex.MALE)
-    		.collect( 
-    			MaleStudent::new, // 2. 4번 실행
-    			MaleStudent::accumulate, // 3.
-    			MaleStudent::combine // 4.
-    		);
+      = totalList.parallelStream() // 1.
+        .filter(s->s.getSex() == Student.Sex.MALE)
+        .collect( 
+          MaleStudent::new, // 2. 4번 실행
+          MaleStudent::accumulate, // 3.
+          MaleStudent::combine // 4.
+        );
     ```
     
     1. [포크 조인 프레임워크의 fork 단계]: CPU 코어의 개수만큼 전체 요소(totalList)는 서브 요소로 나뉘어지고, 해당 개수만큼 스레드 생성
