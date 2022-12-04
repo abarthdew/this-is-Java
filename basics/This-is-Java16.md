@@ -496,9 +496,9 @@ Map<Student.City, List<String>> mapByCity
 				// 동일한 city를 리턴하는 학생들은 동일한 key에 저장됨
 				// 여기까지는 각 key에 대한 Student 객체만 저장됨
 				Collectors.mapping(Student::getMame, Collectors.toList())
-									// 1번째 매개값: Student의 이름을 얻어내는 Funtion 함수적 인터페이스
-									// 2번째 매개값: String을 List로 만들기
-									// => Student로부터 이름을 얻어 이 결과를 List에 저장해 Collector를 만듦
+				// 1번째 매개값: Student의 이름을 얻어내는 Funtion 함수적 인터페이스
+				// 2번째 매개값: String을 List로 만들기
+				// => Student로부터 이름을 얻어 이 결과를 List에 저장해 Collector를 만듦
 				// Student 객체에서 -> 이름으로 매핑되어 key에 대한 value 값으로 들어감
 			)
 		);
