@@ -455,16 +455,8 @@ flowchart LR
     
     | 리턴 타입 | 메서드 |
     | --- | --- |
-    | Collector<T, ?, Map<K, D>> | groupingBy(
-      Function<T, K> classifier,
-      Supplier<Map<K, D>> mapFactory,
-      Collector<T, A, D> downstream
-    ) |
-    | Collector<T, ?, ConcurrentMap<K, D>> | groupingByConcurrent(
-      Function<T, K> classifier,
-      Supplier<Map<K, D>> mapFactory,
-      Collector<T, A, D> downstream
-    ) |
+    | Collector<T, ?, Map<K, D>> | groupingBy(Function<T, K> classifier, Supplier<Map<K, D>> mapFactory, Collector<T, A, D> downstream) |
+    | Collector<T, ?, ConcurrentMap<K, D>> | groupingByConcurrent(Function<T, K> classifier, Supplier<Map<K, D>> mapFactory, Collector<T, A, D> downstream) |
     - 2와의 차이점:
         - 2) 내부적으로 Map 객체를 생성함(자동적으로 만들어진 Map을 사용)
         - 3) 두번째 매개값인 Supplier가 제공하는 Map 객체를 사용함(Supplier가 제공해 주는 Map을 사용)
