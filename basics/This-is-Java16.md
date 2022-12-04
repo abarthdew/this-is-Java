@@ -460,7 +460,7 @@ flowchart LR
     Map<Student.Sex, List<Stdent>> mayBySex 
     	= totalList.stream()
     		.collect(Collectors.groupingBy(Student::getSex));
-    		// Function<Student>의 익명 구현 객체
+    		// (Student::getSex): Function<Student>의 익명 구현 객체
     		// (Student::getSex)의 리턴값이 곧 key가 됨
     	// 결과: 같은 sex를 리턴하는 객체만 따로 그룹핑됨
     	// 즉, Sex.MALE / Sex.FEMALE를 키값으로 남학생/여학생 리스트가 각각 value로 옴
@@ -471,19 +471,19 @@ flowchart LR
 
 ```java
 Map<Student.City, List<String>> mapByCity
-	= totalList.stream()
-		.collect(
-			Collectors.groupingBy(
-				Student::getCity, // 키값: 키가 무엇이 될 것이냐(학생의 거주 도시)
-				// 동일한 city를 리턴하는 학생들은 동일한 key에 저장됨
-				// 여기까지는 각 key에 대한 Student 객체만 저장됨
-				Collectors.mapping(Student::getMame, Collectors.toList())
-				// 1번째 매개값: Student의 이름을 얻어내는 Funtion 함수적 인터페이스
-				// 2번째 매개값: String을 List로 만들기
-				// => Student로부터 이름을 얻어 이 결과를 List에 저장해 Collector를 만듦
-				// Student 객체에서 -> 이름으로 매핑되어 key에 대한 value 값으로 들어감
-			)
-		);
+  = totalList.stream()
+	  .collect(
+		  Collectors.groupingBy(
+			  Student::getCity, // 키값: 키가 무엇이 될 것이냐(학생의 거주 도시)
+			  // 동일한 city를 리턴하는 학생들은 동일한 key에 저장됨
+			  // 여기까지는 각 key에 대한 Student 객체만 저장됨
+			  Collectors.mapping(Student::getMame, Collectors.toList())
+			  // 1번째 매개값: Student의 이름을 얻어내는 Funtion 함수적 인터페이스
+			  // 2번째 매개값: String을 List로 만들기
+			  // => Student로부터 이름을 얻어 이 결과를 List에 저장해 Collector를 만듦
+			  // Student 객체에서 -> 이름으로 매핑되어 key에 대한 value 값으로 들어감
+		  )
+	  );
 ```
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(34).png)
@@ -519,8 +519,8 @@ Map<Student.City, List<String>> mapByCity
       .collect( // 그루핑 메서드 호출
     	// Collectors.groupingBy()의 리턴값은 collect() 메서드의 매개값으로 제공됨
     	Collectors.groupingBy( // groupingBy 메서드 호출
-    		Student::getSex, // 키 값(성별)
-    		Collectors.avragingDouble(Student::getScore) // 그루핑 후의 평균값을 구함(학생의 점수로 매핑됨)
+    	  Student::getSex, // 키 값(성별)
+    	  Collectors.avragingDouble(Student::getScore) // 그루핑 후의 평균값을 구함(학생의 점수로 매핑됨)
     	)
       );
     ```
