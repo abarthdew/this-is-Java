@@ -8,7 +8,8 @@
         "16.4.StreamFilter",
         "16.3.StreamPipeline",
         "16.2.StreamKind",
-        "16.1.stream",
+        "16.11.collect",
+        "16.10.reduce",
         "15.6.Stack",
         "15.6.Queue",
         "15.5.comparable",
@@ -66,6 +67,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "16.10.reduce"
+        "16.12.parallelism"
     ]
 }
