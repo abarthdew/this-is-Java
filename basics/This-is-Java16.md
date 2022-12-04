@@ -369,8 +369,8 @@ flowchart LR
      = totalList.stream()
     	.filter(s -> s.getSex() == Student.sex.FEMALE)
     	.collect(Collectors.toCollection(HashSet::new)); // Collectors.toCollection(Supplier<T>) 사용
-    																	// Supplier라는 익명 구현 객체를 메서드 참조로 사용
-    																	// Collectos.toSet()을 사용해도 무방함
+    	// (HashSet::new): Supplier라는 익명 구현 객체를 메서드 참조로 사용
+    	// Collectos.toSet()을 사용해도 무방함
     ```
     
 
@@ -414,7 +414,7 @@ flowchart LR
         ⇒ key값인 K 밑에 요소들이 List 안에 그대로 저장됨
         
     - List 객체 안에 요소 T가 저장됨
-    - **key인 K는 어떻게 만들어지느냐?** groupingBy[Concurrent]() 메서드의 매개 값으로 주어지는 Function에 따라 결정됨
+    - **key인 K는 어떻게 만들어지느냐?** groupingBy(Concurrent)() 메서드의 매개 값으로 주어지는 Function에 따라 결정됨
     - 매개 값인 Function<T, K>은 요소를 어떤 key에 저장할 건지를 정의함
         
         ⇒ Function의 정의 내용에 따라 key가 결정되고, 그 밑의 요소들이 저장됨
@@ -448,8 +448,8 @@ flowchart LR
     | Collector<T, ?, Map<K, D>> | groupingBy(Function<T, K> classifier, Supplier<Map<K, D>> mapFactory, Collector<T, A, D> downstream) |
     | Collector<T, ?, ConcurrentMap<K, D>> | groupingByConcurrent(Function<T, K> classifier, Supplier<Map<K, D>> mapFactory, Collector<T, A, D> downstream) |
     - 2와의 차이점:
-        - 2) 내부적으로 Map 객체를 생성함(자동적으로 만들어진 Map을 사용)
-        - 3) 두번째 매개값인 Supplier가 제공하는 Map 객체를 사용함(Supplier가 제공해 주는 Map을 사용)
+        - 2=> 내부적으로 Map 객체를 생성함(자동적으로 만들어진 Map을 사용)
+        - 3=> 두번째 매개값인 Supplier가 제공하는 Map 객체를 사용함(Supplier가 제공해 주는 Map을 사용)
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(32).png)
 
@@ -460,8 +460,8 @@ flowchart LR
     Map<Student.Sex, List<Stdent>> mayBySex 
     	= totalList.stream()
     		.collect(Collectors.groupingBy(Student::getSex));
-    																	 // Function<Student>의 익명 구현 객체
-    																	 // (Student::getSex)의 리턴값이 곧 key가 됨
+    		// Function<Student>의 익명 구현 객체
+    		// (Student::getSex)의 리턴값이 곧 key가 됨
     	// 결과: 같은 sex를 리턴하는 객체만 따로 그룹핑됨
     	// 즉, Sex.MALE / Sex.FEMALE를 키값으로 남학생/여학생 리스트가 각각 value로 옴
     ```
