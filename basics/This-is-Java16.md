@@ -538,7 +538,7 @@ Map<Student.City, List<String>> mapByCity
           Student::getSex, // 키
           Collectors.mapping( // 학생 객체 -> 이름으로 매핑
     	    Student::getName, // 매핑 방법
-    		Collectors.joining(",") // 학생 이름을 ,로 연결해 값으로 저장
+    	    Collectors.joining(",") // 학생 이름을 ,로 연결해 값으로 저장
     	  )
     	)
       );
@@ -587,14 +587,14 @@ Map<Student.City, List<String>> mapByCity
 - [그림]
     
     
-    | FORK | 전체 요소 1…N: 처리해야 할 요소 |
+    | FORK | `전체 요소 1…N`: 처리해야 할 요소 |
     | --- | --- |
-    |  | 요소 1...1/4N, 요소 1...2/4N, 요소 1...3/4N, 요소 1...4/4N |
+    |  | `요소 1...1/4N`, `요소 1...2/4N`, `요소 1...3/4N`, `요소 1...4/4N` |
     |  | 분할된 서브 요소들을 각각의 코어에서 처리함 |
-    |  | 요소1 처리결과, 요소2 처리결과, 요소3 처리결과, 요소4 처리결과 |
+    |  | `요소1 처리결과`, `요소2 처리결과`, `요소3 처리결과`, `요소4 처리결과` |
     | JOIN | 각 서브 데이터에 대한 결과가 나오게 되면, 이 결과를 JOIN 단계에서 결합함 |
-    |  | (요소1 결과 + 요소2 결과) 부분결합 + (요소3 결과 + 요소4 결과) 부분결합 |
-    |  | (요소 1...N) 최종결합 |
+    |  | `(요소1 결과 + 요소2 결과) 부분결합` + `(요소3 결과 + 요소4 결과) 부분결합` |
+    |  | `(요소 1...N) 최종결합` |
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(41).png)
 
