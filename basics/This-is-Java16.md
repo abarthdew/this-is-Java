@@ -407,12 +407,8 @@ flowchart LR
     
     | 리턴 타입 | 메서드 |
     | --- | --- |
-    | Collector<T, ?, Map<K, List<T>>> | groupingBy(
-      Function<T, K> classifier
-    ) |
-    | Collector<T, ?, ConcurrentMap<K, List<T>>> | groupingByConcurrent(
-      Function<T, K> classifier
-    ) |
+    | Collector<T, ?, Map<K, List<T>>> | groupingBy(Function<T, K> classifier) |
+    | Collector<T, ?, ConcurrentMap<K, List<T>>> | groupingByConcurrent(Function<T, K> classifier) |
     - K(key)가 주어지고, 이 key에 대한 value 값으로 List 객체가 들어감
         
         ⇒ key값인 K 밑에 요소들이 List 안에 그대로 저장됨
@@ -428,14 +424,8 @@ flowchart LR
     
     | 리턴 타입 | 메서드 |
     | --- | --- |
-    | Collector<T, ?, Map<K, D>> | groupingBy(
-      Function<T, K> classifier,
-      Collector<T,A,D> downstream
-    ) |
-    | Collector<T, ?, ConcurrentMap<K, D>> | groupingByConcurrent(
-      Function<T, K> classifier,
-      Collector<T,A,D> downstream
-    ) |
+    | Collector<T, ?, Map<K, D>> | groupingBy(Function<T, K> classifier, Collector<T,A,D> downstream) |
+    | Collector<T, ?, ConcurrentMap<K, D>> | groupingByConcurrent(Function<T, K> classifier, Collector<T,A,D> downstream) |
     - K(key)로 요소를 저장하는데, 순수한 요소 T를 저장하는 것이 아니라, 이 T를 매핑한 객체를 D에 저장
         
         ⇒ T를 그대로 저장하는 것이 아니라, T를 매핑해서 다른 요소를 가지는 컬렉션을 값으로 가짐
