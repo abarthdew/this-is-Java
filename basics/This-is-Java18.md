@@ -56,6 +56,30 @@
 - 출발지: 데이터가 출발하는 곳(출력 스트림 이용)
 - 도착지: 데이터가 도착하는 곳(입력 스트림 이용)
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1f246343-0023-41fe-b53b-3e24c77983d6/Untitled.png)
+
+- 스트림은 크게 바이트 기반 스트림과 문자 기반 스트림으로 나뉨
+    - 바이트 기반 스트림: 스트림을 통해 주고받은 데이터가 바이트일 때
+        
+        ⇒ **그림, 멀티미디어, 문자 등 모든 종류 데이터** 받고 보내기 가능
+        
+        ⇒ 최상위 클래스: InputStream / OutputStream
+        
+    - 문자 기반 스트림: 스트림을 통해 주고받은 데이터가 문자일 때
+        
+        ⇒ **문자 데이터만** 받고 보내기 가능
+        
+        ⇒ 최상위 클래스: Reader / Writer
+        
+- 바이트 기반 스트림과 문자 기반 스트림
+    - `FileInputStream`: 파일에서 바이트를 읽고 싶을 때 사용
+    - `FileOutputStream`: 파일로 바이트 데이터를 저장하고 싶을 때 사용
+    - `FileReader`: 문자 파일에서 문자 데이터를 읽고 싶을 때 사용
+    - `FileWriter`: 문자 데이터를 파일에 저장하고 싶을 때 사용
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7dbbe877-c0ef-490c-941b-5aa049a9caf8/Untitled.png)
+
+
 ## 참고자료
 
 [강의교안_18장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_18%EC%9E%A5.ppt)
