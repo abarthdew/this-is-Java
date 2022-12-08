@@ -1,5 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "8.3.interface",
+        "7.8.abstractMethod",
         "16.9.aggregate",
         "16.8.match",
         "16.7.looping",
@@ -8,6 +10,7 @@
         "16.4.StreamFilter",
         "16.3.StreamPipeline",
         "16.2.StreamKind",
+        "16.12.parallelism",
         "16.11.collect",
         "16.10.reduce",
         "15.6.Stack",
@@ -67,6 +70,6 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "16.12.parallelism"
+        "8.7.defaultMethod"
     ]
 }
