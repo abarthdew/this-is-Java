@@ -19,5 +19,6 @@ public class Key2Exam {
          */
         // "haschCode 호출"이 두 번 나온 이유는 new Key2(1)에 대한 각각의 hashCode를 조회하므로
         // 결론적으로, 두 객체가 동등한지 비교하는 로직을 재정의하려면 equals() 뿐만 아니라 hashCode도 재정의할 필요가 있음
+    
     }
 }

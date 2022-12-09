@@ -48,7 +48,7 @@
 - 자바 API
     - 자바에서 기본적으로 제공해주는 라이브러리
     - 프로그램 개발에 자주 사용되는 클래스 및 인터페이스 모음
-- [자바 API 도큐먼트 HTML 홈페이지](https://docs.oracle.com/javase/7/docs/api/)
+- [자바 API 도큐먼트 HTML 홈페이지](https://docs.oracle.com/javase/8/docs/api/)
     - 상속관계, 인터페이스 구현, 설명, 예제 코드, 필드, 생성자, 메서드
     - 맨 상단 SUMMARY: 요약
     - NESTED: 내부 클래스, 중첩 클래스
@@ -135,7 +135,7 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(12).png)
 
-- deepEquals(): 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false- 
+- **deepEquals()**: 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false 
 - **equals()**: a, b 객체의 번지만 비교
 - **hash()**: 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
 - **hashCode()**: 객체 하나에 대한 해쉬 코드를 생성
@@ -233,10 +233,10 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(23).png)
 
-- `**Class.forName(String className)**` 매개변수에는 패키지명이 포함된 클래스명을 넣어 줌 → 해당 클래스가 있을 경우 위치를 리턴시켜 줌
+- `Class.forName(String className)` 매개변수에는 패키지명이 포함된 클래스명을 넣어 줌 → 해당 클래스가 있을 경우 위치를 리턴시켜 줌
 - 리플렉션: 메타 데이터를 얻는 것
-- `**getDeclared[Filds|Contructor|Methods]()**`: 해당 접근 제한자 상관없이, 클래스에만 선언된 필드, 생성자, 메서드만 가져 옴
-- `**get[Filds|Contructor|Methods]()**`: 부모에 있는 public 필드, 생성자, 메서드 전부 가져 옴
+- `getDeclared[Filds|Contructor|Methods]()`: 해당 접근 제한자 상관없이, 클래스에만 선언된 필드, 생성자, 메서드만 가져 옴
+- `get[Filds|Contructor|Methods]()`: 부모에 있는 public 필드, 생성자, 메서드 전부 가져 옴
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/11(24).png)
 

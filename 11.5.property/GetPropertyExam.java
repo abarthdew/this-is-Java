@@ -16,6 +16,14 @@ public class GetPropertyExam {
             String key = (String) objKey;
             String value = System.getProperty(key);
             System.out.println(key + " | " + value);
+            /*
+            java.runtime.name | Java(TM) SE Runtime Environment
+            sun.boot.library.path | C:\Program Files\Java\jdk1.8.0_201\jre\bin
+            java.vm.version | 25.201-b09
+            java.vm.vendor | Oracle Corporation
+            java.vendor.url | http://java.oracle.com/
+            path.separator | ;
+             */
         }
     }
 }

@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
+        "8.7.defaultMethod",
         "8.3.interface",
         "7.8.abstractMethod",
         "16.9.aggregate",
@@ -64,12 +65,13 @@
         "12.2.thread2",
         "12.2.thread",
         "11.9.StringBuilder",
+        "11.3.hashCode",
         "11.16.time",
         "11.15.Format",
         "11.14.Date&Calander",
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "8.7.defaultMethod"
+        "11.5.property"
     ]
 }
