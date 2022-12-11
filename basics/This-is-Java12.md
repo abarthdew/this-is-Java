@@ -158,7 +158,7 @@
 2. 익명 객체를 만들어 Thread를 생성하는 방법
     
     ```java
-    						// new Thread()로 생성자 호출
+    				// new Thread()로 생성자 호출
     Thread thread = new Thread() { // {}: Thread를 상속하는 하위 객체를 익명 객체로 만듬
     	public void run() { // run() 메서드 재정의, 새로운 작업 스레드가 실행할 코드 작성
     		// 스레드가 실행할 코드
@@ -500,7 +500,7 @@ public class StatePrintThread extends Thread {
 - join() 메서드 테스트를 위해서는 2개의 스레드가 필요
 - `스레드a`에서 `스레드b`를 start() → `스레드b` run()
     
-    ⇒ `스레드a`에서 `스레드b.join()` 호출 → `**스레드b`가 아닌, `스레드 a`가 일시 정지 상태가 됨**
+    ⇒ `스레드a`에서 `스레드b.join()` 호출 → `스레드b`가 아닌, `스레드 a`가 일시 정지 상태가 됨
     
 - `스레드b`가 run() 메서드를 종료할 때까지 `스레드a`를 **일시 정지** 상태로 만듦
     

@@ -18,10 +18,10 @@ public class ThreadInfoExam {
             System.out.println();
             /*
             name: Signal Dispatcher(데몬)
-            소속그룹: system
+                소속그룹: system
 
             name: AutoSaveThread(데몬)
-                    소속그룹: main(main 스레드에서 이 스레드를 생성했기 때문에)
+                소속그룹: main(main 스레드에서 이 스레드를 생성했기 때문에)
 
             name: main(주)
                     소속그룹: main
