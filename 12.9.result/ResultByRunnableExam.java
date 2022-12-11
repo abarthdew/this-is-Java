@@ -38,7 +38,7 @@ public class ResultByRunnableExam {
 
         // 두 작업을 스레드 풀의 작업 큐에 넣어 줌
         Future<Result> future1 = executorService.submit(task1, result);
-        Future<Result> future2 = executorService.submit(task1, result);
+        Future<Result> future2 = executorService.submit(task2, result);
 
         // 스레드가 task1, task2를 완료할 때까지 블로킹
         try {

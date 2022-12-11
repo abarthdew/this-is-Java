@@ -700,7 +700,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
     
     ⇒ 웹 서버에서 실행하는 서버 애플리케이션 성능이 급격히 저하됨
     
-- `**스레드 풀**`: 아무리 많은 브라우저가 접근하더라도, 웹 서버 내 스레드 개수를 적절히 조절
+- `스레드 풀`: 아무리 많은 브라우저가 접근하더라도, 웹 서버 내 스레드 개수를 적절히 조절
     
     ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(53).png)
     
@@ -1366,7 +1366,7 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
 // V: 스레드가 작업을 처리한 이휴의 결과값
 // A: 콜백 메서드에서 사용할 수 있는 첨부 객체
 CompletionHandler<V, A> callback
-					= new CompletionHandler<V, A>(){ // 익명 객체로 구현 객체 생성
+	= new CompletionHandler<V, A>(){ // 익명 객체로 구현 객체 생성
 	@Override
 	public void completed(V result, A attachment) {
 		// 처리를 완료했을 때 시행하는 콜백 메서드
