@@ -124,15 +124,15 @@ Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파�
         
         ```java
         public static void registerCourse(Course<?> course) {...}
-        									// Course<Integer>
-        									// Course<String>
+        	// Course<Integer>
+        	// Course<String>
         ```
         
-    2. 제네릭 타입<? extends 상위타입>: `<?>`에는 상위타입 이하 클래스만 가능
-    3. 제네릭 타입<? super 하위타입>: `<?>`에는 하위타입 이상 클래스만 가능
+    2. `제네릭 타입<? extends 상위타입>: <?>에는 상위타입 이하 클래스만 가능`
+    3. `제네릭 타입<? super 하위타입>: <?>에는 하위타입 이상 클래스만 가능`
 - `클래스 D` → `C` → `B` → `최상위 클래스 A` 순이라고 가정
-    1. <? extends C>의 경우 `C`, `D`, `E`만 가능 (C가 **최상위** 클래스)
-    2. <? super C>의 경우 `C`, `B`, `A`만 가능(C가 **최하위** 클래스)
+    1. `<? extends C>의 경우 C, D, E만 가능` (C가 **최상위** 클래스)
+    2. `<? super C>의 경우 C, B, A만 가능`(C가 **최하위** 클래스)
 
 ## **13.7 제네릭 타입의 상속과 구현**
 
