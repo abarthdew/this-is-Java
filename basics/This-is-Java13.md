@@ -120,12 +120,12 @@ Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파�
     ```
     
 - 와일드 카드 타입의 세 가지 형태
-    1. 제네릭 타입<?>: <?>에는 어떤 타입도 가능
+    1. `제네릭 타입<?>: <?>에는 어떤 타입도 가능`
         
         ```java
         public static void registerCourse(Course<?> course) {...}
-        																		// Course<Integer>
-        																		// Course<String>
+        									// Course<Integer>
+        									// Course<String>
         ```
         
     2. 제네릭 타입<? extends 상위타입>: `<?>`에는 상위타입 이하 클래스만 가능
