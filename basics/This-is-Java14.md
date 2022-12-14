@@ -130,8 +130,8 @@ int result = fi.method(2, 5);
 - java.util.function 패키지 내 interfaces에 접미사가 Consumer, Operator 등이 있는 것을 확인할 수 있음
 1. Consumer: 데이터를 소비만 하고 끝내는 기능을 제공해 주는 함수적 인터페이스
 2. Supplier: 데이터를 공급해주는 공급자 기능을 제공, 데이터를 리턴시켜주는 기능을 가지고 있음
-3. Funtion: a 라는 데이터를 b로 `**(타입) 변환**`할 때 주로 사용
-4. Operator: 어떤 데이터를 `**연산**`할 때 사용
+3. Funtion: a 라는 데이터를 b로 `(타입) 변환`할 때 주로 사용
+4. Operator: 어떤 데이터를 `연산`할 때 사용
 5. Predicate: 어떤 매개값을 조사해서 참, 거짓 판별해서 리턴
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(10).png)
@@ -149,7 +149,7 @@ int result = fi.method(2, 5);
     
     ```java
     method((x) -> {
-    	...(실행문)...
+    	//...(실행문)...
     }); // Consumer는 매개값만 있고 리턴값이 없으므로 이렇게 작성
     ```
     
