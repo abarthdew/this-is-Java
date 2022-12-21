@@ -79,6 +79,31 @@
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7dbbe877-c0ef-490c-941b-5aa049a9caf8/Untitled.png)
 
+- InputStream은 추상 클래스이므로 new 연산자를 이용해 생성할 일이 없음
+- InputStream을 상속받은 하위 클래스, 즉 구현 클래스로 객체를 만들어 사용할 수 있음
+- InputStream의 주요 메서드
+    - `read()`: read()가 읽은 1바이트가 int 타입(4바이트) 가장 끝에 저장됨
+        
+        ⇒ 1바이트를 읽고 그 읽은 바이트를 int 타입으로 리턴
+        
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/45de101a-b6f8-4711-9d6d-60dfb4061b74/Untitled.png)
+    
+    - `read(byte[] b)`: 주어진 byte 배열의 길이만큼 데이터를 읽어 매개변수 byte[]에 저장하고, 실제 읽은 바이트 수를 int 로 리턴
+        
+        ⇒ 5byte를 읽었다면, 그 데이터는 (byte[] b)에 저장되고, 리턴값은 5가 나옴
+        
+    - `read(byte[] b, int off, int len)`:
+        - 읽은 데이터를 매개변수 byte[] 배열에 저장
+        - 어떤 위치에 저장할 건지 2, 3번째 매개변수로 지정
+        
+        ⇒ 길이가 5인 배열의 2번째 인덱스부터 2개를 읽고 저장
+        
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f7279672-44e6-4e43-8922-9b8ced696b2e/Untitled.png)
+        
+    - `close()`: InputStream 사용 후 닫을 때 사용
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccff8d57-ca0e-44cf-b02b-6b085323942e/Untitled.png)
 
 ## 참고자료
 
