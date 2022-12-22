@@ -104,6 +104,9 @@
     - `close()`: InputStream 사용 후 닫을 때 사용
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccff8d57-ca0e-44cf-b02b-6b085323942e/Untitled.png)
+- 1바이트를 읽고, 읽은 바이트를 리턴
+- InputStream로부터 5개의 바이트가 들어온다면, read()는 5번 실행해서 읽음
+- 읽힌 바이트는 int 타입의 끝에 저장되고 리턴됨
 
 ## 참고자료
 
