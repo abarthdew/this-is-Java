@@ -118,9 +118,8 @@
 
 ### 프로그램 작성해 보기 [Folder - 1.4.hello](https://github.com/abarthdew/this-is-Java/tree/main/1.4.hello)
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/1(13).png)
-    
-    ⇒ Hello.java
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/1(13).png)
+⇒ Hello.java
     
     ```jsx
     class Hello {
