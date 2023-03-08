@@ -1,8 +1,5 @@
 {
     "java.project.sourcePaths": [
-        "8.7.defaultMethod",
-        "8.3.interface",
-        "7.8.abstractMethod",
         "16.9.aggregate",
         "16.8.match",
         "16.7.looping",
@@ -23,10 +20,7 @@
         "15.3.Set",
         "15.2.ArrayList",
         "14.6.methodReferences",
-        "14.5.supplier",
         "14.5.minByMaxBy",
-        "14.5.function",
-        "14.5.consumer",
         "14.5.api",
         "14.5.andThenCompose",
         "14.5.andOrNegate",
@@ -65,6 +59,7 @@
         "12.2.thread2",
         "12.2.thread",
         "11.9.StringBuilder",
+        "11.5.property",
         "11.3.hashCode",
         "11.16.time",
         "11.15.Format",
@@ -72,6 +67,7 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "11.5.property"
-    ]
+        "06.14.getters"
+    ],
+    "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk1.8.0_201"
 }
