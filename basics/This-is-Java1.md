@@ -87,7 +87,7 @@
     
     → 컴파일러를 통해 컴파일: JDK가 제공해주는 javac.exe로 컴파일
     
-    ```jsx
+    ```java
     $ javac Hello.java
     ```
     
@@ -95,7 +95,7 @@
     
     → 클래스 파일을 해석: JVM 구동 명령어 java.exe로 클래스 파일 찾기 및 실행
     
-    ```jsx
+    ```java
     $ java(.exe 생략 가능) Hello (.class 확장명 생략 가능)
     $ java Hello
     ```
@@ -121,39 +121,39 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/1(13).png)
 ⇒ Hello.java
     
-    ```jsx
-    class Hello {
-      public static void main(String ar[]) {
-        System.out.println("Hello!");
-      }
+```java
+class Hello {
+    public static void main(String ar[]) {
+    System.out.println("Hello!");
     }
-    ```
-    
-    → Hello.class
-    
-    ```jsx
-    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>javac Hello.java
-    
-    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>dir
-     C 드라이브의 볼륨에는 이름이 없습니다.
-     볼륨 일련 번호: CEC7-4056
-    
-     C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello 디렉터리
-    
-    2022-08-31  오후 10:17    <DIR>          .
-    2022-08-31  오후 10:17    <DIR>          ..
-    2022-08-31  오후 10:17               410 Hello.class
-    2022-08-31  오후 10:09                98 Hello.java
-                   2개 파일                 508 바이트
-                   2개 디렉터리  181,445,763,072 바이트 남음
-    ```
-    
-    → 실행(JVM이 main()메소드 부터 실행함)
-    
-    ```jsx
-    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>java Hello
-    Hello!
-    ```
+}
+```
+
+→ Hello.class
+
+```java
+C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>javac Hello.java
+
+C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>dir
+    C 드라이브의 볼륨에는 이름이 없습니다.
+    볼륨 일련 번호: CEC7-4056
+
+    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello 디렉터리
+
+2022-08-31  오후 10:17    <DIR>          .
+2022-08-31  오후 10:17    <DIR>          ..
+2022-08-31  오후 10:17               410 Hello.class
+2022-08-31  오후 10:09                98 Hello.java
+                2개 파일                 508 바이트
+                2개 디렉터리  181,445,763,072 바이트 남음
+```
+
+→ 실행(JVM이 main()메소드 부터 실행함)
+
+```java
+C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>java Hello
+Hello!
+```
 ## 1.5 주석과 실행문
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/1(14).png)
