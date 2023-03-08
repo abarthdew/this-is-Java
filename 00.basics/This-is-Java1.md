@@ -13,7 +13,7 @@
 
 ## 1.1 프로그래밍 언어란?
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/1.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/1.png)
 
 - 프로그래밍 언어 : 소스파일(txt)을 작성할 때 사용되는 언어
     - C++, JAVA, VC++ 등
