@@ -123,9 +123,9 @@
     
 ```java
 class Hello {
-    public static void main(String ar[]) {
+  public static void main(String ar[]) {
     System.out.println("Hello!");
-    }
+  }
 }
 ```
 
@@ -138,7 +138,7 @@ C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>dir
     C 드라이브의 볼륨에는 이름이 없습니다.
     볼륨 일련 번호: CEC7-4056
 
-    C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello 디렉터리
+C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello 디렉터리
 
 2022-08-31  오후 10:17    <DIR>          .
 2022-08-31  오후 10:17    <DIR>          ..
