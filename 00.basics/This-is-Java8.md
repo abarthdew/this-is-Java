@@ -12,7 +12,7 @@
 
 ## **8.1 인터페이스의 역할**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8.png)
 
 - 개발 코드가 어떤 객체를 이용해 메서드를 호출하려고 한다
     
@@ -28,7 +28,7 @@
 
 ## **8.2 인터페이스 선언**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(1).png)
 
 - 자바의 상수: static final 타입 상수명
 - 인터페이스의 모든 필드는 static final 특성을 가지고 있음 ⇒ 앞에 static final을 붙이지 않아도 기본적으로 상수 특성을 받음
@@ -38,13 +38,13 @@
     - default 메서드: 메서드 실행 블록이 있음, 인터페이스에서 정의된 메서드지만 실행하려면 인터페이스 구현 객체가 필요
     - static 메서드: 메서드 실행 블록이 있음, 인터페이스를 통해 바로 호출 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(2).png)
 
 - 데이터를 저장하지 않기 때문에: 실행 중 데이터를 저장하지 않음
 - static {}과 같은 정적 블록을 작성할 수 없음
 - 때문에, 상수(필드)값은 선언과 동시에 초기화 필수
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(3).png)
 
 - 개발 코드 → 인터페이스로 메서드 호출
     
@@ -54,17 +54,17 @@
     
 - 인터페이스 내 추상메서드는 `어떻게 호출한 것인가`에 대한 방법만 제시함 ⇒ 실제 실행되는 코드는 객체가 가진 재정의된 메서드
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(4).png)
 
 - default 메서드: 실행 블록을 가지는 인터페이스 메서드
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(5).png)
 
 - 기본적으로 public 접근 제한이므로 생략하더라도 컴파일 과정에서 붙음
 
 ## **8.3 인터페이스 구현(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(6).png)
 
 - 인터페이스 만으로는 실제 동작하는 프로그램을 만들 수 없음
 - 인터페이스를 통해서 객체를 사용해야 하기 때문에, 객체가 있어야 함 ⇒ **인터페이스의 구현 객체**
@@ -72,24 +72,24 @@
 - 구현 클래스: 인터페이스의 구현 객체를 생성하는 클래스
 - 과정: 구현 클래스 생성 → 구현 객체 생성 → 이 객체를 인터페이스에 대입 → 개발 코드에서 인터페이스를 사용해 객체의 재정의된 메서드 호출, 리턴 값 받음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(7).png)
 
 - 위의 예시 코드에서처럼, RemoteControl 인터페이스에는 3개의 메서드가 정의되어 있는데, Television에는 그 일부인 2개의 메서드만 재정의 되었다면, Television 클래스는 `추상클래스`임(abstract)
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(8).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(8).png)
     
     ⇒ 재정의되지 않은 RemoteControl의 setVolume() 메서드는 `추상 메서드`임
     
 - 인터페이스의 모든 메서드는 public 접근 제한을 가짐
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(9).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(9).png)
 
 - 인터페이스도 하나의 타입이기 때문에, 인터페이스를 선언 후 간접적으로 구현 객체를 대입해 이용 가능
 - 인터페이스를 구현한(implements) 어떤 구현 객체라도 인터페이스에 대입해 이용 가능- 
 
 ## **8.3 인터페이스 구현(2)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(10).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(10).png)
 
 - 익명 구현 객체: 이름이 없는 구현 객체
 
@@ -113,19 +113,19 @@
 - 정리: `{…}`에 선언된 클래스가 인터페이스를 구현한다 ⇒ `{…}`에 선언된 클래스의 기본 생성자를 호출한 뒤 객체를 만들어서 인터페이스 변수에 대입한다
 - 익명 구현 객체에 대한 바이트 코드 파일: 이 클래스 선언에 대한 바이트 코드 파일이 생성됨
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(11).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(11).png)
     
     - window-show view - navigator
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(12).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(12).png)
     
     - `RemoteControlExample$1.class`: RemoteControlExample에 선언된 익명 클래스에 대한 바이트코드 파일
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(13).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(13).png)
     
     - `RemoteControlExample$2.class`: 익명 클래스를 하나 더 생성해 rc2 인터페이스 변수에 하나 더 대입하면 버전 2가 만들어짐
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(14).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(14).png)
 
 - 인터페이스 A로 객체를 사용할 수도 있고, 인터페이스 B로 객체를 사용할 수도 있음
 - 해당 클래스 블록 안에는 인터페이스 A, B가 가진 모든 추상 메서들 재정의해서 실제 클래스로 가지고 있어야 함
@@ -133,7 +133,7 @@
 
 ## **8.4 인터페이스 사용**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(15).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(15).png)
 
 - 인터페이스는 다양한 곳에서 사용 가능
 - 인터페이스에 구현 객체를 대입하는 위치가 다양할 수 있음 ⇒ 어디서 대입됐냐에 따라 인터페이스 사용 위치가 달라질 수 있음
@@ -142,7 +142,7 @@
     ⇒ 이 인터페이스를 구현한 어떠한 객체든 대입 가능
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(16).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(16).png)
 
 - 인터페이스 변수에 구현 객체 대입 후
     
@@ -152,7 +152,7 @@
     
 - 인터페이스는 개발 코드와 구현 객체의 중간에서 접점 역할, 즉 메서드 호출을 연결해 주는 역할을 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(17).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(17).png)
 
 - 자바 8에서 추가됨
 - 인터페이스를 선언할 때, default 키워드를 넣고 메서드 선언 가능
@@ -185,17 +185,17 @@
 
 ## **8.5 타입변환과 다형성**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(18).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(18).png)
 
 - 상속을 이용해 다형성을 구현하듯, 인터페이스를 이용해 다형성 구현 가능 ⇒ 오히려 인터페이스를 이용한 다형성 구현이 더 많이 사용됨
 - 인터페이스에도 타입 변환이 있음
 - 클래스 A, B에 동일한 이름의 메서드가 있을 경우, 인터페이스 변수에 대입되는 클래스 타입만 바꾸면 그 이외 코드를 바꿀 필요가 없음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(19).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(19).png)
 
 - 인터페이스를 매개 변수로 설정하면, 여러가지 구현 객체를 사용 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(20).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(20).png)
 
 - 구현 객체를 인터페이스 변수에 넣어 자동 타입 변환시킴
 - 점선 → : 인터페이스 상속
@@ -203,15 +203,15 @@
 
 ### 필드 타입으로 인터페이스 사용 시 다형성이 구현되는 방법
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(21).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(21).png)
 
 - 코드는 변경하지 않고 그대로 사용하지만, 필드에 대입되는 구현 객체에 따라 결과가 다르게 나옴
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(22).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(22).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(23).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(23).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(24).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(24).png)
 
 - 인터페이스 A, A를 구현한 클래스 B, C
     
@@ -233,14 +233,14 @@
     ⇒ `checkFare()` 메서드를 사용하기 위해서는 강제 타입 변환 필요
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(25).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(25).png)
 
 - 강제 타입 변환 전, 구현 클래스 타입을 조사 후 코드를 실행해야 오류를 피할 수 있음
 - `instanceOf`: 좌측 변수가 우측 객체로 만들어졌는지 조사함
 
 ## **8.6 인터페이스 상속**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(26).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(26).png)
 
 - 클래스는 다중 상속을 할 수 없지만, 인터페이스는 다중 상속 가능
 - 어떤 클래스가 인터페이스 A를 implements할 경우, 인터페이스 A만 사용 가능
@@ -249,7 +249,7 @@
 
 ## **8.7 디폴트 메소드와 인터페이스 확장**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(27).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(27).png)
 
 - 인터페이스: 객체 사용 설명서, 메서드의 호출 정보를 제공
 - default 메서드: 실행 코드까지 가지고 있음
@@ -271,16 +271,16 @@
         → 구현 클래스는 필요에 따라 default 메서드 재정의 가능
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(28).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(28).png)
 
 - MyInterface 인터페이스에 default가 아닌 method2()를 추가하면, 기존에 implements 받은 구현 클래스들이 에러남 → 새 추상 메서드를 구현해야 하니까
 - 그런데 인터페이스의 method2()에 default 키워드를 붙이면, 구현 클래스에서 구현을 해도, 안 해도 무방함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/8(29).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/8(29).png)
 
 - 부모 인터페이스의 default 메서드를 → 자식 인터페이스에서 default 메서드로 재정의 가능
 - 부모 인터페이스의 default 메서드 → 자식 인터페이스에서 추상 메서드로 재정의
 
 ## 참고자료
 
-[강의교안_8장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_8%EC%9E%A5.ppt)
+[강의교안_8장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_8%EC%9E%A5.ppt)

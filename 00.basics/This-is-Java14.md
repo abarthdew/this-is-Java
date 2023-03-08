@@ -11,9 +11,9 @@
 
 ## **14.1 람다식이란**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14.png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(1).png)
 
 - 함수적 인터페이스: 한 개의 메서드를 가지고 있는 인터페이스 / 한 개의 메서드를 정의하고 있는 인터페이스
 - 예) Runnable 인터페이스는 run() 이라는 메서드를 하나만 가지고 있음
@@ -45,7 +45,7 @@
 
 ## **14.2 람다식 기본 문법**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(2).png)
 
 1. 매개변수의 타입: 함수적 인터페이스의 메서드 타입을 보고 자동으로 인식되기 때문에 **생략 가능**
 2. 하나의 매개변수만 있을 때: 괄호 생략 가능
@@ -56,7 +56,7 @@
 
 ## **14.3 타겟 타입과 함수적 인터페이스**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(3).png)
 
 - 타겟 타입: 람다식이 대입되는 인터페이스
     - 예) `Runnable runnable = () → {…}` 의 **Runnable**
@@ -85,7 +85,7 @@ new MyFuncInterface() {
 };
 ```
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(4).png)
 
 ```java
 @FunctionalInterface
@@ -100,13 +100,13 @@ int result = fi.method(2, 5);
 
 ## **14.4 클래스 멤버와 로컬 변수 사용**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(5).png)
 
 - 중첩된클래스에서 람다식이 사용되었을 경우 필드 구분
     - this.innerField: 중첩된 클래스의 인스턴스(Inner)
     - ThisExample.this.ouuterField: 바깥 쪽 클래스의 인스턴스(ThisExample)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(6).png)
 
 - 원래 자바의 익명 구현 객체에서 로컬 변수를 사용하게 되면, 그 로컬 변수는 final 특성을 가지게 됨
 - 람다식은 익명 구현 객체를 생성하므로, 역시 람다식 안에서 사용되는 로컬 변수, 매개변수는 final 특성을 가지게 됨
@@ -115,7 +115,7 @@ int result = fi.method(2, 5);
 
 ## **14.5 표준 API의 함수적 인터페이스**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(7).png)
 
 1. Runnable 객체를 만들고 그걸 new Thread(runnable) 처럼 생성자 매개값으로 넣어 스레드를 생성할 수 있지만,
 2. 람다식을 쓰면 new Thread를 사용해 스레드를 생성할 때, 바로 매개값에 람다식을 넣어 사용할 수 있음
@@ -123,9 +123,9 @@ int result = fi.method(2, 5);
     ⇒ 인터페이스를 매개 타입으로 가지는 api에서, 인터페이스의 매개값을 람다식으로 작성해서 사용하는 경우가 대부분
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(8).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(8).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(9).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(9).png)
 
 - java.util.function 패키지 내 interfaces에 접미사가 Consumer, Operator 등이 있는 것을 확인할 수 있음
 1. Consumer: 데이터를 소비만 하고 끝내는 기능을 제공해 주는 함수적 인터페이스
@@ -134,7 +134,7 @@ int result = fi.method(2, 5);
 4. Operator: 어떤 데이터를 `연산`할 때 사용
 5. Predicate: 어떤 매개값을 조사해서 참, 거짓 판별해서 리턴
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(10).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(10).png)
 
 - 이들 함수적 인터페이스는 주로 어떤 api의 매개타입으로 사용됨
 - 이들 함수적 인터페이스의 구현 객체를 작성할 때  람다식을 이용해 매개값으로 제공됨
@@ -154,9 +154,9 @@ int result = fi.method(2, 5);
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(11).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(11).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(12).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(12).png)
 
 - t는 accept()의 매개변수
     
@@ -167,16 +167,16 @@ int result = fi.method(2, 5);
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(13).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(13).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(14).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(14).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(15).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(15).png)
 
 - 타입을 변환하는 역할을 함
 - 예) A타입 매개값을 → B 타입으로 변환해 리턴
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(16).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(16).png)
 
 - 매개값은 Studnet, 리턴값은 String
     
@@ -185,17 +185,17 @@ int result = fi.method(2, 5);
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(17).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(17).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(18).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(18).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(19).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(19).png)
 
 - `IntBinaryOperator`: 두 개의 정수값을 받아 하나를 리턴
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(20).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(20).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(21).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(21).png)
 
 - andThen(), compose(): 두 개의 함수적 인터페이스가 연결되어 있는 것
     1. 첫 번째 함수적 인터페이스를 먼저 실행하고, 
@@ -212,7 +212,7 @@ int result = fi.method(2, 5);
     ⇒ 인터페이스AB.method() 호출 → 인터페이스A의 람다식 먼저 실행 → 리턴된 결과값을 받아 인터페이스B의 매개값으로 제공 → 인터페이스B 람다식 실행 → 최종 결과 리턴
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(22).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(22).png)
 
 - compose() 디폴트 메서드
     
@@ -224,18 +224,18 @@ int result = fi.method(2, 5);
     ⇒ 인터페이스AB.method() 호출 → 인터페이스B의 람다식 먼저 실행 → 리턴된 결과값을 받아 인터페이스A의 매개값으로 제공 → 인터페이스A 람다식 실행 → 최종 결과 리턴
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(23).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(23).png)
 
 - andThen()은 거의 모두 제공, compose()는 4개만 제공됨
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(24).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(24).png)
 
 - 결과값이 없기 때문에 매개값으로 제공될 것도 없음
     
     ⇒ andThen(), compose()는 단순히 두 함수적 인터페이스(Consumer)의 실행 순서만 정함
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(25).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(25).png)
 
 - (1) Function<Member, **Address**> → (2) Function<**Address**, String>
     
@@ -243,9 +243,9 @@ int result = fi.method(2, 5);
     
 - (결과) Funtion<Member, String>: 결국 **Member를 제공하고, String을 얻는 것과 같음**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(26).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(26).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(27).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(27).png)
 
 - targetObject: 비교할 것
 - sourceObject: targetObject과 비교할 객체
@@ -253,11 +253,11 @@ int result = fi.method(2, 5);
     ⇒ Ojbects.equals(sourceObject, targetObject)를 test()의 결과로 리턴
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(28).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(28).png)
 
 ## **14.6 메소드 참조**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(29).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(29).png)
 
 - IntBinaryOperator가 가지고 있는 추상 메서드의 매개 변수의 타입, 매개 변수의 수, 리턴 타입이 Math의 max() 메서드와 동일하므로 아래의 코드는 성립함
     
@@ -267,7 +267,7 @@ int result = fi.method(2, 5);
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(30).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(30).png)
 
 - 정적 메서드 참조
     
@@ -292,7 +292,7 @@ int result = fi.method(2, 5);
 - IntBinaryOperator와 같은 **함수적 인터페이스의 추상 메서드와 같은지 다른지 생각**해야 함
 - 정적이냐, 인스턴스냐에 따라 작성법도 다름
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(31).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(31).png)
 
 - 두 개의 매개변수 a, b를 받아,
     
@@ -309,7 +309,7 @@ int result = fi.method(2, 5);
         
 - 함수적 인터페이스 `ToIntBiFunction`: 2개의 매개값을 받아 int로 매핑함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/14(32).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/14(32).png)
 
 - 실행부에 객체를 생성하고, 리턴하는 코드만 있을 경우 간단하게 생성자 참조를 이용할 수 있음
     
@@ -347,4 +347,4 @@ int result = fi.method(2, 5);
 
 ## 참고자료
 
-[강의교안_14장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_14%EC%9E%A5.ppt)
+[강의교안_14장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_14%EC%9E%A5.ppt)

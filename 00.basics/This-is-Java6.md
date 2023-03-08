@@ -28,16 +28,16 @@
 
 - 자바로 객체 지향 프로그래밍을 작성하기 위해서는 클래스부터 선언해야 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6.png)
 
 - 객체지향 프로그래밍: 자동차를 만들 때, 타이어 객체, 엔진 객체, 문 객체, 핸들 객체를 합쳐 만드는 것처럼, 각 부품 객체들을 조립해 완성된 프로그램을 만드는 것
 - 객체: 속성과 동작을 가지는 모든 것
 - 자바 객체: 필드(속성), 메서드(동작)으로 구성됨
 - 객체 모델링: 현실 세계를 소프트웨어 객체로 변환하는 것
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(1).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(2).png)
 
 - 집합 관계: “어떤 부품들이 모여 완성품이 만들어진다”
     - 엔진 객체, 타이어 객체, 핸들 객체 → 자동차 객체
@@ -46,39 +46,39 @@
 - 상속 관계: “어떤 객체가 어떤 객체의 내용을 물려받아서 사용한다”
     - 자동차 객체는 → 기계 객체의 데이터(속성, 동작)을 사용할 수 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(3).png)
 
 - 실제 필드와 메서드를 외부로부터 보이지 않게 구조를 숨김
 - 몇 가지 필드와 메서드만 외부에 제공
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(4).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(5).png)
 
 - 객체의 부품화: 그때그때 객체를 바꿔 끼워 사용할 수 있음
 - 다형성: 설계할 때 타입은 ‘타이어’로 모두 동일하지만, 실제 구현 객체는 ‘타이어의 하위 객체’인 한국 타이어, 금호 타이어로, 실행 결과가 다양하게 나올 수 있음
 
 ## **6.2 객체와 클래스**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(6).png)
 
 ## **6.3 클래스 선언**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(7).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(8).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(8).png)
 
 - 2개 이상의 Class가 선언된 소스 파일을 컴파일 하면, 선언된 Class 개수만큼 바이트 코드 파일 생성됨
 - 하나의 소스 파일은 Class들을 담고 있는 그릇 역할만 하고, 컴파일 되어 나오는 바이트 코드 파일의 수는 Class의 수가 결정함
 
 ## **6.4 객체 생성과 클래스 변수**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(9).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(9).png)
 
 - new 연산자로 생성된 클래스 객체는 힙 영역에 위치
 - new 연산자는 힙 영역에 생성된 객체의 번지를 리턴하고, 이 번지가 스택 영역에 선언된 클래스 변수에 저장됨
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(10).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(10).png)
 
 - 클래스 용도
     - 1) 라이브러리
@@ -89,7 +89,7 @@
 
 ## **6.5 클래스의 구성 멤버**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(11).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(11).png)
 
 - 생성자
     - 객체 생성. 초기화 담당. `실행 블록({})`을 가짐.
@@ -99,35 +99,35 @@
 
 ## **6.6 필드**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(12).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(12).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(13).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(13).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(14).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(14).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(15).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(15).png)
 
 ## **6.7 생성자(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(16).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(16).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(17).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(17).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(18).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(18).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(19).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(19).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(20).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(20).png)
 
 ## **6.7 생성자(2)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(21).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(21).png)
 
-![생성자 코드 중복의 예시](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(22).png)
+![생성자 코드 중복의 예시](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(22).png)
 
 생성자 코드 중복의 예시
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(23).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(23).png)
 
 - 중복 코드를 피하는 방법: this() 사용
 - this(): 객체의 다른 생성자를 지칭, 즉 자신의 다른 생성자를 지칭
@@ -166,42 +166,42 @@ Car(String model) {
 
 ## **6.8 메소드(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(24).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(24).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(25).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(25).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(26).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(26).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(27).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(27).png)
 
 ## **6.8 메소드(2)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(28).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(28).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(29).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(29).png)
 
 ## **6.8 메소드(3)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(30).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(30).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(31).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(31).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(32).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(32).png)
 
 - method1()을 double타입으로 받으면 double로 자동 타입 전환됨
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(33).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(33).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(34).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(34).png)
 
 ## **6.9 인스턴스 멤버와 this**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(35).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(35).png)
 - int gas, setSpeed() 코드가 Car 객체 안에 들어갈까? ⇒ No
     - Car 객체 안에 gas 필드를 저장하는 공간이 생기고, setSpeed()를 호출할 수 있다는 뜻이지, 메서드 코드가 객체 안에 들어가지는 않음
     - 메서드 코드는 메서드 영역에 위치함(메서드 호출은 객체를 통해 함)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(36).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(36).png)
 
 - this는 heap 객체 내부에 생성됨
 - this는 객체 내부에서 자신의 위치 정보 값을 저장하고 있음
@@ -209,7 +209,7 @@ Car(String model) {
 
 ## **6.10 정적 멤버와 static(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(37).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(37).png)
 
 - 인스턴스 멤버: 객체에 소속
 - 정적 멤버
@@ -223,22 +223,22 @@ Car(String model) {
 - 정적 필드와 정적 메서드는 객체를 만들 때 그 안에 들어가는 것이 아니라, 메서드 영역에 위치하며, 정적 필드에 데이터가 저장되기도 하며, 정적 메서드가 실행되기도 함
 - 즉, 정적 필드와 정적 메서드는 객체 안에 저장되지 않고, 메서드 영역 한 곳에만 고정되어 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(38).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(38).png)
 
 - 인스턴스 멤버를 new 연산자로 접근하는 것과는 달리, 정적 멤버는 클래스 이름과 도트 연산자로 접근
 - 예를 들어, Calculator의 static double pi, static int plus, static int minus는 정적 멤버이므로 만들어진 객체마다 가지는 것이 아니라,  클래스 바이트 코드와 함께 메서드 영역의 고정된 위치에 저장됨
 - static 키워드는 공통적인 의미를 가지고 있고, 객체마다 공유해서 쓸 수 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(39).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(39).png)
 
 - 메서드 영역에 있는 정적 멤버들을 힙 영역의 객체들을 통해 사용할 수 있음
 - 원래는 클래스 이름을 통해서 접근해야 하지만, 객체들을 통해서도 접근할 수도 있다는 말
 - 하지만, 어디서나 가능하다는 얘기지 클래스가 아닌 객체를 통해 정적 멤버에 접근하는 것은 바람직하지 않음 
 - **[바른 사용]: 메서드 영역의 Calculator클래스 에서 바로 pi, plus, minus 사용하기**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(40).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(40).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(41).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(41).png)
 
 - static int x = 10; static String company = “삼성”; 과 같이 단순하지 않은 복잡한 초기화 식은 정적 초기화 블록 안에서 실행
 
@@ -272,29 +272,29 @@ class Test {
     - 정적 필드 초기화, 정적 메서드 호출 가능
     - 인스턴스 필드, 인스턴스 메서드 호출 불가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(42).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(42).png)
 
 - 여러 개의 static 블록 선언 가능(순차적으로 실행)
 
 ## **6.10 정적 멤버와 static(2)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(43).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(43).png)
 
 - static 블록에서는 인스턴스 멤버를 사용할 수 없음
 - 그래서, 위 예시처럼 field1, method1()을 static에 넣을 수 없음
 - 마찬가지로, 객체 자신을 참조하는 this도 사용할 수 없음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(44).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(44).png)
 
 - 객체를 생성한 후에는 사용할 수 있음 ⇒ obj가 참조하는 객체
 - 즉, static void Method() 처럼 객체를 만들고 인스턴스 필드를 사용하는 것은 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(45).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(45).png)
 
 - main() 메서드도 정적 메서드
 - 객체가 있어야 그 안의 인스턴스 멤버를 사용할 수 있으므로, 위의 예시처럼 main() 메서드에 Car 객체를 생성해서 사용함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(46).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(46).png)
 
 - 단 하나의 객체를 만들어야 하는 경우, new로 객체를 만들지 못하도록 함
     1. private 접근 제한자를 생성자 앞에 붙임
@@ -307,7 +307,7 @@ class Test {
 - 반드시 getInstance()를 통해서만 호출 가능
 - getInstance() 메서드는 자기 자신 필드가 참조하는 항상 하나의 객체만 리턴함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(47).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(47).png)
 
 <aside>
 💡 **내용정리!**
@@ -325,12 +325,12 @@ class Test {
 
 ## **6.11 final 필드와 상수**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(48).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(48).png)
 
 - `final String ssn;` 와 같이 변수 선언 후 나중에 값을 줄 경우, 생성자로만 딱 한번의 초기값을 지정할 수 있음
 - 생성자로 `this.ssn = ssn;` 으로 값을 한번 대입시킨 후에는 값을 변경할 수 없음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(49).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(49).png)
 
 - final 필드: 객체마다 가지는 불변 필드
 - 상수
@@ -340,13 +340,13 @@ class Test {
 
 ## **6.12 패키지(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(50).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(50).png)
 
 - 클래스 관리를 위해 만들어진 체계
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(51).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(51).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(52).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(52).png)
 
 - 패키지가 없는 자바 소스 파일을 `컴파일` 할 경우
     
@@ -373,22 +373,22 @@ class Test {
 
 ### 패키지 폴더 내 만들어진 class 파일 확인하기
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(53).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(53).png)
 
 - show view - Navigator 추가 후 class 파일이 만들어지는 bin 폴더 확인
 - 패키지 선언이 되어 있으나, 다른 폴더에 임의로 class 파일을 넣고 java classfile 명령어로 실행하면 오류 발생함
     
-    ![sec12.exam01_package_compile 패키지가 아닌 Temp 폴더에서 실행해서 오류 발생](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(54).png)
+    ![sec12.exam01_package_compile 패키지가 아닌 Temp 폴더에서 실행해서 오류 발생](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(54).png)
     
     sec12.exam01_package_compile 패키지가 아닌 Temp 폴더에서 실행해서 오류 발생
     
 - 하지만, sec12/exam01_package_compile 폴더로 가서 class 파일을 실행해도 오류 발생함
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(55).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(55).png)
     
     ⇒ class 파일 내 패키지 선언이 되어있기 때문에, 상위 패키지인 sec12의 상위 폴더인 Temp 폴더에서 `java 명령어 + 패키지 포함` 명령어로 실행해 줘야 함
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(56).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(56).png)
     
     - 전체 클래스 = 패키지 포함
     - java + 전체클래스 명령어로 실행해 줘야 정상적으로 실행됨
@@ -403,9 +403,9 @@ class Test {
     // -d : 현재 위치에 패키지를 생성해라
     ```
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(57).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(57).png)
     
-    ![Temp 폴더 내에서 컴파일 했으므로 여기 sec12.exam01 패키지가 생성되고, 그 안에 class 파일이 생성됨](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(58).png)
+    ![Temp 폴더 내에서 컴파일 했으므로 여기 sec12.exam01 패키지가 생성되고, 그 안에 class 파일이 생성됨](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(58).png)
     
     Temp 폴더 내에서 컴파일 했으므로 여기 sec12.exam01 패키지가 생성되고, 그 안에 class 파일이 생성됨
     
@@ -415,12 +415,12 @@ class Test {
     $ java sec12.exam01_package_compile.Application
     ```
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(59).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(59).png)
     
 
 ## **6.12 패키지(2)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(60).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(60).png)
 
 - 어떤 패키지에 있는 클래스를 사용할 건지 클래스 상단에 import로 명시해 줘야 함
 - 같은 패키지 내 클래스는 클래스 이름 만으로 사용 가능
@@ -444,48 +444,48 @@ class Test {
 - 패키지 내 클래스 하나하나가 아닌, *로 모든 클래스를 한꺼번에 적용하려면 이클립스 설정을 바꾸면 됨
 - 다른 패키지에 이름이 동일한 클래스가 2개 이상 있는 경우 ⇒ 패키지 포함 클래스명 사용
     
-    ![이름이 동일한 2개 이상의 클래스 Tier](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(61).png)
+    ![이름이 동일한 2개 이상의 클래스 Tier](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(61).png)
     
     이름이 동일한 2개 이상의 클래스 Tier
     
-    ![패키지 포함 클래스명 사용, Tier 클래스 포함된 import는 삭제](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(62).png)
+    ![패키지 포함 클래스명 사용, Tier 클래스 포함된 import는 삭제](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(62).png)
     
     패키지 포함 클래스명 사용, Tier 클래스 포함된 import는 삭제
     
 
 ## **6.13 접근 제한자**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(63).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(63).png)
 
 - 클래스 구성 멤버: 필드, 생성자, 메서드
 - protected: 상속과 관련
 - default: 접근 제한자를 붙이지 않은 모든 요소에 적용
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(64).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(64).png)
 
 - default 클래스 A, B는 외부 패키지의 C에 선언될 수 없음
 - public 클래스 A, B는 외부 패키지의 C에 선언될 수 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(65).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(65).png)
 
 - 접근제한자에 따라 `new 생성자();` 의 생성 가능 유무가 달라짐
 - public: 어디서든 `new 생성자();` 로 생성 가능
 - default: 같은 패키지 내에서만 `new 생성자();` 로 생성 가능
 - private: 생성자 내부 클래스 제외 외부 클래스에서 `new 생성자();` 생성 불가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(66).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(66).png)
 
 - a1는 public이라 외부 클래스 C에서 생성 가능, a2는 private라 생성 불가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(67).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(67).png)
 
 - 같은 클래스 A 내부에서는 field1, 2, 3, method1(), 2(), 3() 모두 사용 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(68).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(68).png)
 
 - 같은 패키지 내 클래스 A, B: 외부 블래스 B에서 default인 `a.field3` 사용 가능, private인 `a.method3()` 사용 불가
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(69).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(69).png)
 
 - 다른 패키지 내 클래스 A, C: 외부 클래스 C에서 default인 `a.field3` 사용 불가, private인 `method2(), 3()` 사용 불가
 
@@ -493,7 +493,7 @@ class Test {
 
 ## 6.14 Getter와 Setter 메소드
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(70).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(70).png)
 
 - **Getter**: private 필드를 <b>`읽기 전용`</b>으로 접근하기 위함
     
@@ -506,13 +506,13 @@ class Test {
     ⇒ 외부에서 필드 값을 간접적으로 값을 저장할 수 있게 해 줌, 유효성 검사를 해서 엉뚱한 값으로 변경할 수 없도록 함
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(71).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(71).png)
 
 - 자동으로 getter, setter 만들기: source - generate getters and setters
 
 ## **6.15 어노테이션(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(72).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(72).png)
 
 - 작성된 코드가 잘못되었는지 체크할 수 있도록 컴파일러에게 정보 제공
 - 컴파일러에게 무언가를 지시
@@ -520,7 +520,7 @@ class Test {
 - 실행 시 특정 기능을 실행하도록 지시
 - java5 부터 사용 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(73).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(73).png)
 
 - 어노테이션의 엘리먼트 멤버: 어노테이션의 내용
     
@@ -528,12 +528,12 @@ class Test {
     
 - 예1) 해당 클래스가 컨트롤러 역할을 하도록 @Controller 적용, 이때, 참조 이름으로 main이라는 이름을 줌 ⇒ 이 클래스는 main이라는 이름을 가짐
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(74).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(74).png)
 
 - 예2) `@Annotation(”값”)`과 같이 인자가 단일 값일 경우, 엘리먼트 멤버 내 기본 엘리먼트인 `String value();`에 대입이 됨
 - 예3) 두 개 이상의 인자가 있을 경우, `@Annotation(value=”값”, element=”값2”)`로 작성
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(75).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(75).png)
 
 - 어노테이션을 적용할 때, 어노테이션 적용 대상을 명시해야 함
     
@@ -567,7 +567,7 @@ class Test {
     ⇒ @Target의 인자인 타입, 필드, 메서드에만 어노테이션 적용 가능
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(76).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(76).png)
 
 - 어노테이션 적용 코드: `@AnnotationName()`
 - @Retention(): 어노테이션을 적용한 코드가 언제까지 유지될 것인지 지정
@@ -597,7 +597,7 @@ class Test {
 
 ## **6.15 어노테이션(2)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(77).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(77).png)
 
 - 클래스에 적용된 어노테이션 정보를 어떻게 얻는가? ⇒ 메서드 이용
     
@@ -633,8 +633,8 @@ class Test {
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/6(78).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/6(78).png)
 
 ## 참고자료
 
-[강의교안_6장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_6%EC%9E%A5.ppt)
+[강의교안_6장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_6%EC%9E%A5.ppt)

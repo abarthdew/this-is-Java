@@ -6,7 +6,7 @@
 
 ## **18.1 IO 패키지 소개**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/18.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18.png)
 
 - IO: input / ouput의 약자
 - 자바에서는 데이터를 input/output하기 위해 java.io 패키지를 제공함
@@ -14,7 +14,7 @@
 - File: 파일의 이름, 경로, 크기, 속성(읽기 전용/쓰기 전용)
 - **InputStream/OutputStream**: 바이트를 읽고 쓰기 위해 사용하는 클래스
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/18(1).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(1).png)
     
     ⇒ InputStream/OutputStream을 상속해서 만든 하위 스트림
     
@@ -22,7 +22,7 @@
     - `DataInputStream ~ BufferedOutputStream`: 좀 더 편하게 입출력을 하기 위해 사용하는 보조 스트림
 - **Reader/Writer:** InputStream/OutputStream이 바이트 단위로 입출력을 한다면, Reader/Writer는 문자 단위로 입출력
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/18(2).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(2).png)
     
     ⇒ Reader/Writer를 상속해서 만든 하위 스트림
     
@@ -33,7 +33,7 @@
 
 ## **18.2 입력 스트림과 출력 스트림**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/18().png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18().png)
 
 - [프로그램]을 기준으로, 데이터가 들어오게 되면 입력 스트림을,
 - 데이터가 나가고 있다면 출력 스트림을 이용해야 함
@@ -48,7 +48,7 @@
 1. 데이터가 [프로그램]으로 들어올 경우와, 
 2. 데이터가 [프로그램]에서 나가는 경우를 따로 생각해 보면 이런 식임
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/18().png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18().png)
     
 - 각 프로그램을 기준으로 데이터가 들어오면 입력 스트림,
 - 데이터가 나가면 출력 스트림임
@@ -111,4 +111,4 @@
 
 ## 참고자료
 
-[강의교안_18장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_18%EC%9E%A5.ppt)
+[강의교안_18장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_18%EC%9E%A5.ppt)

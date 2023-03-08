@@ -17,11 +17,11 @@
 
 - 스트림: 요소를 처리하는 반복자
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16.png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(1).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(2).png)
 
 - 외부 반복자: Iterator
     
@@ -83,22 +83,22 @@
     ⇒ 스트림 내부에서 ForkJoinPool을 이용해 요소들을 나누고 각각 처리를 한 후, 서브작업 결과를 취합해 최종 결과를 제공함
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(3).png)
 
 - 순차 처리: 싱글 스레드를 이용해 요소들을 반복적으로 처리
 - 병렬 처리: 여러 개의 스레드를 이용해 요소들을 병렬적으로 처리
 - 차이점: `list.stream()` vs `list.parallelStream()`
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(4).png)
 
 ## **16.2 스트림의 종류**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(5).png)
 
 - 모든 스트림은 전부 BaseStream을 상속받고 있음
 - BaseStream는 직접적으로 사용되지 않고, 주로 하위 스트림을 사용함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(6).png)
 
 - 스트림 자체가 요소를 처리하는 반복자이기 때문에, 요소를 제공하는 어떤 소스든 스트림 구현 객체가 될 수 있음
 - 소스:
@@ -121,17 +121,17 @@
         - 각 라인의 문자 요소를 스트림으로 가지므로 문자 파일만 가능
         - BufferedReader: java.io에 있는 성능 향상을 위한 보조 스트림.  문자 파일을 읽어 파일 내용을 얻을 때 사용.
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(7).png)
 
 - `studentList.stream()`: Student 객체를 요소로 하는 스트림을 얻음
 - `Stream<Student> stream`: 만들어진 Student 타입 스트림 객체. Student 객체가 요소가 되어 스트림에서 반복적으로 처리가 됨.
 - `stream.forEach(s -> { 람다식으로 처리 })`: 얻어낸 스트림 객체를 활용함. stream을 통해 Student 객체가 하나씩 매개값 s로 대입, 이를 이용해 람다식으로 처리.
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(8).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(8).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(9).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(9).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(10).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(10).png)
 
 - 파일 내용은 [실행 결과]와 같이 각각의 라인으로 구성되어 있음
 - 파일로부터 파일에 대한 경로 정보를 가지고 있는 path 객체 먼저 얻음 → 스트림 생성
@@ -147,7 +147,7 @@
         - lines() 메서드로 스트림 객체를 얻음
         - 스트림이 처리하는 요소: 각 라인을 요소로 하는 스트림 객체를 만듬 → forEach로 각 라인을 한번 씩 가지고 와서 람다식 또는 메서드 참조로 처리
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(11).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(11).png)
 
 - 디렉토리 내 파일, 서브 디렉토리를 콘솔에 출력하는 예제
 1. 디렉토리 지정
@@ -164,7 +164,7 @@
 
 ## **16.3 스트림 파이프라인**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(12).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(12).png)
 
 - 스트림은 중간 처리와 최종 처리로 구분됨
 - 보통 최종 처리는 리덕션이라는 행위를 함
@@ -175,7 +175,7 @@
     
 - 파이프라인: 오리지날 스트림 → (중간 처리) → 중간 스트림 → 최종 처리
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(13).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(13).png)
 
 ```mermaid
 flowchart LR
@@ -193,11 +193,11 @@ flowchart LR
     ⇒ 중간 처리만으로는 동작하지 않고, 반드시 최종 처리 메서드가 호출되어야 단계적으로 실행됨
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(14).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(14).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(15).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(15).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(16).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(16).png)
 
 - 스트림 메서드는 중간 처리 메서드와 최종 처리 메서드로 구분할 수 있음
 - **중간 처리 메서드**: 요소를 필터링, 매핑, 정렬, 루핑해서 중간 스트림을 만들어 냄
@@ -210,14 +210,14 @@ flowchart LR
 
 ## **16.4 필터링 - distinct(), filter()**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(17).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(17).png)
 
 - distinct()
     - 원래 스트림[BABA] → `distinct()` → 중간 스트림[BA]
 
 ## **16.5 매핑-flatMapXXX(), mapXXX(), asXXXStream(), box**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(18).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(18).png)
 
 - 매핑: 스트림 요소를 다른 요소로 대체하는 것
 - 예) 객체 → int / 객체 → double
@@ -232,20 +232,20 @@ flowchart LR
 - T(double, int, long) 타입을 → 여러 개의 T(double, int, long)으로 만듦
 - 객체를 → 여러 개의 T(double, int, lont)으로 만듦
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(19).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(19).png)
 
 - map(): 원래 스트림에 있던 요소를 다른 요소로 대체한 스트림을 구성함
 - flatMap()과는 달리 하나의 요소를 하나의 다른 요소로 대체함
 - map(DoubleUnaryOperator): double 원래 요소를 다시 double로 바꾸어 스트림을 새로 만듦
 - mapToObj(IntFunction<U>): double 요소를 객체로 바꾸어 객체 타입 스트림을 만듦
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(20).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(20).png)
 
 - boxed(): int, long, double 타입 요소를 Integer, Long, Double과 같은 객체 타입 요소로 박싱한 다음, 이 객체들로 이루어진 스트림을 만듦
 
 ## **16.6 정렬 - sorted()**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(21).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(21).png)
 
 - sorted() 메서드는 각 스트림에 하나씩 있는데, Stream<T>에는 두개 있음
 - Stream<T> 타입 sorted(), sorted(Comparator<T>):
@@ -258,13 +258,13 @@ flowchart LR
         ⇒ Comparator는 함수적 인터페이스
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(22).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(22).png)
 
 - 위 예시의 위 코드는 오름차순, 아래 코드는 내림차순 정렬임
 
 ## **16.7 루핑 - peek(), forEach()**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(23).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(23).png)
 
 - 루핑: 중간 처리, 최종 처리에서 쓸 수 있음
     - 중간 처리에서의 루핑 메서드: `peek()`
@@ -289,15 +289,15 @@ flowchart LR
 
 ## **16.8 매칭 - allMatch(), anyMatch(), noneMatch()**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(24).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(24).png)
 
 ## **16.9 기본 집계 - sum(), count(), average(), max(), min**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(25).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(25).png)
 
 - 대량의 데이터를 가공해서 축소: 대량의 데이터를 하나의 값으로 만든다는 의미
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(26).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(26).png)
 
 - isPresent(): 집계값이 존재하는가?
 - orElse(): 집계값이 존재하지 않을 경우 기본값
@@ -305,7 +305,7 @@ flowchart LR
 
 ## **16.10 커스텀 집계 - reduce()**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(27).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(27).png)
 
 - reduce(): 개발자가 프로그램화해서 다양한 집계 결과물을 만들 수 있음
 - 각 스트림에 2개씩 reduce() 메서드가 있음
@@ -330,12 +330,12 @@ flowchart LR
 
 ## **16.11 수집 - collect()**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(28).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(28).png)
 
 - 오리지널 스트림 → 필터링 → 매핑 → 집계 → 컬렉션
 - 오리지널 스트림 → 그룹핑 → 집계(리덕션)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(29).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(29).png)
 
 - **수집:** 오리지널 스트림 → 필요한 요소만 필터링 → 별도의 컬렉션으로 만듦
 - 수집을 하기 위해 collect() 메서드 호출
@@ -374,7 +374,7 @@ flowchart LR
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(30).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(30).png)
 
 - 사용자 정의 컨테이너: 개발자가 작성한 클래스
 - List, Set, Map에 수집하는 것과 같이 collect() 메서드를 사용하는 건 동일
@@ -386,7 +386,7 @@ flowchart LR
         - 병렬 처리: 스레드 별로 생성된 사용자 정의 컨테이너를 하나의 컨테이너에 결합시키는 역할을 함. 즉, 각각의 컨테이너에 수집된 요소들을 하나의 컨테이너에 누적시킴.
 - 리턴값 R: Supplier가 생성한 사용자 정의 컨테이너
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(31).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(31).png)
 
 - collect() 메서드는 단순히 요소를 수집하는 기능 외, 컬렉션의 요소들을 그룹핑해 Map 객체로 생성하는 기능도 제공
     
@@ -451,7 +451,7 @@ flowchart LR
         - 2=> 내부적으로 Map 객체를 생성함(자동적으로 만들어진 Map을 사용)
         - 3=> 두번째 매개값인 Supplier가 제공하는 Map 객체를 사용함(Supplier가 제공해 주는 Map을 사용)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(32).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(32).png)
 
 - sex.MALE/sex.FEMALE ⇒ 키
 - Map<Key, Value> ⇒ Map<Student.Sex, List<Stdent>>
@@ -467,7 +467,7 @@ flowchart LR
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(33).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(33).png)
 
 ```java
 Map<Student.City, List<String>> mapByCity
@@ -486,7 +486,7 @@ Map<Student.City, List<String>> mapByCity
   );
 ```
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(34).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(34).png)
 
 - 위에 학습한 내용 중
     
@@ -507,9 +507,9 @@ Map<Student.City, List<String>> mapByCity
     - Comparator: 무엇이 최대값인지 비교할 수 있도록 힌트 제공
 - Collectors.reducing(): 개발자가 커스팀 리덕션을 할 수 있도록 제공되는 메서드
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(35).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(35).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(36).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(36).png)
 
 - Map<성별, 평균 점수>
     
@@ -526,7 +526,7 @@ Map<Student.City, List<String>> mapByCity
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(37).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(37).png)
 
 - Map<성별, 쉼표로 구분된 학생 이름>
     
@@ -547,7 +547,7 @@ Map<Student.City, List<String>> mapByCity
 
 ## **16.12 병렬 처리**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(38).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(38).png)
 
 - 병렬 처리: 동시에 처리하는 것
 - 자바 8에서는 API 차원에서 병렬 처리를 할 수 있도록 병렬 스트림을 제공함
@@ -555,7 +555,7 @@ Map<Student.City, List<String>> mapByCity
 - 동시성: **하나의 코어**에서 여러 개의 작업이 번갈아서 처리됨. 워낙 빨리 번갈아 실행되기 때문에, 마치 작업들이 동시에 실행되는 것처럼 보임.
 - 병렬성: **두 개 이상의 코어**가 작업을 병렬적으로(동시에) 처리.
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(39).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(39).png)
 
 - 병렬성은 데이터 병렬성, 작업 병렬성 두 가지로 구분됨
     - **데이터 병렬성**: 전체 데이터 → (쪼개기) → 서브 데이터 → (병렬 처리)
@@ -579,7 +579,7 @@ Map<Student.City, List<String>> mapByCity
     ⇒ 병렬 스트림을 얻게 되면, 내부적으로 구현된 포크 조인 프레임워크를 이용해 병렬 처리를 할 수 있음
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(40).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(40).png)
 
 - 포크 조인 프레임워크는 두 가지 단계가 있음
     1. 포크 단계: 대용량 데이터를 서브 데이터로 반복적으로 분리 → 서브 데이터를 멀티 코어에서 병렬 처리
@@ -596,21 +596,21 @@ Map<Student.City, List<String>> mapByCity
     |  | `(요소1 결과 + 요소2 결과) 부분결합` + `(요소3 결과 + 요소4 결과) 부분결합` |
     |  | `(요소 1...N) 최종결합` |
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(41).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(41).png)
 
 - 요소 분할은 순차적이지 않음 → 내부적으로 서브 요소로 나누는 알고리즘이 있음
     
     ⇒ 개발자는 병렬 스트림만 잘 사용하면 됨
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(42).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(42).png)
 
 - 포크 조인 프레임워크는 스레드를 내부적으로 포크 조인 풀에서 관리함
 - 코어에서 작업을 하려면, 코어 별로 스레드가 별도로 존재해야 함
 - 포크 조인 프레임워크는 ExecutorService의 구현 객체인 ForkJoinPool을 사용해 각 스레드를 관리함
 - 4개의 코어를 가진 CPU의 경우, 4개의 스레드를 만들어 사용을 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(43).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(43).png)
 
 - 병렬 스트림을 얻는 방법 2가지
     1. 컬렉션으로부터 직접 parallelStream() 을 호출해서 병렬 스트림 얻기
@@ -619,7 +619,7 @@ Map<Student.City, List<String>> mapByCity
         ⇒ 이미 존재하는 스트림을 병렬 스트림으로 변환
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(44).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(44).png)
 
 - 순차 처리 스트림
     
@@ -649,13 +649,13 @@ Map<Student.City, List<String>> mapByCity
     
     1. [포크 조인 프레임워크의 fork 단계]: CPU 코어의 개수만큼 전체 요소(totalList)는 서브 요소로 나뉘어지고, 해당 개수만큼 스레드 생성
         
-        ![최종적으로 4개의 서브 요소로 나뉘어짐(요소 1…1/4N)](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(45).png)
+        ![최종적으로 4개의 서브 요소로 나뉘어짐(요소 1…1/4N)](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(45).png)
         
         최종적으로 4개의 서브 요소로 나뉘어짐(요소 1…1/4N)
         
     2. 각 스레드는 서브 요소를 수집해야 하므로, 4개의 MaleStudent 객체를 생성해야 함
         
-        ![서브 요소들이 MaleStudent 컨테이너에 남학생 저장](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(46).png)
+        ![서브 요소들이 MaleStudent 컨테이너에 남학생 저장](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(46).png)
         
         서브 요소들이 MaleStudent 컨테이너에 남학생 저장
         
@@ -672,14 +672,14 @@ Map<Student.City, List<String>> mapByCity
     3. 각각의 서브 요소에서 남학생이 발견되면 각각의 MaleStudent에 누적
     4. 각각의 서브 요소들이 남학생을 각각의 MaleStudent에 전부 저장을 다 하고 나서, MaleStudent를 결합할 때 사용
         
-        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(47).png)
+        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(47).png)
         
         ⇒ 결합 과정: 전체 서브요소의 개수 - 1
         
         ⇒ 4개의 서브요소로 나뉘었으므로, 결합 과정은 3개가 필요함
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(48).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(48).png)
 
 1. 컬렉션에는 4개의 Student 요소가 들어 있음
 2. 병렬 처리를 위해 totalList.parallelStream() 와 같이 병렬 스트림을 만들게 되면, main 스레드 이외 3개의 스레드가 더 생성됨
@@ -689,13 +689,13 @@ Map<Student.City, List<String>> mapByCity
 3. collect() 메서드가 호출
     1. `MaleStudent::new`: MaleStudent 객체는 4개가 생성됨
         
-        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(49).png)
+        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(49).png)
         
     2. `MaleStudent::accumulate`: accumulate() 메서드는 두 번 실행됨
         
         ⇒ totalList 내 Student 객체의 남학생이 2명이므로, 이 두 객체를 MaleStudent::new에 저장해야 하기 때문
         
-        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(50).png)
+        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(50).png)
         
         ⇒ 체크된 곳(임의)의 MaleStudent 객체에 남학생 객체가 저장됨
         
@@ -703,7 +703,7 @@ Map<Student.City, List<String>> mapByCity
         
 4. 3번의 combine() 실행됨
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(51).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(51).png)
     
     ⇒ 생성된 MaleStudent 객체 4개가 → 2개로 결합 → 1개로 결합(3번 결합)
     
@@ -711,7 +711,7 @@ Map<Student.City, List<String>> mapByCity
     
 5. 출력 결과
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(52).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(52).png)
     
     ⇒ 4개의 스레드에서 MaleStudent::new 호출
     
@@ -723,18 +723,18 @@ Map<Student.City, List<String>> mapByCity
     
     ⇒ parallelStream()으로 병렬 처리 스트림을 얻으면, 코어의 수 만큼 스레드가 생성됨
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(53).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(53).png)
     
     ⇒ 이 요소들을 코어의 수 만큼  4개로 분할해서, 각각 스레드가 처리
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(54).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(54).png)
     
     ⇒ 처리가 다 된 후에는, 3번의 결합으로 완성된 MaleStudent를 만들어 냄
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(55).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(55).png)
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/16(56).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/16(56).png)
 
 - 요소의 수, 요소당 처리 시간에 따라 병렬 처리의 성능이 더 떨어질 수도 있음
 - 컬렉션의 요소 수가 적고, 요소당 처리 시간이 짧으면 순차 처리가 더 빠를 수도 있음
@@ -751,4 +751,4 @@ Map<Student.City, List<String>> mapByCity
 
 ## 참고자료
 
-[강의교안_16장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_16%EC%9E%A5.ppt)
+[강의교안_16장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_16%EC%9E%A5.ppt)

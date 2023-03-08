@@ -10,7 +10,7 @@
 
 ## **13.1 왜 제네릭(Generic)을 사용해야 하는가?**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13.png)
 
 - List는 어떠한 객체든 다 저장할 수 있기 때문에, list.add(”hello”)는 `내부적으로 Object로 변환`되어 저장됨
     
@@ -27,7 +27,7 @@
 
 ## **13.2 제네릭 타입**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(1).png)
 
 - <T>: 타입 결정이 되지 않은 상태. 구체적 타입 결정은 개발자가 개발 코드를 작성할 때 지정.
     
@@ -57,7 +57,7 @@
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(2).png)
 
 ```java
 Box<String> box =  new Box<String>();
@@ -67,11 +67,11 @@ String str = box.get(); // String 타입으로 리턴되므로 강제 타입 변
 
 ## **13.3 멀티 타입 파라미터**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(3).png)
 
 ## **13.4 제네릭 메소드**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(4).png)
 
 1. 선언
 
@@ -92,7 +92,7 @@ Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파�
 
 ## **13.5 제한된 타입 파라미터**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(5).png)
 
 - 타입 파라미터에는 어떤 객체도 올 수 있는데, 원하는 타입만 오게 하고 싶을 때 제한된 타입 파라미터를 지정할 수 있음
 - 주의: 메서드 실행 블록 안에서는 지정된 T 타입의 필드, 메서드만 사용 가능
@@ -108,7 +108,7 @@ Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파�
     
 ## **13.6 와일드카드 타입**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(6).png)
 
 - <T extends 상위 또는 인터페이스> 표현: 제네릭 타입을 선언할 때 타입 파라미터를 제한하는 것
 - 와일드 카드 타입: 이미 선언된 제네릭 타입을 매개 변수나 리턴 타입으로 사용할 때, 타입 파라미터를 제한할 목적으로 이용
@@ -136,7 +136,7 @@ Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파�
 
 ## **13.7 제네릭 타입의 상속과 구현**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/13(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/13(7).png)
 
 - 제네릭 타입을 부모 타입으로 사용할 경우, 자식 클래스도 부모 타입의 제네릭 타입 파라미터를 언급해 줘야 함
 - 부모가 제네릭이면, 자식도 제네릭
@@ -146,4 +146,4 @@ Box<Integer> box = boxing(100); // 보통 <Integer>는 생략 가능 -> 컴파�
 
 ## 참고자료
 
-[강의교안_13장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_13%EC%9E%A5.ppt)
+[강의교안_13장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_13%EC%9E%A5.ppt)

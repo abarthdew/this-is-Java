@@ -31,26 +31,26 @@
 
 ## **12.1 멀티 스레드 개념**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(1).png)
 
 - 프로그램을 실행할 때, 운영체제는 프로세스를 하나 만들어, CPU와 메모리를 사용할 수 있도록 함
 - 프로그램 당 여러 개의 프로세스가 실행될 수 있음
 - 각 프로세스들은 독립적으로 운영체제에서 실행되며, CPU와 메모리를 사용함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(2).png)
 
 - 예) 크롬 실행 → 1개의 프로세스 생성, 크롬 하나 더 실행 → 프로세스 하나 더 생성됨
 - 작업 관리자 창의 응용 프로그램 각 하나 하나가 프로세스임
 - 하나의 프로그램이라도 몇 번 실행했는가에 따라 여러 개의 프로세스가 만들어 질 수 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(3).png)
 
 - main() 메서드는 JVM에서 생성되는 main 스레드가 생성함
 - 즉, main() 메서드를 실행하는 스레드가 main 스레드
 - 스레드는 하나의 코드 실행 흐름이라고 할 수 있음
 - main 스레드는 main() 메서드를 첫 코드 부터 아래로 순차적으로 실행함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(4).png)
 
 - JVM이 main 스레드를 만들고, main 스레드가 작업 스레드(또 다른 스레드)를 만듬
 - 싱글 스레드: main 스레드 하나만 있는 스레드
@@ -67,11 +67,11 @@
 
 ## **12.2 작업 스레드 생성과 실행**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(5).png)
 
 ### 12.2-1. Thread 클래스로부터 직접 생성하는 방법
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(6).png)
 
 - 동시에 실행을 할 수 있다는 의미에서, Runnable 인터페이스를 구현
 - Runnable 인터페이스는 작업 스레드가 실행할 수 있는 클래스를 만들겠다는 뜻
@@ -140,7 +140,7 @@
 
 ### 12.2-2. Thread 하위 클래스로부터 생성하는 방법
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(7).png)
 
 - 이전에 Thread 클래스로부터 직접 생성하는 방법에선 Runnable 객체가 필요했지만, Thread를 직접 상속받으면 하위 클래스로부터 Thread 객체를 직접 만들 수 있음
 1. 명시적으로 하위 클래스를 만들어 Thread 객체를 생성하는 방법
@@ -168,7 +168,7 @@
     
 - 실행: `thread.start();`
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(8).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(8).png)
 
 - 스레드는 개별적으로 별도의 이름을 가질 수 있음
 - main 스레드도 main 이라는 이름을 가지고 있는 것(JVM이 main 스레드를 생성할 때 이름을 부여)
@@ -226,14 +226,14 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 - 항상 해당 작업을 어떤 스레드가 실행시키는가를 알아야 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(9).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(9).png)
 
 - 위 코드는 모두 main 스레드가 실행하는 것
 - 하지만, threadA와 threadB가 **실제로 실행하는 코드**는 각각의 객체에 재정의된 run() 메서드 안의 코드임
 
 ## **12.3 스레드 우선 순위**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(10).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(10).png)
 
 - 스레드 우선 순위: 여러 가지 스레드가 있을 때, 어떤 스레드가 실행 우선 순위를 가지느냐
 - 동시성: CPU의 코어 중 하나에서, 2개 이상의 스레드가 실행되는 현상
@@ -245,7 +245,7 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
     - 각각의 스레드는 실행에 방해를 받지 않고 계속 코드를 실행해 나갈 수 있음
     - 처리 속도가 보다 빠름
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(11).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(11).png)
 
 - 각 스레드는 대기 상태로 있다가, 스케줄링에 의해 하나의 스레드가 선택되면 실행하게 됨
     
@@ -266,7 +266,7 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
     - 순환 할당: 정해진 시간 할당량 만큼 각각의 스레드를 실행함
 - **자바에서는 기본적으로 순환 할당 방식을 사용하며**, 부가적으로 스레드에 우선순위를 주어 우선 순위 방식을 사용할 수도 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(12).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(12).png)
 
 - 쿼드 코어에, 4개 이하의 스레드를 실행할 경우, 우선 순위 방식은 크게 영향을 미치지 못함
     
@@ -275,7 +275,7 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 ## **12.4 동기화 메소드와 동기화 블록**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(13).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(13).png)
 
 - user1 스레드와 user2 스레드가 똑같이 Calculator 객체를 사용한다고 가정한다
 - 위 예에서, user1 스레드의 memory 값은 100이 아닌 50으로 출력됨
@@ -285,7 +285,7 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 ### 여러 스레드가 공유하는 객체가 항상 변할 수 있다는 문제점을 해결할 방법
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(14).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(14).png)
 
 - 하나의 스레드가 동기화 메서드 또는 동기화 블록을 사용할 때, 다른 스레드는 이 메서드를 사용할 수 없음
 - 이 예시에서는 user1이 완전히 끝날 때까지 다른 스레드가 동기화 블록 안에 있는 Calculator 필드 값을 바꿀 수 없음
@@ -306,7 +306,7 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
     
 - synchronized(공유 객체) {}: 공유 객체에는 ‘잠금 객체’가 매개값으로 들어 감
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(15).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(15).png)
 
 - 위 예제와 같이, user1 스레드가 m1(), m2(), m3() 셋 중 하나만 사용 중이라도 user2 스레드는 m1(), m2(), m3() 중 아무것도 사용하지 못함
     
@@ -316,7 +316,7 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 ## **12.5 스레드 상태**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(16).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(16).png)
 
 - 스레드 객체 생성: Thread는 new 연산자로 객체 생성 후 종료 시까지 여러 상태를 가질 수 있음
 - 실행 대기: start() 메서드를 호출하면 스레드는 실행 대기 상태가 됨
@@ -344,22 +344,22 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 ### 실습 - 12.5. thread
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(17).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(17).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(18).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(18).png)
 
 - java.lang → Thread → class Thread 의 중첩 클래스인 NESTED 클릭
     
     ⇒ Thread.State라는 열거 타입이 있는 것을 확인할 수 있음
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(19).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(19).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(20).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(20).png)
 
 - Enum으로 선언되어 있음을 확인할 수 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(21).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(21).png)
 
 - 위와 같은 열거 상수가 정의되어 있음을 확인할 수 있음
 
@@ -402,12 +402,12 @@ public class StatePrintThread extends Thread {
 
 - **타겟 스레드 상태: NEW**
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(22).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(22).png)
     
     - new TargetThread 객체를 생성한 상태
 - **타겟 스레드 상태: RUNNABLE**
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(23).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(23).png)
     
     - targetThread.start()가 호출되면 실행 대기 상태가 됨
     - 실행 대기 상태에서 CPU 스케줄로 선택되면 실행 상태가 됨
@@ -415,7 +415,7 @@ public class StatePrintThread extends Thread {
         ⇒ 실행 대기, 실행 상태 모두 포함 의미
         
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(24).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(24).png)
     
     - RUNNABLE 상태는 targetThread가 for문을 실행할 단계의 상태임
 - 타겟 스레드 상태: RUNNABLE
@@ -424,33 +424,33 @@ public class StatePrintThread extends Thread {
     - 실행 대기, 실행 상태를 오가며 상태가 변경되고 있음
 - **타겟 스레드 상태: TIMED_WAITING**
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(25).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(25).png)
     
     - 1.5초 동안 일시정지 되었을 때
 - 타겟 스레드 상태: TIMED_WAITING
 - 타겟 스레드 상태: TIMED_WAITING
 - **타겟 스레드 상태: RUNNABLE**
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(26).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(26).png)
     
     - 1.5초 뒤, 다시 targetThread가 for 문을 반복하며 RUNNABLE 상태가 됨
     - CPU의 선택을 받아 실행, 대기 상태를 왔다 갔다 하며 실행과 대기를 반복함
 - 타겟 스레드 상태: RUNNABLE
 - **타겟 스레드 상태: TERMINATED**
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(27).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(27).png)
     
     - run() 종료, targetThread는 TERMINATED 상태가 됨
 - targetThread가 종료되면 statePrintThread도 break로 반복문을 빠져나감 → 종료
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(28).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(28).png)
     
 
 ## **12.6 스레드 상태 제어(1)**
 
 - 스레드 상태를 변화시키기 위해서는 메서드를 사용해야 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(29).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(29).png)
 
 - 처음 스레드를 생성하게 되면, **실행 대기** 상태가 됨
     
@@ -476,12 +476,12 @@ public class StatePrintThread extends Thread {
     - **실행** 중 호출하면 바로 **종료 상태**가 됨, 그러나 사용하지 않음
     - 갑자기 실행 중 종료되면 프로그램 상태가 불안정해지기 때문에, 가급적 사용하지 않는 것을 권장
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(30).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(30).png)
 
 - 주어진 시간 동안 **일시 정지** → 주어진 시간 후 **실행 대기** 상태
 - 일시 정지 도중에 interrupt() 메서드가 호출되면 예외가 발생할 수 있기 때문에, 예외 처리 필수
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(31).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(31).png)
 
 - 실행 대기 상태인 스레드1, 스레드2가 있는 경우
 - 스레드1이 실행 중일 때, yield() 메서드 호출 시 스레드1은 즉시 실행 대기 상태가 됨
@@ -491,11 +491,11 @@ public class StatePrintThread extends Thread {
 - 즉, yield()는 현재 실행 상태인 스레드를 실행 대기 상태로 되돌리는 역할을 함
 - 보통 yield() 메서드는 무의미한 반복을 하지 않고, 다른 스레드에게 실행을 양보할 때 주로 사용됨
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(32).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(32).png)
 
 - 무의미한 반복 → work가 false가 될 경우, 다른 스레드에게 실행을 양보하는 코드
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(33).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(33).png)
 
 - join() 메서드 테스트를 위해서는 2개의 스레드가 필요
 - `스레드a`에서 `스레드b`를 start() → `스레드b` run()
@@ -510,7 +510,7 @@ public class StatePrintThread extends Thread {
     
 - 보통 스레드a가 계산 작업 클래스인 스레드b의 계산 결과를 받아 작업하는 경우에 사용
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(34).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(34).png)
 
 - `sleep()`, `yield()`, `join()`이 스레드가 가지는 메서드인 것에 반해, `wait()`, `notify()`, `notifyAll()`은 스레드 메서드가 아님
     
@@ -550,7 +550,7 @@ public class StatePrintThread extends Thread {
 
 - 소비자 스레드가 데이터 소비, 생성자 스레드가 데이터 생성
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(35).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(35).png)
 
 - stop() 메서드는 스레드를 즉시 종료시키지만, 불안정한 종료가 되므로 권장하지 않음
 - 스레드의 종료: run() 메서드가 종료됨을 의미
@@ -566,7 +566,7 @@ public class StatePrintThread extends Thread {
         ⇒ interrupt() 호출 시, 일시 정지 상태인 스레드에서 InterruptedException 발생
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(36).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(36).png)
 
 - `Thread.sleep(1);` 와 같이 스레드가 일시 정지된 상태에서 `threadB.interrupt();` 와 같이 interrupt() 메서드 호출 시 → 예외 발생
     
@@ -588,16 +588,16 @@ public class StatePrintThread extends Thread {
 
 ## **12.7 데몬 스레드**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(37).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(37).png)
 
 - `thread.setDaemon(true)`: AutoSaveThread 스레드는 main 스레드의 데몬 스레드가 됨
 - 마지막 }에서 main 스레드가 종료되면 AutoSaveThread는 자동으로 종료됨
 
 ## **12.8 스레드 그룹**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(38).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(38).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(39).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(39).png)
 
 - 스레드 그룹을 계층적으로 만들어 관리할 수 있음
 - 자동 생성되는 스레드 그룹도 있음
@@ -615,49 +615,49 @@ public class StatePrintThread extends Thread {
     ⇒ 명시적으로 스레드 그룹에 포함시키지 않으면 기본적으로 main 그룹에 속함
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(40).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(40).png)
 
 ```java
 ThreadGroup tg = new ThreadGroup(String name); // 현재 스레드가 속한 그룹의 하위 그룹으로 생성됨
 ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그룹 밑의 하위 그룹으로 생성됨
 ```
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(41).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(41).png)
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(42).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(42).png)
 
 ### 실습 - 12.7.group2
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(43).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(43).png)
 
 - WorkThread가 스레드 그룹에 포함되기 위해서는
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(44).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(44).png)
 
 - Thread의 생성자를 호출해 주어야 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(45).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(45).png)
 
 - 스레드 그룹은 생성자 외부에서 받도록 하고, 스레드 이름을 두 번째 매개 값으로 받음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(46).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(46).png)
 
 - run() 메서드 재정의: 무한 루프를 돌되, 1초 동안 쉬게 해 줌
 - 나중에 interrupt() 메서드가 호출될 시 예외가 발생하도록 하기 위함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(47).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(47).png)
 
 - 이 코드를 실행하는 것은 main 메서드, 즉 main 스레드 이므로, 결국 main 스레드가 포함된 main 그룹에 myGroup이 하위 그룹으로 만들어짐
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(48).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(48).png)
 
 - main 그룹 밑에 main 스레드, main 그룹 밑에 myGroup
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(49).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(49).png)
 
 - 다음 단계: myGroup 밑에 workThreadA, workThreadB를 포함시킴
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(50).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(50).png)
 
 - 처음 JVM 이 실행되면,
     1. system이라는 스레드 그룹 생성
@@ -689,12 +689,12 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 
 ## **12.9 스레드풀(1)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(51).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(51).png)
 
 - 브라우저에서 웹 서버에 접근하게 되면, 웹 서버는 하나의 스레드를 만들어 처리함
 - 수천 개의 브라우저가 웹 서버에 접근하게 되면, 스레드도 수천 개 만들어져 동시에 실행됨
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(52).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(52).png)
     
     ⇒ 스레드 폭증, CPU 과부하, 웹 서버 메모리도 많이 사용됨
     
@@ -702,7 +702,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
     
 - `스레드 풀`: 아무리 많은 브라우저가 접근하더라도, 웹 서버 내 스레드 개수를 적절히 조절
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(53).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(53).png)
     
     - 여러 작업 요청이 들어오면, 이 요청들을 큐 라는 공간에 저장해 놓고, 작업 당 스레드가 처리하도록 함
     - 즉, 제한된 스레드가 큐에 있는 작업을 하나씩 맡아 처리하는 방식
@@ -713,12 +713,12 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
         
 - 애플리케이션이 작업 요청을 하기 위해 큐에 작업 내용 저장해 두면 → 스레드가 작업을 하나씩 가져와 처리 → 그 결과를 애플리케이션에 전달
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(54).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(54).png)
     
 
 ### ExecutorService, 즉, 스레드 풀의 동작 원리
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(55).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(55).png)
 
 - ExecutorService, 즉, 스레드 풀 안에는 작업을 저장하는 공간인 `작업 큐`가 있음
 - 작업 큐에 있는 작업을 가지고 와서 처리해 주는 `스레드`들이 제한된 갯수만큼 존재함
@@ -735,7 +735,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 - 갑자기 많은 요청이 들어오면, 작업 큐의 용량만 커질 뿐 스레드의 갯수는 증가되지 않음 → 갑작스러운 애플리케이션의 성능 저하는 발생하지 않음
 - 스레드 풀은 서버 애플리케이션, 즉, 서버 프로그램을 만들 때 많이 사용함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(56).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(56).png)
 
 - 스레드 풀은 Executors 클래스의 두 가지 정적 메서드 중 하나로 생성할 수 있음
 - 초기 스레드 수: 스레드 풀을 처음 만들 때 **기본적으로 들어가 있는 스레드 수**
@@ -763,7 +763,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
         ⇒ 가장 이상적인 병렬 처리: CPU가 가진 코어 수 만큼 스레드를 만들어 씀
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(57).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(57).png)
 
 - `newCachedThreadPool()`와 `newFixedThreadPool(int nThreads)`는 내부적으로 ThreadPoolExecutor를 만들어 리턴함
     
@@ -771,7 +771,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
     
 - 스레드 풀을 직접 만들 경우 다양한 옵션을 줄 수 있음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(58).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(58).png)
 
 - 멀티 스레드 애플리케이션은 최종 하나의 스레드가 종료되기 전까지, 애플리케이션은 종료되지 않음
 - 즉, 스레드 풀의 스레드가 계속 실행하고 있다면, 애플리케이션은 종료되지 않음
@@ -780,11 +780,11 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
     - `shouDownNow()`: 미처리된 작업 때문에 가급적이면 사용하지 않는 편이 좋음
     - `awaitTermination()`: 시간 제한을 주고 중지
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(59).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(59).png)
 
 - Callable 객체를 만들 때 <T> 에는 리턴할 결과 값(애플리케이션이 받아야 할 결과 값)의 타입을 명시해 줌
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(60).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(60).png)
 
 - **작업 처리 요청**: 애플리케이션이 작업 큐에 Runnable 또는 Callable 객체를 넣는 행위를 뜻함
 - 애플리케이션은 ExecutorService에 있는 execute(), submit() 메서드를 이용해 Runnable, Callable 객체를 작업 큐에 넣을 수 있음
@@ -978,7 +978,7 @@ executorService.submit(runnable);
     - 작업 큐에 있는 작업들을 thread-1, 2가 각각 가져와 처리
     - 중간 중간에 예외가 발생해도 스레드는 작업 큐에 있는 작업을 가져와 계속 처리함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(61).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(61).png)
 
 - 블로킹 방식: 뭔가를 요청하고 나서 그 결과가 올 때까지 기다리는 방식
 - 결과 값이 없는 작업을 작업 큐에 저장하기 위해 submit() 메서드 사용
@@ -1006,7 +1006,7 @@ executorService.submit(runnable);
         ⇒ 결과가 나중에 나오기 때문에 지연 객체라고 함
         
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(62).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(62).png)
 
 - get(): 작업이 완료될 때까지 블로킹 되었다가(스레드가 작업을 완료할 때까지 기다렸다가)  처리 결과 V를 리턴
 - Runnable 객체를 담는 submit()은 결과값이 없는 작업을 처리할 때 쓰이는 메서드임
@@ -1037,7 +1037,7 @@ executorService.submit(runnable);
     ⇒ 예외 발생 시 결과 값을 얻을 수 없기 때문에, get() 메서드는 예외가 발생하도록 되어 있음
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(63).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(63).png)
 
 - Future의 get() 메서드는 블로킹이 되기 때문에, 스레드가 작업을 완료할 때까지 이 get()은 멈춰 있음
     
@@ -1086,7 +1086,7 @@ executorService.submit(runnable);
         - boolean mayInterruptIfRunning: 필요한 경우 interrupt를 할 것인가(true - 스레드에 interrupt 호출, interruptException 발생됨)
     - isCancel(): 보통 cancel()로 작업  취소 후 확인용
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(64).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(64).png)
 
 - 리턴값이 없는 작업 완료 통보
     
@@ -1119,7 +1119,7 @@ executorService.submit(runnable);
     }
     ```
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(65).png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(65).png)
     
     - 스레드 풀(pool) 안에 Runnable이라는 작업이 있음
     - 이 작업을 스레드 풀의 스레드가 ↓ 이렇게 실행
@@ -1137,15 +1137,15 @@ executorService.submit(runnable);
 
 ### 실습 - 12.9.blocking
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(66).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(66).png)
 
 - main 스레드 실행 방향
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(67).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(67).png)
 
 - 스레드 풀의 스레드가 Runnable 작업 객체 내 run()을 계속 실행 → 실행이 끝나면,
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(68).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(68).png)
 
 - 비로소 get()은 리턴 됨
 - main 스레드는 get()을 호출한 시점에 블로킹 됨 → pool에서 run()이 완전히 종료되면 future.get(); 부분의 블로킹이 풀림
@@ -1153,7 +1153,7 @@ executorService.submit(runnable);
 
 ## **12.9 스레드풀(3)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(69).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(69).png)
 
 - 리턴 값이 있는 작업일 경우, Callable 이라는 객체를 만듦
 - T에는 리턴값 타입을 지정
@@ -1180,7 +1180,7 @@ future.get();
 - call() 모두 실행 후, get()은 리턴 값 T를 리턴함
 - 즉, call()의 리턴 값을 get()이 T result에 리턴하는 것
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(70).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(70).png)
 
 - 작업 처리 결과는 스레드에서 만들어짐
     
@@ -1234,13 +1234,13 @@ class Task implemetns Runnable {
 
 ### 실습 - 12.9.result
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(71).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(71).png)
 
 - 세 번째 submit()이 외부 객체에 결과값을 저장하는 메서드
 
 ## **12.9 스레드풀(4)**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(72).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(72).png)
 
 - 작업 요청 순서: 작업 큐에 저장된 순서
 - 먼저 요청한 작업: 작업 큐에 먼저 들어온 작업
@@ -1253,7 +1253,7 @@ class Task implemetns Runnable {
 - `poll(long timeout, TimeUnit unit)`: timeout 시간 동안 기다렸다가, 즉 블로킹 되었다가 완료된 작업이 있으면 가져옴
 - `take()`: 완료된 작업이 없으면 계속 대기 상태, 완료된 작업이 생기면 그 때 리턴이 되어 Future 를 얻어 옴
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(73).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(73).png)
 
 ```java
 // 스레드 풀 객체 ExecutorService 생성
@@ -1287,7 +1287,7 @@ CompletionService<V> completionService
     ```
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(74).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(74).png)
 
 - take()는 완료된 작업이 있을 때까지 블로킹됨
 - 블로킹되기 때문에, 결국은 스레드에서 이 take()를 호출함
@@ -1315,7 +1315,7 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
 
 ### 실습 - 12.9.CompletionService
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(75).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(75).png)
 
 - 스레드 풀 안의 작업 큐에 c1, c2, c3 작업들이 순서대로 들어 왔다고 가정
 - 이 작업들을 스레드 t1, t2가 하나씩 처리함
@@ -1324,7 +1324,7 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
 - 스레드의 실행 환경, 생성 시간 때문에 먼저 작업 큐에 들어간 Callable이 먼저 처리가 끝나는 것이 아님
 - c1, c2, c3는 모두 독립성을 가지고 있고, 어떤 작업이 끝나더라도 상관 없는 경우 완료된 작업을 알아내 그 작업을 처리해 주는 것이 효율적임
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(76).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(76).png)
 
 - 블로킹 방식: future 객체를 이용하는 방식
     - `(1)` main 스레드가 스레드 풀에게 작업 처리 요청(submit)
@@ -1356,7 +1356,7 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
     - 스레드 풀의 스레드가 작업을 완료하게 되면 자동적으로 콜백 메서드를 실행하게 함
     - 콜백 메서드 내에서 작업을 처리한 결과를 가지고 이용하도록 함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/12(77).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/12(77).png)
 
 - 콜백 방식을 이용하려면 먼저 콜백 객체를 생성해야 함
 - `java.nio.channels.CompletionHandler`: 콜백 객체를 만들기 위한 인터페이스
@@ -1422,4 +1422,4 @@ CompletionHandler<V, A> callback = new CompletionHandler<V, A>(){
 
 ## 참고자료
 
-[강의교안_12장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_12%EC%9E%A5.ppt)
+[강의교안_12장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_12%EC%9E%A5.ppt)

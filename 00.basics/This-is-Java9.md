@@ -8,13 +8,13 @@
 
 ## **9.1 중첩 클래스와 중첩 인터페이스란?**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9.png)
 
 - 외부에서 사용하지 않고, 해당 클래스나 인터페이스 안에서만 사용
 
 ## **9.2 중첩 클래스**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(1).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(1).png)
 
 - 멤버 클래스: 클래스 선언부에 선언된 중첩 클래스
     - 인스턴스 멤버 클래스: 객체 A가 생성이 되어야 클래스 B를 쓸 수 있음
@@ -22,18 +22,18 @@
 - 로컬 클래스: 메서드 안에서 선언된 중첩 클래스(static을 붙일 수 없음)
 - 중첩 클래스의 바이트 코드 파일: 멤버 클래스일 경우 `$`만 붙고, 로컬 클래스일 경우 `$`에 순번이 붙음
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(2).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(2).png)
 
 - 인스턴스 멤버 클래스는 바깥 클래스 A가 생성되어야 클래스 B를 사용할 수 있음
 - 중첩 클래스 B에서 static 필드, static 메서드 사용 불가
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(3).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(3).png)
 
 - 바깥 객체인 A가 생성되지 않아도, C를 사용할 수 있음
 - `new A.C();`와 같이, A 객체를 생성하지 않고 바로 A 클래스를 통해 C클래스에 접근 가능
 - static field2, static method2는 클래스로 바로 접근 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(4).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(4).png)
 
 - 바깥 메서드를 벗어나 사용할 수 없음
 - 중첩 클래스 내부에 정적 멤버를 사용할 수 없음
@@ -42,7 +42,7 @@
 
 ## **9.3 중첩 클래스의 접근 제한**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(5).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(5).png)
 
 - 정적 필드 초기화
     - `static B field3 = new B();`: 에러 ⇒ 인스턴스 멤버 클래스 B는 A 객체가 생성되어야 사용 가능하기 때문에
@@ -54,14 +54,14 @@
     - 인스턴스 필드와 인스턴스 메서드는 인스턴스 멤버 클래스, 정적 멤버 클래스 전부 사용 가능
     - 정적 필드와 정적 메서드는 정적 멤버 클래스만 사용 가능
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(6).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(6).png)
 
 - 바깥 클래스(A)에 선언된 필드, 메서드를 중첩 클래스 내부에서 어떻게 접근해서 사용하는가?
 - B는 인스턴스 멤버 클래스, C는 정적 멤버 클래스
 - B는 A의 멤버를 전부 사용 가능
 - C는 A가 생성되지 않아도 사용 가능하기 때문에, A 객체가 필요한 인스턴스 멤버는 C의 method() 안에서 사용 불가
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(7).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(7).png)
 
 - 메서드 내에서 중첩 클래스를 선언하려면 메서드의 매개변수와 메서드 안 로컬 변수는 final 키워드를 붙여야 함
     
@@ -80,11 +80,11 @@
     - `자바 8`에서는 메서드의 매개변수와 로컬 변수를 중첩 클래스의 필드로 복사해서 사용
 - 로컬 클래스에서 메서드의 매개변수나 로컬 변수를 사용할 때, final 성격을 띄므로 값 변경 불가
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(8).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(8).png)
 
 ## **9.4 중첩 인터페이스**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(9).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(9).png)
 
 - 중첩 인터페이스: 클래스 안에 선언된 인터페이스
 - `OnClickListener` 인터페이스는 `Button` 클래스를 벗어나서는 사용하지 않으며, `Button`과 아주 밀접한 관계임
@@ -94,7 +94,7 @@
 
 ## **9.5 익명 객체**
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(10).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(10).png)
 
 - 익명 객체도 로컬 클래스로부터 만들어진 인스턴스라고 할 수 있음
 - 명시적으로 클래스를 선언하는 게 아니라, new 연산자를 이용해 선언과 동시에 객체를 만드는 것
@@ -152,16 +152,16 @@
     ⇒ {} 블록 안에 만든 익명 객체를 Parent 타입 field 변수에 대입
     
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(11).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(11).png)
 
 - 로컬 변수 localVar로 부모 타입 선언, 초기값으로 익명 자식 객체를 대입하는 경우
 - new Parent()로 객체를 생성하는데, {} 블록이 있기 때문에, 단순한 생성자 호출이 아닌, 익명 자식 객체를 만들어 대입한다는 것
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(12).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(12).png)
 
 - new Parnet()로, Parent를 만드는 것 같이 보이지만, 자식 객체를 만들어 method1() 메서드의 매개값으로 넘김
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(13).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(13).png)
 
 - 익명 객체를 대입한 Parnet 타입 field를 사용해 method() 안에서 사용할 수 있을까?
     
@@ -175,14 +175,14 @@
     
 - 외부에서 사용하지 못하는 익명 자식 객체 내에서 선언된 필드, 메서드의 존재 이유는? ⇒ 재정의된 메서드 내에서 사용하기 위함
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(14).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(14).png)
 
 - 인터페이스는 생성자가 없기 때문에, `new 인터페이스()` 에서 `인터페이스()`는 생성자가 아님 ⇒ `인터페이스()`는 `{}`에서 생성된 클래스의 생성자를 호출하는 것
 - 보통 `{}`에는 인터페이스에 정의된 추상메서드를 재정의하는 내용이 들어감
 - `{}` 안에는 인터페이스의 추상 메서드를 반드시 재정의해야 함 ⇒ 결국 `{}`에 구현 객체를 만들어 인터페이스 변수에 대입한 것
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/basics/images/9(15).png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/9(15).png)
 
 ## 참고자료
 
-[강의교안_9장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_9%EC%9E%A5.ppt)
+[강의교안_9장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_9%EC%9E%A5.ppt)
