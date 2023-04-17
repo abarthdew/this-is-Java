@@ -108,6 +108,24 @@
 - 1바이트를 읽고, 읽은 바이트를 리턴
 - InputStream로부터 5개의 바이트가 들어온다면, read()는 5번 실행해서 읽음
 - 읽힌 바이트는 int 타입의 끝에 저장되고 리턴됨
+- (1) 바이트를 읽고, int 타입의 끝에 저장 / (2)를 읽고, int 타입의 끝에 저장 / (3), (4)도 동일
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7467b3a1-af9a-427d-8a6f-d6c99b4ec662/Untitled.png)
+    
+    - 즉, (1), (2), (3), (4), (5)인 5 개의 byte가 InputStream으로 들어 옴
+    - new FileInputStream(”C:/test.jpg”); 객체 생성
+    - (”C:/test.jpg”)에 5byte의 파일이 주어져 있기 때문에, FileInputStream으로 만들어 InputStream 타입으로 대입
+    - int readByte 변수 선언
+    - readByte에는 is.read()로 InputStream으로부터 읽은 데이터가 저장됨
+    - 처음 is.read()가 실행되면, (1)을 읽고 저장
+        
+        → 읽은 데이터 readByte는 -1이 되지 않으므로 다시 반복 
+        
+        → is.read() 다시 실행, (2)을 읽고 저장 
+        
+        → 반복 → (3), (4), (5) 모두 읽음 
+        
+        → 더 이상 읽을 데이터가 없으면 is.read()는 -1을 리턴 → 반복문 탈출
 
 ## 참고자료
 
