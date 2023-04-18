@@ -67,7 +67,8 @@
         "11.12.Wrapper",
         "11.11.Arrays",
         "11.10.pattern",
-        "06.14.getters"
+        "06.14.getters",
+        "18.2.read"
     ],
     "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk1.8.0_201"
 }
