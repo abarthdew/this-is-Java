@@ -126,6 +126,35 @@
         → 반복 → (3), (4), (5) 모두 읽음 
         
         → 더 이상 읽을 데이터가 없으면 is.read()는 -1을 리턴 → 반복문 탈출
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d26a4f1b-b712-46ae-99e8-2342e0378a72/Untitled.png)
+
+- 매개값으로 byte 배열을 받는 read() 메서드
+- InputStream에서 5개의 byte가 들어 올 경우, read() 메서드는 어떻게 데이터를 읽는가?
+    - 매개값으로 들어오는 byte 배열이 길이가 3이라고 가정할 때,
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bbdd36b9-b24c-4cb7-99b8-88bb1b6c3073/Untitled.png)
+    
+    1. 첫번째 읽을 경우
+        - read() 메서는 3byte를 읽고 (1), (2), (3)을 차례로 0, 1, 2 인덱스에 저장
+        - 3byte를 읽었으므로, read(byte[] b)의 리턴값은 3
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5258dd39-716c-4bca-b57d-0115775c2c25/Untitled.png)
+    
+    1. 두번째 읽을 경우
+        - 남은 2byte (4), (5)를 byte 배열의 0, 1 인덱스에 저장
+        - 실제 읽은 데이터는 0, 1 인덱스에만 저장됨
+        - 다음에 오는 byte가 없으므로 2인덱스에는 1.(첫번째) 에서 읽은 (3)이 남아 있음
+        - read() 메서드는 2byte를 읽고 저장했으므로 2 리턴
+- 코드 확인
+    ```java
+    InputStream is = new FileInputStream("c:/test.jpg"); // FileInputStream을 이용해 객체 생성, InputStream에 대입
+    int readByteNo;
+    byte[] readBytes = new byte[3]; // 길이 3짜리 byte 배열 생성
+    while(
+    	(readByteNo // is.read(ReadBytes)에서 읽은 바이트 수 리턴
+    		= is.read(ReadBytes) // read() 메서드는 반복마다 3바이트씩 읽음(5byte를 읽는 경우, 첫번째 3byte, 두번째 2byte 읽음)
+    ) != -1) {...}
+    ```
 
 ## 참고자료
 
