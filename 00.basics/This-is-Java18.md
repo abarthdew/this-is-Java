@@ -155,6 +155,12 @@
     		= is.read(ReadBytes) // read() 메서드는 반복마다 3바이트씩 읽음(5byte를 읽는 경우, 첫번째 3byte, 두번째 2byte 읽음)
     ) != -1) {...}
     ```
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a10ed1c-36b9-4cf7-a224-8c31c1a9cbf7/Untitled.png)
+
+- InputStream으로 5개의 byte가 들어온다고 가정
+    
+    ⇒ 해당 read() 메서드는 5byte 중 3만큼 데이터를 읽은 뒤 2 인덱스 부터 (1), (2), (3) 3개를 저장하고, 3을 리턴
+
 
 ## 참고자료
 
