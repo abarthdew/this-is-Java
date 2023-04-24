@@ -161,6 +161,20 @@
     
     ⇒ 해당 read() 메서드는 5byte 중 3만큼 데이터를 읽은 뒤 2 인덱스 부터 (1), (2), (3) 3개를 저장하고, 3을 리턴
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e09da6be-f313-4049-b8bf-5cf2231e9429/Untitled.png)
+
+- 추상 클래스이므로 new 연산자로 객체 생성 불가
+- 대신, OutputStream을 상속한 하위 클래스로 객체를 생성해, OutputStream 내 메서드 사용 가능
+- 주요 메서드
+    - write(int b): 매개타입 int 타입의 4byte 크기 중, 끝 1byte만 출력
+    - write(byte[] b): byte 배열 전체 출력
+    - flush(): write를 하면 데이터가 바로 출력되는 게 아니라, 메모리 버퍼에 쌓였다가, 메모리 버퍼가 꽉 차면 비로소 데이터를 출력함.
+        
+        ⇒ 데이터가 메모리 버퍼에 꽉 차지 않을 경우, 강제적으로 데이터를 출력하도록 만들어 줌.
+        
+        ⇒ write() 메서드 호출 후 flush() 호출 해야 데이터가 완전하게 전송됨
+        
+    - close(): 더 이상 OutputStream을 쓰지 않을 때 사용
 
 ## 참고자료
 
