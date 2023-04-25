@@ -176,6 +176,28 @@
         
     - close(): 더 이상 OutputStream을 쓰지 않을 때 사용
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/079244cf-0424-47b8-ae14-137b21c2c851/Untitled.png)
+
+- int가 4byte라고 해서 4byte를 출력하지 않음
+    
+    ⇒ int의 끝자리 1byte만 출력
+    
+- 코드: ABC라는 코드를 C:/test.txt에 1byte씩 저장하는 코드
+    
+    ```java
+    OutputStream os = new FileOutputStream("C:/test.txt"); // C:/test.txt파일의 FileOutputStream 생성
+    byte[] data = "ABC".getBytes(); // 바이트 배열 얻기
+    for (int i=0; i<data.length; i++) {
+    	os.wrrite(data[i]); // "A", "B", "C"를 하나씩 출력
+    }
+    ```
+    
+- 결과    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccc0a525-2e6d-448f-9436-45eab0c77258/Untitled.png)
+
+
+
+
 ## 참고자료
 
 [강의교안_18장.ppt](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/files/%EA%B0%95%EC%9D%98%EA%B5%90%EC%95%88_18%EC%9E%A5.ppt)
