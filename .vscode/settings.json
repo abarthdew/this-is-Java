@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
+        "18.2.write",
         "18.2.read",
         "16.9.aggregate",
         "16.8.match",
@@ -69,7 +70,7 @@
         "11.11.Arrays",
         "11.10.pattern",
         "06.14.getters",
-        "18.2.write"
+        "18.3.reader"
     ],
     "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk1.8.0_201"
 }
