@@ -194,7 +194,113 @@
     
 - 결과    
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccc0a525-2e6d-448f-9436-45eab0c77258/Untitled.png)
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01bb039d-e543-455a-ad6d-1abf690a40c2/Untitled.png)
 
+- write() 메서드의 인자인 byte[] b의 길이가 5일 때, write() 메서드는 byte[] 배열의 모든 데이터를 출력시킴
+- 이전 예제와 다른 점
+    
+    ```java
+    // write(int b)
+    for (int i=0; i<data.length; i++) {
+    	os.wrrite(data[i]); // for 문을 이용해 1byte씩 출력
+    }
+    
+    // write(byte[] b)
+    os.write(data); // 주어진 byte 배열을 전부 출력(for문 필요없음)
+    ```
+    
+- 출력결과
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2acdb22a-6aef-4dcb-b21c-2d7571acdadf/Untitled.png)
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4984a438-a765-4be0-83e1-47b98dd46f8a/Untitled.png)
+
+- byte[] 배열에서 1인덱스 부터 3개만 출력
+- 예제: A, B, C 중 B, C만 출력
+- 출력결과
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e00a2d0-2ce3-4c47-93d1-6afa5213de79/Untitled.png)
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6d64b2da-cba5-464f-a224-7245e41ca55b/Untitled.png)
+
+- 어떤 출력 스트림을 얻었다 할지라도, write() 후에는 반드시 flush()를 해야 함
+    
+    ⇒ 그러지 않으면 write() 한 데이터가 출력되지 않음
+    
+- 출력 스트림을 더 이상 사용하지 않을 땐 close()
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6457167c-cdf3-434b-87b2-5a53d5242332/Untitled.png)
+
+- 문자만 읽을 수 있음(byte는 읽을 수 없음)
+- 주요 메서드
+    - read(): 한 문자는 2byte로 되어 있으므로, 리턴 타입인 int의 4byte 중 끝 2byte에 하나의 문자가 저장
+    - read(char[] cbuf): 읽은 문자를 char[] 배열에 저장, 읽은 문자 수만 int로 리턴
+    - read(char[] cbuf, int off, int len): 읽은 문자를 char[] 배열에 저장하되, 시작 인덱스 ~ 개수만큼만 저장
+    - close(): 더 이상 read()를 사용하지 않을 경우
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db853630-e642-49bc-9e39-ca807c2efd8c/Untitled.png)
+
+- 한 번에 한 문자를 읽어 int로 리턴
+- read() 실행 과정:
+    
+    Reader로 2개의 문자가 들어 올 때, (각 문자는 각각 2byte 크기를 하고 있음) 
+    
+    → read() 메서드를 실행하게 되면, 
+    
+    - 한 개의 문자(1, 2)를 읽어 int 4byte의 끝 2byte에 각 문자를 저장 후 리턴
+    
+    → 다시 read() 실행
+    
+    - 한 개의 문자(3, 4)를 읽어 int 4byte의 끝 2byte에 각 문자를 저장 후 리턴
+- 예제
+    
+    ```java
+    Reader reader = new FileReader("C:/test.txt"); // C:/test.txt에서 FileReader를 만든 다음, Reader에 대입
+    int readData;
+    while(
+    	(readData = reader.read()) // 한 문자씩 읽어 readData에 대입
+    	 != -1) { // 더 이상 읽을 문자가 없을 때 -1 리턴
+    	char charData = (char) readData; // 문자 저장
+    }
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a9b3c642-1f99-4aad-9c0d-cd61e7e5d21c/Untitled.png)
+
+- Reader로부터 3개의 문자가 들어올 때, read() 메서드를 실행했다면,
+    1. 첫번째 읽은 경우
+        
+        → read(char[] cbuf)의 매개 값 char[] 배열이 길이 2짜리 배열이라면, 
+        
+        → Reader에서 `1, 2`와 `3, 4` 두 개의 문자를 읽어 각각 0, 1 인덱스에 저장
+        
+        → read(char[] cbuf)는 2개의 문자를 읽었으므로 2 리턴
+        
+    2. 두 번째 읽은 경우
+        
+        → Reader에는 나머지 하나의 문자(`5, 6`)가 남아있기 때문에,
+        
+        → read(char[] cbuf) 메서드는 문자(`5, 6`)을 0 인덱스에 저장 후, (1 인덱스에는 저장이 일어나지 않으므로, 이전 데이터 `3, 4`가 남아있음)
+        
+        → 읽은 문자 수인 1을 리턴
+        
+- 예제
+    
+    ```java
+    Reader reader = new FileReader("C:/test.txt");
+    int readCharNo;
+    char[] cbuf = new char[2];
+    while (
+    	(readCharNo = reader.read(cbuf))
+    	// read()는 reader에서 읽은 문자를 cbuf 변수의 배열에 저장됨
+    	// 실제 읽은 문자 수가 리턴되어 readCharNo에 저장됨
+    	!= -1
+    ) {
+    	// ...
+    }
+    ```
 
 
 
