@@ -1,4 +1,3 @@
-import javax.xml.ws.WebFault;
 
 public class WaitA extends Thread {
     private WorkObj workObj;
