@@ -2,6 +2,7 @@
     "java.project.sourcePaths": [
         "18.3.reader",
         "18.2.write",
+        "18.2.read",
         "16.9.aggregate",
         "16.8.match",
         "16.7.looping",
@@ -70,7 +71,7 @@
         "11.11.Arrays",
         "11.10.pattern",
         "06.14.getters",
-        "18.2.read"
+        "18.2.writer"
     ],
     "java.jdt.ls.java.home": "c:\\Program Files\\java\\jdk-17.0.7.7",
 }

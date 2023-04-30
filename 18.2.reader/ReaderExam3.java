@@ -4,7 +4,7 @@ import java.io.Reader;
 public class ReaderExam3 {
     public static void main(String[] args) throws Exception {
         
-        Reader reader = new FileReader("C:\\Users\\auswo\\Downloads\\PortableGit\\this-is-Java\\18.3.reader\\test.txt");
+        Reader reader = new FileReader("C:\\Users\\auswo\\Downloads\\PortableGit\\this-is-Java\\18.2.reader\\test.txt");
         int readCharNo;
         char[] cbuf = new char[4];
         readCharNo = reader.read(cbuf, 1, 2);
