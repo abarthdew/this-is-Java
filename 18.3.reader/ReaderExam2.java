@@ -1,10 +1,10 @@
 import java.io.FileReader;
 import java.io.Reader;
 
-public class ReadExam2 {
+public class ReaderExam2 {
     public static void main(String[] args) throws Exception {
         
-        Reader reader = new FileReader("C:/Users/auswo/Downloads/PortableGit/test.txt"); // 'study'가 입력된 텍스트 파일
+        Reader reader = new FileReader("C:\\Users\\auswo\\Downloads\\PortableGit\\this-is-Java\\18.3.reader\\test.txt");
         int readCharNo; // reader가 읽은 문자 수를 저장
         char[] cbuf = new char[2];
         String data = "";
