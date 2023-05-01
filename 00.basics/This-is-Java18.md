@@ -300,7 +300,166 @@
     ) {
     	// ...
     }
+    ```    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e571033f-c1e1-4a12-8d14-02a97c125274/Untitled.png)
+
+- Reader 라는 입력 스트림에서 3개의 문자(1/2, 3/4, 5/6)가 들어올 때
+    
+    ⇒ read(char[] cbuf, 1, 2)를 실행한다면,
+    
+    ⇒ 길이가 4인 char 배열에서 인덱스 1부터 2개의 문자를 저장하게 됨
+    
+    ⇒ 리턴값은 2
+    
+- 예제
+    
+    ```java
+    Reader reader = ...;
+    char[] cbuf = new char[100]; // 길이 100인 char 배열 선언
+    
+    int readCharNo = is.read(cbuf, 0, 100); // char 배열의 0~100 인덱스 만큼 문자를 읽음
+    
+    // 위 코드와 동일한 코드
+    int readChar = is.read(cbuf);
     ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/be302e34-3b8d-4e6c-9244-10f55c6dc915/Untitled.png)
+
+- `write(int c)`: 매개 값 int의 끝 2byte 문자를 출력
+- `write(char[] cbuf)`: char 배열의 모든 문자를 출력
+- `flush()`: 버퍼에 쌓여있는 데이터를 강제로 목적지로 보내는 역할
+    
+    ⇒ `write()` 메서드 호출 후 필수로 `flush()` 호출 필요
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f524b7c2-6152-46b6-bde5-66ebce2b5aec/Untitled.png)
+
+- write() 메서드 값 실행 → int 값 제공
+    
+    → int의 끝 2byte에 있는 문자 정보가 Writer를 통해 출력됨
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab28b72d-4875-4f6d-a0e5-0e10447a69ba/Untitled.png)
+
+- write() 메서드 실행 → 길이 2짜리 char 배열이 주어지게 됨
+    
+    → write() 메서드는 char 배열 안에 있는 모든 문자를 출력
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3011c35d-671f-4b7e-beef-659b462a10f5/Untitled.png)
+
+- write() 메서드 실행 → 길이 4인 char 배열이 주어지고,
+    
+    → 1~2 인덱스에 위치한 2개의 문자를 Writer를 통해 출력
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6053b7b9-d264-45c8-82d4-21cde26339c9/Untitled.png)
+
+- write() 메서드로 String 문자열 제공 → Writer를 통해 데이터 출력
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a486d81-ff7c-48f8-a830-3e72b9ec8a57/Untitled.png)
+
+- `flush()`: 버퍼를 비우는 기능
+    
+    ⇒ write() 메서드로 출력된 데이터는 버퍼에 쌓였다가 전송됨
+    
+    ⇒ 버퍼에 잔류한 데이터가 있을 수 있기 때문에, flush()를 호출해 강제적으로 버퍼를 비우고 출력
+    
+- `close()`: write() 를 다 사용했을 경우, 닫는 역할
+    
+    ⇒ 어떠한 write()든 작업이 끝난 후엔 flush()와 close() 호출 필수
+    
+
+## ****18.3 콘솔 입출력****
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f550c97a-75d1-41b4-a46a-6bbd01575f86/Untitled.png)
+
+- `System.in`: 콘솔에 키보드로 입력한 내용을 입력 스트림으로 얻기 위해 자바에서 제공하는 필드
+- `System.out`: 반대로, 프로그램에서 콘솔로 데이터를 출력하기 위해 제공하는 출력 스트림
+- `System.err`: 에러 메세지 출력에 사용
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/974a4b8e-ed96-4080-8f2f-8c18b5972989/Untitled.png)
+
+### 예제 18.3.1 - 명령 프롬프트에서 실행하기
+
+- .class 파일 있는 경로 가서 `java [실행 클래스 이름(.java 제외)]` 입력
+    
+    (참고: .class 파일을 만드는 명령어는 `javac [클래스 이름]`)
+    
+    ```bash
+    C:\Users\auswo\AppData\Roaming\Code\User\workspaceStorage\e3967762ac58d8f8ebdf24073678a24f\redhat.java\jdt_ws\this-is-Java_9a089889\bin>java SystemInExam1
+    ==메뉴==
+    1. 예금 조회
+    2. 예금 출금
+    3. 예금 입금
+    4. 종료하기
+    메뉴를 선택하세요: 3
+    예금 입금 선택
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e5b4a424-2c5a-4bd2-90a1-58e1186b97d8/Untitled.png)
+
+- 키보드로 한글을 입력 받으려면 다른 read() 메서드를 사용해야 함
+    
+    ```java
+    byte[] byteData = new byte[15]; // byte 배열 선언
+    int readByteNo = System.in.read(byteData);
+    ```
+    
+- 한글을 읽을 때 byte 배열을 선언하는 이유:
+    
+    한글은 한 글자당 2byte로 구성되어 있기 때문 → 키보드로 최소 2번을 입력해야 한글 1글자를 입력할 수 있음
+    
+    ⇒ 2byte 이상을 읽기 위해 byte 배열에 저장
+    
+- enter 키는 13, 10으로 각 배열 인덱스에 저장됨
+- 디폴트 값은 0
+- byte 배열에 아스키코드로 입력된 값을 문자열로 만들기(enter키 값 제외)
+    
+    ```java
+    String strData = new String(byteData, 0, readByteNo-2);
+    // readByteNo-2: enter 키 값 제외
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73161a50-1b09-481a-9f45-46fd56864f12/Untitled.png)
+
+- PrintStream은 OutputStream의 하위 타입
+- 사실 `System.out.println`은 PrintStream의 변수 `ps.println()`이었고, 보통 이를 줄여서 사용함
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62c1b2c9-7007-47ae-be46-1007b63865ba/Untitled.png)
+
+- 콘솔로부터 InputStream을 이용해 데이터를 읽으려면, byte 배열로 읽어 복원해야 하는 불편함이 있음
+    
+    ⇒ 편리하게 콘솔에서 문자열을 읽을 수 있도록 Console 클래스 제공(자바 6부터)
+    
+    ⇒ Console이외 Scanner 클래스도 제공: Scanner 클래스는 문자열 이외 기본형 타입의 값도 읽을 수 있음
+    
+- 예제 명령 프롬프트에서 실행하기
+    
+    ```bash
+    C:\Users\auswo>cd C:\Users\auswo\AppData\Roaming\Code\User\workspaceStorage\e3967762ac58d8f8ebdf24073678a24f\redhat.java\jdt_ws\this-is-Java_9a089889\bin
+    
+    C:\Users\auswo\AppData\Roaming\Code\User\workspaceStorage\e3967762ac58d8f8ebdf24073678a24f\redhat.java\jdt_ws\this-is-Java_9a089889\bin>java ConsoleExam
+    아이디:
+    id2
+    패스워드:
+    
+    id2
+    pass2
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d303db67-3de4-4c4f-8af2-e19903fbd584/Untitled.png)
+
+- Scanner를 생성하는 법: new Scanner 생성자의 매개값에 System.in 이라는 InputStream을 넣어 줌
+
+## ****18.4 파일 입출력****
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b383a9b-61b8-4b3b-a13b-a18c424ac9c6/Untitled.png)
 
 
 
