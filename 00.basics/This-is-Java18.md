@@ -1,12 +1,15 @@
 ## 목차
 [18.1 IO 패키지 소개](#181-io-패키지-소개)   
 [18.2 입력 스트림과 출력 스트림](#182-입력-스트림과-출력-스트림)   
-[]()
+[18.3 콘솔 입출력](#183-콘솔-입출력)   
+    [- 예제 18.3.1 - 명령 프롬프트에서 실행하기](#예제-1831---명령-프롬프트에서-실행하기)   
+[18.4 파일 입출력](#184-파일-입출력)   
+[]()   
 [참고자료](#참고자료)   
 
-## **18.1 IO 패키지 소개**
+## ****18.1 IO 패키지 소개****
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18.png)
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1b15470e-f4ac-4460-af02-f66aeb2ffc1a/Untitled.png)
 
 - IO: input / ouput의 약자
 - 자바에서는 데이터를 input/output하기 위해 java.io 패키지를 제공함
@@ -14,7 +17,7 @@
 - File: 파일의 이름, 경로, 크기, 속성(읽기 전용/쓰기 전용)
 - **InputStream/OutputStream**: 바이트를 읽고 쓰기 위해 사용하는 클래스
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(1).png)
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e28834f6-583e-4566-af4b-26983c965d71/Untitled.png)
     
     ⇒ InputStream/OutputStream을 상속해서 만든 하위 스트림
     
@@ -22,7 +25,7 @@
     - `DataInputStream ~ BufferedOutputStream`: 좀 더 편하게 입출력을 하기 위해 사용하는 보조 스트림
 - **Reader/Writer:** InputStream/OutputStream이 바이트 단위로 입출력을 한다면, Reader/Writer는 문자 단위로 입출력
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(2).png)
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/49d1646a-db56-431b-bc14-4657b82bb1b4/Untitled.png)
     
     ⇒ Reader/Writer를 상속해서 만든 하위 스트림
     
@@ -31,9 +34,9 @@
     - `PrintwWriter`: 문자를 출력
     - `BufferedReader/BufferedWriter`: 성능 향상을 위해 사용하는 보조 스트림
 
-## **18.2 입력 스트림과 출력 스트림**
+## ****18.2 입력 스트림과 출력 스트림****
 
-![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18().png)
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/09e06a36-ea40-4b3a-8f9b-f479da49624f/Untitled.png)
 
 - [프로그램]을 기준으로, 데이터가 들어오게 되면 입력 스트림을,
 - 데이터가 나가고 있다면 출력 스트림을 이용해야 함
@@ -48,7 +51,7 @@
 1. 데이터가 [프로그램]으로 들어올 경우와, 
 2. 데이터가 [프로그램]에서 나가는 경우를 따로 생각해 보면 이런 식임
     
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18().png)
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b27b0d1e-b553-4ae8-a0a9-2f2ecbbc2061/Untitled.png)
     
 - 각 프로그램을 기준으로 데이터가 들어오면 입력 스트림,
 - 데이터가 나가면 출력 스트림임
@@ -105,6 +108,7 @@
     - `close()`: InputStream 사용 후 닫을 때 사용
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccff8d57-ca0e-44cf-b02b-6b085323942e/Untitled.png)
+
 - 1바이트를 읽고, 읽은 바이트를 리턴
 - InputStream로부터 5개의 바이트가 들어온다면, read()는 5번 실행해서 읽음
 - 읽힌 바이트는 int 타입의 끝에 저장되고 리턴됨
@@ -126,6 +130,8 @@
         → 반복 → (3), (4), (5) 모두 읽음 
         
         → 더 이상 읽을 데이터가 없으면 is.read()는 -1을 리턴 → 반복문 탈출
+        
+
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d26a4f1b-b712-46ae-99e8-2342e0378a72/Untitled.png)
 
 - 매개값으로 byte 배열을 받는 read() 메서드
@@ -146,6 +152,7 @@
         - 다음에 오는 byte가 없으므로 2인덱스에는 1.(첫번째) 에서 읽은 (3)이 남아 있음
         - read() 메서드는 2byte를 읽고 저장했으므로 2 리턴
 - 코드 확인
+    
     ```java
     InputStream is = new FileInputStream("c:/test.jpg"); // FileInputStream을 이용해 객체 생성, InputStream에 대입
     int readByteNo;
@@ -155,11 +162,14 @@
     		= is.read(ReadBytes) // read() 메서드는 반복마다 3바이트씩 읽음(5byte를 읽는 경우, 첫번째 3byte, 두번째 2byte 읽음)
     ) != -1) {...}
     ```
+    
+
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a10ed1c-36b9-4cf7-a224-8c31c1a9cbf7/Untitled.png)
 
 - InputStream으로 5개의 byte가 들어온다고 가정
     
     ⇒ 해당 read() 메서드는 5byte 중 3만큼 데이터를 읽은 뒤 2 인덱스 부터 (1), (2), (3) 3개를 저장하고, 3을 리턴
+    
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e09da6be-f313-4049-b8bf-5cf2231e9429/Untitled.png)
 
@@ -192,8 +202,11 @@
     }
     ```
     
-- 결과    
+- 결과
+    
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccc0a525-2e6d-448f-9436-45eab0c77258/Untitled.png)
+    
+
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01bb039d-e543-455a-ad6d-1abf690a40c2/Untitled.png)
 
 - write() 메서드의 인자인 byte[] b의 길이가 5일 때, write() 메서드는 byte[] 배열의 모든 데이터를 출력시킴
@@ -300,7 +313,8 @@
     ) {
     	// ...
     }
-    ```    
+    ```
+    
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e571033f-c1e1-4a12-8d14-02a97c125274/Untitled.png)
 
@@ -460,6 +474,33 @@
 ## ****18.4 파일 입출력****
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b383a9b-61b8-4b3b-a13b-a18c424ac9c6/Untitled.png)
+
+- isExist(): new File(”디렉토리 경로”)로 파일 객체를 생성할 때, 디렉토리 경로가 존재하지 않는 것이라도 파일 객체는 생성됨. isExist()로 파일이 존재하는지 검증할 수 있음.
+- mkdirs():
+    - C:/Temp/dir/dir2 에서 dir, dir2 디렉토리가 없을 때, 둘 다 생성 가능
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/604d38df-f497-441f-b050-7cd82ff85f88/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec421add-7732-483d-8c0f-3b2d131eaa35/Untitled.png)
+
+- 객체 생성 방법
+    
+    ```java
+    // FileInputStream 생성자 호출
+    FileInputStream fis = new FileInputStream("파일 경로");
+    
+    // 파일 객체가 생성되어 있을 때
+    File file = new File("경로");
+    FileInputStream fis = new FileInputStream(file); // 생성자 매개값에 파일 객체 대입
+    ```
+    
+- FileNoutFoundException: new FileInputStream()의 매개값의 경로가 올바르지 않거나, 매개값으로 대입된 파일 객체가 존재하지 않을 경우 예외 발생
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58dde3d3-24e1-4356-9901-9b1b220b5195/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c723e01-5c1a-4816-8b26-97120b85cea2/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e741d835-d1ac-4dfe-be53-47647760ca96/Untitled.png)
 
 
 
