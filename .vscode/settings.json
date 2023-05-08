@@ -1,5 +1,11 @@
 {
     "java.project.sourcePaths": [
+        "18.5.streamReader",
+        "18.5.printStream",
+        "18.5.objectStream",
+        "18.5.dataStream",
+        "18.5.buffer",
+        "18.4.file",
         "18.3.console",
         "18.2.writer",
         "18.2.write",
@@ -72,7 +78,7 @@
         "11.11.Arrays",
         "11.10.pattern",
         "06.14.getters",
-        "18.4.file"
+        "18.5.serialVersionUID"
     ],
     "java.jdt.ls.java.home": "c:\\Program Files\\java\\jdk-17.0.7.7",
 }

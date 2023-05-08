@@ -1,0 +1,1 @@
+Convert primitive-based stream to character-based stream
