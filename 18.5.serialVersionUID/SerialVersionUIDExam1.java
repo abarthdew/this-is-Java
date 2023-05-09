@@ -1,9 +1,11 @@
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
-public class SerialVersionUID {
+public class SerialVersionUIDExam1 {
     public static void main(String[] args) throws Exception {
-        
+       
+        // (C:/Users/auswo/Downloads/PortableGit/this-is-Java/18.5.serialVersionUID/dir/Object.dat) 에 classC를 저장하는 클래스
+
         FileOutputStream fos = new FileOutputStream("C:/Users/auswo/Downloads/PortableGit/this-is-Java/18.5.serialVersionUID/dir/Object.dat");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
