@@ -2,6 +2,10 @@
     "java.project.sourcePaths": [
         "19.9.path",
         "19.9.fileSystem",
+        "19.3.byteOder",
+        "19.3.buffer2",
+        "19.3.buffer",
+        "19.2.watchService",
         "19.2.fileDir",
         "18.8.udp",
         "18.7.serverSocket",
@@ -86,7 +90,7 @@
         "11.11.Arrays",
         "11.10.pattern",
         "06.14.getters",
-        "19.2.watchService"
+        "19.3.convertBuffer"
     ],
     "java.jdt.ls.java.home": "c:\\Program Files\\java\\jdk-17.0.7.7",
 }
