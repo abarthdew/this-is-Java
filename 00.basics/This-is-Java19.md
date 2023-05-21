@@ -1,6 +1,9 @@
 ## 목차
-[](#)   
-[](#)   
+[19.1 NIO 소개](#191-nio-소개)   
+[19.2 파일과 디렉토리](#192-파일과-디렉토리)   
+[19.3 버퍼](#193-버퍼)   
+[- 예제 - 18.3.buffer](#예제---183buffer)   
+[19.4 파일 채널](#194-파일-채널)   
 [](#)   
 [](#)   
 [참고자료](#참고자료)   
@@ -71,6 +74,426 @@
         - 스레드를 종료시키는 방법인 interrupt를 해서 블로킹(대기 상태)을 빠져나올 수 없음
         - 블로킹을 빠져 나오려면 InputStream 또는 OutputStream을 닫아야 함
     - NIO: 그림 참조
+
+## ****19.2 파일과 디렉토리****
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62882efb-7adb-4582-9db5-e4bb18d35518/Untitled.png)
+
+- Path 객체를 얻는 여러 가지 코드
+    
+    → 절대 경로, 상대 경로 전부 매개 값으로 올 수 있음
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b0d1d1c-bd67-46df-9837-1cc00f82e566/Untitled.png)
+
+- compareTo(): 다른 Path와 현재 Path를 비교
+- toFile(): 현재 Path 객체를 File 객체로 리턴
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad8e9c2a-145b-4be1-b1b1-9361fabbd1f8/Untitled.png)
+
+- 드라이버 정보: :C, :D 등
+- Iterable<FileStore> : FileStore를 반복할 수 있는 Iterable 반복자를 리턴 한다는 뜻
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/197da65c-261c-4cc8-baa5-1a7009d3fec6/Untitled.png)
+
+- 속성: 숨김인지, 디렉토리 여부, 크기나 소유자는 어떻게 되는지 등
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/462b3a9e-102f-4ff7-851b-c437c7b9b1a2/Untitled.png)
+
+- newBufferedReader(): BufferedReader를 만들 때, FileReader를 만들고 보조 스트림으로 BufferedReader를 연결하는데, newBufferedReader() 메서드를 이용하면 바로 BufferedReader를 얻을 수 있음
+- newBufferedWriter(): 마찬가지로, BufferedWriter 를 바로 리턴 가능
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dcf4b434-9c7f-47c0-9129-e269b86f337a/Untitled.png)
+
+```java
+path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() 메서드 호출
+	watchService,
+	StandardWtchEventKinds.ENTRY_CREATE, // 생성을 감시할 때
+	StandardWtchEventKinds.ENTRY_MODIFY, // 수정 
+	StandardWtchEventKinds.ENTRY_DELETE, // 삭제
+	// 다 쓰면 모두 다 감시
+);
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/07e93977-c0c6-4f42-913a-29e37a202e7e/Untitled.png)
+
+- WatchService를 등록한 디렉토리 내부에서 변경이 발생할 경우
+    - WatchEvent 발생
+        
+        → WatchService는 해당 이벤트 정보를 가진 WatchKey를 생성
+        
+        → 이 WatchKey를 큐에 저장
+        
+    - 저장된 WatchKey는 프로그램에서 take() 메서드를 이용하면 얻을 수 있음
+- 이벤트 처리 코드 작성 방법
+    - WatchKey가 큐에 들어오지 않았다면, 디렉토리 내부에서 변경이 발생하지 않은 것
+    - take() 메서드는 WatchKey가 큐에 들어올 때까지 대기함
+    1. 디렉토리 내부 변경 발생 → WatchKey가 큐에 저장 → take()가 WatchKey를 얻어 리턴
+    - WatchKey 안에는 디렉토리 안에서 변경된 내용이 있음
+        
+        → 파일 생성, 수정, 삭제 등 해당 이벤트 정보
+        
+    1. WatchKey로 부터 WatchEvent 리스트 획득
+        
+        → 여러 개의 WatchEvent가 발생할 수 있으므로 리스트로 리턴됨
+        
+        → 파일을 동시에 여러 개 선택해서 삭제할 경우 등
+        
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/19aaded1-3cce-4d1a-8707-0da45413e0c2/Untitled.png)
+    
+    1. WatchKey로부터 WatchEvent 컬렉션을 얻었다면, WatchEvent를 하나씩 처리해야 함
+        
+        ```java
+        List<WatchEvent<?>> list = watchKey.pollEvents(); // watchKey로부터 WatchEvent 리스트 얻기
+        for (WatchEvent watchEvent : list) {
+        	// watchEvent를 하나씩 얻어 작업
+        
+        	// 이벤터 종류 얻기: watchEvent가 왜 발생했는가?
+        	Kind kind = watchEvent.kind();
+        	
+        	if (kind == standardWatchEventKinds.ENTRY_CREATE) {
+        		// 디렉토리나 파일이 생성되었을 경우, 실행할 코드
+        	} else if (kind == standardWatchEventKinds.ENTRY_DELETE) {
+        		// 삭제되었을 경우, 실행할 코드
+        	} else if (kind == standardWatchEventKinds.ENTRY_MODIFY) {
+        		// 변경되었을 경우, 실행할 코드
+        	} else if (kind == standardWatchEventKinds.OVERFLOW) {
+        		// 운영체제에서 이벤트가 소실됐거나 버려진 경우: 잘 처리하지 않음
+        	}
+        
+        	// 감지된 Path 얻기: 어떤 파일에서 변화가 감지됐는가?
+        	Path path = (Path) watchEvent.context();
+        }
+        ```
+        
+    2. WatchKey를 reset() 하는 작업
+        - 새로운 WatchEvent가 발생하면, 큐에 다시 들어가기 때문
+            - true 리턴: 초기화에 성공
+                
+                → 다시 while 문 실행
+                
+                → 다시 take() 가 큐에서 watchKey를 기다림
+                
+                → watchKey 들어옴 → 반복
+                
+            - false 리턴: 감시하는 디렉토리가 삭제되었거나 키가 더 이상 유효하지 않을 경우(더 이상 감시할 필요가 없음)
+    3. WatchService 종료(close)
+
+[https://www.youtube.com/watch?v=i0h8VvJHA6I&list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu&index=216&ab_channel=한빛미디어](https://www.youtube.com/watch?v=i0h8VvJHA6I&list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu&index=216&ab_channel=%ED%95%9C%EB%B9%9B%EB%AF%B8%EB%94%94%EC%96%B4)
+
+47:00 javaFX 다시 참조
+
+## ****19.3 버퍼****
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c83a3fe1-e668-4b9e-bc04-824136b1cb25/Untitled.png)
+
+- 프로그램이 입력 소스로부터 데이터를 입력 받을 때
+    
+    → 버퍼에 먼저 저장
+    
+    → 프로그램은 버퍼에서 데이터를 얻음
+    
+- 프로그램이 어떤 데이터를 목적지로 보낼 때
+    
+    → 데이터를 일단 버퍼에 저장
+    
+    → 버퍼에 있는 데이터를 목적지로 보냄
+    
+- 버퍼는 NIO에서 필수적으로 사용되는 객체
+- Buffer 분류 기준: 어떤 메모리를 사용하느냐에 따른 분류
+    - 다이렉트: 운영체제가 관리하는 메모리를 이용
+    - 넌다이렉트: JVM이 관리하는 메모리를 이용
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/169edf15-4410-4e7f-b203-586866866ccc/Untitled.png)
+
+- ByteBuffer: byte 데이터를 저장하는 버퍼
+- Char, Short, Int, LongBuffer: 정수를 저장하는 버퍼
+- Float, DoubleBuffer: 실수를 저장하는 버퍼
+- 주로 ByteBuffer를 많이 씀
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/053fe913-0340-4b85-ba87-3ff4e2306704/Untitled.png)
+
+- 넌 다이렉트 버퍼
+    - 버퍼 크기를 크게 잡을 수 없음
+        
+        → 운영체제가 JVM에 할당한 메모리 범위 내에서 사용해야 하기 때문
+        
+    - 넌 다이렉트 버퍼가 입출력을 하게 되면
+        
+        → 내부적으로 다이렉트 버퍼를 이용
+        
+        → 다이렉트 버퍼를 생성해서, 데이터(넌 다이렉트 버퍼)를 복사하고 난 후, 입출력을 함
+        
+    - 상대적으로 다이렉트 직접 버퍼를 이용하는 것보다, 넌 다이렉트 버퍼의 입출력 속도는 늦음
+- 다이렉트 버퍼
+    - native C 함수를 호출해서 다이렉트 버퍼를 생성해야 하기 때문에, 넌 다이렉트 버퍼보다 생성 시간이 다소 걸림
+
+### 예제 - 18.3.buffer
+
+- 다이렉트 버퍼는 생성되지만, 넌 다이렉트 버퍼는 생성되지 않음(OutOfMemoryError)
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87094d68-3157-41c8-baa8-db16c5508454/Untitled.png)
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0466e7b1-0db4-43d8-b6d8-66c98789ddd2/Untitled.png)
+
+- 버퍼를 생성하기 위해선 각 버퍼 클래스의 allocate() 메서드 호출
+- wrap() 메서드
+    
+    ```java
+    byte[] byteArr = new byte[100]; // 이미 byte 배열이 생성되어 있고,
+    ByteBuffer byteBuffer = ByteBuffer.wrap(byteArr); // byteArr 바이트 배열을 wrapping 해서 byteBuffer를 만듦
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8967b2f3-0452-4939-8be1-2a10fe8be10f/Untitled.png)
+
+- Char, IntBuffer 등에서는 없고, ByteBuffer에서만 allocateDirect() 메서드가 제공됨
+- 예시
+    
+    ```java
+    ByteBuffer byteBuffer = ByteBuffer.allocateDirect(저장할 수 있는 바이트 수);
+    ```
+    
+    - 운영체제가 관리하는 메모리에 버퍼를 만들어 리턴
+- asXXXBuffer(): Char, IntBuffer 등을 사용하는 방법
+    
+    ```java
+    ByteBuffer byteBuffer = ByteBuffer.allocateDirect(100); // 100개의 바이트 값 저장
+    CharBuffer charBuffer = ByteBuffer.allocateDirect(100).asCharBuffer(); // 50개 char 값 저장(char 한 문자당 2바이트 차지)
+    IntBuffer intBuffer = ByteBuffer.allocateDirect(100).asIntBuffer(); // 25개 int 값 저장 (int 한 문자당 4바이트 차지)
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/16c8a39b-7877-4e8c-92a4-be8c4af7e545/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4b98261-f13b-427a-aa2c-9e2a263e6549/Untitled.png)
+
+- JVM은 무조건 big endian이지만, JVM을 사용하지 않을 경우, ByteOder 클래스로 데이터 순서를 맞춰야 함
+- order(): JVM이 운영체제의 바이트 해석 순서와 JVM의 해석 순서를 맞춤
+    
+    ```java
+    ByteBuffer byteBuffer = ByteBuffer.allocateDirect(100).order(ByteOrder.nativOrder());
+    // 이렇게 얻어진 byteBuffer를 입출력에 사용하게 되면, 성능에 도움이 됨
+    ```
+    
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4205c638-4ad4-40fb-ba00-a6194d4d045b/Untitled.png)
+
+- 버퍼를 사용하려면, 위치 속성을 잘 알고 있어야 함
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/76c1d8b3-be73-4648-a3b1-3d22b5be50c7/Untitled.png)
+
+1. **쓰기 모드**
+2. 7 바이트 크기의 바이트 배열을 생성했다고 가정
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/78759103-f80e-4643-af67-c29fe766496e/Untitled.png)
+    
+    - position(읽고 쓰기 위한 위치): 제일 처음 버퍼를 생성했기 때문에 0 (제일 처음에는 읽은 값도, 쓴 값도 없으므로 0)
+    - capacity: 실제 버퍼에 저장될 수 있는 최대 데이터 개수 7
+    - limit(읽거나 쓰기 위한 한계 값): 처음 버퍼가 생성되면, limit은 capacity와 같음
+3. 2 바이트를 버퍼에 저장
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe16cbb5-ea7e-4ca2-827c-b767479b8a0d/Untitled.png)
+    
+    - position: 2, 이 자리에 다음 데이터, 즉 다음 바이트를 저장할 수 있다는 위치 정보를 알려 줌
+    - capacity, limit: 변함 없음
+4. 추가로 3 바이트를 버퍼에 저장
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2ec292e-1a46-4a6a-8512-6247249e9db4/Untitled.png)
+    
+    - position: 2 + 3 = 5
+5. 쓰기 모드 → **읽기 모드로 변경**
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f37ba2bf-f947-4189-a587-b6bfaa0ddb50/Untitled.png)
+
+1. 읽기 모드로 변경하기 위해 flip() 메서드 호출
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/31470205-6356-4834-a8fc-c23c95d1022c/Untitled.png)
+    
+    - position
+        - 직전 position: 5
+        - flip() 호출 → position: 0 (맨 앞으로 이동)
+        - (맨 앞부터 읽겠다는 의미)
+    - limit
+        - 직전 limit: 7
+        - flip() 호출 → limit: 5 (데이터가 저장된 그 다음 인덱스)
+        - 원래 position이 있던 자리
+        - position ~ limit 까지의 범위를 읽을 수 있다는 의미를 가짐
+        - 실제 데이터는 limit - 1 까지고, limit 자리에는 데이터가 없음
+2. 버퍼에서 3 바이트를 읽음
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f4351d74-1542-4ec0-a75f-8aeb739aa5bb/Untitled.png)
+    
+    - position: 3 (0부터 2까지 3 바이트 읽음)
+        
+        → limit 앞까지 2바이트 더 읽을 수 있음
+        
+    - limit: 5
+    - capacity: 7
+3. 현재 position의 위치를 기억시키기 위해 mark() 호출
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1ee32e41-9110-4fca-98f0-d44f1698e555/Untitled.png)
+    
+    - 현재 position: 3 → mark() 호출
+    - 3 인덱스에 mark 위치 속성이 생김(mark에 3 저장됨)
+4. 2 바이트를 추가로 읽음
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73e4e019-dc6a-4436-90cb-5c100df11013/Untitled.png)
+    
+    - position: 5 (mark 부터 2 바이트 읽음)
+    - position과 limit의 값이 같아짐
+        
+        → 이 상태가 되면 더 이상 데이터를 읽을 수 없어짐
+        
+        → position = limit 이므로, 이후부터는 데이터가 없음
+        
+5. reset()
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f365241c-021a-436f-8cd2-ccd414eb7e77/Untitled.png)
+    
+    - reset()을 호출하게 되면 position이 mark 위치로 가게 됨
+6. rewind()
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f86e85e8-6798-4291-8303-95101f3cdebf/Untitled.png)
+    
+    - position = limit일 경우, 즉, position ~ limit 사이 데이터를 모두 읽었을 경우
+        
+        → rewind() 호출 
+        
+        → position이 제일 처음으로 돌아감
+        
+    - 그러므로, position: 0부터 다시 데이터를 읽을 수 있음
+    - position 또는 limit이 mark보다 더 앞쪽 인덱스로 가면, mark는 자동적으로 없어짐
+7. clear()
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee215865-95f8-4d10-a0c6-1de53c93e704/Untitled.png)
+    
+    - 만약, position = 5, limit = 5로, 0~4 인덱스까지 버퍼를 다 읽었을 때를 가정
+        
+        → clear() 
+        
+        → position은 제일 앞으로, limit은 제일 뒤로 감(limit = capacity)
+        
+8. compact()
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17b6a9e0-d1ba-4854-ab75-9536945ab07c/Untitled.png)
+    
+    - a, b, c, d, e가 저장된 버퍼에서 a, b, c를 읽었을 때 (아직 d를 읽지 않은 경우)
+        
+        → compact()
+        
+        → d, e가 제일 앞으로 저장됨
+        
+        → position이 e 다음에 위치함
+        
+    - compact()를 사용하는 이유:
+        - 처음에 5개의 바이트를 저장했다가, 3개를 읽고 나서 2개는 놔둔 상태
+            
+            → 새로운 데이터를 버퍼에 저장해야 할 필요성이 생겼을 때
+            
+        
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6f055964-02a2-43d1-9dc0-21518b79eede/Untitled.png)
+        
+        - 이 경우는 저장을 할 수 없는 상태임
+            
+            → limit이 5 위치기 때문에 이후로 데이터를 저장할 수 없음
+            
+            → position이 d 위치고, d, e를 아직 읽지 않은 상태라, d가 위치한 인덱스 3을 관리해야 함
+            
+            → 복잡해짐
+            
+        - 때문에, 새로운 데이터를 저장하려면, compact() 호출
+            
+            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7a0906e4-23d2-46c8-81b5-4554527746aa/Untitled.png)
+            
+            → 읽지 않은 데이터를 버퍼 제일 앞으로 보냄
+            
+            → position을 읽지 않은 데이터 다음에 위치시킴
+            
+            → 2 인덱스부터 새로운 데이터 저장 가능하도록 함
+            
+            → limit은 제일 뒤로 뺌(=capacity)
+            
+        - 만약 4 인덱스 까지 데이터가 저장된 상태에서, flip() 을 호출하면?
+            
+            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e69f2a90-7585-422b-a2b9-980f51399d9b/Untitled.png)
+            
+            → position: 5 ⇒ 0
+            
+            → limit: capacity ⇒ 5
+            
+            ⇒ 0 부터 5 까지 데이터 읽기 가능
+            
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/32948d11-8c75-49b5-8663-1c8939f43ee1/Untitled.png)
+
+- 공통 메서드: 모든 종류의 버퍼가 가지고 있는 메서드
+- array(): 버퍼를 생성할 때 제공한 배열을 리턴
+- arrayOffset(): wrap으로 만든 내부 배열의 인덱스를 리턴
+    - 항상 버퍼가 0 인덱스 부터 사용하는 건 아님
+    - 배열의 몇 번째 부터, 버퍼의 첫번째 요소가 될 것이냐, 그 요소의 순번을 리턴
+- isDirect(): 다이렉트 버퍼인지 검증
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/713a5984-9b84-4460-98b3-9957d849c09f/Untitled.png)
+
+- ↓상대적 get과 절대적 get 예시
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58281796-d8b3-405b-88d8-a755cf63f36e/Untitled.png)
+
+- (매개값이 없는)상대적 get 메서드를 호출하게 되면, 해당 버퍼의 position이 1씩(또는 저장한 갯수 만큼) 증가함
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/777fb61e-cc58-4fce-8f5f-b39bd90dad86/Untitled.png)
+
+- 상대적 put 메서드를 호출하게 되면, position이 1씩(또는 저장한 갯수 만큼) 증가함
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c55665d3-4335-40a6-8b4d-12737f98badb/Untitled.png)
+
+- BufferOverflowException: 버퍼 초과
+- ReadOnlyBufferException: put()은 저장하는 것이고, compact()는 아직 읽지 않은 데이터를 맨 앞으로 저장하는 것이기 때문에, 읽기 전용에서 호출 시 예외 발생
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f78023d-4ce4-4427-b6c1-b6ef23b9b5cb/Untitled.png)
+
+- 데이터를 입력/출력 하기 위해서는 반드시 채널을 사용해야 함
+- 채널이 데이터를 저장하는 곳, 채널이 출력할 데이터가 있는 곳 모두 ByteBuffer
+- 데이터 입출력 전에 반드시 ByteBuffer를 생성해야 함
+- ByteBuffer ↔ String
+    1. 지정한 문자셋을 얻음
+    2. String → ByteBuffer: 인코딩
+    3. ByteBuffer → String: 디코딩
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a2745a0-6738-49fe-a57f-aef6286322c6/Untitled.png)
+
+- IntBuffer → ByteBuffer
+    
+    ```java
+    ByteBuffer byteBuffer 
+    	= ByteBuffer.allocate(
+    		intBuffer.capacity() // capacity: new int[] {10, 20} => 2
+    		* 4 // int = byte * 4 므로, ByteBuffer에 int를 담으로면 4배 필요
+    	);
+    
+    for (int i=0; i<intBuffer.capacity(); i++) { // 2번 돔
+    	byteBuffer.putInt(intBuffer.get(i)); // byteBuffer에 intBuffer의 정수값을 하나씩 저장
+    }
+    byteBuffer.flip(); // 읽기 모드로 바꿈
+    ```
+    
+- ByteBuffer → IntBuffer
+    
+    ```java
+    ByteBuffer byteBuffer = ...;
+    IntBuffer intBuffer = byteBuffer.asIntBuffer(); // 바로 IntBuffer 얻을 수 있음
+    
+    // IntBuffer로 다시 int 배열 만들기
+    int[] data = new int[intBuffer.capacity()]; // int 배열 길이
+    intBuffer.get(data); // intBuffer 값을 data 배열에 저장
+    System.out.println("읽은 배열: " + Arrays.toString(data));
+    ```
+    
+
+## ****19.4 파일 채널****
 
 
 
