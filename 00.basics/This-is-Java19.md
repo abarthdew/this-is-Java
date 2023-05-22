@@ -10,7 +10,7 @@
 
 ## ****19.1 NIO 소개****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a5e183cf-5be3-4f7c-81ac-4d791474622d/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - NIO: java.io 뿐만 아니라 java.net API와 다른 새로운 입출력 API를 말함
 - IO와 NIO의 차이점
@@ -29,7 +29,7 @@
         - IO: 어떤 작업이 완료될 때까지 대기
         - NIO: 대기 상태 없이도 API 사용 가능
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e6615f4d-ff72-4ea6-a453-eb5054c13d01/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(1).png)
 
 - 스트림/채널
     - IO: 데이터 흐름이 단방향이므로, 입력 스트림과 출력 스트림을 각각 생성해야 함
@@ -39,7 +39,7 @@
         
         → EX) 어떤 소스(파일/네트워크)에서 입력 스트림으로 데이터를 받은 후, 데이터를 소비했다고 가정
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c7459f0d-5da3-4830-ac4a-b92485dd0be2/Untitled.png)
+        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(2).png)
         
         → 이 때, 처음으로 돌아가서, 입력받은 데이터를 재사용할  수 없음
         
@@ -65,7 +65,7 @@
             → 버퍼가 목적지로 데이터를 출력
             
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e651451e-97d7-4baa-8317-12012c2984d8/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(3).png)
 
 - 블로킹/넌블로킹
     - IO:
@@ -77,33 +77,33 @@
 
 ## ****19.2 파일과 디렉토리****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62882efb-7adb-4582-9db5-e4bb18d35518/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(4).png)
 
 - Path 객체를 얻는 여러 가지 코드
     
     → 절대 경로, 상대 경로 전부 매개 값으로 올 수 있음
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3b0d1d1c-bd67-46df-9837-1cc00f82e566/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(5).png)
 
 - compareTo(): 다른 Path와 현재 Path를 비교
 - toFile(): 현재 Path 객체를 File 객체로 리턴
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad8e9c2a-145b-4be1-b1b1-9361fabbd1f8/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(6).png)
 
 - 드라이버 정보: :C, :D 등
 - Iterable<FileStore> : FileStore를 반복할 수 있는 Iterable 반복자를 리턴 한다는 뜻
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/197da65c-261c-4cc8-baa5-1a7009d3fec6/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(7).png)
 
 - 속성: 숨김인지, 디렉토리 여부, 크기나 소유자는 어떻게 되는지 등
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/462b3a9e-102f-4ff7-851b-c437c7b9b1a2/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(8).png)
 
 - newBufferedReader(): BufferedReader를 만들 때, FileReader를 만들고 보조 스트림으로 BufferedReader를 연결하는데, newBufferedReader() 메서드를 이용하면 바로 BufferedReader를 얻을 수 있음
 - newBufferedWriter(): 마찬가지로, BufferedWriter 를 바로 리턴 가능
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dcf4b434-9c7f-47c0-9129-e269b86f337a/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(9).png)
 
 ```java
 path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() 메서드 호출
@@ -115,7 +115,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 );
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/07e93977-c0c6-4f42-913a-29e37a202e7e/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(10).png)
 
 - WatchService를 등록한 디렉토리 내부에서 변경이 발생할 경우
     - WatchEvent 발생
@@ -140,7 +140,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
         → 파일을 동시에 여러 개 선택해서 삭제할 경우 등
         
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/19aaded1-3cce-4d1a-8707-0da45413e0c2/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(11).png)
     
     1. WatchKey로부터 WatchEvent 컬렉션을 얻었다면, WatchEvent를 하나씩 처리해야 함
         
@@ -186,7 +186,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 
 ## ****19.3 버퍼****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c83a3fe1-e668-4b9e-bc04-824136b1cb25/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 프로그램이 입력 소스로부터 데이터를 입력 받을 때
     
@@ -205,14 +205,14 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     - 다이렉트: 운영체제가 관리하는 메모리를 이용
     - 넌다이렉트: JVM이 관리하는 메모리를 이용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/169edf15-4410-4e7f-b203-586866866ccc/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - ByteBuffer: byte 데이터를 저장하는 버퍼
 - Char, Short, Int, LongBuffer: 정수를 저장하는 버퍼
 - Float, DoubleBuffer: 실수를 저장하는 버퍼
 - 주로 ByteBuffer를 많이 씀
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/053fe913-0340-4b85-ba87-3ff4e2306704/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 넌 다이렉트 버퍼
     - 버퍼 크기를 크게 잡을 수 없음
@@ -233,10 +233,10 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 
 - 다이렉트 버퍼는 생성되지만, 넌 다이렉트 버퍼는 생성되지 않음(OutOfMemoryError)
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87094d68-3157-41c8-baa8-db16c5508454/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0466e7b1-0db4-43d8-b6d8-66c98789ddd2/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 버퍼를 생성하기 위해선 각 버퍼 클래스의 allocate() 메서드 호출
 - wrap() 메서드
@@ -247,7 +247,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8967b2f3-0452-4939-8be1-2a10fe8be10f/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - Char, IntBuffer 등에서는 없고, ByteBuffer에서만 allocateDirect() 메서드가 제공됨
 - 예시
@@ -266,9 +266,9 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/16c8a39b-7877-4e8c-92a4-be8c4af7e545/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c4b98261-f13b-427a-aa2c-9e2a263e6549/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - JVM은 무조건 big endian이지만, JVM을 사용하지 않을 경우, ByteOder 클래스로 데이터 순서를 맞춰야 함
 - order(): JVM이 운영체제의 바이트 해석 순서와 JVM의 해석 순서를 맞춤
@@ -279,38 +279,38 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4205c638-4ad4-40fb-ba00-a6194d4d045b/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 버퍼를 사용하려면, 위치 속성을 잘 알고 있어야 함
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/76c1d8b3-be73-4648-a3b1-3d22b5be50c7/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 1. **쓰기 모드**
 2. 7 바이트 크기의 바이트 배열을 생성했다고 가정
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/78759103-f80e-4643-af67-c29fe766496e/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position(읽고 쓰기 위한 위치): 제일 처음 버퍼를 생성했기 때문에 0 (제일 처음에는 읽은 값도, 쓴 값도 없으므로 0)
     - capacity: 실제 버퍼에 저장될 수 있는 최대 데이터 개수 7
     - limit(읽거나 쓰기 위한 한계 값): 처음 버퍼가 생성되면, limit은 capacity와 같음
 3. 2 바이트를 버퍼에 저장
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fe16cbb5-ea7e-4ca2-827c-b767479b8a0d/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position: 2, 이 자리에 다음 데이터, 즉 다음 바이트를 저장할 수 있다는 위치 정보를 알려 줌
     - capacity, limit: 변함 없음
 4. 추가로 3 바이트를 버퍼에 저장
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c2ec292e-1a46-4a6a-8512-6247249e9db4/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position: 2 + 3 = 5
 5. 쓰기 모드 → **읽기 모드로 변경**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f37ba2bf-f947-4189-a587-b6bfaa0ddb50/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 1. 읽기 모드로 변경하기 위해 flip() 메서드 호출
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/31470205-6356-4834-a8fc-c23c95d1022c/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position
         - 직전 position: 5
@@ -324,7 +324,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
         - 실제 데이터는 limit - 1 까지고, limit 자리에는 데이터가 없음
 2. 버퍼에서 3 바이트를 읽음
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f4351d74-1542-4ec0-a75f-8aeb739aa5bb/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position: 3 (0부터 2까지 3 바이트 읽음)
         
@@ -334,13 +334,13 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     - capacity: 7
 3. 현재 position의 위치를 기억시키기 위해 mark() 호출
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1ee32e41-9110-4fca-98f0-d44f1698e555/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - 현재 position: 3 → mark() 호출
     - 3 인덱스에 mark 위치 속성이 생김(mark에 3 저장됨)
 4. 2 바이트를 추가로 읽음
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73e4e019-dc6a-4436-90cb-5c100df11013/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position: 5 (mark 부터 2 바이트 읽음)
     - position과 limit의 값이 같아짐
@@ -351,12 +351,12 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
         
 5. reset()
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f365241c-021a-436f-8cd2-ccd414eb7e77/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - reset()을 호출하게 되면 position이 mark 위치로 가게 됨
 6. rewind()
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f86e85e8-6798-4291-8303-95101f3cdebf/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - position = limit일 경우, 즉, position ~ limit 사이 데이터를 모두 읽었을 경우
         
@@ -368,7 +368,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     - position 또는 limit이 mark보다 더 앞쪽 인덱스로 가면, mark는 자동적으로 없어짐
 7. clear()
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ee215865-95f8-4d10-a0c6-1de53c93e704/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - 만약, position = 5, limit = 5로, 0~4 인덱스까지 버퍼를 다 읽었을 때를 가정
         
@@ -378,7 +378,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
         
 8. compact()
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17b6a9e0-d1ba-4854-ab75-9536945ab07c/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
     
     - a, b, c, d, e가 저장된 버퍼에서 a, b, c를 읽었을 때 (아직 d를 읽지 않은 경우)
         
@@ -394,7 +394,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
             → 새로운 데이터를 버퍼에 저장해야 할 필요성이 생겼을 때
             
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6f055964-02a2-43d1-9dc0-21518b79eede/Untitled.png)
+        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
         
         - 이 경우는 저장을 할 수 없는 상태임
             
@@ -406,7 +406,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
             
         - 때문에, 새로운 데이터를 저장하려면, compact() 호출
             
-            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7a0906e4-23d2-46c8-81b5-4554527746aa/Untitled.png)
+            ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
             
             → 읽지 않은 데이터를 버퍼 제일 앞으로 보냄
             
@@ -418,7 +418,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
             
         - 만약 4 인덱스 까지 데이터가 저장된 상태에서, flip() 을 호출하면?
             
-            ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e69f2a90-7585-422b-a2b9-980f51399d9b/Untitled.png)
+            ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
             
             → position: 5 ⇒ 0
             
@@ -427,7 +427,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
             ⇒ 0 부터 5 까지 데이터 읽기 가능
             
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/32948d11-8c75-49b5-8663-1c8939f43ee1/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 공통 메서드: 모든 종류의 버퍼가 가지고 있는 메서드
 - array(): 버퍼를 생성할 때 제공한 배열을 리턴
@@ -436,24 +436,24 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     - 배열의 몇 번째 부터, 버퍼의 첫번째 요소가 될 것이냐, 그 요소의 순번을 리턴
 - isDirect(): 다이렉트 버퍼인지 검증
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/713a5984-9b84-4460-98b3-9957d849c09f/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - ↓상대적 get과 절대적 get 예시
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58281796-d8b3-405b-88d8-a755cf63f36e/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - (매개값이 없는)상대적 get 메서드를 호출하게 되면, 해당 버퍼의 position이 1씩(또는 저장한 갯수 만큼) 증가함
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/777fb61e-cc58-4fce-8f5f-b39bd90dad86/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 상대적 put 메서드를 호출하게 되면, position이 1씩(또는 저장한 갯수 만큼) 증가함
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c55665d3-4335-40a6-8b4d-12737f98badb/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - BufferOverflowException: 버퍼 초과
 - ReadOnlyBufferException: put()은 저장하는 것이고, compact()는 아직 읽지 않은 데이터를 맨 앞으로 저장하는 것이기 때문에, 읽기 전용에서 호출 시 예외 발생
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3f78023d-4ce4-4427-b6c1-b6ef23b9b5cb/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 데이터를 입력/출력 하기 위해서는 반드시 채널을 사용해야 함
 - 채널이 데이터를 저장하는 곳, 채널이 출력할 데이터가 있는 곳 모두 ByteBuffer
@@ -463,7 +463,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     2. String → ByteBuffer: 인코딩
     3. ByteBuffer → String: 디코딩
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9a2745a0-6738-49fe-a57f-aef6286322c6/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - IntBuffer → ByteBuffer
     

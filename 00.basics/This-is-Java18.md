@@ -9,7 +9,7 @@
 
 ## ****18.1 IO 패키지 소개****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1b15470e-f4ac-4460-af02-f66aeb2ffc1a/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18.png)
 
 - IO: input / ouput의 약자
 - 자바에서는 데이터를 input/output하기 위해 java.io 패키지를 제공함
@@ -17,7 +17,7 @@
 - File: 파일의 이름, 경로, 크기, 속성(읽기 전용/쓰기 전용)
 - **InputStream/OutputStream**: 바이트를 읽고 쓰기 위해 사용하는 클래스
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e28834f6-583e-4566-af4b-26983c965d71/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(1).png)
     
     ⇒ InputStream/OutputStream을 상속해서 만든 하위 스트림
     
@@ -25,7 +25,7 @@
     - `DataInputStream ~ BufferedOutputStream`: 좀 더 편하게 입출력을 하기 위해 사용하는 보조 스트림
 - **Reader/Writer:** InputStream/OutputStream이 바이트 단위로 입출력을 한다면, Reader/Writer는 문자 단위로 입출력
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/49d1646a-db56-431b-bc14-4657b82bb1b4/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(2).png)
     
     ⇒ Reader/Writer를 상속해서 만든 하위 스트림
     
@@ -36,7 +36,7 @@
 
 ## ****18.2 입력 스트림과 출력 스트림****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/09e06a36-ea40-4b3a-8f9b-f479da49624f/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(3).png)
 
 - [프로그램]을 기준으로, 데이터가 들어오게 되면 입력 스트림을,
 - 데이터가 나가고 있다면 출력 스트림을 이용해야 함
@@ -51,7 +51,7 @@
 1. 데이터가 [프로그램]으로 들어올 경우와, 
 2. 데이터가 [프로그램]에서 나가는 경우를 따로 생각해 보면 이런 식임
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b27b0d1e-b553-4ae8-a0a9-2f2ecbbc2061/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(4).png)
     
 - 각 프로그램을 기준으로 데이터가 들어오면 입력 스트림,
 - 데이터가 나가면 출력 스트림임
@@ -60,7 +60,7 @@
 - 출발지: 데이터가 출발하는 곳(출력 스트림 이용)
 - 도착지: 데이터가 도착하는 곳(입력 스트림 이용)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1f246343-0023-41fe-b53b-3e24c77983d6/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(5).png)
 
 - 스트림은 크게 바이트 기반 스트림과 문자 기반 스트림으로 나뉨
     - 바이트 기반 스트림: 스트림을 통해 주고받은 데이터가 바이트일 때
@@ -81,7 +81,7 @@
     - `FileReader`: 문자 파일에서 문자 데이터를 읽고 싶을 때 사용
     - `FileWriter`: 문자 데이터를 파일에 저장하고 싶을 때 사용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7dbbe877-c0ef-490c-941b-5aa049a9caf8/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(6).png)
 
 - InputStream은 추상 클래스이므로 new 연산자를 이용해 생성할 일이 없음
 - InputStream을 상속받은 하위 클래스, 즉 구현 클래스로 객체를 만들어 사용할 수 있음
@@ -91,7 +91,7 @@
         ⇒ 1바이트를 읽고 그 읽은 바이트를 int 타입으로 리턴
         
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/45de101a-b6f8-4711-9d6d-60dfb4061b74/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(7).png)
     
     - `read(byte[] b)`: 주어진 byte 배열의 길이만큼 데이터를 읽어 매개변수 byte[]에 저장하고, 실제 읽은 바이트 수를 int 로 리턴
         
@@ -103,18 +103,18 @@
         
         ⇒ 길이가 5인 배열의 2번째 인덱스부터 2개를 읽고 저장
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f7279672-44e6-4e43-8922-9b8ced696b2e/Untitled.png)
+        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(8).png)
         
     - `close()`: InputStream 사용 후 닫을 때 사용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccff8d57-ca0e-44cf-b02b-6b085323942e/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(9).png)
 
 - 1바이트를 읽고, 읽은 바이트를 리턴
 - InputStream로부터 5개의 바이트가 들어온다면, read()는 5번 실행해서 읽음
 - 읽힌 바이트는 int 타입의 끝에 저장되고 리턴됨
 - (1) 바이트를 읽고, int 타입의 끝에 저장 / (2)를 읽고, int 타입의 끝에 저장 / (3), (4)도 동일
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7467b3a1-af9a-427d-8a6f-d6c99b4ec662/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(10).png)
     
     - 즉, (1), (2), (3), (4), (5)인 5 개의 byte가 InputStream으로 들어 옴
     - new FileInputStream(”C:/test.jpg”); 객체 생성
@@ -132,19 +132,19 @@
         → 더 이상 읽을 데이터가 없으면 is.read()는 -1을 리턴 → 반복문 탈출
         
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d26a4f1b-b712-46ae-99e8-2342e0378a72/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(11).png)
 
 - 매개값으로 byte 배열을 받는 read() 메서드
 - InputStream에서 5개의 byte가 들어 올 경우, read() 메서드는 어떻게 데이터를 읽는가?
     - 매개값으로 들어오는 byte 배열이 길이가 3이라고 가정할 때,
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bbdd36b9-b24c-4cb7-99b8-88bb1b6c3073/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(12).png)
     
     1. 첫번째 읽을 경우
         - read() 메서는 3byte를 읽고 (1), (2), (3)을 차례로 0, 1, 2 인덱스에 저장
         - 3byte를 읽었으므로, read(byte[] b)의 리턴값은 3
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5258dd39-716c-4bca-b57d-0115775c2c25/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(13).png)
     
     1. 두번째 읽을 경우
         - 남은 2byte (4), (5)를 byte 배열의 0, 1 인덱스에 저장
@@ -164,14 +164,14 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a10ed1c-36b9-4cf7-a224-8c31c1a9cbf7/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(14).png)
 
 - InputStream으로 5개의 byte가 들어온다고 가정
     
     ⇒ 해당 read() 메서드는 5byte 중 3만큼 데이터를 읽은 뒤 2 인덱스 부터 (1), (2), (3) 3개를 저장하고, 3을 리턴
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e09da6be-f313-4049-b8bf-5cf2231e9429/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(15).png)
 
 - 추상 클래스이므로 new 연산자로 객체 생성 불가
 - 대신, OutputStream을 상속한 하위 클래스로 객체를 생성해, OutputStream 내 메서드 사용 가능
@@ -186,7 +186,7 @@
         
     - close(): 더 이상 OutputStream을 쓰지 않을 때 사용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/079244cf-0424-47b8-ae14-137b21c2c851/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(16).png)
 
 - int가 4byte라고 해서 4byte를 출력하지 않음
     
@@ -204,10 +204,10 @@
     
 - 결과
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ccc0a525-2e6d-448f-9436-45eab0c77258/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(17).png)
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/01bb039d-e543-455a-ad6d-1abf690a40c2/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(18).png)
 
 - write() 메서드의 인자인 byte[] b의 길이가 5일 때, write() 메서드는 byte[] 배열의 모든 데이터를 출력시킴
 - 이전 예제와 다른 점
@@ -224,19 +224,19 @@
     
 - 출력결과
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2acdb22a-6aef-4dcb-b21c-2d7571acdadf/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(19).png)
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4984a438-a765-4be0-83e1-47b98dd46f8a/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(20).png)
 
 - byte[] 배열에서 1인덱스 부터 3개만 출력
 - 예제: A, B, C 중 B, C만 출력
 - 출력결과
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e00a2d0-2ce3-4c47-93d1-6afa5213de79/Untitled.png)
+    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(21).png)
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6d64b2da-cba5-464f-a224-7245e41ca55b/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(22).png)
 
 - 어떤 출력 스트림을 얻었다 할지라도, write() 후에는 반드시 flush()를 해야 함
     
@@ -244,7 +244,7 @@
     
 - 출력 스트림을 더 이상 사용하지 않을 땐 close()
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6457167c-cdf3-434b-87b2-5a53d5242332/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(23).png)
 
 - 문자만 읽을 수 있음(byte는 읽을 수 없음)
 - 주요 메서드
@@ -253,7 +253,7 @@
     - read(char[] cbuf, int off, int len): 읽은 문자를 char[] 배열에 저장하되, 시작 인덱스 ~ 개수만큼만 저장
     - close(): 더 이상 read()를 사용하지 않을 경우
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db853630-e642-49bc-9e39-ca807c2efd8c/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(24).png)
 
 - 한 번에 한 문자를 읽어 int로 리턴
 - read() 실행 과정:
@@ -280,7 +280,7 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a9b3c642-1f99-4aad-9c0d-cd61e7e5d21c/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(25).png)
 
 - Reader로부터 3개의 문자가 들어올 때, read() 메서드를 실행했다면,
     1. 첫번째 읽은 경우
@@ -316,7 +316,7 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e571033f-c1e1-4a12-8d14-02a97c125274/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(26).png)
 
 - Reader 라는 입력 스트림에서 3개의 문자(1/2, 3/4, 5/6)가 들어올 때
     
@@ -339,7 +339,7 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/be302e34-3b8d-4e6c-9244-10f55c6dc915/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(27).png)
 
 - `write(int c)`: 매개 값 int의 끝 2byte 문자를 출력
 - `write(char[] cbuf)`: char 배열의 모든 문자를 출력
@@ -348,32 +348,32 @@
     ⇒ `write()` 메서드 호출 후 필수로 `flush()` 호출 필요
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f524b7c2-6152-46b6-bde5-66ebce2b5aec/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(28).png)
 
 - write() 메서드 값 실행 → int 값 제공
     
     → int의 끝 2byte에 있는 문자 정보가 Writer를 통해 출력됨
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab28b72d-4875-4f6d-a0e5-0e10447a69ba/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(29).png)
 
 - write() 메서드 실행 → 길이 2짜리 char 배열이 주어지게 됨
     
     → write() 메서드는 char 배열 안에 있는 모든 문자를 출력
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3011c35d-671f-4b7e-beef-659b462a10f5/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(30).png)
 
 - write() 메서드 실행 → 길이 4인 char 배열이 주어지고,
     
     → 1~2 인덱스에 위치한 2개의 문자를 Writer를 통해 출력
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6053b7b9-d264-45c8-82d4-21cde26339c9/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(31).png)
 
 - write() 메서드로 String 문자열 제공 → Writer를 통해 데이터 출력
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a486d81-ff7c-48f8-a830-3e72b9ec8a57/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(32).png)
 
 - `flush()`: 버퍼를 비우는 기능
     
@@ -388,13 +388,13 @@
 
 ## ****18.3 콘솔 입출력****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f550c97a-75d1-41b4-a46a-6bbd01575f86/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(33).png)
 
 - `System.in`: 콘솔에 키보드로 입력한 내용을 입력 스트림으로 얻기 위해 자바에서 제공하는 필드
 - `System.out`: 반대로, 프로그램에서 콘솔로 데이터를 출력하기 위해 제공하는 출력 스트림
 - `System.err`: 에러 메세지 출력에 사용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/974a4b8e-ed96-4080-8f2f-8c18b5972989/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(34).png)
 
 ### 예제 18.3.1 - 명령 프롬프트에서 실행하기
 
@@ -414,7 +414,7 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e5b4a424-2c5a-4bd2-90a1-58e1186b97d8/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(35).png)
 
 - 키보드로 한글을 입력 받으려면 다른 read() 메서드를 사용해야 함
     
@@ -439,12 +439,12 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73161a50-1b09-481a-9f45-46fd56864f12/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(36).png)
 
 - PrintStream은 OutputStream의 하위 타입
 - 사실 `System.out.println`은 PrintStream의 변수 `ps.println()`이었고, 보통 이를 줄여서 사용함
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62c1b2c9-7007-47ae-be46-1007b63865ba/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(37).png)
 
 - 콘솔로부터 InputStream을 이용해 데이터를 읽으려면, byte 배열로 읽어 복원해야 하는 불편함이 있음
     
@@ -467,21 +467,21 @@
     ```
     
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d303db67-3de4-4c4f-8af2-e19903fbd584/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(38).png)
 
 - Scanner를 생성하는 법: new Scanner 생성자의 매개값에 System.in 이라는 InputStream을 넣어 줌
 
 ## ****18.4 파일 입출력****
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b383a9b-61b8-4b3b-a13b-a18c424ac9c6/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(39).png)
 
 - isExist(): new File(”디렉토리 경로”)로 파일 객체를 생성할 때, 디렉토리 경로가 존재하지 않는 것이라도 파일 객체는 생성됨. isExist()로 파일이 존재하는지 검증할 수 있음.
 - mkdirs():
     - C:/Temp/dir/dir2 에서 dir, dir2 디렉토리가 없을 때, 둘 다 생성 가능
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/604d38df-f497-441f-b050-7cd82ff85f88/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(40).png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec421add-7732-483d-8c0f-3b2d131eaa35/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(41).png)
 
 - 객체 생성 방법
     
@@ -496,11 +496,11 @@
     
 - FileNoutFoundException: new FileInputStream()의 매개값의 경로가 올바르지 않거나, 매개값으로 대입된 파일 객체가 존재하지 않을 경우 예외 발생
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58dde3d3-24e1-4356-9901-9b1b220b5195/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(42).png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c723e01-5c1a-4816-8b26-97120b85cea2/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(43).png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e741d835-d1ac-4dfe-be53-47647760ca96/Untitled.png)
+![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/18(44).png)
 
 
 
