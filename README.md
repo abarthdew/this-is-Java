@@ -1,7 +1,7 @@
 # This-is-Java
 1. [settings, concept, remark](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/This-is-Java1.md)   
 2. [data type basic](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/This-is-Java2.md)   
-![변수 타입 분류](./00.basics/images/readme.png)   
+![변수 타입 분류](https://raw.githubusercontent.com/abarthdew/this-is-Java/main/00.basics/images/readme.png)      
 3. [operator](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/This-is-Java3.md)   
 4. [condition statement](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/This-is-Java4.md)   
 5. [data type advance, memory area, operator for reference variable, NullPointException, String type, Array Type](https://github.com/abarthdew/this-is-Java/blob/main/00.basics/This-is-Java5.md)   
