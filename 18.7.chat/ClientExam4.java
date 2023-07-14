@@ -1,78 +1,78 @@
 public class ClientExam4 {
-    
-    Socket socket;
 
-    void startClient() {
-        // 연결 시작 코드
-    }
+  Socket socket;
 
-    void stopClient() {
-        // 연결 끊기 코드
-    }
+  void startClient() {
+    // 연결 시작 코드
+  }
 
-    void receive() {
-        // 데이터 받기 코드
-    }
+  void stopClient() {
+    // 연결 끊기 코드
+  }
 
-    void send(String data) {
-        // 데이터 전송 코드
-    }
+  void receive() {
+    // 데이터 받기 코드
+  }
 
-    // javaFX
-    TextArea txtDisplay;
-    TextField txtInput;
-    Button btnConn, btnSend;
+  void send(String data) {
+    // 데이터 전송 코드
+  }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        BorderPane root = new BorderPane();
-        root.setPrefSize(500, 300);
+  // javaFX
+  TextArea txtDisplay;
+  TextField txtInput;
+  Button btnConn, btnSend;
 
-        txtDisplay = new TextArea();
-        txtDisplay.setEditable(false);
-        BorderPane.setMargin(txtDisplay, new Insets(0,0,2,0));
-        root.setCenter(txtDisplay);
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    BorderPane root = new BorderPane();
+    root.setPrefSize(500, 300);
 
-        BorderPane bottom = new BorderPane();
-        txtInput = new TextField();
-        txtInput.setPrefSize(60, 30);
-        BorderPane.setMargin(txtInput, new Insets(0,1,1,1));
+    txtDisplay = new TextArea();
+    txtDisplay.setEditable(false);
+    BorderPane.setMargin(txtDisplay, new Insets(0, 0, 2, 0));
+    root.setCenter(txtDisplay);
 
-        btnCoon = new Button("start");
-        btnConn.setPrefSize(60,30);
-        btnConn.setOnAction(e->{
-            if (btnConn.getText().equals("start")) {
-                startClient();
-            } else if (btnConn.getText().equals("stop")) {
-                stopClient();
-            }
-        });
+    BorderPane bottom = new BorderPane();
+    txtInput = new TextField();
+    txtInput.setPrefSize(60, 30);
+    BorderPane.setMargin(txtInput, new Insets(0, 1, 1, 1));
 
-        btnSend = new Button("send");
-        btnSend.setPrefSize(60,30);
-        btnSend.setDisable(true);
-        btnSend.setOnAction(e->send(txtInput.getText()));
+    btnCoon = new Button("start");
+    btnConn.setPrefSize(60, 30);
+    btnConn.setOnAction(e -> {
+      if (btnConn.getText().equals("start")) {
+        startClient();
+      } else if (btnConn.getText().equals("stop")) {
+        stopClient();
+      }
+    });
 
-        bottom.setCenter(txtInput);
-        bottom.setLeft(btnConn);
-        bottom.setRight(btnSend);
+    btnSend = new Button("send");
+    btnSend.setPrefSize(60, 30);
+    btnSend.setDisable(true);
+    btnSend.setOnAction(e -> send(txtInput.getText()));
 
-        root.setBottom(bottom);
+    bottom.setCenter(txtInput);
+    bottom.setLeft(btnConn);
+    bottom.setRight(btnSend);
 
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("app.css").toString());
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Client");
-        primaryStage.setOnCloseRequest(event->stopClient());
-        primaryStage.show();
-    }
+    root.setBottom(bottom);
 
-    void displaText(String text) {
-        txtDisplay.appendText(Text + "\n");
-    }
+    Scene scene = new Scene(root);
+    scene.getStylesheets().add(getClass().getResource("app.css").toString());
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("Client");
+    primaryStage.setOnCloseRequest(event -> stopClient());
+    primaryStage.show();
+  }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+  void displaText(String text) {
+    txtDisplay.appendText(Text + "\n");
+  }
+
+  public static void main(String[] args) {
+    launch(args);
+  }
 
 }

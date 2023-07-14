@@ -3,7 +3,7 @@
 import java.io.Serializable;
 
 public class SerialClassB implements Serializable {
-    
-    int field1; // byte로 변환됨
+
+  int field1; // byte로 변환됨
 
 }

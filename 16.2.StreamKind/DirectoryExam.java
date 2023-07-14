@@ -5,11 +5,11 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class DirectoryExam {
-    public static void main(String[] args) throws IOException {
-        
-        Path path = Paths.get("C:/Users/auswo/Downloads/PortableGit/this-is-Java/16.2.StreamKind");
-        Stream<Path> stream = Files.list(path);
-        stream.forEach(p -> System.out.println(p.getFileName()));
+  public static void main(String[] args) throws IOException {
+
+    Path path = Paths.get("C:/Users/auswo/Downloads/PortableGit/this-is-Java/16.2.StreamKind");
+    Stream<Path> stream = Files.list(path);
+    stream.forEach(p -> System.out.println(p.getFileName()));
         /*
         ArrayExam.java
         CollectionExam.java
@@ -19,5 +19,5 @@ public class DirectoryExam {
         linedata.txt
          */
 
-    }
+  }
 }

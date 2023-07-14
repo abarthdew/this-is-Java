@@ -1,40 +1,41 @@
 public class Student611 {
-    
-    public enum Sex {MALE, FEMALE}
-    public enum City {Seoul, Pusan}
 
-    private String name;
-    private int score;
-    private Sex sex;
-    private City city;
+  public enum Sex {MALE, FEMALE}
 
-    public Student611(String name, int score, Sex sex) {
-        this.name = name;
-        this.score = score;
-        this.sex = sex;
-    }
+  public enum City {Seoul, Pusan}
 
-    public Student611(String name, int score, Sex sex, City city) {
-        this.name = name;
-        this.score = score;
-        this.sex = sex;
-        this.city = city;
-    }
+  private String name;
+  private int score;
+  private Sex sex;
+  private City city;
 
-    public String getName() {
-        return name;
-    }
+  public Student611(String name, int score, Sex sex) {
+    this.name = name;
+    this.score = score;
+    this.sex = sex;
+  }
 
-    public int getScore() {
-        return score;
-    }
+  public Student611(String name, int score, Sex sex, City city) {
+    this.name = name;
+    this.score = score;
+    this.sex = sex;
+    this.city = city;
+  }
 
-    public Sex getSex() {
-        return sex;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public City getCity() {
-        return city;
-    }
+  public int getScore() {
+    return score;
+  }
+
+  public Sex getSex() {
+    return sex;
+  }
+
+  public City getCity() {
+    return city;
+  }
 
 }

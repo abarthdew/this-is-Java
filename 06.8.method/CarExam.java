@@ -1,13 +1,13 @@
 public class CarExam {
-    public static void main(String[] args) {
-        Car3 car = new Car3();
+  public static void main(String[] args) {
+    Car3 car = new Car3();
 
-        car.setGas(5);
-        boolean gasState = car.isLeftGas();
-        if (gasState) {
-            System.out.println("출발합니다.");
-            car.run();
-        }
+    car.setGas(5);
+    boolean gasState = car.isLeftGas();
+    if (gasState) {
+      System.out.println("출발합니다.");
+      car.run();
+    }
 
         /*
          gas가 있습니다
@@ -21,11 +21,11 @@ public class CarExam {
         gas가 없습니다
          */
 
-        if(car.isLeftGas()) {
-            System.out.println("gas를 주입할 필요가 없습니다.");
-        } else {
-            System.out.println("gas를 주입하세요.");
-        }
-        // gas를 주입하세요.
+    if (car.isLeftGas()) {
+      System.out.println("gas를 주입할 필요가 없습니다.");
+    } else {
+      System.out.println("gas를 주입하세요.");
     }
+    // gas를 주입하세요.
+  }
 }

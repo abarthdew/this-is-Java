@@ -1,4 +1,5 @@
 ## 목차
+
 [7.1 상속 개념](#71-상속-개념)   
 [7.2 클래스 상속](#72-클래스-상속)   
 [7.3 부모 생성자 호출](#73-부모-생성자-호출)   
@@ -9,7 +10,7 @@
 [7.7 타입변환과 다형성(2)](#77-타입변환과-다형성2)   
 [7.7 타입변환과 다형성(3)](#77-타입변환과-다형성3)   
 [7.8 추상 클래스](#78-추상-클래스)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **7.1 상속 개념**
 
@@ -33,13 +34,13 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(4).png)
 
 - 자식 클래스로부터 자식 객체를 생성할 때: 부모 객체 생성 → 자식 객체 생성
-    
+
     ```java
     public DmbCellPhone () { // 자식 객체가 생성될 때,
       super(); // 컴파일러가 자동으로 넣은 super()가 먼저 부모의 기본 생성자를 호출
     } // 자식 생성자 생성
     ```
-    
+
 - dmbCellPhone 변수는 자식 객체를 참조함
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(5).png)
@@ -77,11 +78,10 @@
 - final 필드: 수정 불가능한 필드
 - final 클래스, 메서드: 부모로 사용할 수 없는 클래스, 자식이 재정의할 수 없는 메서드
 - 예) String 클래스 ⇒ 부모로 사용할 수 없음
-    
+
     ```java
     public final class String {...}
     ```
-    
 
 ## **7.6 protected 접근 제한자**
 
@@ -100,23 +100,23 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(12).png)
 
 - A타입을 상속 받은 B, C에 대해,
-    
+
     ```java
     A a = new B();
     A a = new C();
     ```
-    
-    와 같이 표현할 수 있음.
-    
+
+  와 같이 표현할 수 있음.
+
 - Animal 타입을 상속받은 Cat, Dog에 대해,
-    
+
     ```java
     Animal a = new Cat();
     Animal a = new Dog();
     ```
-    
-    와 같이 표현할 수 있음.
-    
+
+  와 같이 표현할 수 있음.
+
 - 다형성: 하나의 타입에 종류가 다른 다양한 객체를 대입할 수 있는 성질
 - 다형성은 객체를 부품화 시킬 수 있어, 자동차에 각기 다른 브랜드의 타이어를 부착하는 것처럼 자유롭게 바꿔 끼울 수 있음
 
@@ -157,20 +157,20 @@
 
 - 부모타입 → 자식타입 변환은 자동이 아니므로, 강제함
 - 부모 객체 A, 자식 객체 B가 있을 경우
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(21).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(21).png)
+
     ```java
     A a = new B();
     B b = (B) a;
     ```
-    
-    ⇒ 와 같이 원래 new B()가 대입된 A 타입 a를 B 타입으로 되돌리는 건 강제 타입 변환으로 가능함
-    
+
+  ⇒ 와 같이 원래 new B()가 대입된 A 타입 a를 B 타입으로 되돌리는 건 강제 타입 변환으로 가능함
+
 - 부모 객체 A, 자식 객체 B, C가 있을 경우
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(22).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(22).png)
+
     ```java
     A a = new A();
     B b = (B) a; // (X)
@@ -178,9 +178,8 @@
     A a = new C();
     B b = (B) a; // (X)
     ```
-    
-    ⇒ 엉뚱한 객체가 a에 대입된 상태에서, a를 B로 강제 변환할 수 없음
-    
+
+  ⇒ 엉뚱한 객체가 a에 대입된 상태에서, a를 B로 강제 변환할 수 없음
 
 ![강제 타입 변환이 필요한 경우](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(23).png)
 
@@ -193,15 +192,15 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/7(24).png)
 
 - 어떤 객체가 대입될지 모르는 상황에서 특정 자식 객체로 강제 타입 변환할 수 없음 ⇒ 문제가 발생할 수 있음
-    
+
     ```java
     Parent parent = new Parent();
     Child child = (Child) parent; // 강제 타입 변환 에러
     ```
-    
+
 - 보통 메서드의 매개 변수로 객체가 들어올 때, 강제 타입 변환 예외가 발생할 수 있음 ⇒ 먼저 자식 타입인지 확인 후 강제 타입해야 함
 - `(좌측 객체) instanceof (우측 객체)`: 좌측 객체가 우측 객체로 만들어졌다면 true, 아니라면 false 리턴
-    
+
     ```java
     public void method(Parent parent) {
       if(parnet instanceof Child) { // 매개변수 parent 가 Child 클래스로 만들어진 객체인가?
@@ -209,7 +208,6 @@
       }
     }
     ```
-    
 
 ## **7.8 추상 클래스**
 
@@ -230,7 +228,7 @@
 
 - 추상 클래스는 추상 메서드를 가질 수 있음
 - 추상 메서드: 실행 내용을 가지고 있지 않는 메서드 ⇒ 구체적인 실행 내용은 실체 클래스(자식 클래스)에서 작성됨
-- 추상 메서드는 추상 클래스 안에만 올 수 있음- 
+- 추상 메서드는 추상 클래스 안에만 올 수 있음-
 - 상속 받은 부모 클래스의 메서드 내용을 자식 클래스에서 반드시 Override해서 작성해야 함
 
 ## 참고자료

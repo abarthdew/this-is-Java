@@ -1,11 +1,12 @@
 ## 목차
+
 [2.1 변수(1)](#21-변수1)   
 [2.1 변수(2)](#21-변수2)   
 [2.2 데이터 타입(1)](#22-데이터-타입1)   
 [2.2 데이터 타입(2)](#22-데이터-타입2)   
 [2.3 타입 변환(1)](#23-타입-변환1)   
 [2.3 타입 변환(2)](#23-타입-변환2)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **2.1 변수(1)**
 
@@ -68,9 +69,8 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/2(13).png)
 
 - 정수가 4바이트냐, 8바이트냐를 구분짓기 위해 (L)을 붙임.
-    
-    ⇒ 컴파일러는 기본적으로 정수를 int 타입으로 해석함, 그래서 컴파일러에게 알려주기 위한 기호임.
-    
+
+  ⇒ 컴파일러는 기본적으로 정수를 int 타입으로 해석함, 그래서 컴파일러에게 알려주기 위한 기호임.
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/2(14).png)
 
@@ -79,9 +79,8 @@
 - 가수 부분은 0.xxxx로, 앞에 0. 부분이 항상 있다고 가정함
 - 이런 방식으로 보다 큰 수를 저장할 수 있음
 - 100000 = 0.1 * 10^7 이므로, 1을 가수, 7을 지수 부분에 저장함
-    
-    ⇒ 즉, 이렇게 하면 100000이라는 숫자를 그대로 저장하는 것 보다 더 경제적으로 저장 가능(1, 7만 저장하면 되니까)
-    
+
+  ⇒ 즉, 이렇게 하면 100000이라는 숫자를 그대로 저장하는 것 보다 더 경제적으로 저장 가능(1, 7만 저장하면 되니까)
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/2(15).png)
 
@@ -99,11 +98,10 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/2(17).png)
 
 - 예외: byte 변수에 음수 값이 있으면, char 타입으로 변환되지 않음
-    
-    ⇒ char 타입은 음수를 저장할 수 없기 때문에
-    
-    ⇒ byte 값이 65라 할지라도, byte는 음수값을 포함할 수 있기 때문에 char로 변환되지 않음. byte → char는 강제 타입 변환만 가능.
-    
+
+  ⇒ char 타입은 음수를 저장할 수 없기 때문에
+
+  ⇒ byte 값이 65라 할지라도, byte는 음수값을 포함할 수 있기 때문에 char로 변환되지 않음. byte → char는 강제 타입 변환만 가능.
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/2(18).png)
 

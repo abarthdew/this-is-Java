@@ -3,36 +3,36 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class HashTableExam {
-    public static void main(String[] args) {
-        
-        Map<String, String> map = new Hashtable<>();
-        map.put("spring", "12");
-        map.put("summer", "123");
-        map.put("fall", "1234");
-        map.put("winter", "12345");
+  public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+    Map<String, String> map = new Hashtable<>();
+    map.put("spring", "12");
+    map.put("summer", "123");
+    map.put("fall", "1234");
+    map.put("winter", "12345");
 
-        while(true) {
-            System.out.println("아이디와 비밀번호를 입력해주세요");
-            System.out.println("아이디: ");
-            String id = scanner.nextLine();
+    Scanner scanner = new Scanner(System.in);
 
-            System.out.println("비밀번호: ");
-            String password = scanner.nextLine();
-            System.out.println();
+    while (true) {
+      System.out.println("아이디와 비밀번호를 입력해주세요");
+      System.out.println("아이디: ");
+      String id = scanner.nextLine();
 
-            if (map.containsKey(id)) {
-                if (map.get(id).equals(password)) {
-                    System.out.println("로그인 되었습니다.");
-                    break; // 로그인 되었을 때
-                } else {
-                    System.out.println("비밀번호가 일치하지 않습니다.");
-                }
-            } else {
-                System.out.println("입력하신 아이디가 존재하지 않습니다.");
-            }
+      System.out.println("비밀번호: ");
+      String password = scanner.nextLine();
+      System.out.println();
+
+      if (map.containsKey(id)) {
+        if (map.get(id).equals(password)) {
+          System.out.println("로그인 되었습니다.");
+          break; // 로그인 되었을 때
+        } else {
+          System.out.println("비밀번호가 일치하지 않습니다.");
         }
+      } else {
+        System.out.println("입력하신 아이디가 존재하지 않습니다.");
+      }
+    }
 
         /* 
         (map의 정보를 다르게 입력했을 때)
@@ -52,5 +52,5 @@ public class HashTableExam {
         로그인 되었습니다.
          */
 
-    }
+  }
 }

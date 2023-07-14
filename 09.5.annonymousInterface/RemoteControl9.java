@@ -1,4 +1,5 @@
 public interface RemoteControl9 {
-    public void turnOn();
-    public void turnOff();
+  public void turnOn();
+
+  public void turnOff();
 }

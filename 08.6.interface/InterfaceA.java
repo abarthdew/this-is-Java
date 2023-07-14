@@ -1,3 +1,3 @@
 public interface InterfaceA {
-    public void methodA();
+  public void methodA();
 }

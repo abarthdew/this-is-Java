@@ -1,22 +1,23 @@
 ## 목차
+
 [5.1 데이터 타입 분류](#51-데이터-타입-분류)   
 [5.2 메모리 사용 영역](#52-메모리-사용-영역)   
-    [- 메모리 사용 영역 실행 순서](#메모리-사용-영역-실행-순서)   
-    [→ 1) JVM 구동 명령](#1-jvm-구동-명령)   
-    [→ 2) JVM 구동](#2-jvm-구동)   
-    [→ 3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩](#3-memoryexampleclass을-메모리에-로딩-바이트-코드를-로딩)   
-    [→ 4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름](#4-main-스레드-생성-main-메서드를-실행시키는-코드-흐름)   
-    [→ 5) main() 메서드 호출](#5-main-메서드-호출)   
-    [→ 6) main()의 매개변수가 String 배열 값으로 들어옴](#6-main의-매개변수가-string-배열-값으로-들어옴)   
-    [→ 7) int sum = 0; 생성](#7-int-sum--0-생성)   
-    [→ 8, 9) if 문 검증 후, int v2 = 10; 생성](#8-9-if-문-검증-후-int-v2--10-생성)   
-    [→ 10) add() 메소드 호출](#10-add-메소드-호출)   
-    [→ 11) 프레임 제거: 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨](#11-프레임-제거-값이-return-되고-모든-실행이-끝나는-시점에서-add-메서드에-의해-생성된-프레임이-제거됨)   
-    [→ 12) main() 프레임의 sum 값 변화](#12-main-프레임의-sum-값-변화)   
-    [→ 13) main() 프레임의 v2, v3 값 제거](#13-main-프레임의-v2-v3-값-제거)   
-    [→ 14) 프로그램 종료](#14-프로그램-종료)   
-    [→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐](#15-jvm이-종료되면서-프로그램도-종료-runtime-data-area도-없어짐)   
-    [- 더 알아보기](#더-알아보기)   
+[- 메모리 사용 영역 실행 순서](#메모리-사용-영역-실행-순서)   
+[→ 1) JVM 구동 명령](#1-jvm-구동-명령)   
+[→ 2) JVM 구동](#2-jvm-구동)   
+[→ 3) MemoryExample(class)을 메모리에 로딩: 바이트 코드를 로딩](#3-memoryexampleclass을-메모리에-로딩-바이트-코드를-로딩)   
+[→ 4) main 스레드 생성: main 메서드를 실행시키는 코드 흐름](#4-main-스레드-생성-main-메서드를-실행시키는-코드-흐름)   
+[→ 5) main() 메서드 호출](#5-main-메서드-호출)   
+[→ 6) main()의 매개변수가 String 배열 값으로 들어옴](#6-main의-매개변수가-string-배열-값으로-들어옴)   
+[→ 7) int sum = 0; 생성](#7-int-sum--0-생성)   
+[→ 8, 9) if 문 검증 후, int v2 = 10; 생성](#8-9-if-문-검증-후-int-v2--10-생성)   
+[→ 10) add() 메소드 호출](#10-add-메소드-호출)   
+[→ 11) 프레임 제거: 값이 return 되고 모든 실행이 끝나는 시점에서 add() 메서드에 의해 생성된 프레임이 제거됨](#11-프레임-제거-값이-return-되고-모든-실행이-끝나는-시점에서-add-메서드에-의해-생성된-프레임이-제거됨)   
+[→ 12) main() 프레임의 sum 값 변화](#12-main-프레임의-sum-값-변화)   
+[→ 13) main() 프레임의 v2, v3 값 제거](#13-main-프레임의-v2-v3-값-제거)   
+[→ 14) 프로그램 종료](#14-프로그램-종료)   
+[→ 15) JVM이 종료되면서 프로그램도 종료, Runtime Data Area도 없어짐](#15-jvm이-종료되면서-프로그램도-종료-runtime-data-area도-없어짐)   
+[- 더 알아보기](#더-알아보기)   
 [5.3 참조 변수의 ==, != 연산](#53-참조-변수의---연산)   
 [5.4 null과 NullPointerException](#54-null과-nullpointerexception)   
 [5.5 String 타입](#55-string-타입)   
@@ -24,7 +25,7 @@
 [5.6 배열 타입(2)](#56-배열-타입2)   
 [5.6 배열 타입(3)](#56-배열-타입3)   
 [5.7 열거 타입](#57-열거-타입)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **5.1 데이터 타입 분류**
 
@@ -106,12 +107,12 @@ public static void main(String[] args) {
 ⇒ 프레임 - main() 내부
 
 | 100 | args |
-| --- | --- |
+|-----|------|
 
 ⇒ 힙(Heap Area)
 
 | String[] 배열 (100번지) |
-| --- |
+|---------------------|
 
 → String 배열 객체는 heap 내부에 생성됨
 
@@ -129,12 +130,12 @@ public static void main(String[] args) {
 
 → int sum = 0; 코드에 의해 메모리가 변형이 되는데, 변수기 때문에 프레임 내부에 생성이 됨
 
-→ 즉, sum이라는 변수가 생성이 되며 0이라는 값이 저장됨 
+→ 즉, sum이라는 변수가 생성이 되며 0이라는 값이 저장됨
 
 ⇒ 프레임 - main() 내부
 
-| 0 | sum |
-| --- | --- |
+| 0   | sum  |
+|-----|------|
 | 100 | args |
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(7).png)
@@ -155,10 +156,10 @@ public static void main(String[] args) {
 
 ⇒ 프레임 - main() 내부
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 0 | sum |
+| 20  | v3   |
+|-----|------|
+| 10  | v2   |
+| 0   | sum  |
 | 100 | args |
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(8).png)
@@ -189,15 +190,15 @@ public static int add(int a, int b) {
 ⇒ 프레임 - add()
 
 | 20 | b |
-| --- | --- |
+|----|---|
 | 10 | a |
 
 ⇒ 프레임 - main()
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 0 | sum |
+| 20  | v3   |
+|-----|------|
+| 10  | v2   |
+| 0   | sum  |
 | 100 | args |
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(9).png)
@@ -227,10 +228,10 @@ public static int add(int a, int b) {
 
 ⇒ 프레임 - main()
 
-| 20 | v3 |
-| --- | --- |
-| 10 | v2 |
-| 30 | sum |
+| 20  | v3   |
+|-----|------|
+| 10  | v2   |
+| 30  | sum  |
 | 100 | args |
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(11).png)
@@ -241,8 +242,8 @@ public static int add(int a, int b) {
 
 ⇒ 프레임 - main()
 
-| 30 | sum |
-| --- | --- |
+| 30  | sum  |
+|-----|------|
 | 100 | args |
 
 ```java
@@ -260,7 +261,7 @@ public static void main(String[] args) {
 
 ### 14) 프로그램 종료
 
-→ System.out.println(sum)으로 sum 의 값 출력 후 
+→ System.out.println(sum)으로 sum 의 값 출력 후
 
 ```java
 public static void main(String[] args) {
@@ -302,10 +303,11 @@ public static void main(String[] args) {
 
 1. 스택에 v1라는 변수가 생성이 되며, A에 유니코드가 저장됨
 2. 스택 영역에 v2가 생성, 100 값 저장, v3 이하동일
-    
-    if 가 끝나는 시점에서 v2, v3 변수 제거됨
-    
+
+   if 가 끝나는 시점에서 v2, v3 변수 제거됨
+
 3. 스택에 v4 변수 생성, true 값 저장
+
 - 기본 타입 변수는 직접 값을 가지고 있음
 
 ![참조 타입 변수 - 배열](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(18).png)
@@ -327,7 +329,7 @@ public static void main(String[] args) {
 - 힙 영역에 생성된, 문자열을 가진 String 객체의 번지수를 스택 영역의 name 변수에 저장
 - 힙 영역에 생성된 String 객체의 번지가 100이라면, 스택 영역의 name에는 100을 저장함
 - new 연산자를 사용하지 않고 문자열 리터럴을 사용해서 아래와 같이 생성했을 때도, 힙 영역에 해당 문자열에 대한 객체가 생성되고, 그 객체의 번지가 스택 영역의 변수에 저장됨
-    
+
     ```java
     String name3 = "name";
     ```
@@ -400,7 +402,7 @@ $ java [클래스명]
 
 - 위 명령어 실행 시, JVM이 구동되며 main() 메서드를 찾아 실행함.
     - JVM은 String[] 배열 객체를 만듬
-    - 초기에는 값이 없으니, String[] args = {};  형태로 (String[] args)에 파라미터로 대입됨
+    - 초기에는 값이 없으니, String[] args = {}; 형태로 (String[] args)에 파라미터로 대입됨
     - 즉, 초기에는 값이 없는 배열 객체가 대입됨
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(32).png)
@@ -412,7 +414,7 @@ $ java [클래스명] [문자열1] [문자열2]
 - 위 명령어 실행 시, `[문자열1] [문자열2] [..]`형태의 배열이 String[] args 객체에 대입됨(인덱스 번호는 차례로 0, 1, 2…)
     - 이 문자열 형태의 배열이 main() 메서드 호출 시 전달됨
     - main() 메서드를 통해 args에 입력된 문자열을 얻을 수 있음
-    
+
     ```java
     public static void main(String[] args) {
       args[0]
@@ -421,7 +423,6 @@ $ java [클래스명] [문자열1] [문자열2]
       // ....
     }
     ```
-    
 
 ### 명령어 args의 length 출력하기
 
@@ -484,9 +485,9 @@ int[][] scores = new int[2][3] // 2행 3열
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(42).png)
 
 - new int[2][3]의 2로 먼저 길이 2짜리 1차원 배열 A를 만듦
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(43).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(43).png)
+
     - 0번째 항목 값으로 길이 3짜리 1차원 배열B를 만듦
     - 1번째 항목 값으로 길이 3짜리 1차원 배열C를 만듦
 - `scores[0][0] = 3;` 이면, B의 0번째에 3이 저장됨
@@ -511,33 +512,33 @@ scores[1] = new int[3]; // A 배열의 1번째에 길이 3짜리 C 대입
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(46).png)
 
 - 기본 타입 배열은 각 항목에 직접 값을 가지고 있음
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(47).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(47).png)
+
     - 스택 변수 → 힙 배열 객체 [0번째값][1번째값][2번째값][…]
-    
+
     ```java
     int[] scores = new int[3];
     scores[0] = 10;
     scores[1] = 20;
     scores[2] = 30;
     ```
-    
+
     - 스택 변수 scores → 힙 값 {10, 20, 30} : 스택 변수가 힙 값 참조
 - 참조 타입 배열은 각 항목에 객체의 번지를 가짐
-    
-    ![예시 1](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(48).png)
-    
-    예시 1
-    
-    ![예시2](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(49).png)
-    
-    예시2
-    
-    ![예시 2의 String 객체 주소](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(50).png)
-    
-    예시 2의 String 객체 주소
-    
+
+  ![예시 1](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(48).png)
+
+  예시 1
+
+  ![예시2](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(49).png)
+
+  예시2
+
+  ![예시 2의 String 객체 주소](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(50).png)
+
+  예시 2의 String 객체 주소
+
     - 스택 변수 → 힙 객체 → 힙 String 객체 : 스택 변수가 힙 객체 참조 + 힙 객체가 String 객체 잠조
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(51).png)
@@ -550,14 +551,14 @@ scores[1] = new int[3]; // A 배열의 1번째에 길이 3짜리 C 대입
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(53).png)
 
-- 1) 배열의 0인덱스를 2) 변수에 대입 후 3) 실행문 실행
-    
-    → 1) 배열의 1인덱스를 2) 변수에 대입 후 3) 실행문 실행
-    
-    → 1) 배열의 2인덱스를 2) 변수에 대입 후 3) 실행문 실행
-    
-    → (반복 후) 인덱스가 끝나면 → 종료
-    
+-
+    1) 배열의 0인덱스를 2) 변수에 대입 후 3) 실행문 실행
+
+→ 1) 배열의 1인덱스를 2) 변수에 대입 후 3) 실행문 실행
+
+→ 1) 배열의 2인덱스를 2) 변수에 대입 후 3) 실행문 실행
+
+→ (반복 후) 인덱스가 끝나면 → 종료
 
 ## **5.7 열거 타입**
 
@@ -592,25 +593,25 @@ scores[1] = new int[3]; // A 배열의 1번째에 길이 3짜리 C 대입
 - `compareTo()`: 열거 객체의 순번 차이
 - `valueOf(String name)`: 주어진 문자열의 열거 객체를 리턴
     - valueOf(MONDAY): MONDAY를 문자열로 가지고 있는 열거 객체의 번지 리턴
-    
+
     ```java
     Week weekDay = Week.valueOf("SATURDAY");
     ```
-    
+
     - SUNDAY 문자열을 가진 열거 객체의 생성 번지를 weekDay에 대입
     - weekDay가 참조하는 열거 객체는 열거 상수 SUNDAY가 참조하는 열거 객체와 동일
 - `values()`: 모든 열거 객체들을 배열로 리턴
     - 총 7개의 열거 상수가 정의되어 있다면, 총 7개의 열거 객체가 만들어 지므로, 7개의 열거 객체를 열거 타입 배열로 담아 리턴
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(60).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/5(60).png)
+
     ```java
     Week[] days = Week.values();
     for(Week day:days) {
       System.out.println(day);
     }
     ```
-    
+
     - Week.values()로 열거 객체 배열 생성 → 배열의 생성 번지 100을 Week[] days 변수에 대입 → days 변수가 index로 각 열거 객체에 접근
     - 힙 영역의 100번지에 만들어진 객체의 각 index에는 열거 객체가 저장됨
 

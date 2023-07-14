@@ -1,4 +1,5 @@
 ## 목차
+
 [19.1 NIO 소개](#191-nio-소개)   
 [19.2 파일과 디렉토리](#192-파일과-디렉토리)   
 [19.3 버퍼](#193-버퍼)   
@@ -6,7 +7,7 @@
 [19.4 파일 채널](#194-파일-채널)   
 [](#)   
 [](#)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## ****19.1 NIO 소개****
 
@@ -36,34 +37,33 @@
     - NIO: 양방향 채널로부터 데이터를 입력 또는 출력함
 - 버퍼/넌버퍼
     - IO: 입력 데이터의 위치를 이동해가면서 자유롭게 이용할 수 없음
-        
-        → EX) 어떤 소스(파일/네트워크)에서 입력 스트림으로 데이터를 받은 후, 데이터를 소비했다고 가정
-        
-        ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(2).png)
-        
-        → 이 때, 처음으로 돌아가서, 입력받은 데이터를 재사용할  수 없음
-        
-        → 입력 스트림을 통해 얻은 데이터는 재사용을 못 하기 때문에
-        
-        (버퍼를 사용하지 않기 때문에, 데이터를 받는 즉시, 이용하고 끝남)
-        
-        → 입력 스트림으로 받은 데이터를 어딘가에 저장해 놓아야 재사용 가능
-        
+
+      → EX) 어떤 소스(파일/네트워크)에서 입력 스트림으로 데이터를 받은 후, 데이터를 소비했다고 가정
+
+      ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(2).png)
+
+      → 이 때, 처음으로 돌아가서, 입력받은 데이터를 재사용할 수 없음
+
+      → 입력 스트림을 통해 얻은 데이터는 재사용을 못 하기 때문에
+
+      (버퍼를 사용하지 않기 때문에, 데이터를 받는 즉시, 이용하고 끝남)
+
+      → 입력 스트림으로 받은 데이터를 어딘가에 저장해 놓아야 재사용 가능
+
     - NIO
         - 입력 데이터:
-            
-            → 채널로부터 데이터를 읽고,
-            
-            → 프로그램에서 바로 데이터를 받는 게 아니라, 그 전에 버퍼에 데이터를 받음
-            
-            → 버퍼에 저장된 데이터를 프로그램에서 가져와서 씀
-            
+
+          → 채널로부터 데이터를 읽고,
+
+          → 프로그램에서 바로 데이터를 받는 게 아니라, 그 전에 버퍼에 데이터를 받음
+
+          → 버퍼에 저장된 데이터를 프로그램에서 가져와서 씀
+
         - 출력 데이터:
-            
-            → 프로그램에서 바로 데이터를 출력하는 게 아니라, 버퍼에 일단 출력
-            
-            → 버퍼가 목적지로 데이터를 출력
-            
+
+          → 프로그램에서 바로 데이터를 출력하는 게 아니라, 버퍼에 일단 출력
+
+          → 버퍼가 목적지로 데이터를 출력
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(3).png)
 
@@ -80,9 +80,8 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(4).png)
 
 - Path 객체를 얻는 여러 가지 코드
-    
-    → 절대 경로, 상대 경로 전부 매개 값으로 올 수 있음
-    
+
+  → 절대 경로, 상대 경로 전부 매개 값으로 올 수 있음
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(5).png)
 
@@ -100,7 +99,8 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(8).png)
 
-- newBufferedReader(): BufferedReader를 만들 때, FileReader를 만들고 보조 스트림으로 BufferedReader를 연결하는데, newBufferedReader() 메서드를 이용하면 바로 BufferedReader를 얻을 수 있음
+- newBufferedReader(): BufferedReader를 만들 때, FileReader를 만들고 보조 스트림으로 BufferedReader를 연결하는데, newBufferedReader() 메서드를
+  이용하면 바로 BufferedReader를 얻을 수 있음
 - newBufferedWriter(): 마찬가지로, BufferedWriter 를 바로 리턴 가능
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(9).png)
@@ -119,27 +119,28 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 
 - WatchService를 등록한 디렉토리 내부에서 변경이 발생할 경우
     - WatchEvent 발생
-        
-        → WatchService는 해당 이벤트 정보를 가진 WatchKey를 생성
-        
-        → 이 WatchKey를 큐에 저장
-        
+
+      → WatchService는 해당 이벤트 정보를 가진 WatchKey를 생성
+
+      → 이 WatchKey를 큐에 저장
+
     - 저장된 WatchKey는 프로그램에서 take() 메서드를 이용하면 얻을 수 있음
 - 이벤트 처리 코드 작성 방법
     - WatchKey가 큐에 들어오지 않았다면, 디렉토리 내부에서 변경이 발생하지 않은 것
     - take() 메서드는 WatchKey가 큐에 들어올 때까지 대기함
+
     1. 디렉토리 내부 변경 발생 → WatchKey가 큐에 저장 → take()가 WatchKey를 얻어 리턴
+
     - WatchKey 안에는 디렉토리 안에서 변경된 내용이 있음
-        
-        → 파일 생성, 수정, 삭제 등 해당 이벤트 정보
-        
+
+      → 파일 생성, 수정, 삭제 등 해당 이벤트 정보
+
     1. WatchKey로 부터 WatchEvent 리스트 획득
-        
-        → 여러 개의 WatchEvent가 발생할 수 있으므로 리스트로 리턴됨
-        
-        → 파일을 동시에 여러 개 선택해서 삭제할 경우 등
-        
-    
+
+       → 여러 개의 WatchEvent가 발생할 수 있으므로 리스트로 리턴됨
+
+       → 파일을 동시에 여러 개 선택해서 삭제할 경우 등
+
     ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19(11).png)
     
     1. WatchKey로부터 WatchEvent 컬렉션을 얻었다면, WatchEvent를 하나씩 처리해야 함
@@ -189,17 +190,17 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 프로그램이 입력 소스로부터 데이터를 입력 받을 때
-    
-    → 버퍼에 먼저 저장
-    
-    → 프로그램은 버퍼에서 데이터를 얻음
-    
+
+  → 버퍼에 먼저 저장
+
+  → 프로그램은 버퍼에서 데이터를 얻음
+
 - 프로그램이 어떤 데이터를 목적지로 보낼 때
-    
-    → 데이터를 일단 버퍼에 저장
-    
-    → 버퍼에 있는 데이터를 목적지로 보냄
-    
+
+  → 데이터를 일단 버퍼에 저장
+
+  → 버퍼에 있는 데이터를 목적지로 보냄
+
 - 버퍼는 NIO에서 필수적으로 사용되는 객체
 - Buffer 분류 기준: 어떤 메모리를 사용하느냐에 따른 분류
     - 다이렉트: 운영체제가 관리하는 메모리를 이용
@@ -216,15 +217,15 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 
 - 넌 다이렉트 버퍼
     - 버퍼 크기를 크게 잡을 수 없음
-        
-        → 운영체제가 JVM에 할당한 메모리 범위 내에서 사용해야 하기 때문
-        
+
+      → 운영체제가 JVM에 할당한 메모리 범위 내에서 사용해야 하기 때문
+
     - 넌 다이렉트 버퍼가 입출력을 하게 되면
-        
-        → 내부적으로 다이렉트 버퍼를 이용
-        
-        → 다이렉트 버퍼를 생성해서, 데이터(넌 다이렉트 버퍼)를 복사하고 난 후, 입출력을 함
-        
+
+      → 내부적으로 다이렉트 버퍼를 이용
+
+      → 다이렉트 버퍼를 생성해서, 데이터(넌 다이렉트 버퍼)를 복사하고 난 후, 입출력을 함
+
     - 상대적으로 다이렉트 직접 버퍼를 이용하는 것보다, 넌 다이렉트 버퍼의 입출력 속도는 늦음
 - 다이렉트 버퍼
     - native C 함수를 호출해서 다이렉트 버퍼를 생성해야 하기 때문에, 넌 다이렉트 버퍼보다 생성 시간이 다소 걸림
@@ -232,39 +233,36 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 ### 예제 - 18.3.buffer
 
 - 다이렉트 버퍼는 생성되지만, 넌 다이렉트 버퍼는 생성되지 않음(OutOfMemoryError)
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - 버퍼를 생성하기 위해선 각 버퍼 클래스의 allocate() 메서드 호출
 - wrap() 메서드
-    
+
     ```java
     byte[] byteArr = new byte[100]; // 이미 byte 배열이 생성되어 있고,
     ByteBuffer byteBuffer = ByteBuffer.wrap(byteArr); // byteArr 바이트 배열을 wrapping 해서 byteBuffer를 만듦
     ```
-    
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - Char, IntBuffer 등에서는 없고, ByteBuffer에서만 allocateDirect() 메서드가 제공됨
 - 예시
-    
+
     ```java
     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(저장할 수 있는 바이트 수);
     ```
-    
+
     - 운영체제가 관리하는 메모리에 버퍼를 만들어 리턴
 - asXXXBuffer(): Char, IntBuffer 등을 사용하는 방법
-    
+
     ```java
     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(100); // 100개의 바이트 값 저장
     CharBuffer charBuffer = ByteBuffer.allocateDirect(100).asCharBuffer(); // 50개 char 값 저장(char 한 문자당 2바이트 차지)
     IntBuffer intBuffer = ByteBuffer.allocateDirect(100).asIntBuffer(); // 25개 int 값 저장 (int 한 문자당 4바이트 차지)
     ```
-    
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
@@ -272,12 +270,11 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 
 - JVM은 무조건 big endian이지만, JVM을 사용하지 않을 경우, ByteOder 클래스로 데이터 순서를 맞춰야 함
 - order(): JVM이 운영체제의 바이트 해석 순서와 JVM의 해석 순서를 맞춤
-    
+
     ```java
     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(100).order(ByteOrder.nativOrder());
     // 이렇게 얻어진 byteBuffer를 입출력에 사용하게 되면, 성능에 도움이 됨
     ```
-    
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
@@ -287,31 +284,31 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 
 1. **쓰기 모드**
 2. 7 바이트 크기의 바이트 배열을 생성했다고 가정
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position(읽고 쓰기 위한 위치): 제일 처음 버퍼를 생성했기 때문에 0 (제일 처음에는 읽은 값도, 쓴 값도 없으므로 0)
     - capacity: 실제 버퍼에 저장될 수 있는 최대 데이터 개수 7
     - limit(읽거나 쓰기 위한 한계 값): 처음 버퍼가 생성되면, limit은 capacity와 같음
 3. 2 바이트를 버퍼에 저장
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position: 2, 이 자리에 다음 데이터, 즉 다음 바이트를 저장할 수 있다는 위치 정보를 알려 줌
     - capacity, limit: 변함 없음
 4. 추가로 3 바이트를 버퍼에 저장
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position: 2 + 3 = 5
 5. 쓰기 모드 → **읽기 모드로 변경**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 1. 읽기 모드로 변경하기 위해 flip() 메서드 호출
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position
         - 직전 position: 5
         - flip() 호출 → position: 0 (맨 앞으로 이동)
@@ -323,77 +320,76 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
         - position ~ limit 까지의 범위를 읽을 수 있다는 의미를 가짐
         - 실제 데이터는 limit - 1 까지고, limit 자리에는 데이터가 없음
 2. 버퍼에서 3 바이트를 읽음
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position: 3 (0부터 2까지 3 바이트 읽음)
-        
-        → limit 앞까지 2바이트 더 읽을 수 있음
-        
+
+      → limit 앞까지 2바이트 더 읽을 수 있음
+
     - limit: 5
     - capacity: 7
 3. 현재 position의 위치를 기억시키기 위해 mark() 호출
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - 현재 position: 3 → mark() 호출
     - 3 인덱스에 mark 위치 속성이 생김(mark에 3 저장됨)
 4. 2 바이트를 추가로 읽음
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position: 5 (mark 부터 2 바이트 읽음)
     - position과 limit의 값이 같아짐
-        
-        → 이 상태가 되면 더 이상 데이터를 읽을 수 없어짐
-        
-        → position = limit 이므로, 이후부터는 데이터가 없음
-        
+
+      → 이 상태가 되면 더 이상 데이터를 읽을 수 없어짐
+
+      → position = limit 이므로, 이후부터는 데이터가 없음
+
 5. reset()
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - reset()을 호출하게 되면 position이 mark 위치로 가게 됨
 6. rewind()
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - position = limit일 경우, 즉, position ~ limit 사이 데이터를 모두 읽었을 경우
-        
-        → rewind() 호출 
-        
-        → position이 제일 처음으로 돌아감
-        
+
+      → rewind() 호출
+
+      → position이 제일 처음으로 돌아감
+
     - 그러므로, position: 0부터 다시 데이터를 읽을 수 있음
     - position 또는 limit이 mark보다 더 앞쪽 인덱스로 가면, mark는 자동적으로 없어짐
 7. clear()
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - 만약, position = 5, limit = 5로, 0~4 인덱스까지 버퍼를 다 읽었을 때를 가정
-        
-        → clear() 
-        
-        → position은 제일 앞으로, limit은 제일 뒤로 감(limit = capacity)
-        
+
+      → clear()
+
+      → position은 제일 앞으로, limit은 제일 뒤로 감(limit = capacity)
+
 8. compact()
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
-    
+
+   ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
+
     - a, b, c, d, e가 저장된 버퍼에서 a, b, c를 읽었을 때 (아직 d를 읽지 않은 경우)
-        
-        → compact()
-        
-        → d, e가 제일 앞으로 저장됨
-        
-        → position이 e 다음에 위치함
-        
+
+      → compact()
+
+      → d, e가 제일 앞으로 저장됨
+
+      → position이 e 다음에 위치함
+
     - compact()를 사용하는 이유:
         - 처음에 5개의 바이트를 저장했다가, 3개를 읽고 나서 2개는 놔둔 상태
-            
-            → 새로운 데이터를 버퍼에 저장해야 할 필요성이 생겼을 때
-            
-        
+
+          → 새로운 데이터를 버퍼에 저장해야 할 필요성이 생겼을 때
+
         ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
         
         - 이 경우는 저장을 할 수 없는 상태임
@@ -425,7 +421,6 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
             → limit: capacity ⇒ 5
             
             ⇒ 0 부터 5 까지 데이터 읽기 가능
-            
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
@@ -466,7 +461,7 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/19.png)
 
 - IntBuffer → ByteBuffer
-    
+
     ```java
     ByteBuffer byteBuffer 
     	= ByteBuffer.allocate(
@@ -479,9 +474,9 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     }
     byteBuffer.flip(); // 읽기 모드로 바꿈
     ```
-    
+
 - ByteBuffer → IntBuffer
-    
+
     ```java
     ByteBuffer byteBuffer = ...;
     IntBuffer intBuffer = byteBuffer.asIntBuffer(); // 바로 IntBuffer 얻을 수 있음
@@ -491,14 +486,8 @@ path.register( // 해당 디렉토리의 path 객체를 얻은 후, register() �
     intBuffer.get(data); // intBuffer 값을 data 배열에 저장
     System.out.println("읽은 배열: " + Arrays.toString(data));
     ```
-    
 
 ## ****19.4 파일 채널****
-
-
-
-
-
 
 ## 참고자료
 

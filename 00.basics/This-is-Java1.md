@@ -1,15 +1,16 @@
 ## 목차
+
 [1.1 프로그래밍 언어란?](#11-프로그래밍-언어란)   
 [1.2 자바란?](#12-자바란)   
 [1.3 자바 개발 환경 구축](#13-자바-개발-환경-구축)   
 [1.4 자바 프로그램 개발 순서](#14-자바-프로그램-개발-순서)  
-    [- 프로그램 작성해 보기 [Folder - 1.4.hello]](#프로그램-작성해-보기-folder---14hello)   
+[- 프로그램 작성해 보기 [Folder - 1.4.hello]](#프로그램-작성해-보기-folder---14hello)   
 [1.5 주석과 실행문](#15-주석과-실행문)   
 [1.6 이클립스 설치](#16-이클립스-설치)   
-    [- 자바 프로젝트 생성](#자바-프로젝트-생성)   
-    [- 파일 탐색 확장 - Navigater](#파일-탐색-확장---navigater)   
+[- 자바 프로젝트 생성](#자바-프로젝트-생성)   
+[- 파일 탐색 확장 - Navigater](#파일-탐색-확장---navigater)   
 [1.7 풀인원 설치와 실행](#17-풀인원-설치와-실행)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## 1.1 프로그래밍 언어란?
 
@@ -36,9 +37,9 @@
 - 함수적 스타일 코딩 지원: Java8 부터 가능
 - 메모리 자동 관리: 가비지 컬렉터
 - 콘솔 프로그램: 명령 기반 등 다양한 프로그램 개발 가능
-    
-    ⇒ 이를 위해서는 다양한 라이브러리, 즉 개발도구와 API를 제공
-    
+
+  ⇒ 이를 위해서는 다양한 라이브러리, 즉 개발도구와 API를 제공
+
 - Java SE: 자바 프로그램을 실행하기 위한 최소한의 JVM 실행환경, 이를 사용하기 위해서 JDK라는 형태로 구현체 제공
 - Java EE: WAS 설치 후, 웹 애플리케이션 개발 및 실행 가능
 
@@ -82,45 +83,43 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/1(10).png)
 
 - “hello”를 출력하는 프로그램을 만들고자 할 때
-    
-    → Hello.java 라는 소스파일을 자바 언어로 작성해서 생성해야 함
-    
-    → 컴파일러를 통해 컴파일: JDK가 제공해주는 javac.exe로 컴파일
-    
+
+  → Hello.java 라는 소스파일을 자바 언어로 작성해서 생성해야 함
+
+  → 컴파일러를 통해 컴파일: JDK가 제공해주는 javac.exe로 컴파일
+
     ```java
     $ javac Hello.java
     ```
-    
-    Hello.class라는 바이트 코드 파일이 생성이 됨
-    
-    → 클래스 파일을 해석: JVM 구동 명령어 java.exe로 클래스 파일 찾기 및 실행
-    
+
+  Hello.class라는 바이트 코드 파일이 생성이 됨
+
+  → 클래스 파일을 해석: JVM 구동 명령어 java.exe로 클래스 파일 찾기 및 실행
+
     ```java
     $ java(.exe 생략 가능) Hello (.class 확장명 생략 가능)
     $ java Hello
     ```
-    
-    → 자바 구동 명령어가 Hello.class를 찾아 완전한 기계어로 번역한 뒤 실행
-    
+
+  → 자바 구동 명령어가 Hello.class를 찾아 완전한 기계어로 번역한 뒤 실행
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/1(11).png)
 
 - windows와 Mac에 서로의 운영체제에 종속적인 JVM이 설치되어 있다면?
-    
-    ⇒ byte 코드 파일은 어떠한 JVM에서도 공통적으로 해석될 수 있는 파일이기 때문에, 운영체제 종류나 JVM 버전과 관계없이 실행 가능.
-    
-    ⇒ 개발은 windows에서 하고, 실행은 Mac에서 해도 무방.
-    
-    ⇒ 이와 달리, VC++ 등은 windows에서만 개발, 실행이 가능. 즉, 운영체제에 종속됨.
-    
+
+  ⇒ byte 코드 파일은 어떠한 JVM에서도 공통적으로 해석될 수 있는 파일이기 때문에, 운영체제 종류나 JVM 버전과 관계없이 실행 가능.
+
+  ⇒ 개발은 windows에서 하고, 실행은 Mac에서 해도 무방.
+
+  ⇒ 이와 달리, VC++ 등은 windows에서만 개발, 실행이 가능. 즉, 운영체제에 종속됨.
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/1(12).png)
 
 ### 프로그램 작성해 보기 [Folder - 1.4.hello](https://github.com/abarthdew/this-is-Java/tree/main/1.4.hello)
-    
+
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/1(13).png)
 ⇒ Hello.java
-    
+
 ```java
 class Hello {
   public static void main(String ar[]) {
@@ -154,6 +153,7 @@ C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello 디렉터리
 C:\Users\auswo\Downloads\PortableGit\this-is-Java\hello>java Hello
 Hello!
 ```
+
 ## 1.5 주석과 실행문
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/1(14).png)

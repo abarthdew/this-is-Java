@@ -1,33 +1,34 @@
 ## 목차
+
 [12.1 멀티 스레드 개념](#121-멀티-스레드-개념)   
 [12.2 작업 스레드 생성과 실행](#122-작업-스레드-생성과-실행)   
-    [- 12.2-1. Thread 클래스로부터 직접 생성하는 방법](#122-1-thread-클래스로부터-직접-생성하는-방법)   
-    [- 12.2-1. 정리](#122-1-정리)   
-    [- 12.2-2. Thread 하위 클래스로부터 생성하는 방법](#122-2-thread-하위-클래스로부터-생성하는-방법)   
-    [- 12.2-2. 실습](#122-2-실습)   
-    [- 12.2-2. 정리](#122-2-정리)   
-    [- 결론](#결론)   
+[- 12.2-1. Thread 클래스로부터 직접 생성하는 방법](#122-1-thread-클래스로부터-직접-생성하는-방법)   
+[- 12.2-1. 정리](#122-1-정리)   
+[- 12.2-2. Thread 하위 클래스로부터 생성하는 방법](#122-2-thread-하위-클래스로부터-생성하는-방법)   
+[- 12.2-2. 실습](#122-2-실습)   
+[- 12.2-2. 정리](#122-2-정리)   
+[- 결론](#결론)   
 [12.3 스레드 우선 순위](#123-스레드-우선-순위)   
 [12.4 동기화 메소드와 동기화 블록](#124-동기화-메소드와-동기화-블록)   
-    [- 여러 스레드가 공유하는 객체가 항상 변할 수 있다는 문제점을 해결할 방법](#여러-스레드가-공유하는-객체가-항상-변할-수-있다는-문제점을-해결할-방법)   
+[- 여러 스레드가 공유하는 객체가 항상 변할 수 있다는 문제점을 해결할 방법](#여러-스레드가-공유하는-객체가-항상-변할-수-있다는-문제점을-해결할-방법)   
 [12.5 스레드 상태](#125-스레드-상태)   
-    [- 실습 - 12.5. thread](#실습---125-thread)   
-    [- 실습 - 12.5. thread (detail)](#실습---125-thread-detail)   
+[- 실습 - 12.5. thread](#실습---125-thread)   
+[- 실습 - 12.5. thread (detail)](#실습---125-thread-detail)   
 [12.6 스레드 상태 제어(1)](#126-스레드-상태-제어1)   
 [12.6 스레드 상태 제어(2)](#126-스레드-상태-제어2)   
 [12.7 데몬 스레드](#127-데몬-스레드)   
 [12.8 스레드 그룹](#128-스레드-그룹)   
-    [- 실습 - 12.7.group2](#실습---127group2)   
+[- 실습 - 12.7.group2](#실습---127group2)   
 [12.9 스레드풀(1)](#129-스레드풀1)   
-    [- ExecutorService, 즉, 스레드 풀의 동작 원리](#executorservice-즉-스레드-풀의-동작-원리)   
+[- ExecutorService, 즉, 스레드 풀의 동작 원리](#executorservice-즉-스레드-풀의-동작-원리)   
 [12.9 스레드풀(2)](#129-스레드풀2)   
-    [- 실습 - 12.9.ExecuteSubmit4Exam.java](#실습---129executesubmit4examjava)   
-    [- 실습 - 12.9.blocking](#실습---129blocking)   
+[- 실습 - 12.9.ExecuteSubmit4Exam.java](#실습---129executesubmit4examjava)   
+[- 실습 - 12.9.blocking](#실습---129blocking)   
 [12.9 스레드풀(3)](#129-스레드풀3)   
-    [- 실습 - 12.9.result](#실습---129result)    
+[- 실습 - 12.9.result](#실습---129result)    
 [12.9 스레드풀(4)](#129-스레드풀4)   
-    [- 실습 - 12.9.CompletionService](#실습---129completionservice)    
-[참고자료](#참고자료)   
+[- 실습 - 12.9.CompletionService](#실습---129completionservice)    
+[참고자료](#참고자료)
 
 ## **12.1 멀티 스레드 개념**
 
@@ -57,13 +58,12 @@
 - 멀티 스레드: main 스레드가 실행되며 main 스레드가 다른 스레드를 만들어 실행하는 스레드 환경
 - 멀티 스레드 애플리케이션
     - 프로세스 생성 → JVM이 main 스레드 생성 → main() 메서드 실행
-        
-        → main() 메서드 실행 중 어떤 시점에 새로운 작업 스레드 생성
-        
-        → 작업 스레드 코드 실행
-        
-        → main 스레드가 먼저 종료될 시, 애플리케이션은 종료하지 않고, 나머지 스레드가 모두 종료되어야 프로세스는 종료됨
-        
+
+      → main() 메서드 실행 중 어떤 시점에 새로운 작업 스레드 생성
+
+      → 작업 스레드 코드 실행
+
+      → main 스레드가 먼저 종료될 시, 애플리케이션은 종료하지 않고, 나머지 스레드가 모두 종료되어야 프로세스는 종료됨
 
 ## **12.2 작업 스레드 생성과 실행**
 
@@ -78,15 +78,15 @@
 - Runnable의 run() 메서드를 정의한 후, main 스레드 실행 동안 동시에 실행할 또 다른 스레드의 코드를 run()에 넣음
 - 여기까지 진행 후, 스레드로부터 run() 메서드를 실행할 수 있게 만들어 줘야 함
     1. Runnable 구현 객체를 생성
-        
+
         ```java
         Runnable task = new Task();
         Thread thread = new Thread(task); // Thread 객체가 task 실행하게 됨 => 결국 task 안의 run() 실행
         // Thread 객체: 자바에서는 하나의 스레드도 객체화 해서 사용함
         ```
-        
+
     2. 익명 객체 생성(1과 같음, 표현만 다름)
-        
+
         ```java
         Thread thread = new Thread(new Runnable() {
           public void run() {
@@ -94,57 +94,56 @@
           }
         });
         ```
-        
+
     3. 자바 8부터 추가된 람다식 사용
-        
+
         ```java
         Thread thread = new Thread(() -> {
           // 스레드가 실행할 코드
         });
         ```
-        
+
         - 람다식으로 작성 가능한 이유: Runnable 인터페이스가 run() 이라는 메서드 단 하나만 가지고 있기 때문
-            
-            → Runnable은 함수적 인터페이스에 해당됨
-            
+
+          → Runnable은 함수적 인터페이스에 해당됨
+
         - Runnable에 매개값이 없기 때문에 () → {} 와 같이 ()로 표현 가능
         - () → {} 의 {}는 아래 코드의 {}과 동일함
-        
+
         ```java
         public void run() {
           // 스레드가 실행할 코드
         }
         ```
-        
+
         - 람다식은 결국 Runnable 이라는 객체로 생성됨
 - 1, 2, 3은 모두 동일한 의미의 코드며, 표현만 다름
-- 새로운 스레드 생성 후, `thread.start()`로 새로운 메서드를 호출 시켜주면,  비로소 스레드가 실행됨
-    
-    ⇒ 이 때, 스레드가 실행하는 코드는 run() 메서드 안에 있는 코드
-    
+- 새로운 스레드 생성 후, `thread.start()`로 새로운 메서드를 호출 시켜주면, 비로소 스레드가 실행됨
+
+  ⇒ 이 때, 스레드가 실행하는 코드는 run() 메서드 안에 있는 코드
 
 ### 12.2-1. 정리
 
 - 동시에 실행해야 할 작업들이 있다
-    
-    → 해당 작업에 대한 클래스들을 생성하고 Runnable 인터페이스 구현체로 만듬
-    
-    → run() 메서드 재정의 후, 스레드가 실행할 코드를 넣어 줌
-    
-    → (여기까지, 이 작업 자체가 스레드인 건 아니고, 그냥 동시 실행해야 할 작업들을 클래스에 정의한 것)
-    
-    → Thread 객체 생성 후, 매개값으로 작업 객체를 넣어 주면,
-    
-    → 해당 스레드 객체가 `start()` 메서드 호출 시 작업 객체의 `run()`을 실행하게 됨
-    
+
+  → 해당 작업에 대한 클래스들을 생성하고 Runnable 인터페이스 구현체로 만듬
+
+  → run() 메서드 재정의 후, 스레드가 실행할 코드를 넣어 줌
+
+  → (여기까지, 이 작업 자체가 스레드인 건 아니고, 그냥 동시 실행해야 할 작업들을 클래스에 정의한 것)
+
+  → Thread 객체 생성 후, 매개값으로 작업 객체를 넣어 주면,
+
+  → 해당 스레드 객체가 `start()` 메서드 호출 시 작업 객체의 `run()`을 실행하게 됨
 
 ### 12.2-2. Thread 하위 클래스로부터 생성하는 방법
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(7).png)
 
 - 이전에 Thread 클래스로부터 직접 생성하는 방법에선 Runnable 객체가 필요했지만, Thread를 직접 상속받으면 하위 클래스로부터 Thread 객체를 직접 만들 수 있음
+
 1. 명시적으로 하위 클래스를 만들어 Thread 객체를 생성하는 방법
-    
+
     ```java
     Public class WorkerThread extends Thread { // Thread 상속
       @Override
@@ -154,9 +153,9 @@
     }
     Thread thread = new WorkerThread(); // 하위 클래스로부터 Thread 객체 직접 만들기
     ```
-    
+
 2. 익명 객체를 만들어 Thread를 생성하는 방법
-    
+
     ```java
     				// new Thread()로 생성자 호출
     Thread thread = new Thread() { // {}: Thread를 상속하는 하위 객체를 익명 객체로 만듬
@@ -165,7 +164,7 @@
       }
     };
     ```
-    
+
 - 실행: `thread.start();`
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(8).png)
@@ -183,30 +182,29 @@ thread2.start();
 ```
 
 - `Thread.currentThread().getName()`: 해당 스레드를 생성한 스레드(ThreadA를 생성한 스레드)
-    
-    ⇒ 즉, 현재 이 코드를 실행하는 스레드를 얻어, 이름을 가져온다
-    
+
+  ⇒ 즉, 현재 이 코드를 실행하는 스레드를 얻어, 이름을 가져온다
+
 - 아래 두 코드는 main 에서 실행되지만,
-    
+
     ```java
     Thread thread2  = new ThreadA();
     thread2.start();
     ```
-    
-    ⇒ `thread.start()`를 하는 순간, ThreadA의 `run()` 메서드가 실행됨
-    
+
+  ⇒ `thread.start()`를 하는 순간, ThreadA의 `run()` 메서드가 실행됨
 
 ### 12.2-2. 정리
 
 - Thread를 생성함과 동시에, start() 메서드를 호출할 수 있음
 - Thread threadA = new ThreadA(); 와 같이 스레드 생성 후, start() 메서드 호출 후, run() 메서드가 실행되고 나면, 다시 start()를 재호출 할 수 없음
-    
-    ⇒ start()는 딱 한 번만 호출 가능
-    
+
+  ⇒ start()는 딱 한 번만 호출 가능
+
 - 만약, 새로운 스레드가 필요한데 이전 스레드와 작업 내용이 같다면, 그 때 start()를 재호출 할 수는 없음
-    
-    ⇒ 아래 예시와 같이 threadA를 다시 호출한 후 start()를 사용해야 함
-    
+
+  ⇒ 아래 예시와 같이 threadA를 다시 호출한 후 start()를 사용해야 함
+
     ```java
     Thread threadA = new ThreadA();
     threadA.start(); // 재사용 불가
@@ -214,7 +212,6 @@ thread2.start();
     threadA = new ThreadA();
     threadA.start(); // 재사용 불가
     ```
-    
 
 ### 결론
 
@@ -248,19 +245,19 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(11).png)
 
 - 각 스레드는 대기 상태로 있다가, 스케줄링에 의해 하나의 스레드가 선택되면 실행하게 됨
-    
-    → 이 스레드가 실행해야 할 run() 메서드를 모두 실행하는 것이 아니라, 조금씩 실행함
-    
-    → 스레드 1이 실행된다고 하면, run()이 다 실행되지 않은 시점에서 다시 대기 상태가 되고,
-    
-    → 뒤이어 스레드 2가 실행되어 run()을 실행하다가 다시 대기 상태가 됨
-    
-    → 뒤이어 스레드3이 실행되어 run()을 실행하다가 다시 대기 상태가 됨
-    
-    → 이렇게 반복적으로 계속 실행
-    
-    → 스레드 1이 run() 메서드를 다 실행하게 되면, 스레드 1 종료, 대기 상태에서 빠지게 됨
-    
+
+  → 이 스레드가 실행해야 할 run() 메서드를 모두 실행하는 것이 아니라, 조금씩 실행함
+
+  → 스레드 1이 실행된다고 하면, run()이 다 실행되지 않은 시점에서 다시 대기 상태가 되고,
+
+  → 뒤이어 스레드 2가 실행되어 run()을 실행하다가 다시 대기 상태가 됨
+
+  → 뒤이어 스레드3이 실행되어 run()을 실행하다가 다시 대기 상태가 됨
+
+  → 이렇게 반복적으로 계속 실행
+
+  → 스레드 1이 run() 메서드를 다 실행하게 되면, 스레드 1 종료, 대기 상태에서 빠지게 됨
+
 - 자바에서는 스레드 스케줄링으로 `우선 순위 방식`과 `순환할당(라운드 로빈)` 방식을 이용함
     - 우선순위: 우선순위가 높은 스레드가 좀 더 많은 실행 기회를 가짐
     - 순환 할당: 정해진 시간 할당량 만큼 각각의 스레드를 실행함
@@ -269,9 +266,8 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(12).png)
 
 - 쿼드 코어에, 4개 이하의 스레드를 실행할 경우, 우선 순위 방식은 크게 영향을 미치지 못함
-    
-    → 코어가 4개, 스레드가 4개 이하이므로, 코어 당 스레드가 하나씩 독립적으로 실행되기 때문에 우선 순위를 매기는 의미가 없음
-    
+
+  → 코어가 4개, 스레드가 4개 이하이므로, 코어 당 스레드가 하나씩 독립적으로 실행되기 때문에 우선 순위를 매기는 의미가 없음
 
 ## **12.4 동기화 메소드와 동기화 블록**
 
@@ -279,9 +275,8 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 
 - user1 스레드와 user2 스레드가 똑같이 Calculator 객체를 사용한다고 가정한다
 - 위 예에서, user1 스레드의 memory 값은 100이 아닌 50으로 출력됨
-    
-    ⇒ 공유 객체를 사용할 때, 다른 스레드가 값을 변경하게 되면 또 다른 스레드에 영향을 미침
-    
+
+  ⇒ 공유 객체를 사용할 때, 다른 스레드가 값을 변경하게 되면 또 다른 스레드에 영향을 미침
 
 ### 여러 스레드가 공유하는 객체가 항상 변할 수 있다는 문제점을 해결할 방법
 
@@ -291,27 +286,27 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 - 이 예시에서는 user1이 완전히 끝날 때까지 다른 스레드가 동기화 블록 안에 있는 Calculator 필드 값을 바꿀 수 없음
 - 즉, 동기화 메서드 또는 동기화 블록은 한 번에 하나의 스레드만 사용 가능
 - 만약, 스레드1, 스레드2가 동시에 실행이 된다고 가정할 때
-    
-    ⇒ 스레드1 이 먼저 동기화 블록을 사용하게 됐다면, 스레드2는 스레드1이 동기화 블록 사용을 종료할 때까지 대기 상태가 됨
-    
-    ⇒ 스레드1이 동기화 블록 사용을 종료하면 그제야 스레드2도 동기화 블록 사용 가능
-    
+
+  ⇒ 스레드1 이 먼저 동기화 블록을 사용하게 됐다면, 스레드2는 스레드1이 동기화 블록 사용을 종료할 때까지 대기 상태가 됨
+
+  ⇒ 스레드1이 동기화 블록 사용을 종료하면 그제야 스레드2도 동기화 블록 사용 가능
+
 - 잠금: user1이 동기화 블록 내 Calculator 객체를 사용할 때, 다른 스레드가 이 객체를 사용할 수 없도록 잠궈버림
-    
-    ⇒ 다른 동기화 메서드도 전부 사용 안 됨
-    
-    ⇒ 만약, Calculator 객체 안에 동기화 메서드가 5개가 있다고 가정하면,  user1의 스레드가 그 중 하나를 사용하고 있을 때, user2는 나머지 4개의 동기화 메서드에도 접근하지 못함
-    
-    ⇒ Calculator 객체 자체가 잠겨있기 때문에
-    
+
+  ⇒ 다른 동기화 메서드도 전부 사용 안 됨
+
+  ⇒ 만약, Calculator 객체 안에 동기화 메서드가 5개가 있다고 가정하면, user1의 스레드가 그 중 하나를 사용하고 있을 때, user2는 나머지 4개의 동기화 메서드에도 접근하지 못함
+
+  ⇒ Calculator 객체 자체가 잠겨있기 때문에
+
 - synchronized(공유 객체) {}: 공유 객체에는 ‘잠금 객체’가 매개값으로 들어 감
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(15).png)
 
 - 위 예제와 같이, user1 스레드가 m1(), m2(), m3() 셋 중 하나만 사용 중이라도 user2 스레드는 m1(), m2(), m3() 중 아무것도 사용하지 못함
-    
-    ⇒ Calculator 객체 자체가 잠금 되기 때문에
-    
+
+  ⇒ Calculator 객체 자체가 잠금 되기 때문에
+
 - 만약, synchronized 가 붙어있지 않는 m4() 메서드가 있다면, user1이 실행되는 와중에도 user2는 m4() 메서드 사용 가능
 
 ## **12.5 스레드 상태**
@@ -323,9 +318,9 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 - 실행: 실행 대기 상태에 있는 스레드는 CPU 스케줄로 인해 선택이 되면 실행되게 됨
 - 실행하다 실행 대기 상태가 되고, 또 실행하다 실행 대기 상태가 되는 것을 반복하다가, run() 메서드를 종료하게 되면 종료 상태가 됨
 - 실행 상태에서 실행 대기로 가지 않고, 일시 정지로 가는 경우도 있음
-    
-    ⇒ 일시 정지 상태: waiting, time_waiting, blocked
-    
+
+  ⇒ 일시 정지 상태: waiting, time_waiting, blocked
+
 - 일시 정지 상태에 있는 스레드는 다시 실행 대기 상태로 감 → 여기서 CPU 스케줄로 선택 받아서 실행하게 됨
 - **[표]**: 스레드 상태에 대한 열거 상수들
     - blocked
@@ -349,9 +344,8 @@ System.out.println("작업 스레드 이름(ThreadA의 이름): " + thread2.getN
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(18).png)
 
 - java.lang → Thread → class Thread 의 중첩 클래스인 NESTED 클릭
-    
-    ⇒ Thread.State라는 열거 타입이 있는 것을 확인할 수 있음
-    
+
+  ⇒ Thread.State라는 열거 타입이 있는 것을 확인할 수 있음
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(19).png)
 
@@ -401,50 +395,49 @@ public class StatePrintThread extends Thread {
 ```
 
 - **타겟 스레드 상태: NEW**
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(22).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(22).png)
+
     - new TargetThread 객체를 생성한 상태
 - **타겟 스레드 상태: RUNNABLE**
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(23).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(23).png)
+
     - targetThread.start()가 호출되면 실행 대기 상태가 됨
     - 실행 대기 상태에서 CPU 스케줄로 선택되면 실행 상태가 됨
-        
-        ⇒ 실행 대기, 실행 상태 모두 포함 의미
-        
-    
+
+      ⇒ 실행 대기, 실행 상태 모두 포함 의미
+
     ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(24).png)
     
     - RUNNABLE 상태는 targetThread가 for문을 실행할 단계의 상태임
+
 - 타겟 스레드 상태: RUNNABLE
     - 실행 대기, 실행 상태를 오가며 상태가 변경되고 있음
 - 타겟 스레드 상태: RUNNABLE
     - 실행 대기, 실행 상태를 오가며 상태가 변경되고 있음
 - **타겟 스레드 상태: TIMED_WAITING**
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(25).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(25).png)
+
     - 1.5초 동안 일시정지 되었을 때
 - 타겟 스레드 상태: TIMED_WAITING
 - 타겟 스레드 상태: TIMED_WAITING
 - **타겟 스레드 상태: RUNNABLE**
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(26).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(26).png)
+
     - 1.5초 뒤, 다시 targetThread가 for 문을 반복하며 RUNNABLE 상태가 됨
     - CPU의 선택을 받아 실행, 대기 상태를 왔다 갔다 하며 실행과 대기를 반복함
 - 타겟 스레드 상태: RUNNABLE
 - **타겟 스레드 상태: TERMINATED**
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(27).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(27).png)
+
     - run() 종료, targetThread는 TERMINATED 상태가 됨
 - targetThread가 종료되면 statePrintThread도 break로 반복문을 빠져나감 → 종료
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(28).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(28).png)
 
 ## **12.6 스레드 상태 제어(1)**
 
@@ -453,11 +446,11 @@ public class StatePrintThread extends Thread {
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(29).png)
 
 - 처음 스레드를 생성하게 되면, **실행 대기** 상태가 됨
-    
-    → CPU 스케줄러에 의해 선택되면, **실행** 상태가 됨
-    
-    → 실행 상태에서 시간 할당량이 다 되면 다시 **실행 대기** 상태가 됨
-    
+
+  → CPU 스케줄러에 의해 선택되면, **실행** 상태가 됨
+
+  → 실행 상태에서 시간 할당량이 다 되면 다시 **실행 대기** 상태가 됨
+
 - `yield() 호출`: **실행** 중, 시간 할당량이 되기 전에, **실행 대기** 상태로 만듦
 - `sleep() 호출`:
     - **실행** 중, timed_watiting이 되어, 주어진 시간 동안 **일시 정지** 상태로 만듦
@@ -485,9 +478,9 @@ public class StatePrintThread extends Thread {
 
 - 실행 대기 상태인 스레드1, 스레드2가 있는 경우
 - 스레드1이 실행 중일 때, yield() 메서드 호출 시 스레드1은 즉시 실행 대기 상태가 됨
-    
-    ⇒ 스레드1과 동일하거나 보다 높은 우선순위를 갖는 스레드2가 실행할 수 있도록 함
-    
+
+  ⇒ 스레드1과 동일하거나 보다 높은 우선순위를 갖는 스레드2가 실행할 수 있도록 함
+
 - 즉, yield()는 현재 실행 상태인 스레드를 실행 대기 상태로 되돌리는 역할을 함
 - 보통 yield() 메서드는 무의미한 반복을 하지 않고, 다른 스레드에게 실행을 양보할 때 주로 사용됨
 
@@ -499,27 +492,27 @@ public class StatePrintThread extends Thread {
 
 - join() 메서드 테스트를 위해서는 2개의 스레드가 필요
 - `스레드a`에서 `스레드b`를 start() → `스레드b` run()
-    
-    ⇒ `스레드a`에서 `스레드b.join()` 호출 → `스레드b`가 아닌, `스레드 a`가 일시 정지 상태가 됨
-    
+
+  ⇒ `스레드a`에서 `스레드b.join()` 호출 → `스레드b`가 아닌, `스레드 a`가 일시 정지 상태가 됨
+
 - `스레드b`가 run() 메서드를 종료할 때까지 `스레드a`를 **일시 정지** 상태로 만듦
-    
-    ⇒ `스레드b`가 run() 메서드를 종료하면, `스레드 a`는 일시 정지 상태에서 풀려나 **실행 대기** 상태가 됨
-    
-    ⇒ `스레드a`는 이후 순차적으로 코드를 실행해 나감
-    
+
+  ⇒ `스레드b`가 run() 메서드를 종료하면, `스레드 a`는 일시 정지 상태에서 풀려나 **실행 대기** 상태가 됨
+
+  ⇒ `스레드a`는 이후 순차적으로 코드를 실행해 나감
+
 - 보통 스레드a가 계산 작업 클래스인 스레드b의 계산 결과를 받아 작업하는 경우에 사용
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(34).png)
 
 - `sleep()`, `yield()`, `join()`이 스레드가 가지는 메서드인 것에 반해, `wait()`, `notify()`, `notifyAll()`은 스레드 메서드가 아님
-    
-    ⇒ Object가 가지는 메서드(모든 객체가 가지고 있는 메서드)
-    
+
+  ⇒ Object가 가지는 메서드(모든 객체가 가지고 있는 메서드)
+
 - 일반 메서드는 `wait()`, `notify()`, `notifyAll()`를 호출할 수 없고, 동기화 메서드 또는 블록만 호출 가능함
-    
-    ⇒ (1), (2) 부분에만 사용 가능(공유 객체를 사용할 때 호출하는 메서드들이기 때문)
-    
+
+  ⇒ (1), (2) 부분에만 사용 가능(공유 객체를 사용할 때 호출하는 메서드들이기 때문)
+
     ```java
     // 동기화 메서드
     synchronized void method () {
@@ -533,13 +526,13 @@ public class StatePrintThread extends Thread {
       }
     }
     ```
-    
+
 - `wait()`:
     - 호출한 스레드는 일시 정지 상태가 되며, watiting pool에 스레드가 관리됨
     - 일시 정지 된 스레드는 자기 스스로 실행 대기 상태로 갈 수 없음
-        
-        ⇒ 실행 상태인 다른 스레드가 notify(), notifyAll()을 호출해 줘야 실행 대기 상태로 갈 수 있음
-        
+
+      ⇒ 실행 상태인 다른 스레드가 notify(), notifyAll()을 호출해 줘야 실행 대기 상태로 갈 수 있음
+
 - `wait(long timeout, [int nanos])`:
     - wait()와는 달리 매개 값으로 들어 온 시간이 지나면 자동으로 대기 상태가 됨
     - 매개 값인 timeout 시간이 지나기 전에, 다른 스레드가 notify(), notifyAll()을 호출해 주면, 그 즉시 실행 대기 상태로 감
@@ -556,35 +549,33 @@ public class StatePrintThread extends Thread {
 - 스레드의 종료: run() 메서드가 종료됨을 의미
 - 안전한 종료 방법:
     1. stop 플래그로 run() 메서드의 정상 종료를 유도
-        
-        ⇒ 일시 정지 상태의 스레드를 종료하지는 못함
-        
+
+       ⇒ 일시 정지 상태의 스레드를 종료하지는 못함
+
     2. interrupt() 메서드 사용
-        
-        ⇒ 일시 정지 상태인 스레드도 종료 가능
-        
-        ⇒ interrupt() 호출 시, 일시 정지 상태인 스레드에서 InterruptedException 발생
-        
+
+       ⇒ 일시 정지 상태인 스레드도 종료 가능
+
+       ⇒ interrupt() 호출 시, 일시 정지 상태인 스레드에서 InterruptedException 발생
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(36).png)
 
 - `Thread.sleep(1);` 와 같이 스레드가 일시 정지된 상태에서 `threadB.interrupt();` 와 같이 interrupt() 메서드 호출 시 → 예외 발생
-    
-    ⇒ while 반복문에서 catch로 내려와 스레드의 run() 메서드가 종료됨
-    
+
+  ⇒ while 반복문에서 catch로 내려와 스레드의 run() 메서드가 종료됨
+
 - 실행 대기, 실행 상태에서는 InterruptExcaption이 발생하지 않음
-    
-    ⇒ 위 그림의 ThreadB에서 `Thread.sleep(1);` 코드가 없다면, `threadB.interrupt();` 와 같이 interrupt() 메서드가 호출되더라도 예외가 발생하지 않음
-    
+
+  ⇒ 위 그림의 ThreadB에서 `Thread.sleep(1);` 코드가 없다면, `threadB.interrupt();` 와 같이 interrupt() 메서드가 호출되더라도 예외가 발생하지 않음
+
 - **즉, interrupt() 메서드를 호출해도 일시 정지 코드가 있어야 예외가 발생하고, run() 메서드가 종료함**
 - 일시 정지 상태로 만들지 않고 whild 문을 빠져나오는 방법: `interrupted()`, `isInterrupted()` 사용
-    
+
     ```java
     // interrupt() 메서드가 호출되었으면 true, 아니면 false를 return
     boolean status = Thread.interrupted(); // Thread의 정적 메서드 사용
     boolean status = objThread.isInterrupted(); // Thread 객체를 생성한 후 인스턴스 메서드 사용
     ```
-    
 
 ## **12.7 데몬 스레드**
 
@@ -601,19 +592,18 @@ public class StatePrintThread extends Thread {
 
 - 스레드 그룹을 계층적으로 만들어 관리할 수 있음
 - 자동 생성되는 스레드 그룹도 있음
-    
-    ⇒ 자바 프로그램을 실행하게 되면, system 그룹과 system의 하위 그룹인 main 그룹이 자동으로 생성됨
-    
+
+  ⇒ 자바 프로그램을 실행하게 되면, system 그룹과 system의 하위 그룹인 main 그룹이 자동으로 생성됨
+
 - 스레드는 기본적으로 자신을 생성한 스레드와 같은 그룹에 속하게 됨
-    
-    ⇒ main 그룹에 있는 main 스레드에서 스레드를 생성하게 되면, main 그룹에 자동으로 소속됨
-    
-    ⇒ sub 그룹에 소속된 sub 스레드가 스레드를 생성하게 되면, 자동적으로 sub 그룹에 소속됨
-    
+
+  ⇒ main 그룹에 있는 main 스레드에서 스레드를 생성하게 되면, main 그룹에 자동으로 소속됨
+
+  ⇒ sub 그룹에 소속된 sub 스레드가 스레드를 생성하게 되면, 자동적으로 sub 그룹에 소속됨
+
 - main 스레드가 소속된 그룹이 main 그룹이므로, main 스레드가 생성하는 또 다른 스레드는 모두 기본적으로 main 그룹에 속함
-    
-    ⇒ 명시적으로 스레드 그룹에 포함시키지 않으면 기본적으로 main 그룹에 속함
-    
+
+  ⇒ 명시적으로 스레드 그룹에 포함시키지 않으면 기본적으로 main 그룹에 속함
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(40).png)
 
@@ -666,7 +656,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
     4. main 그룹의 서브 그룹으로 myGroup 포함
     5. myGroup 밑에 workThreadA, workThreadB 포함
 - 출력 결과
-    
+
     ```java
     // main 스레드 그룹의 list() 메서드 출력 내용
     java.lang.ThreadGroup[name=main,maxpri=10]
@@ -675,7 +665,7 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
         Thread[workThreadA,5,myGroup]
         Thread[workThreadB,5,myGroup]
     ```
-    
+
     - java.lang.ThreadGroup[name=main,maxpri=10]
         - 스레드 그룹의 이름이 main 이며, 이 스레드 그룹에 포함된 스레드가 가질 수 있는 최대 우선순위는 10번
     - Thread[main,5,main]
@@ -693,28 +683,27 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 
 - 브라우저에서 웹 서버에 접근하게 되면, 웹 서버는 하나의 스레드를 만들어 처리함
 - 수천 개의 브라우저가 웹 서버에 접근하게 되면, 스레드도 수천 개 만들어져 동시에 실행됨
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(52).png)
-    
-    ⇒ 스레드 폭증, CPU 과부하, 웹 서버 메모리도 많이 사용됨
-    
-    ⇒ 웹 서버에서 실행하는 서버 애플리케이션 성능이 급격히 저하됨
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(52).png)
+
+  ⇒ 스레드 폭증, CPU 과부하, 웹 서버 메모리도 많이 사용됨
+
+  ⇒ 웹 서버에서 실행하는 서버 애플리케이션 성능이 급격히 저하됨
+
 - `스레드 풀`: 아무리 많은 브라우저가 접근하더라도, 웹 서버 내 스레드 개수를 적절히 조절
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(53).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(53).png)
+
     - 여러 작업 요청이 들어오면, 이 요청들을 큐 라는 공간에 저장해 놓고, 작업 당 스레드가 처리하도록 함
     - 즉, 제한된 스레드가 큐에 있는 작업을 하나씩 맡아 처리하는 방식
     - 작업을 다 처리한 스레드는 큐에서 다음 작업을 가져와 처리하는 것을 반복
     - 즉, 스레드는 작업을 하나 처리하고 일회용적으로 종료되는 것이 아니라, 계속 큐에 있는 작업을 가져와 처리
-        
-        ⇒ 제한된 갯수를 사용하더라도 충분히 작업들을 처리 가능
-        
+
+      ⇒ 제한된 갯수를 사용하더라도 충분히 작업들을 처리 가능
+
 - 애플리케이션이 작업 요청을 하기 위해 큐에 작업 내용 저장해 두면 → 스레드가 작업을 하나씩 가져와 처리 → 그 결과를 애플리케이션에 전달
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(54).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(54).png)
 
 ### ExecutorService, 즉, 스레드 풀의 동작 원리
 
@@ -725,9 +714,9 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 - `애플리케이션`은 스레드가 작업을 처리하도록 요청만 함
     - 스레드에서 실행할 수 있는 건 Runnable 객체
     - 애플리케이션은 단지 Runnable 이라는 객체를 만들어 작업 큐에 저장하기만 함
-        
-        → 작업 큐에 넣어진 Runnable 객체, 즉, 작업 객체는 자동적으로 스레드 풀에서 처리
-        
+
+      → 작업 큐에 넣어진 Runnable 객체, 즉, 작업 객체는 자동적으로 스레드 풀에서 처리
+
 - 스레드는 작업 큐에 있는 작업을 가지고 처리 후 → 처리 결과를 애플리케이션으로 전달함
 - 애플리케이션은 이 결과 값을 받아 또 다른 작업 진행
 - 스레드 풀을 사용함으로써, 아무리 많은 작업 요청이 들어와도, 작업 큐의 작업량만 늘어날 뿐 스레드의 갯수가 늘어나는 것은 아님
@@ -743,32 +732,31 @@ ThreadGroup tg = new ThreadGroup(ThreadGroup parent, String name); // parent 그
 - 최대 스레드 수: 스레드 풀에서 스레드를 계속 생성할 때, **최대 생성할 수 있는 스레드 수**
 - `newCachedThreadPool()`
     - 최대 스레드 수: 이론적으로 int 값의 최대 값 만큼 생성 가능()
-        
-        ⇒ 어디까지나 이론적인 얘기고, 실제로는 이 정도 생성되지 않고 메모리 상황에 따라 다름
-        
+
+      ⇒ 어디까지나 이론적인 얘기고, 실제로는 이 정도 생성되지 않고 메모리 상황에 따라 다름
+
     - 놀고 있는 스레드가 있으면 60초 제한 기준으로 풀에서 제거됨
 - `newFixedThreadPool(int nThreads)`:
     - 한 번 생성된 스레드는 풀에서 제거되지 않고 계속 남아있음
     - 코어 스레드 개수 = 최대 스레드 개수이기 때문
     - 놀고 있는 스레드라 하더라도 개수가 줄지 않음
-    
+
     ```java
     ExecutorService executorService = Executors.newFixedThreadPool(
       Runtime.getRuntime().availableProcessors(); // 최대 스레드 갯수
     );
     ```
-    
+
     - `availableProcessors()`: 현재 CPU의 코어 수
-        
-        ⇒ 가장 이상적인 병렬 처리: CPU가 가진 코어 수 만큼 스레드를 만들어 씀
-        
+
+      ⇒ 가장 이상적인 병렬 처리: CPU가 가진 코어 수 만큼 스레드를 만들어 씀
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(57).png)
 
 - `newCachedThreadPool()`와 `newFixedThreadPool(int nThreads)`는 내부적으로 ThreadPoolExecutor를 만들어 리턴함
-    
-     ⇒ 때문에 직접 ThreadPoolExecutor를 만들 수 있음
-    
+
+  ⇒ 때문에 직접 ThreadPoolExecutor를 만들 수 있음
+
 - 스레드 풀을 직접 만들 경우 다양한 옵션을 줄 수 있음
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(58).png)
@@ -917,8 +905,7 @@ Exception in thread "pool-1-thread-10" java.lang.NumberFormatException: For inpu
 ```
 
 - 분석
-    
-    
+
     | thread-1 |
     | --- |
     - 작업 큐에 작업이 쌓임 → 스레드 생성 → 작업 처리
@@ -953,7 +940,7 @@ Exception in thread "pool-1-thread-10" java.lang.NumberFormatException: For inpu
         - `총 스레드 개수: 2` / 작업 스레드 이름: pool-1-thread-5
             
             ⇒ 예외 발생 → thread-5 종료 → 풀에서 제거됨
-            
+
 - 예외 발생 시켜 보기 - **submit() 의 경우**
 
 ```java
@@ -982,72 +969,70 @@ executorService.submit(runnable);
 
 - 블로킹 방식: 뭔가를 요청하고 나서 그 결과가 올 때까지 기다리는 방식
 - 결과 값이 없는 작업을 작업 큐에 저장하기 위해 submit() 메서드 사용
-    
+
     ```java
     submit(Runnable task);
     ```
-    
-    → sumit() 메서드로 작업 객체(Runnable task)를 작업 큐에 넣고 
-    
-    → 스레드가 이들 작업 객체(Runnable task)를 처리함
-    
+
+  → sumit() 메서드로 작업 객체(Runnable task)를 작업 큐에 넣고
+
+  → 스레드가 이들 작업 객체(Runnable task)를 처리함
+
 - submit()은 Future라는 객체를 리턴함
 - Future 객체:
     - 작업 결과 X
     - 작업 결과가 나올 때까지 기다리는 객체 O
     - 지연 객체, 지연 완료 객체라고 부르기도 함
-        
-        ⇒ sumit() 메서드가 호출되면 그 즉시 Future 객체가 리턴됨
-        
-        ⇒ 즉, 스레드가 Runnable 또는 Callable<V> 의 코드를 실행하지 않은 상태에서 Future 객체가 얻어지는 것
-        
-        ⇒ 때문에, Future는 작업 결과가 아니라, 작업이 스레드에서 처리가 완료된 후의 그 결과 값을 받을 목적으로 만들어진 객체임
-        
-        ⇒ 결과가 나중에 나오기 때문에 지연 객체라고 함
-        
+
+      ⇒ sumit() 메서드가 호출되면 그 즉시 Future 객체가 리턴됨
+
+      ⇒ 즉, 스레드가 Runnable 또는 Callable<V> 의 코드를 실행하지 않은 상태에서 Future 객체가 얻어지는 것
+
+      ⇒ 때문에, Future는 작업 결과가 아니라, 작업이 스레드에서 처리가 완료된 후의 그 결과 값을 받을 목적으로 만들어진 객체임
+
+      ⇒ 결과가 나중에 나오기 때문에 지연 객체라고 함
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(62).png)
 
 - get(): 작업이 완료될 때까지 블로킹 되었다가(스레드가 작업을 완료할 때까지 기다렸다가)  처리 결과 V를 리턴
 - Runnable 객체를 담는 submit()은 결과값이 없는 작업을 처리할 때 쓰이는 메서드임
-    
+
     ```java
     submit(Runnable task); // 결과 값이 없는 작업(Runnable task)을 작업 큐에 넣는다(submit)
     ```
-    
+
     - 스레드가 실행이 다 되고, 작업 처리를 완료한다면, 결과가 없기 때문에 future.get()은 결국 null을 리턴함
-    
+
     ```java
     submit(Runnable task, Integer result);
     ```
-    
+
     - 두 번째 매개 값인 Integer result가 결과 값
     - 즉, future.get()은 int 타입 값을 리턴
-    
+
     ```java
     submit(Callable<String> task);
     ```
-    
+
     - submit()에 Callable 객체를 저장할 때, 그 값을 String으로 지정하면, Callable의 작업 처리 결과가 String으로 나옴
     - 즉, future.get()은 String 타입 값을 리턴
 - 스레드에서 Runnable, Callable 객체를 처리할 때 예외가 발생 시
-    
-    ⇒ get() 메서드는 처리 결과가 리턴될 때까지 기다리는데, 스레드가 작업 처리를 하는 도중에 예외 발생 시, get() 메서드에서도 예외가 발생함
-    
-    ⇒ 예외 발생 시 결과 값을 얻을 수 없기 때문에, get() 메서드는 예외가 발생하도록 되어 있음
-    
+
+  ⇒ get() 메서드는 처리 결과가 리턴될 때까지 기다리는데, 스레드가 작업 처리를 하는 도중에 예외 발생 시, get() 메서드에서도 예외가 발생함
+
+  ⇒ 예외 발생 시 결과 값을 얻을 수 없기 때문에, get() 메서드는 예외가 발생하도록 되어 있음
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(63).png)
 
 - Future의 get() 메서드는 블로킹이 되기 때문에, 스레드가 작업을 완료할 때까지 이 get()은 멈춰 있음
-    
-    ⇒ 때문에, get()은 UI를 생성하거나 변경하는 스레드에서 호출하면 안 됨
-    
-    ⇒ UI가 멈춰있는 상태가 되기 때문 → 이벤트 처리를 할 수 없게 됨
-    
+
+  ⇒ 때문에, get()은 UI를 생성하거나 변경하는 스레드에서 호출하면 안 됨
+
+  ⇒ UI가 멈춰있는 상태가 되기 때문 → 이벤트 처리를 할 수 없게 됨
+
 - 그렇다면 get() 메서드를 어떻게 호출해야 하느냐?
     - 새로운 스레드를 생성해서 호출하거나
-    
+
     ```java
     // 1. 스레드 객체를 생성하고
     new Thread(new Runnable() { // 2. 매개값으로 Runnable 객체 지정
@@ -1061,9 +1046,9 @@ executorService.submit(runnable);
       }
     }).start(); // 5. start()로 새로운 스레드가 run()을 실행하도록 함
     ```
-    
+
     - 스레드풀의 스레드가 호출하도록 해 주거나
-    
+
     ```java
     // 3. submit() 이라는 메서드로 작업 큐에 넣어 줌
     executorService.submit(new Runnable() { // 2. 작업 객체를 만들어서
@@ -1078,20 +1063,20 @@ executorService.submit(runnable);
     });
     // 4. 스레드가 작업 큐에 들어간 작업을 처리하며, run()이 실행됨
     ```
-    
-    ⇒ 이런 방법은 UI 생성, 변경, 이벤트 처리하는 스레드에서 future.get()이 실행되지 않기 때문에 문제되지 않음 
-    
+
+  ⇒ 이런 방법은 UI 생성, 변경, 이벤트 처리하는 스레드에서 future.get()이 실행되지 않기 때문에 문제되지 않음
+
 - 다른 메서드: Future의 또 다른 메서드
     - cancel(boolean mayInterruptIfRunning): 스레드 작업 도중 취소
         - boolean mayInterruptIfRunning: 필요한 경우 interrupt를 할 것인가(true - 스레드에 interrupt 호출, interruptException 발생됨)
-    - isCancel(): 보통 cancel()로 작업  취소 후 확인용
+    - isCancel(): 보통 cancel()로 작업 취소 후 확인용
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(64).png)
 
 - 리턴값이 없는 작업 완료 통보
-    
-    ⇒ 리턴값이 없는 작업을 만들어서 → 작업 큐에 넣음 → 스레드가 작업 큐에서 작업을 가져와 처리 → 처리 후 완료를 통보
-    
+
+  ⇒ 리턴값이 없는 작업을 만들어서 → 작업 큐에 넣음 → 스레드가 작업 큐에서 작업을 가져와 처리 → 처리 후 완료를 통보
+
     ```java
     // 1. 리턴값이 없는 작업 객체 생성
     Runnable task = new Runnable() {
@@ -1104,9 +1089,9 @@ executorService.submit(runnable);
     // 3. 스레드 풀(executorService)의 submit() 메서드에 작업 객체 삽입
     // 4. submit()은 3. 이후 즉시 Future 객체 리턴
     ```
-    
+
     - future를 가지고 스레드가 작업을 완료했는지, 처리 도중인지 알 수 있음
-    
+
     ```java
     try {
       future.get(); // get()을 호출하게 되면 블로킹 발생 -> 작업을 완료할 때까지 (해당 코드를 실행하는)스레드는   여기서 멈춰있음
@@ -1118,18 +1103,17 @@ executorService.submit(runnable);
       // 작업 처리 도중 예외가 발생된 경우 실행할 코드
     }
     ```
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(65).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(65).png)
+
     - 스레드 풀(pool) 안에 Runnable이라는 작업이 있음
     - 이 작업을 스레드 풀의 스레드가 ↓ 이렇게 실행
     - 실행 동안, get() 메서드는 블로킹됨
-    - 실행이 완료가 되면, 즉 풀의 스레드가 Runnable 객체의 run() 메서드를 다 실행하게 되면,  비로소 future.get() 결과가 리턴됨
+    - 실행이 완료가 되면, 즉 풀의 스레드가 Runnable 객체의 run() 메서드를 다 실행하게 되면, 비로소 future.get() 결과가 리턴됨
     - 즉, future.get()이 블로킹에서 빠져나옴
     - 하지만, 작업 결과가 없기 때문에 future.get()은 null이 리턴됨
 - 발생할 수 있는 예외의 종류
-    
-    
+
     | ↓ (스레드 실행) | 작업 도중 interrupt() 호출: InterruptedException e |
     | --- | --- |
     | ↓ (스레드 실행) |  |
@@ -1183,13 +1167,12 @@ future.get();
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(70).png)
 
 - 작업 처리 결과는 스레드에서 만들어짐
-    
-    ⇒ 결과 값을 스레드가 아닌 외부 객체에 저장하는 경우
-    
+
+  ⇒ 결과 값을 스레드가 아닌 외부 객체에 저장하는 경우
+
 - 스레드 1과 스레드 2에서 각각 처리된 작업의 결과를 취합하고 싶을 때
-    
-    ⇒ 이런 경우 스레드가 처리한 작업의 결과를 → 외부 객체에 저장
-    
+
+  ⇒ 이런 경우 스레드가 처리한 작업의 결과를 → 외부 객체에 저장
 
 ```java
 Result result = ...; // 스레드 1, 2가 공통적으로 사용하는 공유 객체
@@ -1270,22 +1253,21 @@ CompletionService<V> completionService
 
 - poll()과 take() 메서드를 이용해 처리 완료된 작업의 Future을 얻으려면
 - completionService의 submit() 메서드로 작업 처리 요청을 해야 함
-    
-    ⇒ executorService의 submit()을 이용하면 안 됨
-    
-    ⇒ **작업 큐에 작업을 저장할 때 executorService가 아닌 completionService를 사용해야 poll()과 take() 이용 가능**
-    
+
+  ⇒ executorService의 submit()을 이용하면 안 됨
+
+  ⇒ **작업 큐에 작업을 저장할 때 executorService가 아닌 completionService를 사용해야 poll()과 take() 이용 가능**
+
     ```java
     CompletionService<V> completionService = new ExecutorCompletionService<V>( 
       executorService 
     );
     ```
-    
+
     ```java
     completionService.submit(Callable<V> task); // completionSerivice.submit()를 이용해 Callable task를 작업 큐에 넣어 줌
     completionService.submit(Runnable task, V result);// completionSerivice.submit()를 이용해 Runnable을 작업 큐에 넣어 주고, 외부 객체 값도 넣어 줌
     ```
-    
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/12(74).png)
 
@@ -1328,30 +1310,30 @@ executorService.submit(new Runnable() { // 작업 객체인 Runnable 생성
 
 - 블로킹 방식: future 객체를 이용하는 방식
     - `(1)` main 스레드가 스레드 풀에게 작업 처리 요청(submit)
-        
-        → 스레드 풀이 작업을 받아 처리
-        
-        → `(2)` submit()은 즉시 Future 객체 리턴
-        
-        → `(3)` main 스레드는 Future를 이용해 get() 호출
-        
-        → get()은 스레드 풀의 `(4)` 스레드가 작업 처리를 완료할 때까지 블로킹
-        
-        → 작업이 완료되면 결과를 받음
-        
-        → `(5)` 그 다음 코드 실행
-        
+
+      → 스레드 풀이 작업을 받아 처리
+
+      → `(2)` submit()은 즉시 Future 객체 리턴
+
+      → `(3)` main 스레드는 Future를 이용해 get() 호출
+
+      → get()은 스레드 풀의 `(4)` 스레드가 작업 처리를 완료할 때까지 블로킹
+
+      → 작업이 완료되면 결과를 받음
+
+      → `(5)` 그 다음 코드 실행
+
 - 콜백 방식: 자동적으로 메서드가 호출되는 방식
     - `(1)` main 스레드가 스레드 풀에게 작업 처리 요청(submit)
-        
-        → 스레드 풀이 작업을 받아 처리
-        
-        → `(2)` submit()은 즉시 Future 객체 리턴
-        
-        → Future를 이용하지 않고, `(3)` main 스레드는 일단 작업 처리 요청만 하고 자기 할 일을 계속 수행함
-        
-        → 스레드 풀의 스레드가 작업 처리를 완료하면, 자동적으로 콜백 메서드를 실행, `(4)` 이 콜백 메서드의 작업을 수행
-        
+
+      → 스레드 풀이 작업을 받아 처리
+
+      → `(2)` submit()은 즉시 Future 객체 리턴
+
+      → Future를 이용하지 않고, `(3)` main 스레드는 일단 작업 처리 요청만 하고 자기 할 일을 계속 수행함
+
+      → 스레드 풀의 스레드가 작업 처리를 완료하면, 자동적으로 콜백 메서드를 실행, `(4)` 이 콜백 메서드의 작업을 수행
+
     - main 스레드가 future.get()을 호출해 작업 처리가 끝날 때까지 기다리는 것이 아니라, 자기 할 일을 계속 함
     - 스레드 풀의 스레드가 작업을 완료하게 되면 자동적으로 콜백 메서드를 실행하게 함
     - 콜백 메서드 내에서 작업을 처리한 결과를 가지고 이용하도록 함
@@ -1416,9 +1398,8 @@ CompletionHandler<V, A> callback = new CompletionHandler<V, A>(){
 ```
 
 - 콜백 메서드를 실행하는 것은 스레드 풀의 스레드이므로, 콜백 메서드 안에 UI 생성, 변경 메서드를 작성하면 에러가 발생
-    
-    ⇒ 자바 FX, 안드로이드 X의 경우, UI 생성 및 변경 코드는 UI 스레드에서 다뤄야 함
 
+  ⇒ 자바 FX, 안드로이드 X의 경우, UI 생성 및 변경 코드는 UI 스레드에서 다뤄야 함
 
 ## 참고자료
 

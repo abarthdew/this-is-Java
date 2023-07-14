@@ -1,12 +1,12 @@
 public class StopFlagExam {
-    public static void main(String[] args) throws InterruptedException {
-        
-        PrintThread printThread = new PrintThread();
-        printThread.start();
+  public static void main(String[] args) throws InterruptedException {
 
-        Thread.sleep(1000);
+    PrintThread printThread = new PrintThread();
+    printThread.start();
 
-        printThread.setStop(true);
+    Thread.sleep(1000);
+
+    printThread.setStop(true);
 
         /*
         실행 중
@@ -23,5 +23,5 @@ public class StopFlagExam {
         실행 종료
          */
 
-    }
+  }
 }

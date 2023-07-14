@@ -1,27 +1,28 @@
 ## 목차
+
 [8.1 인터페이스의 역할](#81-인터페이스의-역할)   
 [8.2 인터페이스 선언](#82-인터페이스-선언)   
 [8.3 인터페이스 구현(1)](#83-인터페이스-구현1)   
 [8.3 인터페이스 구현(2)](#83-인터페이스-구현2)   
 [8.4 인터페이스 사용](#84-인터페이스-사용)   
 [8.5 타입변환과 다형성](#85-타입변환과-다형성)   
-    [- 필드 타입으로 인터페이스 사용 시 다형성이 구현되는 방법](#필드-타입으로-인터페이스-사용-시-다형성이-구현되는-방법)   
+[- 필드 타입으로 인터페이스 사용 시 다형성이 구현되는 방법](#필드-타입으로-인터페이스-사용-시-다형성이-구현되는-방법)   
 [8.6 인터페이스 상속](#86-인터페이스-상속)   
 [8.7 디폴트 메소드와 인터페이스 확장](#87-디폴트-메소드와-인터페이스-확장)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **8.1 인터페이스의 역할**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8.png)
 
 - 개발 코드가 어떤 객체를 이용해 메서드를 호출하려고 한다
-    
-    → 개발 코드가 객체를 직접 이용하는 게 아니라, 중간에 인터페이스를 둠
-    
-    → 인터페이스가 객체의 메서드를 호출하고, 리턴값을 넘겨줌
-    
-    → 개발 코드는 인터페이스를 통해 메서드 호출하고, 값을 리턴받음
-    
+
+  → 개발 코드가 객체를 직접 이용하는 게 아니라, 중간에 인터페이스를 둠
+
+  → 인터페이스가 객체의 메서드를 호출하고, 리턴값을 넘겨줌
+
+  → 개발 코드는 인터페이스를 통해 메서드 호출하고, 값을 리턴받음
+
 - 개발 코드는 뒤편에 있는 객체가 어떤 객체인지 상관할 필요가 없음
 - 그러므로, 객체에 문제가 있을 경우 이것만 다른 객체로 변경할 수 있고, 인터페이스만 바라보는 개발 코드는 문제 없음
 - 인터페이스의 역할: 개발 코드를 수정하지 않고, 내부에 실제 사용되는 객체를 쉽게 이용하거나 변경할 수 있도록 도와줌
@@ -47,11 +48,11 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(3).png)
 
 - 개발 코드 → 인터페이스로 메서드 호출
-    
-    → 인터페이스는 자기가 참조하는 객체로 가서 인터페이스의 메서드를 재정의한 메서드를 실행시킴
-    
-    → 인터페이스는 객체에서 리턴값을 받아 개발코드로 리턴
-    
+
+  → 인터페이스는 자기가 참조하는 객체로 가서 인터페이스의 메서드를 재정의한 메서드를 실행시킴
+
+  → 인터페이스는 객체에서 리턴값을 받아 개발코드로 리턴
+
 - 인터페이스 내 추상메서드는 `어떻게 호출한 것인가`에 대한 방법만 제시함 ⇒ 실제 실행되는 코드는 객체가 가진 재정의된 메서드
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(4).png)
@@ -74,18 +75,19 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(7).png)
 
-- 위의 예시 코드에서처럼, RemoteControl 인터페이스에는 3개의 메서드가 정의되어 있는데, Television에는 그 일부인 2개의 메서드만 재정의 되었다면, Television 클래스는 `추상클래스`임(abstract)
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(8).png)
-    
-    ⇒ 재정의되지 않은 RemoteControl의 setVolume() 메서드는 `추상 메서드`임
-    
+- 위의 예시 코드에서처럼, RemoteControl 인터페이스에는 3개의 메서드가 정의되어 있는데, Television에는 그 일부인 2개의 메서드만 재정의 되었다면, Television 클래스는 `추상클래스`임(
+  abstract)
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(8).png)
+
+  ⇒ 재정의되지 않은 RemoteControl의 setVolume() 메서드는 `추상 메서드`임
+
 - 인터페이스의 모든 메서드는 public 접근 제한을 가짐
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(9).png)
 
 - 인터페이스도 하나의 타입이기 때문에, 인터페이스를 선언 후 간접적으로 구현 객체를 대입해 이용 가능
-- 인터페이스를 구현한(implements) 어떤 구현 객체라도 인터페이스에 대입해 이용 가능- 
+- 인터페이스를 구현한(implements) 어떤 구현 객체라도 인터페이스에 대입해 이용 가능-
 
 ## **8.3 인터페이스 구현(2)**
 
@@ -106,23 +108,23 @@
 - 하지만, `new 인터페이스() {…}`는 인터페이스의 생성자 호출이 아니라, `{…}` 안에 **클래스를 선언하겠다**는 뜻
 - 즉, `{…}` 안에 **필드, 생성자, 메서드를 선언하겠다**는 뜻
 - `{…}` 블록 안에서 선언된 것들은 블록 안에서만 사용되며, 블록을 벗어나서, 인터페이스 변수로 접근 불가
-    
-    ⇒ 인터페이스 변수가 접근할 수 있는 범위는 인터페이스에 선언된 추상 메서드, default 메서드 등에 국한되기 때문
-    
+
+  ⇒ 인터페이스 변수가 접근할 수 있는 범위는 인터페이스에 선언된 추상 메서드, default 메서드 등에 국한되기 때문
+
 - 결론적으로, `new 인터페이스() {…}` 는 인터페이스의 생성자를 호출하겠다는 뜻이 아니라, `{…}` 에 선언된 클래스의 생성자를 호출하겠다는 뜻
 - 정리: `{…}`에 선언된 클래스가 인터페이스를 구현한다 ⇒ `{…}`에 선언된 클래스의 기본 생성자를 호출한 뒤 객체를 만들어서 인터페이스 변수에 대입한다
 - 익명 구현 객체에 대한 바이트 코드 파일: 이 클래스 선언에 대한 바이트 코드 파일이 생성됨
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(11).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(11).png)
+
     - window-show view - navigator
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(12).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(12).png)
+
     - `RemoteControlExample$1.class`: RemoteControlExample에 선언된 익명 클래스에 대한 바이트코드 파일
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(13).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(13).png)
+
     - `RemoteControlExample$2.class`: 익명 클래스를 하나 더 생성해 rc2 인터페이스 변수에 하나 더 대입하면 버전 2가 만들어짐
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(14).png)
@@ -138,46 +140,45 @@
 - 인터페이스는 다양한 곳에서 사용 가능
 - 인터페이스에 구현 객체를 대입하는 위치가 다양할 수 있음 ⇒ 어디서 대입됐냐에 따라 인터페이스 사용 위치가 달라질 수 있음
 - 필드, 생성자의 매개변수, 메서드 구현 블록 내 로컬 변수, 메서드의 매개 변수로 사용 가능
-    
-    ⇒ 이 인터페이스를 구현한 어떠한 객체든 대입 가능
-    
+
+  ⇒ 이 인터페이스를 구현한 어떠한 객체든 대입 가능
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(16).png)
 
 - 인터페이스 변수에 구현 객체 대입 후
-    
-    → 개발 코드에서 추상 메서드를 인터페이스를 통해 호출
-    
-    → 구현 객체의 재정의된 실제 메서드 호출됨
-    
+
+  → 개발 코드에서 추상 메서드를 인터페이스를 통해 호출
+
+  → 구현 객체의 재정의된 실제 메서드 호출됨
+
 - 인터페이스는 개발 코드와 구현 객체의 중간에서 접점 역할, 즉 메서드 호출을 연결해 주는 역할을 함
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(17).png)
 
 - 자바 8에서 추가됨
 - 인터페이스를 선언할 때, default 키워드를 넣고 메서드 선언 가능
-    
-    ⇒ 추상 메서드와는 달리 실행 블록을 가지고 있음
-    
+
+  ⇒ 추상 메서드와는 달리 실행 블록을 가지고 있음
+
 - default 메서드는 인터페이스 만으로 사용할 수 없음
-    
-    ⇒ setMute() 메서드를 호출하기 위해 인터페이스 객체로 바로 호출 불가
-    
+
+  ⇒ setMute() 메서드를 호출하기 위해 인터페이스 객체로 바로 호출 불가
+
     ```java
     RemoteControl.setMute(true); // X
     ```
-    
-    ⇒ 구현 객체가 반드시 인터페이스 변수에 대입되어야 사용 가능
-    
+
+  ⇒ 구현 객체가 반드시 인터페이스 변수에 대입되어야 사용 가능
+
     ```java
     RemoteControl rc = new Television();
     rc.setMute(true);
     ```
-    
+
 - default 메서드는 구현객체(Television)의 인스턴스 멤버라고도 볼 수 있음
-    
-    ⇒ 구현 객체를 만들 때 인터페이스에 있는 default 메서드가 추가됨
-    
+
+  ⇒ 구현 객체를 만들 때 인터페이스에 있는 default 메서드가 추가됨
+
 - 정적 메서드 선언:
     - 자바 8에서 추가
     - 일반 클래스의 static 메서드 선언과 동일
@@ -214,24 +215,23 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(24).png)
 
 - 인터페이스 A, A를 구현한 클래스 B, C
-    
+
     ```java
     A a = new B();
     B b = (B) a; // 가능: 애초에 a는 B타입 변수로 만들어졌으므로 복원 가능
     ```
-    
+
     ```java
     A a = new C();
     B b = (B) a; // 실행오류: C타입 변수 a는 B타입으로 변환 불가
     C c = (C) a; // 는 가능
     ```
-    
+
 - 왜 강제 타입을 하는가?
-    
-    ⇒ `new Bus();` 를 대입한 vehicle은 인터페이스에 선언된 `run()` 메서드만 사용 가능하고, Bus에 선언된 `checkFare()` 메서드는 사용 불가
-    
-    ⇒ `checkFare()` 메서드를 사용하기 위해서는 강제 타입 변환 필요
-    
+
+  ⇒ `new Bus();` 를 대입한 vehicle은 인터페이스에 선언된 `run()` 메서드만 사용 가능하고, Bus에 선언된 `checkFare()` 메서드는 사용 불가
+
+  ⇒ `checkFare()` 메서드를 사용하기 위해서는 강제 타입 변환 필요
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(25).png)
 
@@ -253,23 +253,22 @@
 
 - 인터페이스: 객체 사용 설명서, 메서드의 호출 정보를 제공
 - default 메서드: 실행 코드까지 가지고 있음
-    
-    ⇒ 인터페이스와 default는 개념 자체가 서로 맞지는 않음
-    
+
+  ⇒ 인터페이스와 default는 개념 자체가 서로 맞지는 않음
+
 - 그런데 왜 자바 8에서는 인터페이스에 default 메서드를 허용했을까?
-    
-     1. 기존 인터페이스에 추상 메서드를 추가할 수 없음
-    
-        → 인터페이스에 새로운 추상 메서드를 하나 추가하면, 이걸 implements하고 있는 구현 클래스들이 전부 에러남
-    
+
+    1. 기존 인터페이스에 추상 메서드를 추가할 수 없음
+
+       → 인터페이스에 새로운 추상 메서드를 하나 추가하면, 이걸 implements하고 있는 구현 클래스들이 전부 에러남
+
     2. default 메서드는 추상 메서드가 아님
-        
-        → 1. 에서 나타난 문제점을 default 메서드로 해결 가능
-        
-        → 인터페이스에는 이미 implemets 받은 클래스들이 에러날 걱정 없이 새 메서드 추가 가능
-        
-        → 구현 클래스는 필요에 따라 default 메서드 재정의 가능
-        
+
+       → 1. 에서 나타난 문제점을 default 메서드로 해결 가능
+
+       → 인터페이스에는 이미 implemets 받은 클래스들이 에러날 걱정 없이 새 메서드 추가 가능
+
+       → 구현 클래스는 필요에 따라 default 메서드 재정의 가능
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/8(28).png)
 

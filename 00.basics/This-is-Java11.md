@@ -1,35 +1,36 @@
 ## 목차
+
 [11.1 자바 API 도큐먼트](#111-자바-api-도큐먼트)   
 [11.2 java.lang과 java.util 패키지](#112-javalang과-javautil-패키지)   
 [11.3 Object 클래스(1)](#113-object-클래스1)   
-    [- equals()](#equals)   
-    [- hashCode()](#hashcode)   
-    [- toString()](#tostring)   
+[- equals()](#equals)   
+[- hashCode()](#hashcode)   
+[- toString()](#tostring)   
 [11.3 Object 클래스(2)](#113-object-클래스2)   
-    [- clone()](#clone)   
-    [- finalize()](#finalize)   
+[- clone()](#clone)   
+[- finalize()](#finalize)   
 [11.4 Objects 클래스(1)](#114-objects-클래스1)   
-    [- Objects.compare()](#objectscompare)   
-    [- Objects.equals(), Objects.deepEquals()](#objectsequals-objectsdeepequals)   
+[- Objects.compare()](#objectscompare)   
+[- Objects.equals(), Objects.deepEquals()](#objectsequals-objectsdeepequals)   
 [11.4 Objects 클래스(2)](#114-objects-클래스2)   
-    [- Objects.hash(), Objects.hashCode()](#objectshash-objectshashcode)    
-    [- Objects.isNull(), Objects.nonNull(), Objects.requireNonNull()](#objectsisnull-objectsnonnull-objectsrequirenonnull)    
+[- Objects.hash(), Objects.hashCode()](#objectshash-objectshashcode)    
+[- Objects.isNull(), Objects.nonNull(), Objects.requireNonNull()](#objectsisnull-objectsnonnull-objectsrequirenonnull)    
 [11.5 System 클래스](#115-system-클래스)   
-    [- System.exit()](#systemexit)   
-    [- System.gc()](#systemgc)   
-    [- System.currentTimeMillis(), System.nanoTime()](#systemcurrenttimemillis-systemnanotime)   
-    [- System.getProperty()](#systemgetproperty)   
-    [- System.getenv()](#systemgetenv)   
+[- System.exit()](#systemexit)   
+[- System.gc()](#systemgc)   
+[- System.currentTimeMillis(), System.nanoTime()](#systemcurrenttimemillis-systemnanotime)   
+[- System.getProperty()](#systemgetproperty)   
+[- System.getenv()](#systemgetenv)   
 [11.6 Class 클래스](#116-class-클래스)   
 [11.7 String 클래스(1)](#117-string-클래스1)   
-    [- 키보드로 받은 byte 배열을 String으로 변환하기](#키보드로-받은-byte-배열을-string으로-변환하기)   
+[- 키보드로 받은 byte 배열을 String으로 변환하기](#키보드로-받은-byte-배열을-string으로-변환하기)   
 [11.7 String 클래스(2)](#117-string-클래스2)   
 [11.8 StringTokenizer 클래스](#118-stringtokenizer-클래스)   
 [11.9 StringBuffer, StringBuilder 클래스](#119-stringbuffer-stringbuilder-클래스)   
 [11.10 정규 표현식과 Pattern 클래스](#1110-정규-표현식과-pattern-클래스)   
 [11.11 Arrays 클래스(1)](#1111-arrays-클래스1)   
 [11.11 Arrays 클래스(2)](#1111-arrays-클래스2)   
-    [- 실습](#실습)   
+[- 실습](#실습)   
 [11.12 포장 클래스](#1112-포장-클래스)   
 [11.13 Math, Random 클래스](#1113-math-random-클래스)   
 [11.14 Date,Calendar 클래스](#1114-datecalendar-클래스)   
@@ -39,7 +40,7 @@
 [11.16 java.time 패키지(3)](#1116-javatime-패키지3)   
 [11.16 java.time 패키지(4)](#1116-javatime-패키지4)   
 [11.16 java.time 패키지(5)](#1116-javatime-패키지5)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **11.1 자바 API 도큐먼트**
 
@@ -64,13 +65,13 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(2).png)
 
 - 다음 코드는 extends 없이 아무런 상속을 받지 않았지만, 암시적으로 Object 클래스를 상속받음
-    
+
     ```java
     class xxx {
       // ...
     }
     ```
-    
+
 - Object 클래스 내 메서드는 모든 클래스에서 사용 가능
 
 ### equals()
@@ -98,6 +99,7 @@
 - `System.out.println(Object)`는 자동으로 toString() 결과를 리턴함(클래스명@해시코드)
 
 ## **11.3 Object 클래스(2)**
+
 ### clone()
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(8).png)
@@ -114,9 +116,9 @@
 - Object가 finalize()를 가지기 때문에, 모든 객체는 finalize()를 가짐
 - Object의 finalize()는 기본적으로 비어 있어, 아무런 동작이 없음 → 객체가 소멸되기 전에 실행할 코드가 있다면 재정의
 - 하지만, 될 수 있다면 소멸자를 사용하지 않는 게 좋음
-    
-    → 가비지 컬렉터는 객체 일부만 소멸시겨서 남아 있는 객체에서는 finalize()를 실행시키지 않기 때문에, 메서드 호출이 안 될 수도 있음
-    
+
+  → 가비지 컬렉터는 객체 일부만 소멸시겨서 남아 있는 객체에서는 finalize()를 실행시키지 않기 때문에, 메서드 호출이 안 될 수도 있음
+
 - 그러니까, 실행 될 수도, 안 될 수도 있으니 그냥 쓰지 말 것
 
 ## **11.4 Objects 클래스(1)**
@@ -135,7 +137,7 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(12).png)
 
-- **deepEquals()**: 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false 
+- **deepEquals()**: 비교 대상이 되는 객체 a, b가 배열일 경우, 배열의 번지가 아닌 항목의 값을 비교 → 항목이 같으면 true, 하나라도 다르면 false
 - **equals()**: a, b 객체의 번지만 비교
 - **hash()**: 배열(여러 개의 Object)인 매개값의 해쉬 코드를 생성
 - **hashCode()**: 객체 하나에 대한 해쉬 코드를 생성
@@ -156,7 +158,8 @@
     - a, b 둘 다 null이면 return true
 - **deepEquals()**: 두 배열을 비교 → 두 배열의 항목이 같으냐, 항목이 하나라도 다르냐를 비교
     - `null이 아닌 a가 배열이 아니고, null이 아닌 b가 배열이 아닐 경우`: a.equals(b)로 작용함
-    - `null이 아닌 a가 배열이고, null이 아닌 b가 배열일 경우`: 메서드 내부에서 Arrays.deepEquals()라는 메서드 사용 → a, b 각각의 항목의 값을 비교해 같으면 true, 하나라도 틀리면 false
+    - `null이 아닌 a가 배열이고, null이 아닌 b가 배열일 경우`: 메서드 내부에서 Arrays.deepEquals()라는 메서드 사용 → a, b 각각의 항목의 값을 비교해 같으면 true, 하나라도
+      틀리면 false
     - a, b 둘 중 하나가 null이면 return false
     - a, b 둘 다 null이면 return true
 
@@ -242,10 +245,11 @@
 
 - `new ____()`를 만들 때, 클래스 종류를 코딩할 땐 모르고, 실행 도중 클래스 이름이 결정되게 하려면? ⇒ new 연산자 사용 불가
 - `newInstance()`는 실행 도중 클래스 이름이 결정되고, 그 이름을 객체를 생성하는 기능을 제공함
-    
-    ⇒ 이 경우, 어떤 클래스가 만들어지는지 알 수 없기 때문에 `newInstance()`로 만든 객체의 타입은 Object며, 타입 변환(캐스팅)이 가능함
-    
-    ⇒ 위 예시와 같이, Action 인터페이스 객체를 구현해 선언된 action.execute()의 execute() 메서드는 Action이 아닌 구현 객체(SendAction 또는 ReceiveAction)의 메서드임
+
+  ⇒ 이 경우, 어떤 클래스가 만들어지는지 알 수 없기 때문에 `newInstance()`로 만든 객체의 타입은 Object며, 타입 변환(캐스팅)이 가능함
+
+  ⇒ 위 예시와 같이, Action 인터페이스 객체를 구현해 선언된 action.execute()의 execute() 메서드는 Action이 아닌 구현 객체(SendAction 또는 ReceiveAction)의
+  메서드임
 
 ## **11.7 String 클래스(1)**
 
@@ -258,13 +262,13 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(27).png)
 
 - byte 배열을 이용해 String 객체를 만드는 방법
-    
-    ⇒ 파일의 내용을 읽거나, 네트워크를 통해 받은 데이터는 모두 byte 배열
-    
-    ⇒ 이 byte 배열을 문자열로 변환해서 이용하는 경우가 많기 때문에, new String(byte[] bytes)와 같이 String 생성자에서 byte 배열을 받는 것들을 알아둘 필요가 있음
-    
-    (파일의 내용을 읽거나, 네트워크를 통해 데이터를 받으려면 IO/NIO를 알아야 함)
-    
+
+  ⇒ 파일의 내용을 읽거나, 네트워크를 통해 받은 데이터는 모두 byte 배열
+
+  ⇒ 이 byte 배열을 문자열로 변환해서 이용하는 경우가 많기 때문에, new String(byte[] bytes)와 같이 String 생성자에서 byte 배열을 받는 것들을 알아둘 필요가 있음
+
+  (파일의 내용을 읽거나, 네트워크를 통해 데이터를 받으려면 IO/NIO를 알아야 함)
+
 ### 키보드로 받은 byte 배열을 String으로 변환하기
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(28).png)
@@ -272,17 +276,17 @@
 1. String str = new String(byte[] bytes): 배열 전체를 String 객체로 생성
 2. String str = new String(byte[] bytes, String charsetName): byte 배열을 특정 문자 종류(UTF-8 등)로 디코딩
 3. String str = new String(byte[] bytes, int offset, int length): byte 배열의 일부분만 문자열로 만들 때
-    
-    ⇒ offset: 시작 위치
-    
-    ⇒ length: 시작 위치로 부터 몇 개의 배열을 문자열을 만들 것인가
+
+   ⇒ offset: 시작 위치
+
+   ⇒ length: 시작 위치로 부터 몇 개의 배열을 문자열을 만들 것인가
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(29).png)
 
 - System.in.read(bytes)와 같이 System.in.read에 빈 객체 byte를 넣어 줌
-    
-    ⇒ (byte)에는 키보드 입력 내용(Hello + [enter])이 저장되고, 입력된 문자에 대한 byte 배열의 수가 readByteNo에 저장됨(7)
-    
+
+  ⇒ (byte)에는 키보드 입력 내용(Hello + [enter])이 저장되고, 입력된 문자에 대한 byte 배열의 수가 readByteNo에 저장됨(7)
+
 - [enter]키 문자를 뺀 나머지를 String으로 변환
 
 ```java
@@ -291,22 +295,22 @@ String str = new String(bytes, 0, readByteNo - 2);
 ```
 
 - Byte[] bytes 배열에 Hello\r\n이라는 문자가 차례로 저장되지는 않음
-    
-    ⇒ 실제 bytes 배열에 저장되는 값은 H, e, l, l, o, \r, \n에 대한 각각의 key code 번호가 저장됨(72, 101, …, 13, 10) 
+
+  ⇒ 실제 bytes 배열에 저장되는 값은 H, e, l, l, o, \r, \n에 대한 각각의 key code 번호가 저장됨(72, 101, …, 13, 10)
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(30).png)
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(31).png)
 
-- charAt(n): String 배열에서 n 번째 배열의 문자만 뽑아내고 싶을 때 
-    (ex) 주민번호 추출 등   
+- charAt(n): String 배열에서 n 번째 배열의 문자만 뽑아내고 싶을 때
+  (ex) 주민번호 추출 등
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(32).png)
 
 - 문자열을 바이트 배열로 만듬
-    
-    ⇒ 파일에 내용을 적거나, 네트워크로 데이터를 보내야 할 시 사용
-    
+
+  ⇒ 파일에 내용을 적거나, 네트워크로 데이터를 보내야 할 시 사용
+
 - 잘못된 문자 셋으로 인코딩 될 시 예외가 발생할 수 있음
 
 ## **11.7 String 클래스(2)**
@@ -331,15 +335,14 @@ String str = new String(bytes, 0, readByteNo - 2);
     - `hasMoreTokens()`: 가져올 토큰이 있는가(true/false)
     - `nextToken()`: 토큰을 가져온다(ex. 홍길동, 이수홍, 박연수)
     - `countToken()`: nextToken()으로 가져오지 않은 토큰의 수
-        
-        (만약 홍길동을 꺼낸 후 호출한다면, 남아있는 토큰의 수는 2)
-        
+
+      (만약 홍길동을 꺼낸 후 호출한다면, 남아있는 토큰의 수는 2)
+
     - `new StringTokenizer()` 생성 후 `nextToken()`으로 모든 토큰을 얻었을 때, 처음으로 돌아가서 `nextToken()`을 다시 사용할 수 없음
-        
-        ⇒ 새로운 객체를 또 생성한 후 nextToken()을 사용해야 함
-        
-        ⇒ 즉, 기존 `new StringTokenizer()`는 재사용이 불가능
-        
+
+      ⇒ 새로운 객체를 또 생성한 후 nextToken()을 사용해야 함
+
+      ⇒ 즉, 기존 `new StringTokenizer()`는 재사용이 불가능
 
 ## **11.9 StringBuffer, StringBuilder 클래스**
 
@@ -347,13 +350,13 @@ String str = new String(bytes, 0, readByteNo - 2);
 
 - `StringBuffer`, `StringBuilder` 클래스: String 클래스의 단점을 보완한 클래스
 - String은 내부의 문자열을 수정할 수 없으므로, 연산을 할 때마다 새로운 객체가 생성되어, 메모리에 다수의 객체가 계속해서 생성되는 단점이 있음
-    
+
     ```java
     String data = val1 + val2 + val3; // 일 경우,
     // val1, val2, val3, val1 + val2, (val1+val2+val3) 총 5개의 객체가 생성됨
     // data는 마지막 (val1+Val2+Val3) 객체를 참조하게 됨
     ```
-    
+
 - `StringBuffer`, `StringBuilder`는 내부에 버퍼를 가지고 있어 이 버퍼에 문자열 데이터를 저장해두고 사용함
 - 버퍼 내부에서 추가, 수정, 삭제 작업 가능
 - 즉, 버퍼 내부에서만 변화되지 String 객체처럼 비슷한 객체가 여러 개 생성되지 않음
@@ -361,7 +364,7 @@ String str = new String(bytes, 0, readByteNo - 2);
 - `StringBuffer`, `StringBuilder`의 차이점:
     - `StringBuffer`: 멀티 스레드 환경에서 안전하게 사용할 수 있는 객체(JavaFX)
     - `StringBuilder`: 불안정해서 멀티 스레드 환경에서 사용할 수 없음, 단일 스레드 환경에서 사용
-    
+
     ```java
     StringBuilder sb = new StringBuilder(); // 기본적인 공간을 가지는 객체 생성
     StringBuffer sb = new StringBuffer(); // 기본적인 공간을 가지는 객체 생성
@@ -372,7 +375,7 @@ String str = new String(bytes, 0, readByteNo - 2);
     StringBuilder sb = new StringBuilder("Java"); // 기본적으로 Java라는 데이터를 가진 객체가 생성됨
     StringBuffer sb = new StringBuffer("Java"); // 기본적으로 Java라는 데이터를 가진 객체가 생성됨
     ```
-    
+
 - 이렇게 데이터 생성 후, 각 클래스가 가진 메서드를 사용해 데이터를 추가, 삭제, 대치할 수 있음
     - `append()`: 데이터 끝 부분에 데이터 추가
     - `insert()`: 데이터 중간에 데이터 삽입
@@ -413,13 +416,13 @@ String str = new String(bytes, 0, readByteNo - 2);
 
 - 예를 들어, Arrays.equals()는 `100번지와 300번지를(false)`, `200번지와 400번지(false)`를 비교함
 - Arrays.deepEquals()는 중첩된 배열까지 전부 비교함
-    
-    ⇒ `100번지의 a, b와 300번지의 a, b(true)`, `200번지의 c, d와 400 번지의 c, d(true)` 까지 비교함
-    
+
+  ⇒ `100번지의 a, b와 300번지의 a, b(true)`, `200번지의 c, d와 400 번지의 c, d(true)` 까지 비교함
+
 - Arrays.sort(): int[], double[], String[] 배열은 자동 정렬
-    
-    ⇒ Member[] 와 같이 개발자 정의 배열은 Comparable 인터페이스 구현 필요
-    
+
+  ⇒ Member[] 와 같이 개발자 정의 배열은 Comparable 인터페이스 구현 필요
+
 - Arrays.binarySearch()를 사용하기 위해선 Arrays.sort()로 먼저 정렬 필요
 
 ### 실습
@@ -430,16 +433,16 @@ String str = new String(bytes, 0, readByteNo - 2);
 
 - 배열 번지 비교: orginal(100), clone1(400)의 번지 비교
 - 1차 배열 항목 값 비교: original[0]의 번지(200)와 [1](300)번지 비교
-    
-    ⇒ clone1은 original을 얕은 복사 했으므로 original[0], [1]의 항목을 각각 가리키고 있음
-    
-    ⇒ clone1[0], [1]에는 original[0], [1]의 주소값이 저장됨
-    
+
+  ⇒ clone1은 original을 얕은 복사 했으므로 original[0], [1]의 항목을 각각 가리키고 있음
+
+  ⇒ clone1[0], [1]에는 original[0], [1]의 주소값이 저장됨
+
 - 중첩 배열 항목 값 비교
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(45).png)
-    
-    ⇒ original, clone1이 가리키는 항목(1,2,3,4)가 서로 같으므로 true
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(45).png)
+
+  ⇒ original, clone1이 가리키는 항목(1,2,3,4)가 서로 같으므로 true
 
 [깊은 복사 후 비교]
 
@@ -478,11 +481,11 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 
 - 자동 언박싱: 기본 타입에 포장 객체 대입 가능
 - 언박싱 정리
+
 1. 객체가 기본 타입에 대입이 될 때
 2. 객체가 연산이 될 때
-    
-    ⇒ 이 객체는 반드시 Wrapper 객체가 되어야 언박싱 가능
-    
+
+   ⇒ 이 객체는 반드시 Wrapper 객체가 되어야 언박싱 가능
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(50).png)
 
@@ -490,15 +493,14 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 - Byte.parseByte(”10”): 문자열 “10”을 byte 타입으로 변환하고 싶을 때, Byte Wrapper 클래스의 정적 메서드인 parseByte()를 사용해 변환
 - Integer.parseInt(”1000”): 문자열 “1000”을 int 값으로 변환하고 싶을 때
 - 포장 객체는 객체이므로 ==, ≠가 아닌 equals() 메서드로 내부 값 비교
-    
-    ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(51).png)
-    
+
+  ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(51).png)
+
 - **예외: boolean, char, byte, short, int는 ==, ≠ 사용 가능**
-    
-    ⇒ 번지 비교가 아닌, 객체 안의 값을 비교함
-    
-    ⇒ 다만, `byte`, `short`, `int`는 **-128 ~ 127 범위**만 ==, ≠ 가능하며, 이 범위를 넘어서는 값은 equals()로 비교 가능
-    
+
+  ⇒ 번지 비교가 아닌, 객체 안의 값을 비교함
+
+  ⇒ 다만, `byte`, `short`, `int`는 **-128 ~ 127 범위**만 ==, ≠ 가능하며, 이 범위를 넘어서는 값은 equals()로 비교 가능
 
 ## **11.13 Math, Random 클래스**
 
@@ -508,13 +510,13 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 
 - 난수를 얻는 방법
     1. Math.randon() 사용
-        
-        ⇒ 1 ~ n 사이 정수 중, 시작 수가 start인 임의의 정수
-        
+
+       ⇒ 1 ~ n 사이 정수 중, 시작 수가 start인 임의의 정수
+
         ```java
         int num = (int) (Math.random() * n) + start;
         ```
-        
+
     2. java.util 패키지 내 Random 클래스 사용
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(54).png)
@@ -526,7 +528,8 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(55).png)
 
 - 날짜, 시간을 얻어내는 클래스
-- Date: 날짜를 얻는다기 보다, 현재 시간의 날짜를 표현하는 클래스. 현재 시간의 스냅샷, 현  시점의 바로 그 값을 가지고 있는 객체를 만들 때 사용. **즉, 객체는 생성되는 순간의 시스템의 날짜를 가지고 있게 됨.**
+- Date: 날짜를 얻는다기 보다, 현재 시간의 날짜를 표현하는 클래스. 현재 시간의 스냅샷, 현 시점의 바로 그 값을 가지고 있는 객체를 만들 때 사용. **즉, 객체는 생성되는 순간의 시스템의 날짜를 가지고
+  있게 됨.**
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(56).png)
 
@@ -539,15 +542,15 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(58).png)
 
 - {0}, {1}, {2}: 매개변수이며, 이 자리에는 어떠한 데이터가 들어옴
-    
-    ⇒ 0번 인덱스, 1번 인덱스, 2번 인덱스 데이터
-    
+
+  ⇒ 0번 인덱스, 1번 인덱스, 2번 인덱스 데이터
+
 - MessageFormat 클래스의 정적 메서드인 format(message, id, name, tel)을 호출
-    
-    ⇒ message는 String message 변수에 대입된 값 자체며, 그 뒤부터(id, name, tel)이 각각 0, 1, 2번 인덱스 데이터가 되어 result 변수에 리턴됨
-    
+
+  ⇒ message는 String message 변수에 대입된 값 자체며, 그 뒤부터(id, name, tel)이 각각 0, 1, 2번 인덱스 데이터가 되어 result 변수에 리턴됨
+
 - 매개 변수 값을 배열로 만드는 방법도 있으며, 이때 이 배열을 파라미터로 넘김
-    
+
     ```java
     Object[] arguments = {id, name, tel};
     MessageFormat.format(text, argument);
@@ -568,8 +571,8 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 
 - LocalDateTime: 날짜, 시간 정보를 모두 가지고 있음
 - ZonedDateTime: 날짜, 시간, 존 정보를 모두 가지고 있음(+는 시차, [Asia/Seoul]은 지역을 의미함)
-    
-    ⇒ `getAbailableDs()` 메서드를 통해 어떤 존 아이디를 사용할 수 있는지 알 수 있음
+
+  ⇒ `getAbailableDs()` 메서드를 통해 어떤 존 아이디를 사용할 수 있는지 알 수 있음
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(62).png)
 
@@ -588,9 +591,9 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(65).png)
 
 - with() 메서드에 TemporalAdjuster adjuster 매개변수가 오면 상대 변경을 할 수 있음
-    
-    ⇒ 현재 날짜를 기준으로 상대적인 날짜를 리턴
-    
+
+  ⇒ 현재 날짜를 기준으로 상대적인 날짜를 리턴
+
 - TemporalAdjuster 타입 객체는 위 그림의 **메서드(매개변수) 표**에 나와있는 정적 메서드로 얻을 수 있음
 
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(66).png)
@@ -636,6 +639,7 @@ int value = obj; // 자동 언박싱(int는 기본타입이지만 Integer 객체
 ![Untitled](https://github.com/abarthdew/this-is-java/raw/main/00.basics/images/11(72).png)
 
 - 표준화된 포맷터 사용(날짜 형식을 저장한 상수 개념)
+
 ```java
     LocalDate localDate = LocalDate.parse("2024.05.21", ISO_LOCAL_DATE);
 ```

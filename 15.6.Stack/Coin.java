@@ -1,12 +1,12 @@
 public class Coin {
 
-    private int value;
+  private int value;
 
-    public Coin(int value) {
-        this.value = value;
-    }
+  public Coin(int value) {
+    this.value = value;
+  }
 
-    public int getValue() {
-        return value;
-    }
+  public int getValue() {
+    return value;
+  }
 }

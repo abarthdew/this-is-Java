@@ -1,4 +1,5 @@
 ## 목차
+
 [3.1 연산자와 연산식](#31-연산자와-연산식)   
 [3.2 연산의 방향과 우선 순위](#32-연산의-방향과-우선-순위)   
 [3.3 단항 연산자](#33-단항-연산자)   
@@ -7,7 +8,7 @@
 [3.4 이항 연산자(3)](#34-이항-연산자3)   
 [3.4 이항 연산자(4)](#34-이항-연산자4)   
 [3.5 삼항 연산자](#35-삼항-연산자)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **3.1 연산자와 연산식**
 
@@ -70,11 +71,10 @@
 
 - 5에서 0을 나누면 무한대가 나오기 때문에 예외 발생
 - 정수 5에 실수 0.0을 나누거나 나머지를 구하면, Infinity, NaN 이라는 ‘수’가 발생함
-    
-    ⇒ Infinity, NaN는 산술 연산이 가능하기 때문에 ‘수’ 라고 표현됨
-    
-    ⇒ Infinity, NaN는 어떤 값과 산술 연산을 하던 Infinity, NaN가 결과로 나옴
-    
+
+  ⇒ Infinity, NaN는 산술 연산이 가능하기 때문에 ‘수’ 라고 표현됨
+
+  ⇒ Infinity, NaN는 어떤 값과 산술 연산을 하던 Infinity, NaN가 결과로 나옴
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/3(16).png)
 
@@ -97,11 +97,10 @@
 - 이 객체 내 저장된 내용에 대해 비교를 할 때, `strVar1 == strVar2` 는 `참`이, `strVar2 == strVar3`는 `거짓`이 나옴
 - 따라서, ==는 객체에 저장된 문자열이 아닌 `객체의 번지를 비교`하는 것
 - 문자열 비교는 `equals()`를 사용함
-    
-    ⇒ strVar1.equals(strVar2) → true
-    
-    ⇒ strVar2.equals(strVar3) → true
-    
+
+  ⇒ strVar1.equals(strVar2) → true
+
+  ⇒ strVar2.equals(strVar3) → true
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/3(20).png)
 
@@ -115,10 +114,9 @@
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/3(23).png)
 
-- byte result = num1 & num2  // 컴파일 에러
-    
-    ⇒ num1, num2가 int로 변환되기 때문에, 결과는 int result로 해석됨
-    
+- byte result = num1 & num2 // 컴파일 에러
+
+  ⇒ num1, num2가 int로 변환되기 때문에, 결과는 int result로 해석됨
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/3(24).png)
 

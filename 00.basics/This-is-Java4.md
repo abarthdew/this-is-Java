@@ -1,9 +1,10 @@
 ## 목차
+
 [4.1 코드 실행 흐름 제어](#41-코드-실행-흐름-제어)   
 [4.2 조건문(if문, switch문)](#42-조건문if문-switch문)   
 [4.3 반복문(for문, while문, do-while문)(1)](#43-반복문for문-while문-do-while문1)   
 [4.3 반복문(for문, while문, do-while문)(2)](#43-반복문for문-while문-do-while문2)   
-[참고자료](#참고자료)   
+[참고자료](#참고자료)
 
 ## **4.1 코드 실행 흐름 제어**
 
@@ -42,18 +43,16 @@
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/4(9).png)
 
 - 초기화식 실행 → 조건식 실행 → 실행문 실행 → 증감식 카운트   
-               → 조건식 실행 → 실행문 실행 → 증감식 카운트   
-               → 조건식이 false인 경우, 반복문 빠져나옴   
-    
+  → 조건식 실행 → 실행문 실행 → 증감식 카운트   
+  → 조건식이 false인 경우, 반복문 빠져나옴
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/4(10).png)
 
 - for문 카운팅에 실수를 사용 시 1) 쓰레기값이 발생하거나, 2) 이로 인해 카운팅이 예상대로 되지 않을 수 있음
     - 위 예시에선 10번을 돌아야 하는데 9번만 돔
     - 0.900001 + 0.1 = 1.000001이므로 9번째에 1.0보다 커짐
-    
-    ⇒ for문 카운팅은 가급적 정수로 사용하는 것을 권장함
-    
+
+  ⇒ for문 카운팅은 가급적 정수로 사용하는 것을 권장함
 
 ![Untitled](https://github.com/abarthdew/this-is-java/blob/main/00.basics/images/4(11).png)
 

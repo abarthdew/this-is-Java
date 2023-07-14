@@ -1,25 +1,25 @@
 import java.util.Scanner;
 
 public class ScannerExam {
-    public static void main(String[] args) {
-        
-        Scanner scanner = new Scanner(System.in);
+  public static void main(String[] args) {
 
-        System.out.print("문자열 입력: ");
-        String inputString = scanner.nextLine();
-        System.out.println(inputString);
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println();
+    System.out.print("문자열 입력: ");
+    String inputString = scanner.nextLine();
+    System.out.println(inputString);
 
-        System.out.print("정수 입력: ");
-        int inputInt = scanner.nextInt();
-        System.out.println(inputInt);
+    System.out.println();
 
-        System.out.println();
+    System.out.print("정수 입력: ");
+    int inputInt = scanner.nextInt();
+    System.out.println(inputInt);
 
-        System.out.print("실수 입력: ");
-        double inputDouble = scanner.nextDouble();
-        System.out.println(inputDouble);
+    System.out.println();
+
+    System.out.print("실수 입력: ");
+    double inputDouble = scanner.nextDouble();
+    System.out.println(inputDouble);
 
         /*
         문자열 입력: 문자열
@@ -32,5 +32,5 @@ public class ScannerExam {
         3.14
          */
 
-    }
+  }
 }

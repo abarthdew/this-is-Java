@@ -1,3 +1,3 @@
-public class D extends B{
-    
+public class D extends B {
+
 }

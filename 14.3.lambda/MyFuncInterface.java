@@ -2,6 +2,6 @@
 // 즉, 이 인터페이스가 하나의 메서드를 가지고 있는지 체크하는 역할
 public interface MyFuncInterface {
 
-    public void method();
+  public void method();
 
 }

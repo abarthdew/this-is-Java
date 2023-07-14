@@ -1,16 +1,16 @@
 public class TireExam2 {
-    public static void main(String[] args) {
-        
-        CarTire2 car = new CarTire2();
+  public static void main(String[] args) {
 
-        for(int i=1; i<=5; i++) {
-            int problemLocation = car.run();
-            if (problemLocation != 0) { // 타이어가 펑크일 경우
-                System.out.println(car.tires[problemLocation - 1].location + "HankookTire로 교체");
-                car.tires[problemLocation - 1] = new HankookTire2(car.tires[problemLocation - 1].location, 15); // 자식객체로 변환
-            }
-            System.out.println("-----------------");
-        }
+    CarTire2 car = new CarTire2();
+
+    for (int i = 1; i <= 5; i++) {
+      int problemLocation = car.run();
+      if (problemLocation != 0) { // 타이어가 펑크일 경우
+        System.out.println(car.tires[problemLocation - 1].location + "HankookTire로 교체");
+        car.tires[problemLocation - 1] = new HankookTire2(car.tires[problemLocation - 1].location, 15); // 자식객체로 변환
+      }
+      System.out.println("-----------------");
+    }
         /*
          --자동차가 달립니다.--
         앞왼쪽Tire의 남은 수명: 5
@@ -45,5 +45,5 @@ public class TireExam2 {
         -----------------
          */
 
-    }
+  }
 }
